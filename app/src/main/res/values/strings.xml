@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Tinkoff-HR</string>
+    <string name="test">This is text</string>
 </resources>
