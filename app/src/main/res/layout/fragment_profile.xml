@@ -29,13 +29,14 @@
     <EditText
         android:id="@+id/edit_full_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="36sp"
         android:background="@drawable/my_edit_text_border"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:padding="5dp"
         android:textSize="20sp"
         android:hint="Введите ФИО"
+        android:maxLength="23"
         />
 
     <TextView
@@ -60,6 +61,7 @@
         android:textSize="20sp"
         android:background="@drawable/my_edit_text_border"
         android:hint="Введите информацию о себе"
+        android:maxLength="70"
         />
 
     <TextView
@@ -76,7 +78,7 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="32sp"
+        android:layout_height="36sp"
         android:id="@+id/edit_project"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
@@ -84,6 +86,7 @@
         android:textSize="20sp"
         android:background="@drawable/my_edit_text_border"
         android:hint="Введите название проекта"
+        android:maxLength="23"
         />
 
     <TextView
@@ -100,7 +103,7 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="32sp"
+        android:layout_height="36sp"
         android:id="@+id/edit_function"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
@@ -108,6 +111,7 @@
         android:textSize="20sp"
         android:background="@drawable/my_edit_text_border"
         android:hint="Введите свою должность"
+        android:maxLength="23"
         />
 
     <TextView
@@ -124,7 +128,7 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="32sp"
+        android:layout_height="36sp"
         android:id="@+id/edit_mail"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
@@ -132,6 +136,7 @@
         android:textSize="20sp"
         android:background="@drawable/my_edit_text_border"
         android:hint="Введите свою почту"
+        android:maxLength="23"
         />
 
 </LinearLayout>
