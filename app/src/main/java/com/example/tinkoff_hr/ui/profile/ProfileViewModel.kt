@@ -1,7 +1,5 @@
-package com.example.tinkoff_hr.ui.home
+package com.example.tinkoff_hr.ui.profile
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ProfileViewModel : ViewModel() {
