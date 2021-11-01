@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".ui.profile.ProfileFragment">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/ic_account_circle_24"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/text_full_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:text="ФИО"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:id="@+id/edit_full_name"
+        android:layout_width="match_parent"
+        android:layout_height="36sp"
+        android:background="@drawable/my_edit_text_border"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="5dp"
+        android:textSize="20sp"
+        android:hint="Введите ФИО"
+        android:maxLength="23"
+        />
+
+    <TextView
+        android:id="@+id/text_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="20sp"
+        android:text="О себе"
+
+         />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="80sp"
+        android:id="@+id/edit_about"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="5dp"
+        android:textSize="20sp"
+        android:background="@drawable/my_edit_text_border"
+        android:hint="Введите информацию о себе"
+        android:maxLength="70"
+        />
+
+    <TextView
+        android:id="@+id/text_project"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="20sp"
+        android:text="Проект"
+
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="36sp"
+        android:id="@+id/edit_project"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="5dp"
+        android:textSize="20sp"
+        android:background="@drawable/my_edit_text_border"
+        android:hint="Введите название проекта"
+        android:maxLength="23"
+        />
+
+    <TextView
+        android:id="@+id/text_function"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="20sp"
+        android:text="Должность"
+
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="36sp"
+        android:id="@+id/edit_function"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="5dp"
+        android:textSize="20sp"
+        android:background="@drawable/my_edit_text_border"
+        android:hint="Введите свою должность"
+        android:maxLength="23"
+        />
+
+    <TextView
+        android:id="@+id/text_mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="20sp"
+        android:text="Почта"
+
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="36sp"
+        android:id="@+id/edit_mail"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="5dp"
+        android:textSize="20sp"
+        android:background="@drawable/my_edit_text_border"
+        android:hint="Введите свою почту"
+        android:maxLength="23"
+        />
+
+</LinearLayout>
