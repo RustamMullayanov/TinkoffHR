@@ -191,8 +191,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="Не выбрано"
+                android:cursorVisible="false"
                 android:focusable="false"
-                android:editable="false"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
