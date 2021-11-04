@@ -43,21 +43,22 @@ class ProfileFragment : Fragment() {
         binding.fieldDialog.setOnClickListener {
 
             val view = layoutInflater.inflate(R.layout.profile_dialog,null)
-            val dialog = AlertDialog.Builder(requireContext()).setTitle("Ачивки").setView(view).create()
+            val dialog = AlertDialog.Builder(requireContext()).setTitle("Ачивки")
+                .setNegativeButton("Cancel" ) { d, _ ->
+                    d.dismiss()
+                }
+                .setView(view)
+                .create()
 
+            view.findViewById<RadioGroup>(R.id.radioGroup).setOnCheckedChangeListener{_,checkedId ->
+                view.findViewById<RadioButton>(checkedId)?.apply {
+                    selectedId = checkedId
+                    binding.fieldDialog.setText(this.text)
+                }
+            }
 
             if (selectedId != 0)
                 view.findViewById<RadioGroup>(R.id.radioGroup).check(selectedId)
-
-            view.findViewById<Button>(R.id.cancelButtonDialog).setOnClickListener{dialog.dismiss()}
-
-            view.findViewById<Button>(R.id.submitButtonDialog).setOnClickListener{
-
-                 selectedId = view.findViewById<RadioGroup>(R.id.radioGroup).checkedRadioButtonId
-                val radio = view.findViewById<RadioButton>(selectedId)
-                binding.fieldDialog.setText(radio.text)
-                dialog.dismiss()
-            }
 
             dialog.show()
         }
