@@ -1,12 +1,22 @@
 package com.example.tinkoff_hr.ui.profile
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.text.Editable
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import androidx.core.view.get
+import androidx.core.view.iterator
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentProfileBinding
+
 
 class ProfileFragment : Fragment() {
 
@@ -17,6 +27,8 @@ class ProfileFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private var selectedId = 0
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,12 +38,32 @@ class ProfileFragment : Fragment() {
             ViewModelProvider(this).get(ProfileViewModel::class.java)
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
+
+
+        binding.fieldDialog.setOnClickListener {
+
+            val view = layoutInflater.inflate(R.layout.profile_dialog,null)
+            val dialog = AlertDialog.Builder(requireContext()).setTitle("Ачивки").setView(view).create()
+
+
+            if (selectedId != 0)
+                view.findViewById<RadioGroup>(R.id.radioGroup).check(selectedId)
+
+            view.findViewById<Button>(R.id.cancelButtonDialog).setOnClickListener{dialog.dismiss()}
+
+            view.findViewById<Button>(R.id.submitButtonDialog).setOnClickListener{
+
+                 selectedId = view.findViewById<RadioGroup>(R.id.radioGroup).checkedRadioButtonId
+                val radio = view.findViewById<RadioButton>(selectedId)
+                binding.fieldDialog.setText(radio.text)
+                dialog.dismiss()
+            }
+
+            dialog.show()
+        }
+
         val root: View = binding.root
-/*
-        val textView: TextView = binding.textHome
-        profileViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })*/
+
         return root
     }
 
@@ -39,4 +71,5 @@ class ProfileFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

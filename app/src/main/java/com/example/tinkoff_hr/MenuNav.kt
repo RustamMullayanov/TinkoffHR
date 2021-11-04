@@ -1,6 +1,9 @@
 package com.example.tinkoff_hr
 
+import android.app.Dialog
 import android.os.Bundle
+import android.text.method.DialerKeyListener
+import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -12,6 +15,8 @@ import com.example.tinkoff_hr.databinding.ActivityMenunavBinding
 class MenuNav : AppCompatActivity() {
 
     private lateinit var binding: ActivityMenunavBinding
+
+    private var button:Button? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,5 +36,7 @@ class MenuNav : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
     }
 }
