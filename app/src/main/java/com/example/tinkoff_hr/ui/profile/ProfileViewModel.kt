@@ -8,4 +8,5 @@ class ProfileViewModel : ViewModel() {
         value = "This is profile Fragment"
     }
     val text: LiveData<String> = _text */
+
 }
