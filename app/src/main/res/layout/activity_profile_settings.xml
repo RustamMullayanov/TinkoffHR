@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment">
+    tools:context=".actionbar.ProfileSettings"
+    android:background="@drawable/my_gradient_drawable">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".ui.profile.ProfileFragment">
+        tools:context=".ui.profile.ProfileFragment"
+        android:paddingBottom="40dp">
 
         <ImageView
             android:id="@+id/image_avatar"
@@ -146,6 +148,7 @@
             app:layout_constraintTop_toBottomOf="@id/text_business_trips">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/field_mail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -182,5 +185,21 @@
                 android:text="Не выбрано" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_education"
+            app:boxCornerRadiusBottomEnd="26dp"
+            app:boxCornerRadiusBottomStart="26dp"
+            app:boxCornerRadiusTopEnd="26dp"
+            app:boxCornerRadiusTopStart="126dp"
+            android:text="Сохранить"
+            android:background="@drawable/my_edit_text_border"
+            android:textColor="#6200EE"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

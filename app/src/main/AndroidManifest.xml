@@ -10,11 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TinkoffHR">
         <activity
+            android:name=".actionbar.ProfileSettings"
+            android:exported="false" />
+        <activity
             android:name=".ui.faq.sale.SaleActivity"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".MenuNav"
             android:exported="true"
@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>

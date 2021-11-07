@@ -1,6 +1,9 @@
 package com.example.tinkoff_hr
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.tinkoff_hr.actionbar.ProfileSettings
 import com.example.tinkoff_hr.databinding.ActivityMenunavBinding
 
 class MenuNav : AppCompatActivity() {
@@ -36,5 +40,22 @@ class MenuNav : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.action_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> this.finish()
+            R.id.menu_profile -> {
+                val  intent = Intent(this, ProfileSettings::class.java)
+                startActivity(intent)
+            }
+            // R.id.menu_callback -> this.finish()
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }
