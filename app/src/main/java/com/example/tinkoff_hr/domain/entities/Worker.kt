@@ -4,7 +4,7 @@ class Worker(
     val email: String,
     val name: String,
     val surname: String,
-    var patronymic: String,
+    val patronymic: String,
     val photo: String,
     val project: String,
     val table: Int,
