@@ -36,7 +36,7 @@ class StateAdapter : RecyclerView.Adapter<StateAdapter.StateHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addList(list: ArrayList<State>) {
+    fun addList(list: List<State>) {
         states = list
         notifyDataSetChanged()
     }
