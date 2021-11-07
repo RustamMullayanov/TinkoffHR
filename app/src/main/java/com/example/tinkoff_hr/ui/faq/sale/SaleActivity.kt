@@ -10,7 +10,7 @@ import com.example.tinkoff_hr.databinding.ActivitySaleBinding
 
 class SaleActivity : AppCompatActivity() {
 
-    private lateinit var binging: ActivitySaleBinding
+    private val binging: ActivitySaleBinding by lazy { ActivitySaleBinding.inflate(layoutInflater) }
     private val stateAdapter = StateAdapter()
     private val fotoArray by lazy {
         arrayOf(
