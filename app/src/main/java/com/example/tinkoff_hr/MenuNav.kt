@@ -1,8 +1,6 @@
 package com.example.tinkoff_hr
 
-import android.app.Dialog
 import android.os.Bundle
-import android.text.method.DialerKeyListener
 import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +14,7 @@ class MenuNav : AppCompatActivity() {
 
     private lateinit var binding: ActivityMenunavBinding
 
-    private var button:Button? = null;
+    private var button: Button? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +29,7 @@ class MenuNav : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_profile, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_profile, R.id.navigation_faq, R.id.navigation_notifications
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

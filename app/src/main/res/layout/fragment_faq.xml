@@ -4,24 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment">
+    tools:context=".ui.faq.FaqFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".ui.profile.ProfileFragment">
-
-        <ImageView
-            android:id="@+id/image_avatar"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/ic_account_circle_24"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center"
+        tools:context=".ui.profile.ProfileFragment"
+        >
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_parking"
@@ -29,23 +19,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:hint="ФИО"
             app:boxBackgroundColor="@color/white"
             app:boxCornerRadiusBottomEnd="14dp"
             app:boxCornerRadiusBottomStart="14dp"
             app:boxCornerRadiusTopEnd="14dp"
             app:boxCornerRadiusTopStart="14dp"
+            app:endIconDrawable="@drawable/ic_baseline_arrow_right_24"
+            app:endIconMode="custom"
+            app:endIconTint="@color/main_purple"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_avatar">
+            app:layout_constraintTop_toTopOf="parent">
 
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="Krysh Andy" />
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:text="Парковки" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,12 +50,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:hint="О себе"
             app:boxBackgroundColor="@color/white"
             app:boxCornerRadiusBottomEnd="14dp"
             app:boxCornerRadiusBottomStart="14dp"
             app:boxCornerRadiusTopEnd="14dp"
             app:boxCornerRadiusTopStart="14dp"
+            app:endIconDrawable="@drawable/ic_baseline_arrow_right_24"
+            app:endIconMode="custom"
+            app:endIconTint="@color/main_purple"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +67,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="Пока жив, но уже на пределе" />
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:text="Чаты ТЦР" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,14 +80,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:hint="Проект"
             app:boxBackgroundColor="@color/white"
             app:boxCornerRadiusBottomEnd="14dp"
             app:boxCornerRadiusBottomStart="14dp"
             app:boxCornerRadiusTopEnd="14dp"
-
-
             app:boxCornerRadiusTopStart="14dp"
+            app:endIconDrawable="@drawable/ic_baseline_arrow_right_24"
+            app:endIconMode="custom"
+
+
+            app:endIconTint="@color/main_purple"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_chats">
@@ -97,7 +97,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginBottom="20dp"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:text="Кофемашина" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,12 +110,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:hint="Должность"
             app:boxBackgroundColor="@color/white"
             app:boxCornerRadiusBottomEnd="14dp"
             app:boxCornerRadiusBottomStart="14dp"
             app:boxCornerRadiusTopEnd="14dp"
             app:boxCornerRadiusTopStart="14dp"
+            app:endIconDrawable="@drawable/ic_baseline_arrow_right_24"
+            app:endIconMode="custom"
+            app:endIconTint="@color/main_purple"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +126,11 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginBottom="20dp"
+                android:cursorVisible="false"
+
+                android:focusable="false"
+                android:text="Командировки" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,27 +140,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:hint="Почта"
             app:boxBackgroundColor="@color/white"
             app:boxCornerRadiusBottomEnd="14dp"
             app:boxCornerRadiusBottomStart="14dp"
             app:boxCornerRadiusTopEnd="14dp"
             app:boxCornerRadiusTopStart="14dp"
-            app:endIconContentDescription="Copy"
-            app:endIconDrawable="@drawable/ic_content_copy_24"
+            app:endIconDrawable="@drawable/ic_baseline_arrow_right_24"
             app:endIconMode="custom"
+            app:endIconTint="@color/main_purple"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_business_trips">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/button_sales"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:cursorVisible="false"
                 android:focusable="false"
-                android:text="mymail@tin.koff" />
+                android:text="Скидки" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -161,12 +170,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:hint="Ачивки"
             app:boxBackgroundColor="@color/white"
             app:boxCornerRadiusBottomEnd="14dp"
             app:boxCornerRadiusBottomStart="14dp"
             app:boxCornerRadiusTopEnd="14dp"
             app:boxCornerRadiusTopStart="14dp"
+            app:endIconDrawable="@drawable/ic_baseline_arrow_right_24"
+            app:endIconMode="custom"
+            app:endIconTint="@color/main_purple"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -179,7 +190,65 @@
                 android:layout_marginBottom="20dp"
                 android:cursorVisible="false"
                 android:focusable="false"
-                android:text="Не выбрано" />
+                android:text="Образование Tinkoff.ru" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_meetup"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomEnd="14dp"
+            app:boxCornerRadiusBottomStart="14dp"
+            app:boxCornerRadiusTopEnd="14dp"
+            app:boxCornerRadiusTopStart="14dp"
+            app:endIconDrawable="@drawable/ic_baseline_arrow_right_24"
+            app:endIconMode="custom"
+            app:endIconTint="@color/main_purple"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_education">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:text="Meetup`s и конференции" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_contacts"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomEnd="14dp"
+            app:boxCornerRadiusBottomStart="14dp"
+            app:boxCornerRadiusTopEnd="14dp"
+            app:boxCornerRadiusTopStart="14dp"
+            app:endIconDrawable="@drawable/ic_baseline_arrow_right_24"
+            app:endIconMode="custom"
+            app:endIconTint="@color/main_purple"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_meetup">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:text="Контакты" />
 
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
