@@ -56,7 +56,7 @@ class SaleActivity : AppCompatActivity() {
         }
 
         stateAdapter.addList(
-            arrayListOf(
+            listOf(
                 State(fotoArray[0], "Самая лучшая компания по мнению никого", "Ростелеком"),
                 State(fotoArray[1], "Благодаря нам верстальщик этой страницы умрёт в 30", "ММК"),
                 State(fotoArray[2], "Много сахара не бывает", "Coca-Cola"),
