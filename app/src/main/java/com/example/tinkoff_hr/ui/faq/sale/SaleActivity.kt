@@ -27,24 +27,22 @@ class SaleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binging = ActivitySaleBinding.inflate(layoutInflater)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-
+        supportActionBar?.title = "Партнёры"
 
         setContentView(binging.root)
         init()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        //return super.onCreateOptionsMenu(menu)
-        menuInflater.inflate(R.menu.action_menu,menu)
+        menuInflater.inflate(R.menu.action_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             android.R.id.home -> this.finish()
-            R.id.menu_profile -> this.finish()
-            R.id.menu_callback -> this.finish()
+           // R.id.menu_profile -> this.finish()
+           // R.id.menu_callback -> this.finish()
         }
 
         return super.onOptionsItemSelected(item)
