@@ -20,13 +20,14 @@ class StateAdapter : RecyclerView.Adapter<StateAdapter.StateHolder>() {
 
     override fun onBindViewHolder(holder: StateHolder, position: Int) {
         with(holder.viewBinding) {
-            expandButton.setText(states[position].name)
+            val item = states[position]
+            expandButton.setText(item.name)
             expandButton.setOnClickListener {
                 expandableLayout.toggle()
             }
 
-            textInfo.text = states[position].information
-            imageLogo.setImageResource(states[position].fotoResource)
+            textInfo.text = item.information
+            imageLogo.setImageResource(item.fotoResource)
         }
     }
 

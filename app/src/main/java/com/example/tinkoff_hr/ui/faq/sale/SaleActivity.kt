@@ -25,11 +25,9 @@ class SaleActivity : AppCompatActivity() {
 
 
         super.onCreate(savedInstanceState)
-        binging = ActivitySaleBinding.inflate(layoutInflater)
+        setContentView(binging.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Партнёры"
-
-        setContentView(binging.root)
         init()
     }
 

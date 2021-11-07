@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentProfileBinding
+import com.example.tinkoff_hr.databinding.ProfileDialogBinding
 
 
 class ProfileFragment : Fragment() {
@@ -42,27 +43,28 @@ class ProfileFragment : Fragment() {
 
         binding.fieldDialog.setOnClickListener {
 
-            val view = layoutInflater.inflate(R.layout.profile_dialog, null)
-            val dialog = AlertDialog.Builder(requireContext()).setTitle("Ачивки")
-                .setNegativeButton("Cancel") { d, _ ->
-                    d.dismiss()
-                }
-                .setView(view)
-                .create()
+            val dialogBinding = ProfileDialogBinding.inflate(inflater, container, false)
+            dialogBinding.apply {
 
+                val dialog = AlertDialog.Builder(requireContext()).setTitle("Ачивки")
+                    .setNegativeButton("Cancel") { d, _ ->
+                        d.dismiss()
+                    }
+                    .setView(dialogLayout)
+                    .create()
 
-            view.findViewById<RadioGroup>(R.id.radioGroup)
-                .setOnCheckedChangeListener { _, checkedId ->
-                    view.findViewById<RadioButton>(checkedId)?.apply {
+                radioGroup.setOnCheckedChangeListener { _, checkedId ->
+                    radioGroup.findViewById<RadioButton>(checkedId)?.apply {
                         selectedId = checkedId
                         binding.fieldDialog.setText(this.text)
                     }
                 }
 
-            if (selectedId != 0)
-                view.findViewById<RadioGroup>(R.id.radioGroup).check(selectedId)
+                if (selectedId != 0)
+                    radioGroup.check(selectedId)
 
-            dialog.show()
+                dialog.show()
+            }
         }
 
         val root: View = binding.root
