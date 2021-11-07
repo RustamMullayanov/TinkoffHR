@@ -14,7 +14,7 @@ class MenuNav : AppCompatActivity() {
 
     private lateinit var binding: ActivityMenunavBinding
 
-    private var button:Button? = null;
+    private var button: Button? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
