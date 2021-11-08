@@ -2,8 +2,6 @@ package com.example.tinkoff_hr.ui.faq.sale
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.ActivitySaleBinding
@@ -26,25 +24,11 @@ class SaleActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(binging.root)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Партнёры"
         init()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.action_menu, menu)
-        return true
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> this.finish()
-           // R.id.menu_profile -> this.finish()
-           // R.id.menu_callback -> this.finish()
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
 
     private fun init() {
         binging.recView.apply {

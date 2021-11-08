@@ -135,7 +135,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_sales"
+            android:id="@+id/text_mail"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -181,7 +181,7 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_sales">
+            app:layout_constraintTop_toBottomOf="@id/text_mail">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/field_dialog"

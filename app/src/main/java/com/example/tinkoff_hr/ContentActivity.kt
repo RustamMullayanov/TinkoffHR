@@ -1,6 +1,9 @@
 package com.example.tinkoff_hr
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -8,18 +11,19 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.tinkoff_hr.databinding.ActivityMenunavBinding
+import com.example.tinkoff_hr.actionbar.ProfileSettingsActivity
+import com.example.tinkoff_hr.databinding.ActivityContentBinding
 
-class MenuNav : AppCompatActivity() {
+class ContentActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMenunavBinding
+    private lateinit var binding: ActivityContentBinding
 
     private var button: Button? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMenunavBinding.inflate(layoutInflater)
+        binding = ActivityContentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
@@ -36,5 +40,21 @@ class MenuNav : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.action_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_profile -> {
+                val  intent = Intent(this, ProfileSettingsActivity::class.java)
+                startActivity(intent)
+            }
+            // R.id.menu_callback -> this.finish()
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }
