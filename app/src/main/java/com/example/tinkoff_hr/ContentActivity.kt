@@ -12,18 +12,18 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.tinkoff_hr.actionbar.ProfileSettingsActivity
-import com.example.tinkoff_hr.databinding.ActivityMenunavBinding
+import com.example.tinkoff_hr.databinding.ActivityContentBinding
 
-class MenuNav : AppCompatActivity() {
+class ContentActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMenunavBinding
+    private lateinit var binding: ActivityContentBinding
 
     private var button: Button? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMenunavBinding.inflate(layoutInflater)
+        binding = ActivityContentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
@@ -48,7 +48,6 @@ class MenuNav : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            android.R.id.home -> this.finish()
             R.id.menu_profile -> {
                 val  intent = Intent(this, ProfileSettingsActivity::class.java)
                 startActivity(intent)

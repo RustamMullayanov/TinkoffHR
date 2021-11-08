@@ -16,7 +16,7 @@
             android:name=".ui.faq.sale.SaleActivity"
             android:exported="false"></activity>
         <activity
-            android:name=".MenuNav"
+            android:name=".ContentActivity"
             android:exported="true"
             android:label="@string/title_activity_profile">
             <intent-filter>

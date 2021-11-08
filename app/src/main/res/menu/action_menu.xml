@@ -3,14 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_callback"
-        android:icon="@drawable/ic_account_circle_24"
-        android:title="Обратная связь"
-        android:iconTint="@color/white"/>
+        android:title="Обратная связь"/>
 
     <item
         android:id="@+id/menu_profile"
-        android:icon="@drawable/ic_help_24"
-        android:title="Настройка профиля"
-        android:iconTint="@color/white"/>
+        android:title="Настройка профиля"/>
 
 </menu>
