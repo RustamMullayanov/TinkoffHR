@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/text_hellow"
+        android:id="@+id/text_hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="60dp"
@@ -28,15 +28,15 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_hellow">
-
+        app:layout_constraintTop_toBottomOf="@id/text_hello">
 
         <EditText
-            android:id="@+id/text_parking"
+            android:id="@+id/edit_mail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:hint="Введите ваш e-mail"
+            android:inputType="text"
             android:maxLines="1"
             android:paddingVertical="10dp"
             android:paddingStart="15dp"
@@ -44,14 +44,14 @@
             android:textSize="25sp" />
 
         <ImageView
-            android:id="@+id/image_avatar"
+            android:id="@+id/image_login"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/text_parking"
-            android:layout_alignBottom="@id/text_parking"
+            android:layout_alignTop="@id/edit_mail"
+            android:layout_alignBottom="@id/edit_mail"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center"
-            android:layout_toStartOf="@id/text_parking"
+            android:layout_toStartOf="@id/edit_mail"
             android:background="#c4c4c4"
             android:foregroundGravity="right"
             android:padding="8dp"
