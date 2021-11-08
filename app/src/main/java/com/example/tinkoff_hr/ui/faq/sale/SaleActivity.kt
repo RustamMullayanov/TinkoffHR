@@ -1,13 +1,9 @@
 package com.example.tinkoff_hr.ui.faq.sale
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.R
-import com.example.tinkoff_hr.actionbar.ProfileSettings
 import com.example.tinkoff_hr.databinding.ActivitySaleBinding
 
 class SaleActivity : AppCompatActivity() {
@@ -28,7 +24,6 @@ class SaleActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(binging.root)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Партнёры"
         init()
     }

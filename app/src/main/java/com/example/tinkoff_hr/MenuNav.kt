@@ -11,7 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.tinkoff_hr.actionbar.ProfileSettings
+import com.example.tinkoff_hr.actionbar.ProfileSettingsActivity
 import com.example.tinkoff_hr.databinding.ActivityMenunavBinding
 
 class MenuNav : AppCompatActivity() {
@@ -50,7 +50,7 @@ class MenuNav : AppCompatActivity() {
         when (item.itemId) {
             android.R.id.home -> this.finish()
             R.id.menu_profile -> {
-                val  intent = Intent(this, ProfileSettings::class.java)
+                val  intent = Intent(this, ProfileSettingsActivity::class.java)
                 startActivity(intent)
             }
             // R.id.menu_callback -> this.finish()

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TinkoffHR">
         <activity
-            android:name=".actionbar.ProfileSettings"
+            android:name=".actionbar.ProfileSettingsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.faq.sale.SaleActivity"
