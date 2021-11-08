@@ -1,6 +1,6 @@
 package com.example.tinkoff_hr.data.repositories
 
-import com.example.tinkoff_hr.domain.dto.WorkerDomainToDB
+import com.example.tinkoff_hr.data.dto.WorkerDomainToDB
 import com.example.tinkoff_hr.domain.entities.Worker
 import com.example.tinkoff_hr.domain.repositories_interface.WorkerRepository
 

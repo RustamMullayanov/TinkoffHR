@@ -4,7 +4,7 @@ import com.example.tinkoff_hr.domain.entities.Worker
 import com.example.tinkoff_hr.domain.repositories_interface.WorkerRepository
 
 class UpdateWorkerByEmail(private val workerRepository: WorkerRepository) {
-    fun execute(worker: Worker): Boolean {
+    operator fun invoke(worker: Worker): Boolean {
         return workerRepository.updateWorkerInfo(worker);
     }
 }
