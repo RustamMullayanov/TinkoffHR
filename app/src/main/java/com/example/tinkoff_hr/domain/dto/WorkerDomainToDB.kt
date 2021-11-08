@@ -3,8 +3,8 @@ package com.example.tinkoff_hr.domain.dto
 import com.example.tinkoff_hr.data.entities.WorkerEntityForDB
 import com.example.tinkoff_hr.domain.entities.Worker
 
-class WorkerDomainToDB {
-    fun execute(worker: Worker):  WorkerEntityForDB {
+class WorkerDomainToDB(private val worker: Worker) {
+    fun execute(): WorkerEntityForDB {
         return  WorkerEntityForDB(worker.email,
             worker.name,
             worker.surname,
