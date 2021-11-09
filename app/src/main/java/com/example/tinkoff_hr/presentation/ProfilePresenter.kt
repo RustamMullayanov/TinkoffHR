@@ -10,7 +10,7 @@ class ProfilePresenter{
     private val getWorkerInfoByEmail = GetWorkerInfoByEmail(workerRepository)
     private val updateWorkerByEmail = UpdateWorkerByEmail(workerRepository)
 
-    fun onCreate(email: String){
+    fun onAppearing(email: String){
         getWorkerInfoByEmail(email)
         TODO("Not yet implemented")
     }
