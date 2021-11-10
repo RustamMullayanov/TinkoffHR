@@ -10,7 +10,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="10dp">
+        android:paddingVertical="10dp"
+
+        android:layout_marginHorizontal="20dp">
 
         <LinearLayout
             android:id="@+id/layout_address"
@@ -27,7 +29,6 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="14dp"
                 app:boxCornerRadiusBottomStart="14dp"
@@ -54,7 +55,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:el_duration="300"
-                app:el_expanded="false">
+                app:el_expanded="false"
+                android:background="@drawable/border_white"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -90,7 +93,6 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="14dp"
                 app:boxCornerRadiusBottomStart="14dp"
@@ -117,7 +119,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:el_duration="300"
-                app:el_expanded="false">
+                app:el_expanded="false"
+                android:background="@drawable/border_white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -153,7 +156,6 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="14dp"
                 app:boxCornerRadiusBottomStart="14dp"
@@ -180,7 +182,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:el_duration="300"
-                app:el_expanded="false">
+                app:el_expanded="false"
+                android:background="@drawable/border_white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -216,7 +219,6 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="14dp"
                 app:boxCornerRadiusBottomStart="14dp"
@@ -243,7 +245,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:el_duration="300"
-                app:el_expanded="false">
+                app:el_expanded="false"
+                android:background="@drawable/border_white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
