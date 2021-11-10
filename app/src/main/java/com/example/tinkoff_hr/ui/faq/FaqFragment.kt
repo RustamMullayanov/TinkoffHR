@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.tinkoff_hr.databinding.FragmentFaqBinding
+import com.example.tinkoff_hr.ui.faq.sale.BusinessTripActivity
 import com.example.tinkoff_hr.ui.faq.sale.SaleActivity
 
 class FaqFragment : Fragment() {
@@ -37,6 +38,12 @@ class FaqFragment : Fragment() {
             val  intent = Intent(this.context,SaleActivity::class.java)
             startActivity(intent)
         }
+
+        binding.buttonBusinessTrips.setOnClickListener{
+            val  intent = Intent(this.context,BusinessTripActivity::class.java)
+            startActivity(intent)
+        }
+
         return root
     }
 

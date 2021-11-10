@@ -10,11 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TinkoffHR">
         <activity
+            android:name=".ui.faq.sale.BusinessTripActivity"
+            android:exported="false" />
+        <activity
             android:name=".actionbar.ProfileSettingsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.faq.sale.SaleActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".ContentActivity"
             android:exported="true"
