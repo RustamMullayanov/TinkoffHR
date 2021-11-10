@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        tools:context=".ui.profile.ProfileFragment"
+        android:paddingTop="?attr/actionBarSize"
         >
 
         <com.google.android.material.textfield.TextInputLayout
@@ -245,7 +245,6 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
                 android:cursorVisible="false"
                 android:focusable="false"
                 android:text="Контакты" />
