@@ -12,6 +12,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.tinkoff_hr.actionbar.ProfileSettingsActivity
+import com.example.tinkoff_hr.actionbar.SettingsActivity
 import com.example.tinkoff_hr.databinding.ActivityContentBinding
 
 class ContentActivity : AppCompatActivity() {
@@ -48,10 +49,11 @@ class ContentActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_profile -> {
-                val  intent = Intent(this, ProfileSettingsActivity::class.java)
+            R.id.menu_settings -> {
+                val  intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
             }
+            //R.id.menu_profile -> {val  intent = Intent(this, ProfileSettingsActivity::class.java) startActivity(intent)            }
             // R.id.menu_callback -> this.finish()
         }
 
