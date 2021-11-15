@@ -53,8 +53,6 @@ class ContentActivity : AppCompatActivity() {
                 val  intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
             }
-            //R.id.menu_profile -> {val  intent = Intent(this, ProfileSettingsActivity::class.java) startActivity(intent)            }
-            // R.id.menu_callback -> this.finish()
         }
 
         return super.onOptionsItemSelected(item)
