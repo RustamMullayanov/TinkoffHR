@@ -11,10 +11,14 @@ import com.example.tinkoff_hr.databinding.ProfileDialogBinding
 import android.content.ClipData
 import android.content.Intent
 import android.view.MenuItem
+
 import com.example.tinkoff_hr.R
+import com.example.tinkoff_hr.domain.entities.Worker
+import com.example.tinkoff_hr.views.ProfileView
+import moxy.MvpAppCompatActivity
 
 
-class ProfileSettingsActivity : AppCompatActivity() {
+class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
 
     private val binding: ActivityProfileSettingsBinding by lazy {
         ActivityProfileSettingsBinding.inflate(layoutInflater)
@@ -76,5 +80,17 @@ class ProfileSettingsActivity : AppCompatActivity() {
 
             dialog.show()
         }
+    }
+
+    override fun showWorkerInfo(worker: Worker) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showError(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showSuccess() {
+        TODO("Not yet implemented")
     }
 }

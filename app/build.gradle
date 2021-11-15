@@ -51,8 +51,9 @@ dependencies {
     implementation 'com.github.cachapa:ExpandableLayout:2.9.2'
 
     //Moxy
-    implementation 'com.arello-mobile:moxy:1.5.5'
-    implementation 'com.arello-mobile:moxy-android:1.5.5'
-    implementation 'com.arello-mobile:moxy-app-compat:1.5.5'
+    implementation 'com.github.moxy-community:moxy:2.1.2'
+    implementation 'com.github.moxy-community:moxy-compiler:2.1.2'
+    implementation 'com.github.moxy-community:moxy-androidx:2.1.2'
+    implementation 'com.github.moxy-community:moxy-ktx:2.1.2'
     kapt "com.arello-mobile:moxy-compiler:1.5.5"
 }
