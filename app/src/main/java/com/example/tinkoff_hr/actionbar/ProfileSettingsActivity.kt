@@ -14,11 +14,16 @@ import android.view.MenuItem
 
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.domain.entities.Worker
+import com.example.tinkoff_hr.presentation.ProfilePresenter
 import com.example.tinkoff_hr.views.ProfileView
 import moxy.MvpAppCompatActivity
+import moxy.presenter.InjectPresenter
 
 
 class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
+
+    @InjectPresenter
+    lateinit var profilePresenter: ProfilePresenter
 
     private val binding: ActivityProfileSettingsBinding by lazy {
         ActivityProfileSettingsBinding.inflate(layoutInflater)
@@ -42,6 +47,7 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
             val clip = ClipData.newPlainText("Copied Text", binding.fieldMail.text.toString())
             clipboard.setPrimaryClip(clip)
         }
+        profilePresenter.onAppearing("test@tin.koff")
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -83,14 +89,22 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
     }
 
     override fun showWorkerInfo(worker: Worker) {
-        TODO("Not yet implemented")
+        //хардкод
+        binding.apply {
+            fieldFullName.setText("${worker.surname} ${worker.name} ${worker.patronymic}")
+            fieldMail.setText(worker.email)
+            fieldAbout.setText(worker.about)
+            fieldFunction.setText(worker.function)
+            fieldProject.setText(worker.project)
+        }
+        //TODO("Not yet implemented")
     }
 
     override fun showError(message: String) {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
 
     override fun showSuccess() {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
 }

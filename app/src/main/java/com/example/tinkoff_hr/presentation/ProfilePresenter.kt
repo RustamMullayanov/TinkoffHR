@@ -16,12 +16,13 @@ class ProfilePresenter : MvpPresenter<ProfileView>(){
     private val updateWorkerByEmail = UpdateWorkerByEmailUseCase(workerRepository)
 
     fun onAppearing(email: String){
-        getWorkerInfoByEmail(email)
-        TODO("Not yet implemented")
+        val worker = getWorkerInfoByEmail(email)
+        viewState.showWorkerInfo(worker)
+        //TODO("Not yet implemented")
     }
 
     fun onSaveWorkerClicked(worker: Worker){
         updateWorkerByEmail(worker)
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
 }
