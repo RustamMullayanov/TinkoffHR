@@ -18,11 +18,13 @@ class ProfilePresenter : MvpPresenter<ProfileView>(){
     fun onAppearing(email: String){
         val worker = getWorkerInfoByEmail(email)
         viewState.showWorkerInfo(worker)
-        //TODO("Not yet implemented")
     }
 
     fun onSaveWorkerClicked(worker: Worker){
-        updateWorkerByEmail(worker)
-        //TODO("Not yet implemented")
+        if (updateWorkerByEmail(worker)){
+            viewState.showSuccess("Данные успешно сохранены")
+            return
+        }
+        viewState.showError("Произошла ошибка при сохранении данных")
     }
 }

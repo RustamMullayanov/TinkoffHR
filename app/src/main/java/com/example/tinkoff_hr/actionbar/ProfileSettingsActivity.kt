@@ -11,6 +11,8 @@ import com.example.tinkoff_hr.databinding.ProfileDialogBinding
 import android.content.ClipData
 import android.content.Intent
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.Toast
 
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.domain.entities.Worker
@@ -48,6 +50,25 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
             clipboard.setPrimaryClip(clip)
         }
         profilePresenter.onAppearing("test@tin.koff")
+
+        // Сохранение данных пользователя
+        val buttonSave = binding.buttonSave
+        buttonSave.setOnClickListener {
+            val fullName = binding.fieldFullName.text.toString().split(" ")
+            val worker = Worker(
+                binding.fieldMail.text.toString(),
+                fullName[1],
+                fullName[0],
+                fullName[2],
+                "", // хардкод
+                binding.fieldProject.text.toString(),
+                1,
+                binding.fieldFunction.text.toString(),
+                binding.fieldAbout.text.toString(),
+                ""
+            )
+            profilePresenter.onSaveWorkerClicked(worker)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -89,8 +110,7 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
     }
 
     override fun showWorkerInfo(worker: Worker) {
-        //хардкод
-        binding.apply {
+        with(binding) {
             fieldFullName.setText("${worker.surname} ${worker.name} ${worker.patronymic}")
             fieldMail.setText(worker.email)
             fieldAbout.setText(worker.about)
@@ -101,10 +121,12 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
     }
 
     override fun showError(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         //TODO("Not yet implemented")
     }
 
-    override fun showSuccess() {
+    override fun showSuccess(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         //TODO("Not yet implemented")
     }
 }
