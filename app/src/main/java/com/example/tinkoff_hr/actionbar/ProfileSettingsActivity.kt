@@ -117,16 +117,13 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
             fieldFunction.setText(worker.function)
             fieldProject.setText(worker.project)
         }
-        //TODO("Not yet implemented")
     }
 
     override fun showError(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-        //TODO("Not yet implemented")
     }
 
     override fun showSuccess(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-        //TODO("Not yet implemented")
     }
 }
