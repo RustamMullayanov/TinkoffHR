@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-
         android:paddingVertical="10dp">
 
         <LinearLayout
@@ -29,7 +28,7 @@
                 android:id="@+id/text_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Адрес"
+                android:hint="@string/address"
                 app:boxBackgroundColor="@color/pale_purple"
                 app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_24"
                 app:endIconMode="custom"
@@ -53,7 +52,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_white"
-
                 app:el_duration="300"
                 app:el_expanded="false">
 
@@ -91,9 +89,8 @@
                 android:id="@+id/text_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Как получить пропуск?"
+                android:hint="@string/get_pass"
                 app:boxBackgroundColor="@color/pale_purple"
-
                 app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_24"
                 app:endIconMode="custom"
                 app:endIconTint="@color/main_purple"
@@ -151,7 +148,7 @@
                 android:id="@+id/text_steps_arrival"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Что делать после прибытия?"
+                android:hint="@string/steps_arrival"
                 app:boxBackgroundColor="@color/pale_purple"
                 app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_24"
                 app:endIconMode="custom"
@@ -212,7 +209,7 @@
                 android:id="@+id/text_contacts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Контакты"
+                android:hint="@string/contacts"
                 app:boxBackgroundColor="@color/pale_purple"
                 app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_24"
                 app:endIconMode="custom"
@@ -225,7 +222,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:cursorVisible="false"
-
                     android:focusable="false" />
 
             </com.google.android.material.textfield.TextInputLayout>
