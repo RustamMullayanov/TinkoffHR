@@ -5,4 +5,8 @@
     <string name="title_profile">Profile</string>
     <string name="title_faq">FAQ</string>
     <string name="title_notifications">Notifications</string>
+    <string name="address">Адрес</string>
+    <string name="get_pass">Как получить пропуск?</string>
+    <string name="steps_arrival">Что делать после прибытия?</string>
+    <string name="contacts">Контакты</string>
 </resources>
