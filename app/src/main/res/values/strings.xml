@@ -13,4 +13,8 @@
     <string name="what_do_speaker">Что делать потенциальному спикеру?</string>
     <string name="text_1_listener_information">1. Не менее , чем за 2 месяца сообщить Елене Калетиной или Хромову Олегу , а также тимлиду, какие темы тебе интересны и чем это будет полезно для проекта.</string>
     <string name="text_2_listener_information">2. Совместное решение о полной или частичной оплате конференции.</string>
+    <string name="text_1_what_do_speaker">1. Обсуждение с HR;</string>
+    <string name="text_2_what_do_speaker">2. Подача доклада на конференцию/митап</string>
+    <string name="title_basic_information">Основная информация</string>
+    <string name="listener_information">Информация для слушателя</string>
 </resources>

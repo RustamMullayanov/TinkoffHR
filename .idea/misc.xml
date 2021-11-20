@@ -12,12 +12,14 @@
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/baseline_account_circle_24.xml" value="0.5703125" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/baseline_content_copy_24.xml" value="0.453125" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/border_white.xml" value="0.28828125" />
+        <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/border_white_full_round.xml" value="0.33359375" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/formatcut.xml" value="0.33359375" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/gradient_2.xml" value="0.33515625" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_account_circle_24.xml" value="0.5703125" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_arrow_down.xml" value="0.38385416666666666" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_arrow_right.xml" value="0.38385416666666666" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_arrow_right_24.xml" value="0.38385416666666666" />
+        <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.33359375" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_content_copy_24.xml" value="0.287890625" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.346875" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_help_24.xml" value="0.4484375" />
@@ -27,6 +29,7 @@
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.346875" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/my_edit_text_border.xml" value="0.5130208333333334" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/my_gradient_drawable.xml" value="0.5130208333333334" />
+        <entry key="..\:/project/TinkoffHR/app/src/main/res/layout-v28/activity_meet_up.xml" value="0.42864583333333334" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/layout/activity_business_trip.xml" value="0.27578125" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/layout/activity_content.xml" value="0.27578125" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/layout/activity_main.xml" value="0.26024590163934425" />
