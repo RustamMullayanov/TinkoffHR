@@ -20,12 +20,19 @@ import com.example.tinkoff_hr.presentation.ProfilePresenter
 import com.example.tinkoff_hr.views.ProfileView
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 
 
 class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
 
     @InjectPresenter
     lateinit var profilePresenter: ProfilePresenter
+
+    @ProvidePresenter
+    fun provideProfilePresenter() : ProfilePresenter{
+        //хардкодный email
+        return ProfilePresenter("test2@tin.koff")
+    }
 
     private val binding: ActivityProfileSettingsBinding by lazy {
         ActivityProfileSettingsBinding.inflate(layoutInflater)
@@ -49,7 +56,6 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
             val clip = ClipData.newPlainText("Copied Text", binding.fieldMail.text.toString())
             clipboard.setPrimaryClip(clip)
         }
-        profilePresenter.onAppearing("test@tin.koff")
 
         // Сохранение данных пользователя
         val buttonSave = binding.buttonSave

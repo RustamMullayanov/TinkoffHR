@@ -10,14 +10,19 @@ import moxy.InjectViewState
 import moxy.MvpPresenter
 
 @InjectViewState
-class ProfilePresenter : MvpPresenter<ProfileView>(){
+class ProfilePresenter(private val email: String) : MvpPresenter<ProfileView>(){
     private val workerRepository = WorkerRepositoryImpl()
     private val getWorkerInfoByEmail = GetWorkerInfoByEmailUseCase(workerRepository)
     private val updateWorkerByEmail = UpdateWorkerByEmailUseCase(workerRepository)
 
-    fun onAppearing(email: String){
+    override fun onFirstViewAttach() {
+        onAppearing(email)
+    }
+
+    private fun onAppearing(email: String){
         val worker = getWorkerInfoByEmail(email)
         viewState.showWorkerInfo(worker)
+        viewState.showSuccess("Данные успешно загрузились")
     }
 
     fun onSaveWorkerClicked(worker: Worker){

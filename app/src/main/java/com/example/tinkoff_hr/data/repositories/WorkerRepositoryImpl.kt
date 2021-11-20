@@ -8,7 +8,7 @@ class WorkerRepositoryImpl: WorkerRepository {
     override fun getWorkerInfoByEmail(email: String): Worker {
         // хардкод для теста
         return Worker(
-            "mymail@tin.koff",
+            email,
             "Rustam",
             "Mullayanov",
             "Radikovich",
