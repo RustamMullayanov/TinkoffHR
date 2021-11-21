@@ -10,7 +10,9 @@ import com.example.tinkoff_hr.ui.faq.MeetUp.CardEducationAdapter
 
 class EducationActivity : AppCompatActivity() {
 
-    private val binging: ActivityEducationBinding by lazy { ActivityEducationBinding.inflate(layoutInflater) }
+    private val binging: ActivityEducationBinding by lazy {
+        ActivityEducationBinding.inflate(layoutInflater)
+    }
     private val cardEducationAdapter = CardEducationAdapter()
     private val fotoArray by lazy {
         arrayOf(
@@ -31,29 +33,34 @@ class EducationActivity : AppCompatActivity() {
     }
 
 
-
     private fun init() {
         binging.recEducation.apply {
             layoutManager = LinearLayoutManager(this@EducationActivity)
             adapter = cardEducationAdapter
-
         }
 
         cardEducationAdapter.addList(
             listOf(
-                CardEducation(fotoArray[0], "Scala",
+                CardEducation(
+                    fotoArray[0], "Scala",
                     "информация об образовательной программе информация об" +
-                            " образовательной программе информация об образовательной программе"),
-                CardEducation(fotoArray[1], "IOS",
+                            " образовательной программе информация об образовательной программе"
+                ),
+                CardEducation(
+                    fotoArray[1], "IOS",
                     "информация об образовательной программе информация об" +
-                            " образовательной программе информация об образовательной программе"),
-                CardEducation(fotoArray[2], "Frontend",
+                            " образовательной программе информация об образовательной программе"
+                ),
+                CardEducation(
+                    fotoArray[2], "Frontend",
                     "информация об образовательной программе информация об" +
-                            " образовательной программе информация об образовательной программе"),
-                CardEducation(fotoArray[3], "DevOps",
+                            " образовательной программе информация об образовательной программе"
+                ),
+                CardEducation(
+                    fotoArray[3], "DevOps",
                     "информация об образовательной программе информация об" +
-                            " образовательной программе информация об образовательной программе"),
-
+                            " образовательной программе информация об образовательной программе"
+                )
             )
         )
     }

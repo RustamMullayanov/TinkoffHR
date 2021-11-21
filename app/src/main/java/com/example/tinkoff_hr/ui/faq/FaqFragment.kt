@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.tinkoff_hr.databinding.FragmentFaqBinding
 import com.example.tinkoff_hr.ui.faq.MeetUp.MeetUpActivity
+import com.example.tinkoff_hr.ui.faq.education.EducationActivity
 import com.example.tinkoff_hr.ui.faq.sale.BusinessTripActivity
 import com.example.tinkoff_hr.ui.faq.sale.SaleActivity
 
@@ -34,7 +35,6 @@ class FaqFragment : Fragment() {
         _binding = FragmentFaqBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
         binding.buttonSales.setOnClickListener{
             val  intent = Intent(this.context,SaleActivity::class.java)
             startActivity(intent)
@@ -45,8 +45,13 @@ class FaqFragment : Fragment() {
             startActivity(intent)
         }
 
-        binding.fieldMeetup.setOnClickListener{
+        binding.buttonMeetup.setOnClickListener{
             val  intent = Intent(this.context,MeetUpActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.buttonEducation.setOnClickListener {
+            val  intent = Intent(this.context,EducationActivity::class.java)
             startActivity(intent)
         }
 

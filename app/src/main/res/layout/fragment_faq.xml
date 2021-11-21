@@ -185,7 +185,7 @@
             app:layout_constraintTop_toBottomOf="@id/text_sale">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/field_education"
+                android:id="@+id/button_education"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -215,7 +215,7 @@
             app:layout_constraintTop_toBottomOf="@id/text_education">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/field_meetup"
+                android:id="@+id/button_meetup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"

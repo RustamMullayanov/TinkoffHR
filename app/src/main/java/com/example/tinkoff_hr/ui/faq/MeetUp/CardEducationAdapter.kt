@@ -10,10 +10,12 @@ import com.example.tinkoff_hr.databinding.CardEducationBinding
 class CardEducationAdapter : RecyclerView.Adapter<CardEducationAdapter.CardEducationHolder>() {
     private var cardList: List<CardEducation> = emptyList()
 
-    class CardEducationHolder(val viewBinding: CardEducationBinding) : RecyclerView.ViewHolder(viewBinding.root)
+    class CardEducationHolder(val viewBinding: CardEducationBinding) :
+        RecyclerView.ViewHolder(viewBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardEducationHolder {
-        val binding = CardEducationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            CardEducationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return CardEducationHolder(binding)
     }
