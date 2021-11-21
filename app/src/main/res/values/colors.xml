@@ -11,5 +11,6 @@
     <color name="pale_purple">#3FB190F4</color>
     <color name="very_dark_violet">#FF402772</color>
     <color name="back_grey">#FFECEAED</color>
+    <color name="light_grey">#FFC4C4C4</color>
     <color name="pure_violet">#FF6200EE</color>
 </resources>

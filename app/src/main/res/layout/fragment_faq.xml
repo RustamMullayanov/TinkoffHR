@@ -8,9 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        >
+        android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_parking"
@@ -185,7 +183,7 @@
             app:layout_constraintTop_toBottomOf="@id/text_sale">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/field_dialog"
+                android:id="@+id/button_education"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -215,7 +213,7 @@
             app:layout_constraintTop_toBottomOf="@id/text_education">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/field_meetup"
+                android:id="@+id/button_meetup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -247,6 +245,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:cursorVisible="false"
                 android:focusable="false"
                 android:text="Контакты" />
