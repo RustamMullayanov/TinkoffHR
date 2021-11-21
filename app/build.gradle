@@ -63,4 +63,9 @@ dependencies {
     kapt 'com.github.moxy-community:moxy-compiler:2.1.2'
     implementation 'com.github.moxy-community:moxy-androidx:2.1.2'
     implementation 'com.github.moxy-community:moxy-ktx:2.1.2'
+
+    //Dagger2
+    implementation 'com.google.dagger:dagger:2.39'
+    kapt 'com.google.dagger:dagger-compiler:2.39'
+
 }
