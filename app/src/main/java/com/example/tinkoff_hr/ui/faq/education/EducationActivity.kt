@@ -2,11 +2,10 @@ package com.example.tinkoff_hr.ui.faq.education
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.ActivityEducationBinding
-import com.example.tinkoff_hr.ui.faq.MeetUp.CardEducation
-import com.example.tinkoff_hr.ui.faq.MeetUp.CardEducationAdapter
 
 class EducationActivity : AppCompatActivity() {
 
@@ -32,6 +31,16 @@ class EducationActivity : AppCompatActivity() {
         init()
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                this.finish()
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
 
     private fun init() {
         binging.recEducation.apply {

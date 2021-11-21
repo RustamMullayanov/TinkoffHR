@@ -1,4 +1,4 @@
-package com.example.tinkoff_hr.ui.faq.MeetUp
+package com.example.tinkoff_hr.ui.faq.education
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
