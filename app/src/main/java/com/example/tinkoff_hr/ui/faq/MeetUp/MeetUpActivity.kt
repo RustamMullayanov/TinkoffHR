@@ -11,9 +11,7 @@ import android.view.MenuItem
 class MeetUpActivity : AppCompatActivity() {
 
     private val binging: ActivityMeetUpBinding by lazy {
-        ActivityMeetUpBinding.inflate(
-            layoutInflater
-        )
+        ActivityMeetUpBinding.inflate(layoutInflater)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,34 +21,36 @@ class MeetUpActivity : AppCompatActivity() {
         supportActionBar?.title = "Meetup`s"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val colorOpen = ColorStateList(
-            arrayOf(intArrayOf(-android.R.attr.state_focused)),
-            intArrayOf(R.color.pure_violet)
-        )
+        val colorOpen = ColorStateList.valueOf(resources.getColor(R.color.pure_violet))
 
-        val colorClose = ColorStateList(
-            arrayOf(intArrayOf(-android.R.attr.state_focused)),
-            intArrayOf(R.color.black)
-        )
+        val colorClose = ColorStateList.valueOf(resources.getColor(R.color.black))
 
         binging.apply {
+
+            textWhatDoSpeaker.defaultHintTextColor = colorClose
+            textListenerInformation.defaultHintTextColor = colorClose
 
             buttonWhatDoSpeaker.setOnClickListener {
                 expandableWhatDoSpeaker.toggle()
                 if (expandableWhatDoSpeaker.isExpanded) {
                     textWhatDoSpeaker.defaultHintTextColor = colorOpen
-                } else
+                    textWhatDoSpeaker.setEndIconDrawable(R.drawable.ic_baseline_arrow_drop_up_24)
+                } else {
                     textWhatDoSpeaker.defaultHintTextColor = colorClose
+                    textWhatDoSpeaker.setEndIconDrawable(R.drawable.ic_baseline_arrow_drop_down_24)
+                }
             }
 
             buttonListenerInformation.setOnClickListener {
                 expandableListenerInformation.toggle()
                 if (expandableListenerInformation.isExpanded) {
                     textListenerInformation.defaultHintTextColor = colorOpen
-                } else
+                    textListenerInformation.setEndIconDrawable(R.drawable.ic_baseline_arrow_drop_up_24)
+                } else {
                     textListenerInformation.defaultHintTextColor = colorClose
+                    textListenerInformation.setEndIconDrawable(R.drawable.ic_baseline_arrow_drop_down_24)
+                }
             }
-
         }
     }
 
