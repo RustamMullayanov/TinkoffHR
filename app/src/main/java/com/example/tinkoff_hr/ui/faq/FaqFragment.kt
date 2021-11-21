@@ -35,23 +35,23 @@ class FaqFragment : Fragment() {
         _binding = FragmentFaqBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.buttonSales.setOnClickListener{
-            val  intent = Intent(this.context,SaleActivity::class.java)
+        binding.buttonSales.setOnClickListener {
+            val intent = Intent(this.context, SaleActivity::class.java)
             startActivity(intent)
         }
 
-        binding.buttonBusinessTrips.setOnClickListener{
-            val  intent = Intent(this.context,BusinessTripActivity::class.java)
+        binding.buttonBusinessTrips.setOnClickListener {
+            val intent = Intent(this.context, BusinessTripActivity::class.java)
             startActivity(intent)
         }
 
-        binding.buttonMeetup.setOnClickListener{
-            val  intent = Intent(this.context,MeetUpActivity::class.java)
+        binding.buttonMeetup.setOnClickListener {
+            val intent = Intent(this.context, MeetUpActivity::class.java)
             startActivity(intent)
         }
 
         binding.buttonEducation.setOnClickListener {
-            val  intent = Intent(this.context,EducationActivity::class.java)
+            val intent = Intent(this.context, EducationActivity::class.java)
             startActivity(intent)
         }
 

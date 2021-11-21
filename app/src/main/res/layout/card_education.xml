@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp">
+        android:padding="10dp">
 
         <LinearLayout
             android:id="@+id/layout_logo_title"
@@ -41,6 +41,7 @@
             android:id="@+id/information_education"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:textColor="@color/light_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -9,24 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TinkoffHR">
-        <activity
-            android:name=".ui.faq.education.EducationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.faq.MeetUp.MeetUpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".actionbar.SettingsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.faq.sale.BusinessTripActivity"
-            android:exported="false" />
-        <activity
-            android:name=".actionbar.ProfileSettingsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.faq.sale.SaleActivity"
-            android:exported="false" />
+        <activity android:name=".ui.faq.education.EducationActivity" />
+        <activity android:name=".ui.faq.MeetUp.MeetUpActivity" />
+        <activity android:name=".actionbar.SettingsActivity" />
+        <activity android:name=".ui.faq.sale.BusinessTripActivity" />
+        <activity android:name=".actionbar.ProfileSettingsActivity" />
+        <activity android:name=".ui.faq.sale.SaleActivity" />
         <activity
             android:name=".ContentActivity"
             android:exported="true"
@@ -37,9 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

@@ -23,7 +23,7 @@ class CardEducationAdapter : RecyclerView.Adapter<CardEducationAdapter.CardEduca
     override fun onBindViewHolder(holder: CardEducationHolder, position: Int) {
         with(holder.viewBinding) {
             val item = cardList[position]
-            titleEducation.setText(item.title)
+            titleEducation.text = item.title
             informationEducation.text = item.information
             logoEducation.setImageResource(item.logoResource)
         }
