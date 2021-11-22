@@ -1,3 +1,3 @@
 package com.example.tinkoff_hr.ui.faq.sale
 
-class State(val fotoResource: Int, val information: String, val name: String)
+class State(val logoResource: Int, val information: String, val name: String)
