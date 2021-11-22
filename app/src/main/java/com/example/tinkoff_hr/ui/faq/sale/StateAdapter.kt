@@ -21,13 +21,12 @@ class StateAdapter : RecyclerView.Adapter<StateAdapter.StateHolder>() {
     override fun onBindViewHolder(holder: StateHolder, position: Int) {
         with(holder.viewBinding) {
             val item = states[position]
-            nameSale.setText(item.name)
+            nameSale.text = item.name
 
             informationSale.text = item.information
             logoSale.setImageResource(item.logoResource)
         }
     }
-
 
     override fun getItemCount(): Int {
         return states.size

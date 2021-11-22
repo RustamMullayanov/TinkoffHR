@@ -25,9 +25,18 @@ class SaleActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(binging.root)
-        supportActionBar?.title = "Партнёры"
+        supportActionBar?.title = "Скидки от партнеров"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         init()
+
+        binging.btnFindCodeword.setOnClickListener {
+            if (binging.textCodeword.text.toString() == "") {
+                binging.fieldCodeword.isErrorEnabled = true;
+                binging.fieldCodeword.error = "Попробуйте снова";
+            } else {
+                binging.fieldCodeword.helperText = "Кодовое слово введено верно!"
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -48,6 +57,12 @@ class SaleActivity : AppCompatActivity() {
 
         stateAdapter.addList(
             listOf(
+                State(fotoArray[0], "Самая лучшая компания по мнению никого", "Ростелеком"),
+                State(fotoArray[1], "Благодаря нам верстальщик этой страницы умрёт в 30", "ММК"),
+                State(fotoArray[2], "Много сахара не бывает", "Coca-Cola"),
+                State(fotoArray[0], "Самая лучшая компания по мнению никого", "Ростелеком"),
+                State(fotoArray[1], "Благодаря нам верстальщик этой страницы умрёт в 30", "ММК"),
+                State(fotoArray[2], "Много сахара не бывает", "Coca-Cola"),
                 State(fotoArray[0], "Самая лучшая компания по мнению никого", "Ростелеком"),
                 State(fotoArray[1], "Благодаря нам верстальщик этой страницы умрёт в 30", "ММК"),
                 State(fotoArray[2], "Много сахара не бывает", "Coca-Cola"),
