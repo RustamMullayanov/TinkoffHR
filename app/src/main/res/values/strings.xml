@@ -17,4 +17,7 @@
     <string name="text_2_what_do_speaker">2. Подача доклада на конференцию/митап</string>
     <string name="title_basic_information">Основная информация</string>
     <string name="listener_information">Информация для слушателя</string>
+    <string name="write_codeword">Введите кодовое слово</string>
+    <string name="send">Отправить</string>
+    <string name="partners_tinkoff">Партнеры Tinkoff</string>
 </resources>
