@@ -35,7 +35,7 @@
 
             <TextView
                 android:id="@+id/name_sale"
-                android:layout_width="240dp"
+                android:layout_width="235dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
                 android:textAlignment="center"
@@ -44,7 +44,7 @@
 
             <TextView
                 android:id="@+id/information_sale"
-                android:layout_width="240dp"
+                android:layout_width="235dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/roboto_regular"
