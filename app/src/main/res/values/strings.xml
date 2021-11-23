@@ -20,4 +20,7 @@
     <string name="write_codeword">Введите кодовое слово</string>
     <string name="send">Отправить</string>
     <string name="partners_tinkoff">Партнеры Tinkoff</string>
+    <string name="sale_partners">Скидки от партнеров</string>
+    <string name="try_again">Попробуйте снова</string>
+    <string name="successful_codeword">Кодовое слово введено верно!</string>
 </resources>

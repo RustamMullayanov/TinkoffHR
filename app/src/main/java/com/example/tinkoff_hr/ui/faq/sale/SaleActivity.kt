@@ -25,16 +25,16 @@ class SaleActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(binging.root)
-        supportActionBar?.title = "Скидки от партнеров"
+        supportActionBar?.title = this.getString(R.string.sale_partners)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         init()
 
         binging.btnFindCodeword.setOnClickListener {
-            if (binging.textCodeword.text.toString() == "") {
+            if (binging.textCodeword.text.toString().isEmpty()) {
                 binging.fieldCodeword.isErrorEnabled = true;
-                binging.fieldCodeword.error = "Попробуйте снова";
+                binging.fieldCodeword.error = this.getString(R.string.try_again)
             } else {
-                binging.fieldCodeword.helperText = "Кодовое слово введено верно!"
+                binging.fieldCodeword.helperText = this.getString(R.string.successful_codeword)
             }
         }
     }
@@ -52,7 +52,6 @@ class SaleActivity : AppCompatActivity() {
         binging.recView.apply {
             layoutManager = LinearLayoutManager(this@SaleActivity)
             adapter = stateAdapter
-
         }
 
         stateAdapter.addList(

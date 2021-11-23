@@ -23,35 +23,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/name_sale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:orientation="vertical"
+            android:fontFamily="@font/roboto_regular"
+            android:textAlignment="center"
+            android:textColor="@color/very_dark_violet"
+            android:textSize="22sp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toTopOf="@id/information_sale"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/logo_sale"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/information_sale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:textAlignment="center"
+            android:textColor="@color/very_soft_violet"
+            android:textSize="18sp"
+            app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/logo_sale"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/name_sale"
-                android:layout_width="235dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:textAlignment="center"
-                android:textColor="@color/very_dark_violet"
-                android:textSize="22sp" />
-
-            <TextView
-                android:id="@+id/information_sale"
-                android:layout_width="235dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/roboto_regular"
-                android:textAlignment="center"
-                android:textColor="@color/very_soft_violet"
-                android:textSize="18sp" />
-        </LinearLayout>
+            app:layout_constraintStart_toEndOf="@id/logo_sale" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
