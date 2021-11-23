@@ -3,8 +3,9 @@ package com.example.tinkoff_hr.data.repositories
 import com.example.tinkoff_hr.data.dto.toDb
 import com.example.tinkoff_hr.domain.entities.Worker
 import com.example.tinkoff_hr.domain.repositories_interface.WorkerRepository
+import javax.inject.Inject
 
-class WorkerRepositoryImpl: WorkerRepository {
+class WorkerRepositoryImpl @Inject constructor(): WorkerRepository {
     override fun getWorkerInfoByEmail(email: String): Worker {
         // хардкод для теста
         return Worker(
