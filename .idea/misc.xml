@@ -21,6 +21,7 @@
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_arrow_right.xml" value="0.38385416666666666" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_arrow_right_24.xml" value="0.38385416666666666" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.33359375" />
+        <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.32734375" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_content_copy_24.xml" value="0.287890625" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.346875" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/drawable/ic_help_24.xml" value="0.4484375" />
@@ -42,7 +43,7 @@
         <entry key="..\:/project/TinkoffHR/app/src/main/res/layout/activity_sale.xml" value="0.2995218579234973" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/layout/activity_settings.xml" value="0.323046875" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/layout/card_education.xml" value="0.2995218579234973" />
-        <entry key="..\:/project/TinkoffHR/app/src/main/res/layout/card_worker.xml" value="0.415625" />
+        <entry key="..\:/project/TinkoffHR/app/src/main/res/layout/card_worker.xml" value="0.29542349726775957" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/layout/fragment_faq.xml" value="0.27578125" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/layout/fragment_home.xml" value="0.22314814814814815" />
         <entry key="..\:/project/TinkoffHR/app/src/main/res/layout/fragment_notifications.xml" value="0.5541666666666667" />

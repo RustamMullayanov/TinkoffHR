@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginVertical="10dp"
     android:background="@color/white"
     android:checkable="true"
     android:clickable="true"
@@ -13,66 +14,78 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/foto_worker"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            app:layout_constraintTop_toBottomOf="parent"
+            android:id="@+id/photo_worker"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/name_worker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_regular"
             android:text="ФИО:"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constrainedWidth="true"
-            app:layout_constraintStart_toEndOf="@id/foto_worker"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@id/photo_worker"
+            app:layout_constraintStart_toEndOf="@id/photo_worker"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/name_field_worker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_regular"
-            android:textAlignment="center"
-            android:textColor="@color/very_dark_violet"
-            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constrainedWidth="true"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/name_worker" />
+            app:layout_constraintBottom_toBottomOf="@id/photo_worker"
+            app:layout_constraintStart_toEndOf="@id/function_worker"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/function_worker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
             android:fontFamily="@font/roboto_regular"
             android:text="Должность:"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constrainedHeight="true"
             app:layout_constrainedWidth="true"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name_worker" />
+            app:layout_constraintTop_toBottomOf="@id/photo_worker" />
 
         <TextView
             android:id="@+id/function_field_worker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/black"
+
             android:textSize="16sp"
             app:layout_constrainedWidth="true"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/function_worker"
-            app:layout_constraintTop_toBottomOf="@id/name_field_worker" />
+            app:layout_constraintTop_toBottomOf="@id/photo_worker" />
 
         <TextView
             android:id="@+id/project_worker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/roboto_regular"
             android:text="Проект:"
             android:textColor="@color/black"
@@ -86,13 +99,15 @@
             android:id="@+id/project_field_worker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/project_worker"
+            app:layout_constraintStart_toEndOf="@id/function_worker"
             app:layout_constraintTop_toBottomOf="@id/function_field_worker" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
