@@ -28,15 +28,6 @@ class SaleActivity : AppCompatActivity() {
         supportActionBar?.title = this.getString(R.string.sale_partners)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         init()
-
-        binging.btnFindCodeword.setOnClickListener {
-            if (binging.textCodeword.text.toString().isEmpty()) {
-                binging.fieldCodeword.isErrorEnabled = true;
-                binging.fieldCodeword.error = this.getString(R.string.try_again)
-            } else {
-                binging.fieldCodeword.helperText = this.getString(R.string.successful_codeword)
-            }
-        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
