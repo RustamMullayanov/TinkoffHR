@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.tinkoff_hr.ui.profile.ProfileFragment"
+        android:name="com.example.tinkoff_hr.ui.profile.WorkersFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_workers" />
 
     <fragment
         android:id="@+id/navigation_faq"
