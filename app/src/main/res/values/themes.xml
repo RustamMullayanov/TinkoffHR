@@ -23,5 +23,20 @@
         <item name="cornerSize">0dp</item>
     </style>
 
+    <style name="shapeCutAll" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="shapeCutAllWithoutBotLeft" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamilyTopRight">cut</item>
+        <item name="cornerFamilyTopLeft">cut</item>
+        <item name="cornerFamilyBottomRight">cut</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeBottomRight">10dp</item>
+        <item name="cornerSize">0dp</item>
+    </style>
+
 
 </resources>

@@ -2,6 +2,7 @@ package com.example.tinkoff_hr.ui.faq.sale
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.R
@@ -25,7 +26,7 @@ class SaleActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(binging.root)
-        supportActionBar?.title = "Партнёры"
+        supportActionBar?.title = this.getString(R.string.sale_partners)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         init()
     }
@@ -38,16 +39,26 @@ class SaleActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.action_menu_sale, menu)
+        return true
+    }
+
 
     private fun init() {
         binging.recView.apply {
             layoutManager = LinearLayoutManager(this@SaleActivity)
             adapter = stateAdapter
-
         }
 
         stateAdapter.addList(
             listOf(
+                State(fotoArray[0], "Самая лучшая компания по мнению никого", "Ростелеком"),
+                State(fotoArray[1], "Благодаря нам верстальщик этой страницы умрёт в 30", "ММК"),
+                State(fotoArray[2], "Много сахара не бывает", "Coca-Cola"),
+                State(fotoArray[0], "Самая лучшая компания по мнению никого", "Ростелеком"),
+                State(fotoArray[1], "Благодаря нам верстальщик этой страницы умрёт в 30", "ММК"),
+                State(fotoArray[2], "Много сахара не бывает", "Coca-Cola"),
                 State(fotoArray[0], "Самая лучшая компания по мнению никого", "Ростелеком"),
                 State(fotoArray[1], "Благодаря нам верстальщик этой страницы умрёт в 30", "ММК"),
                 State(fotoArray[2], "Много сахара не бывает", "Coca-Cola"),
