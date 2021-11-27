@@ -28,46 +28,16 @@ class ProfileFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private var selectedId = 0
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        profileViewModel =
-            ViewModelProvider(this).get(ProfileViewModel::class.java)
-
+        profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-
-
-        binding.fieldDialog.setOnClickListener {
-
-            val dialogBinding = ProfileDialogBinding.inflate(inflater, container, false)
-            dialogBinding.apply {
-
-                val dialog = AlertDialog.Builder(requireContext()).setTitle("Ачивки")
-                    .setNegativeButton("Cancel") { d, _ ->
-                        d.dismiss()
-                    }
-                    .setView(dialogLayout)
-                    .create()
-
-                radioGroup.setOnCheckedChangeListener { _, checkedId ->
-                    radioGroup.findViewById<RadioButton>(checkedId)?.apply {
-                        selectedId = checkedId
-                        binding.fieldDialog.setText(this.text)
-                    }
-                }
-
-                if (selectedId != 0)
-                    radioGroup.check(selectedId)
-
-                dialog.show()
-            }
-        }
-
         val root: View = binding.root
+
+
 
         return root
     }
