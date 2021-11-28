@@ -17,8 +17,7 @@
         <activity android:name=".ui.faq.sale.SaleActivity" />
         <activity
             android:name=".ContentActivity"
-            android:exported="true"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

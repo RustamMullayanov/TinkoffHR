@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.CardWorkerBinding
 import com.example.tinkoff_hr.domain.entities.Worker
 
@@ -25,7 +26,7 @@ class WorkerAdapter : RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
             nameFieldWorker.text = "${item.surname} ${item.name} ${item.patronymic}"
             functionFieldWorker.text = item.function
             projectFieldWorker.text = item.project
-            photoWorker.setImageResource(item.photo.toInt())
+            photoWorker.setImageResource(R.drawable.ic_account_circle_24)
         }
     }
 

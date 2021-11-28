@@ -15,14 +15,8 @@ import com.example.tinkoff_hr.domain.entities.Worker
 
 class WorkersFragment : Fragment() {
 
-    private lateinit var workersViewModel: WorkersViewModel
     private var _binding: FragmentWorkersBinding? = null
     private val workerAdapter = WorkerAdapter()
-    private val photoArray by lazy {
-        arrayOf(
-            R.drawable.ic_account_circle_24,
-        )
-    }
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -33,7 +27,6 @@ class WorkersFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        workersViewModel = ViewModelProvider(this).get(WorkersViewModel::class.java)
         _binding = FragmentWorkersBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -49,7 +42,7 @@ class WorkersFragment : Fragment() {
                     "Андрей",
                     "Крыш",
                     "Константинович",
-                    photoArray[0].toString(),
+                    "",
                     "Мобильное приложение",
                     1,
                     "Мобильный разработчик",
@@ -61,7 +54,7 @@ class WorkersFragment : Fragment() {
                     "Муллаянов",
                     "Рустам",
                     "Радикович",
-                    photoArray[0].toString(),
+                    "",
                     "Мобильное приложение",
                     2,
                     "Мобильный разработчик",
@@ -73,7 +66,7 @@ class WorkersFragment : Fragment() {
                     "Андрей",
                     "Крыш",
                     "Константинович",
-                    photoArray[0].toString(),
+                    "",
                     "Мобильное приложение",
                     1,
                     "Мобильный разработчик",
@@ -85,7 +78,7 @@ class WorkersFragment : Fragment() {
                     "Муллаянов",
                     "Рустам",
                     "Радикович",
-                    photoArray[0].toString(),
+                    "",
                     "Мобильное приложение",
                     2,
                     "Мобильный разработчик",
@@ -97,7 +90,7 @@ class WorkersFragment : Fragment() {
                     "Андрей",
                     "Крыш",
                     "Константинович",
-                    photoArray[0].toString(),
+                    "",
                     "Мобильное приложение",
                     1,
                     "Мобильный разработчик",
@@ -109,7 +102,7 @@ class WorkersFragment : Fragment() {
                     "Муллаянов",
                     "Рустам",
                     "Радикович",
-                    photoArray[0].toString(),
+                    "",
                     "Мобильное приложение",
                     2,
                     "Мобильный разработчик",
@@ -121,7 +114,7 @@ class WorkersFragment : Fragment() {
                     "Андрей",
                     "Крыш",
                     "Константинович",
-                    photoArray[0].toString(),
+                    "",
                     "Мобильное приложение",
                     1,
                     "Мобильный разработчик",
@@ -133,7 +126,7 @@ class WorkersFragment : Fragment() {
                     "Муллаянов",
                     "Рустам",
                     "Радикович",
-                    photoArray[0].toString(),
+                    "",
                     "Мобильное приложение",
                     2,
                     "Мобильный разработчик",
