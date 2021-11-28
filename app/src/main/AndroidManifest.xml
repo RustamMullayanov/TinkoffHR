@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TinkoffHR">
+        <activity android:name=".ui.workers.worker_profile.WorkerProfileActivity"/>
         <activity android:name=".ui.faq.education.EducationActivity" />
         <activity android:name=".ui.faq.MeetUp.MeetUpActivity" />
         <activity android:name=".actionbar.SettingsActivity" />

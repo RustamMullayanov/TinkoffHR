@@ -1,12 +1,14 @@
-package com.example.tinkoff_hr.ui.profile
+package com.example.tinkoff_hr.ui.workers
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.CardWorkerBinding
 import com.example.tinkoff_hr.domain.entities.Worker
+import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 
 class WorkerAdapter : RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
     private var workers: List<Worker> = emptyList()
@@ -27,6 +29,11 @@ class WorkerAdapter : RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
             functionFieldWorker.text = item.function
             projectFieldWorker.text = item.project
             photoWorker.setImageResource(R.drawable.ic_account_circle_24)
+
+        }
+        holder.itemView.setOnClickListener {
+            val intent = Intent(it.context, WorkerProfileActivity::class.java)
+            it.context.startActivity(intent)
         }
     }
 
