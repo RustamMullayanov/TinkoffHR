@@ -10,7 +10,8 @@ import com.example.tinkoff_hr.domain.entities.Worker
 class WorkerAdapter : RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
     private var workers: List<Worker> = emptyList()
 
-    class WorkerHolder(val viewBinding: CardWorkerBinding) : RecyclerView.ViewHolder(viewBinding.root)
+    class WorkerHolder(val viewBinding: CardWorkerBinding) :
+        RecyclerView.ViewHolder(viewBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkerHolder {
         val binding = CardWorkerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
