@@ -30,6 +30,5 @@ class WorkersPresenter @Inject constructor(
         }
         val workers = searchWorkersInfoByName(name)
         viewState.showWorkersInfo(workers)
-        viewState.showSuccess("Результат поиска")
     }
 }
