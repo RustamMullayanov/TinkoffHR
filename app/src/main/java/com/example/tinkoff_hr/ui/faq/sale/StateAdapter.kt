@@ -1,10 +1,13 @@
 package com.example.tinkoff_hr.ui.faq.sale
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tinkoff_hr.databinding.StateItemBinding
+import com.example.tinkoff_hr.ui.faq.sale.sale_partner.SalePartnerActivity
+import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 
 class StateAdapter : RecyclerView.Adapter<StateAdapter.StateHolder>() {
 
@@ -25,6 +28,11 @@ class StateAdapter : RecyclerView.Adapter<StateAdapter.StateHolder>() {
 
             informationSale.text = item.information
             logoSale.setImageResource(item.logoResource)
+        }
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(it.context, SalePartnerActivity::class.java)
+            it.context.startActivity(intent)
         }
     }
 
