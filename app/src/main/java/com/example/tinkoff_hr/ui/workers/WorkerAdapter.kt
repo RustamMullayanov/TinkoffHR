@@ -42,8 +42,9 @@ class WorkerAdapter : RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addList(list: List<Worker>) {
+    fun setList(list: List<Worker>) {
         workers = list
         notifyDataSetChanged()
     }
+
 }

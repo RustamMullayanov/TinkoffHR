@@ -8,5 +8,4 @@ import moxy.viewstate.strategy.StateStrategyType
 @StateStrategyType(value = AddToEndSingleStrategy::class)
 interface WorkersView: BaseView {
     fun showWorkersInfo(workers: List<Worker>)
-    fun searchByName(workers: List<Worker>)
 }

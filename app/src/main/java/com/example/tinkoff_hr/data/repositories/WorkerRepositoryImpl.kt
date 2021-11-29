@@ -42,6 +42,30 @@ class WorkerRepositoryImpl @Inject constructor() : WorkerRepository {
             "что-то делает",
             "19 лет",
             "в работе"
+        ),
+        Worker(
+            "test4@tin.koff",
+            "Андрей",
+            "Иванов",
+            "Александрович",
+            "todo",
+            "тинькофф ТРЦ",
+            4,
+            "делает вещи",
+            "22 года",
+            "в работе"
+        ),
+        Worker(
+            "test5@tin.koff",
+            "Василий",
+            "Васильев",
+            "Васильевич",
+            "todo",
+            "тинькофф ТРЦ",
+            4,
+            "дед",
+            "28 лет",
+            "в работе"
         )
     )
 
@@ -57,8 +81,8 @@ class WorkerRepositoryImpl @Inject constructor() : WorkerRepository {
         //TODO("Not yet implemented")
     }
 
-    override fun searchWorkerInfoByName(name: String): List<Worker> {
-        return workers.filter { worker -> worker.name == name  }
+    override fun searchWorkerInfoByName(searchedText: String): List<Worker> {
+        return workers.filter { worker -> (worker.surname + " " + worker.name).contains(searchedText) }
         //TODO("Not yet implemented")
     }
 
