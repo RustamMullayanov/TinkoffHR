@@ -1,8 +1,8 @@
 package com.example.tinkoff_hr.actionbar
 
 import android.app.AlertDialog
+import android.app.Application
 import android.content.ClipboardManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.RadioButton
 import com.example.tinkoff_hr.databinding.ActivityProfileSettingsBinding
@@ -13,26 +13,29 @@ import android.content.Intent
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
+import com.example.tinkoff_hr.App
 
 import com.example.tinkoff_hr.R
+import com.example.tinkoff_hr.di.AppComponent
+import com.example.tinkoff_hr.di.DaggerAppComponent
 import com.example.tinkoff_hr.domain.entities.Worker
 import com.example.tinkoff_hr.presentation.ProfilePresenter
 import com.example.tinkoff_hr.views.ProfileView
 import moxy.MvpAppCompatActivity
+import moxy.ktx.moxyPresenter
 import moxy.presenter.InjectPresenter
-import moxy.presenter.ProvidePresenter
+import javax.inject.Inject
+import javax.inject.Provider
 
 
 class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
 
-    @InjectPresenter
-    lateinit var profilePresenter: ProfilePresenter
+    @Inject
+    lateinit var presenterProvider: Provider<ProfilePresenter>
 
-    @ProvidePresenter
-    fun provideProfilePresenter() : ProfilePresenter{
-        //хардкодный email
-        return ProfilePresenter("test2@tin.koff")
-    }
+    private val profilePresenter by moxyPresenter { presenterProvider.get() }
+
 
     private val binding: ActivityProfileSettingsBinding by lazy {
         ActivityProfileSettingsBinding.inflate(layoutInflater)
@@ -41,6 +44,8 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
     private var selectedId = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        App.appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 

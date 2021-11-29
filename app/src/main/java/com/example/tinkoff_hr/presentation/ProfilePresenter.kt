@@ -1,6 +1,5 @@
 package com.example.tinkoff_hr.presentation
 
-
 import com.example.tinkoff_hr.data.repositories.WorkerRepositoryImpl
 import com.example.tinkoff_hr.domain.entities.Worker
 import com.example.tinkoff_hr.domain.usecases.GetWorkerInfoByEmailUseCase
@@ -8,15 +7,17 @@ import com.example.tinkoff_hr.domain.usecases.UpdateWorkerByEmailUseCase
 import com.example.tinkoff_hr.views.ProfileView
 import moxy.InjectViewState
 import moxy.MvpPresenter
+import javax.inject.Inject
 
 @InjectViewState
-class ProfilePresenter(private val email: String) : MvpPresenter<ProfileView>(){
-    private val workerRepository = WorkerRepositoryImpl()
-    private val getWorkerInfoByEmail = GetWorkerInfoByEmailUseCase(workerRepository)
-    private val updateWorkerByEmail = UpdateWorkerByEmailUseCase(workerRepository)
+class ProfilePresenter @Inject constructor(
+    private val getWorkerInfoByEmail: GetWorkerInfoByEmailUseCase,
+    private val updateWorkerByEmail: UpdateWorkerByEmailUseCase
+) : MvpPresenter<ProfileView>() {
 
     override fun onFirstViewAttach() {
-        onAppearing(email)
+        //харкодный email
+        onAppearing("test2@tin.koff")
     }
 
     private fun onAppearing(email: String){
