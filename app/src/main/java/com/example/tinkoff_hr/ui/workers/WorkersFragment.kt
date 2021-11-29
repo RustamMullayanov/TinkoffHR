@@ -41,6 +41,10 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
     override fun onCreate(savedInstanceState: Bundle?){
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
+
+        binding.textSearch.setEndIconOnClickListener {
+            val workerName = binding.fieldSearch.text.toString()
+        }
     }
 
     override fun onCreateView(
@@ -60,7 +64,10 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
 
     override fun showWorkersInfo(workers: List<Worker>) {
         workerAdapter.addList(workers)
-        //TODO("Not yet implemented")
+    }
+
+    override fun searchByName(workers: List<Worker>) {
+        TODO("Not yet implemented")
     }
 
     override fun showError(message: String) {

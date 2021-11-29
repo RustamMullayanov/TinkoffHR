@@ -20,4 +20,8 @@ class WorkersPresenter @Inject constructor(
         viewState.showWorkersInfo(workers)
         viewState.showSuccess("Данные успешно загрузились")
     }
+
+    private fun filterWorkers(name: String){
+
+    }
 }

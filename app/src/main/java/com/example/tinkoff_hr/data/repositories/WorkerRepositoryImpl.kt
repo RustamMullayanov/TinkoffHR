@@ -57,6 +57,11 @@ class WorkerRepositoryImpl @Inject constructor() : WorkerRepository {
         //TODO("Not yet implemented")
     }
 
+    override fun searchWorkerInfoByName(name: String): List<Worker> {
+        return workers.filter { worker -> worker.name == name  }
+        //TODO("Not yet implemented")
+    }
+
     override fun updateWorkerInfo(worker: Worker): Boolean {
         val workerDB = worker.toDb()
         //TODO("Not yet implemented")

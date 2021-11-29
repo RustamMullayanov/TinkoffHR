@@ -7,5 +7,7 @@ interface WorkerRepository {
 
     fun getWorkersInfo(): List<Worker>
 
+    fun searchWorkerInfoByName(name: String) : List<Worker>
+
     fun updateWorkerInfo(worker: Worker) : Boolean
 }
