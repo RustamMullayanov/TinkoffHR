@@ -52,6 +52,7 @@ class WorkerRepositoryImpl @Inject constructor() : WorkerRepository {
     }
 
     override fun getWorkersInfo(): List<Worker> {
+        // хардкод для теста
         return workers
         //TODO("Not yet implemented")
     }
