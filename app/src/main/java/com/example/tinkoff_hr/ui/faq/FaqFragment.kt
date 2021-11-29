@@ -17,7 +17,6 @@ import com.example.tinkoff_hr.ui.faq.sale.SaleActivity
 
 class FaqFragment : Fragment() {
 
-    private lateinit var faqViewModel: FaqViewModel
     private var _binding: FragmentFaqBinding? = null
 
     // This property is only valid between onCreateView and
@@ -29,9 +28,6 @@ class FaqFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        faqViewModel =
-            ViewModelProvider(this).get(FaqViewModel::class.java)
-
         _binding = FragmentFaqBinding.inflate(inflater, container, false)
         val root: View = binding.root
 

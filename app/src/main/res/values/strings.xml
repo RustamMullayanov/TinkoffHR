@@ -2,7 +2,6 @@
     <string name="app_name">Tinkoff-HR</string>
     <string name="test">This is text</string>
     <string name="title_activity_profile">Profile</string>
-    <string name="title_profile">Profile</string>
     <string name="title_faq">FAQ</string>
     <string name="title_notifications">Notifications</string>
     <string name="address">Адрес</string>
@@ -24,4 +23,14 @@
     <string name="try_again">Попробуйте снова</string>
     <string name="successful_codeword">Кодовое слово введено верно!</string>
     <string name="search">Поиск</string>
+    <string name="title_workers">Сотрудники</string>
+    <string name="worker_full_name">ФИО:</string>
+    <string name="worker_function">Должность:</string>
+    <string name="worker_project">Проект:</string>
+    <string name="achievement">Ачивки</string>
+    <string name="email">Почта</string>
+    <string name="function">Должность</string>
+    <string name="project">Проект</string>
+    <string name="about">О себе</string>
+    <string name="full_name">ФИО</string>
 </resources>

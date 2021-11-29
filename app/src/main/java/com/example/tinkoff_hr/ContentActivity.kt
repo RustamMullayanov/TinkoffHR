@@ -11,7 +11,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.tinkoff_hr.actionbar.ProfileSettingsActivity
 import com.example.tinkoff_hr.actionbar.SettingsActivity
 import com.example.tinkoff_hr.databinding.ActivityContentBinding
 
@@ -34,7 +33,7 @@ class ContentActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_profile, R.id.navigation_faq, R.id.navigation_notifications
+                R.id.navigation_workers, R.id.navigation_faq, R.id.navigation_notifications
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

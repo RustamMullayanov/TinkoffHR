@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_profile">
+    app:startDestination="@+id/navigation_workers">
 
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.example.tinkoff_hr.ui.profile.ProfileFragment"
-        android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/navigation_workers"
+        android:name="com.example.tinkoff_hr.ui.workers.WorkersFragment"
+        android:label="@string/title_workers"
+        tools:layout="@layout/fragment_workers" />
 
     <fragment
         android:id="@+id/navigation_faq"
