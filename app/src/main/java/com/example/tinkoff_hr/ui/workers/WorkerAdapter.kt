@@ -23,8 +23,9 @@ class WorkerAdapter : RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
     }
 
     override fun onBindViewHolder(holder: WorkerHolder, position: Int) {
+        val item = workers[position]
         with(holder.viewBinding) {
-            val item = workers[position]
+
             nameFieldWorker.text = "${item.surname} ${item.name} ${item.patronymic}"
             functionFieldWorker.text = item.function
             projectFieldWorker.text = item.project
@@ -33,6 +34,7 @@ class WorkerAdapter : RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
         }
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, WorkerProfileActivity::class.java)
+            intent.putExtra("email", item.email)
             it.context.startActivity(intent)
         }
     }
