@@ -1,11 +1,9 @@
-package com.example.tinkoff_hr.ui.faq.sale
+package com.example.tinkoff_hr.ui.faq.business_trip
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.ActivityBusinessTripBinding
-import com.example.tinkoff_hr.databinding.ActivitySaleBinding
 
 class BusinessTripActivity : AppCompatActivity() {
 

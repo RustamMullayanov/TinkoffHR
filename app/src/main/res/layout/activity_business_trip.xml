@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/back_grey"
-    tools:context=".ui.faq.sale.BusinessTripActivity">
+    tools:context=".ui.faq.business_trip.BusinessTripActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
