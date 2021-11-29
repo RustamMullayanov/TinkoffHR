@@ -13,7 +13,7 @@ import javax.inject.Inject
 class ProfilePresenter @Inject constructor(
     private val getWorkerInfoByEmail: GetWorkerInfoByEmailUseCase,
     private val updateWorkerByEmail: UpdateWorkerByEmailUseCase
-    ) : MvpPresenter<ProfileView>(){
+) : MvpPresenter<ProfileView>() {
 
     override fun onFirstViewAttach() {
         //харкодный email

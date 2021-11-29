@@ -49,7 +49,6 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Профиль"
 
