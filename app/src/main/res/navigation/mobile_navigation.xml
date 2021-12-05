@@ -20,6 +20,6 @@
     <fragment
         android:id="@+id/navigation_where_eat"
         android:name="com.example.tinkoff_hr.ui.where_eat.WhereEatFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_where_eat"
         tools:layout="@layout/fragment_where_eat" />
 </navigation>

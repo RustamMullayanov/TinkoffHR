@@ -34,4 +34,5 @@
     <string name="about">О себе</string>
     <string name="full_name">ФИО</string>
     <string name="writeFullName">Введите фамилию и имя</string>
+    <string name="title_where_eat">Где поесть?</string>
 </resources>
