@@ -1,6 +1,7 @@
 package com.example.tinkoff_hr.data.entities
 
 class WorkerEntityForDB(
+    val id: Int,
     val email: String,
     val name: String,
     val surname: String,
