@@ -56,15 +56,14 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
             adapter = workerAdapter
         }
 
-        //Второй вариант реализации поиска, по нажатию на инонку
-        //binding.textSearch.setEndIconOnClickListener {
-            //val workerName = binding.fieldSearch.text.toString()
-            //workersPresenter.filterWorkersByName(workerName)
-        //}
-
-        binding.fieldSearch.addTextChangedListener {
+        binding.textSearch.setEndIconOnClickListener {
             val workerName = binding.fieldSearch.text.toString()
             workersPresenter.filterWorkersByName(workerName)
+        }
+
+        binding.fieldSearch.addTextChangedListener{
+            if(binding.fieldSearch.text.toString().isEmpty())
+                workersPresenter.filterWorkersByName("")
         }
 
         return root
