@@ -1,11 +1,13 @@
 package com.example.tinkoff_hr.data.repositories
 
 import com.example.tinkoff_hr.data.dto.toDb
+import com.example.tinkoff_hr.data.services.WorkersService
 import com.example.tinkoff_hr.domain.entities.Worker
 import com.example.tinkoff_hr.domain.repositories_interface.WorkerRepository
+import kotlinx.serialization.ExperimentalSerializationApi
 import javax.inject.Inject
 
-class WorkerRepositoryImpl @Inject constructor() : WorkerRepository {
+class WorkerRepositoryImpl @Inject constructor(private val workersService: WorkersService) : WorkerRepository {
     private val workers: List<Worker> = listOf(
         Worker(
             "test1@tin.koff",
