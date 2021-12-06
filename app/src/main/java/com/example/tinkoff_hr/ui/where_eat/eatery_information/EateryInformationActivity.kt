@@ -1,18 +1,22 @@
 package com.example.tinkoff_hr.ui.where_eat.eatery_information
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.RadioButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.databinding.ActivityEateryInformationBinding
 import com.example.tinkoff_hr.databinding.ActivityWorkerProfileBinding
+import com.example.tinkoff_hr.databinding.DialogEateryBinding
+import com.example.tinkoff_hr.databinding.ProfileDialogBinding
 import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 
 class EateryInformationActivity : AppCompatActivity() {
 
-    private val binging: ActivityEateryInformationBinding by lazy {
+    private val binding: ActivityEateryInformationBinding by lazy {
         ActivityEateryInformationBinding.inflate(layoutInflater)
     }
 
@@ -33,14 +37,18 @@ class EateryInformationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binging.root)
+        setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Название заведения"
 
-        binging.recReview.apply {
+        binding.recReview.apply {
             layoutManager = LinearLayoutManager(this@EateryInformationActivity)
             adapter = reviewAdapter
+        }
+
+        binding.buttonAdd.setOnClickListener {
+            createDialog()
         }
 
         reviewAdapter.setList(
@@ -71,6 +79,30 @@ class EateryInformationActivity : AppCompatActivity() {
                 ),
             )
         )
+    }
+
+    private fun createDialog() {
+
+        val dialogBinding = DialogEateryBinding.inflate(
+            layoutInflater, binding.root, false
+        )
+
+        dialogBinding.apply {
+
+            val dialog = AlertDialog.Builder(this@EateryInformationActivity)
+                .setView(dialogLayout)
+                .create()
+
+            buttonCancel.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            buttonAdd.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            dialog.show()
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
