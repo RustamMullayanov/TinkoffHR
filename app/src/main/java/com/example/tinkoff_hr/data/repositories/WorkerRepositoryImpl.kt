@@ -93,8 +93,6 @@ class WorkerRepositoryImpl @Inject constructor() : WorkerRepository {
         //TODO("Not yet implemented")
 
         //хардкод для теста
-        if (worker.name != "Rustam")
-            return false
-        return true
+        return worker.name == "Rustam"
     }
 }
