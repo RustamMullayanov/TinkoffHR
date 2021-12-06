@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.databinding.FragmentWhereEatBinding
+import com.example.tinkoff_hr.ui.where_eat.eatery_information.EateryInformationActivity
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -15,12 +16,21 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 class WhereEatFragment : Fragment(), OnMapReadyCallback {
 
     private var _binding: FragmentWhereEatBinding? = null
-    private val eateryAdapter = EateryAdapter()
+    private lateinit var eateryAdapter: EateryAdapter
     private lateinit var googleMap: GoogleMap
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        super.onCreate(savedInstanceState)
+
+        eateryAdapter = EateryAdapter { id ->
+            startActivity(EateryInformationActivity.createIntent(requireContext(), id))
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,10 +56,10 @@ class WhereEatFragment : Fragment(), OnMapReadyCallback {
             }
 
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    /*if (slideOffset<0.45) {
-                        if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_DRAGGING)
-                            onStateChanged(bottomSheet, BottomSheetBehavior.STATE_HIDDEN)
-                    }*/
+                /*if (slideOffset<0.45) {
+                    if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_DRAGGING)
+                        onStateChanged(bottomSheet, BottomSheetBehavior.STATE_HIDDEN)
+                }*/
             }
         })
 
@@ -64,24 +74,10 @@ class WhereEatFragment : Fragment(), OnMapReadyCallback {
             binding.btnExpend.hide()
         }
 
-
-
         eateryAdapter.addList(
             listOf(
-                Eatery(6.0, "Рада"),
-                Eatery(5.3, "А ты где?"),
-                Eatery(8.1, "Ситора"),
-                Eatery(8.0, "Японамама"),
-                Eatery(7.5, "Рататуй"),
-                Eatery(9.3, "Пан Пицца"),
-                Eatery(8.2, "KFC"),
-                Eatery(6.0, "Рада"),
-                Eatery(5.3, "А ты где?"),
-                Eatery(8.1, "Ситора"),
-                Eatery(8.0, "Японамама"),
-                Eatery(7.5, "Рататуй"),
-                Eatery(9.3, "Пан Пицца"),
-                Eatery(8.2, "KFC"),
+                Eatery(1, 6.0, "Рада", true, 203.4, ""),
+                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
             )
         )
         return root
