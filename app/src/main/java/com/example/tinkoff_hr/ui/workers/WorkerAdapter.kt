@@ -10,7 +10,8 @@ import com.example.tinkoff_hr.databinding.CardWorkerBinding
 import com.example.tinkoff_hr.domain.entities.Worker
 import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 
-class WorkerAdapter : RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
+class WorkerAdapter(private val clickListener: (String) -> Unit) :
+    RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
     private var workers: List<Worker> = emptyList()
 
     class WorkerHolder(val viewBinding: CardWorkerBinding) :
@@ -23,17 +24,17 @@ class WorkerAdapter : RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
     }
 
     override fun onBindViewHolder(holder: WorkerHolder, position: Int) {
+        val item = workers[position]
         with(holder.viewBinding) {
-            val item = workers[position]
+
             nameFieldWorker.text = "${item.surname} ${item.name} ${item.patronymic}"
             functionFieldWorker.text = item.function
             projectFieldWorker.text = item.project
             photoWorker.setImageResource(R.drawable.ic_account_circle_24)
-
         }
+
         holder.itemView.setOnClickListener {
-            val intent = Intent(it.context, WorkerProfileActivity::class.java)
-            it.context.startActivity(intent)
+            clickListener.invoke(item.email)
         }
     }
 
@@ -42,8 +43,9 @@ class WorkerAdapter : RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addList(list: List<Worker>) {
+    fun setList(list: List<Worker>) {
         workers = list
         notifyDataSetChanged()
     }
+
 }

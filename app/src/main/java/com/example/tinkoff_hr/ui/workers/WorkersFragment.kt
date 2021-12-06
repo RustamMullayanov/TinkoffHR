@@ -5,26 +5,49 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.databinding.FragmentWorkersBinding
 import com.example.tinkoff_hr.domain.entities.Worker
+import com.example.tinkoff_hr.presentation.WorkersPresenter
+import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
+import com.example.tinkoff_hr.views.WorkersView
+import moxy.MvpAppCompatFragment
+import moxy.ktx.moxyPresenter
+import javax.inject.Inject
+import javax.inject.Provider
 
 
-class WorkersFragment : Fragment() {
+class WorkersFragment : MvpAppCompatFragment(), WorkersView {
+
+    @Inject
+    lateinit var presenterProvider: Provider<WorkersPresenter>
+
+    private val workersPresenter by moxyPresenter { presenterProvider.get() }
 
     private var _binding: FragmentWorkersBinding? = null
-    private val workerAdapter = WorkerAdapter()
+    private lateinit var workerAdapter: WorkerAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?){
+        App.appComponent.inject(this)
+        super.onCreate(savedInstanceState)
+
+        workerAdapter = WorkerAdapter { email ->
+            startActivity(WorkerProfileActivity.createIntent(requireContext(), email))
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentWorkersBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -33,114 +56,29 @@ class WorkersFragment : Fragment() {
             adapter = workerAdapter
         }
 
-        workerAdapter.addList(
-            listOf(
-                Worker(
-                    "mail.ru",
-                    "Андрей",
-                    "Крыш",
-                    "Константинович",
-                    "",
-                    "Мобильное приложение",
-                    1,
-                    "Мобильный разработчик",
-                    "",
-                    ""
-                ),
-                Worker(
-                    "google.com",
-                    "Муллаянов",
-                    "Рустам",
-                    "Радикович",
-                    "",
-                    "Мобильное приложение",
-                    2,
-                    "Мобильный разработчик",
-                    "",
-                    ""
-                ),
-                Worker(
-                    "mail.ru",
-                    "Андрей",
-                    "Крыш",
-                    "Константинович",
-                    "",
-                    "Мобильное приложение",
-                    1,
-                    "Мобильный разработчик",
-                    "",
-                    ""
-                ),
-                Worker(
-                    "google.com",
-                    "Муллаянов",
-                    "Рустам",
-                    "Радикович",
-                    "",
-                    "Мобильное приложение",
-                    2,
-                    "Мобильный разработчик",
-                    "",
-                    ""
-                ),
-                Worker(
-                    "mail.ru",
-                    "Андрей",
-                    "Крыш",
-                    "Константинович",
-                    "",
-                    "Мобильное приложение",
-                    1,
-                    "Мобильный разработчик",
-                    "",
-                    ""
-                ),
-                Worker(
-                    "google.com",
-                    "Муллаянов",
-                    "Рустам",
-                    "Радикович",
-                    "",
-                    "Мобильное приложение",
-                    2,
-                    "Мобильный разработчик",
-                    "",
-                    ""
-                ),
-                Worker(
-                    "mail.ru",
-                    "Андрей",
-                    "Крыш",
-                    "Константинович",
-                    "",
-                    "Мобильное приложение",
-                    1,
-                    "Мобильный разработчик",
-                    "",
-                    ""
-                ),
-                Worker(
-                    "google.com",
-                    "Муллаянов",
-                    "Рустам",
-                    "Радикович",
-                    "",
-                    "Мобильное приложение",
-                    2,
-                    "Мобильный разработчик",
-                    "",
-                    ""
-                ),
-            )
-        )
+        binding.textSearch.setEndIconOnClickListener {
+            val workerName = binding.fieldSearch.text.toString()
+            workersPresenter.filterWorkersByName(workerName)
+        }
+
+        binding.fieldSearch.addTextChangedListener{
+            if(binding.fieldSearch.text.toString().isEmpty())
+                workersPresenter.filterWorkersByName("")
+        }
 
         return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun showWorkersInfo(workers: List<Worker>) {
+        workerAdapter.setList(workers)
     }
 
 
+    override fun showError(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showSuccess(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
 }

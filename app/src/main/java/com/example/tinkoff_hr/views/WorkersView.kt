@@ -6,6 +6,6 @@ import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
 @StateStrategyType(value = AddToEndSingleStrategy::class)
-interface ProfileView: BaseView {
-    fun showWorkerInfo(worker: Worker)
+interface WorkersView: BaseView {
+    fun showWorkersInfo(workers: List<Worker>)
 }
