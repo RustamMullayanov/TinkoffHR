@@ -83,7 +83,7 @@ class WorkerRepositoryImpl @Inject constructor() : WorkerRepository {
 
     override fun searchWorkerInfoByName(searchedText: String): List<Worker> {
         return workers.filter { worker ->
-            (worker.surname + " " + worker.name).contains(searchedText)
+            "${worker.surname} ${worker.name}".contains(searchedText)
         }
         //TODO("Not yet implemented")
     }
