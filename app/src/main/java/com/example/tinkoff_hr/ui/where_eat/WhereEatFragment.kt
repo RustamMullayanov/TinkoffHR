@@ -78,6 +78,20 @@ class WhereEatFragment : Fragment(), OnMapReadyCallback {
             listOf(
                 Eatery(1, 6.0, "Рада", true, 203.4, ""),
                 Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
+                Eatery(1, 6.0, "Рада", true, 203.4, ""),
+                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
+                Eatery(1, 6.0, "Рада", true, 203.4, ""),
+                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
+                Eatery(1, 6.0, "Рада", true, 203.4, ""),
+                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
+                Eatery(1, 6.0, "Рада", true, 203.4, ""),
+                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
+                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
+                Eatery(1, 6.0, "Рада", true, 203.4, ""),
+                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
+                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
+                Eatery(1, 6.0, "Рада", true, 203.4, ""),
+                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
             )
         )
         return root
