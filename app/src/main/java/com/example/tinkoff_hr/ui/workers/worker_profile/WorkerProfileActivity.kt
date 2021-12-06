@@ -1,14 +1,16 @@
 package com.example.tinkoff_hr.ui.workers.worker_profile
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.databinding.ActivityWorkerProfileBinding
 import com.example.tinkoff_hr.domain.entities.Worker
 import com.example.tinkoff_hr.presentation.WorkerProfilePresenter
-import com.example.tinkoff_hr.presentation.WorkersPresenter
+import com.example.tinkoff_hr.ui.workers.WorkerAdapter
 import com.example.tinkoff_hr.views.WorkerProfileView
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
@@ -26,6 +28,18 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
         ActivityWorkerProfileBinding.inflate(layoutInflater)
     }
 
+    private val email: String by lazy { intent.getStringExtra(EXTRA_EMAIL)!! }
+
+    companion object {
+
+        private const val EXTRA_EMAIL = "extra_email"
+
+        fun createIntent(context: Context, email: String): Intent {
+            return Intent(context, WorkerProfileActivity::class.java).apply {
+                putExtra(EXTRA_EMAIL , email)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
@@ -34,7 +48,7 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        workerProfilePresenter.onAppearing(intent.extras!!["email"].toString())
+        workerProfilePresenter.onAppearing(email)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

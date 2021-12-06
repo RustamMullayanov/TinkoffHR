@@ -10,7 +10,8 @@ import com.example.tinkoff_hr.databinding.CardWorkerBinding
 import com.example.tinkoff_hr.domain.entities.Worker
 import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 
-class WorkerAdapter : RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
+class WorkerAdapter(private val clickListener: (String) -> Unit) :
+    RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
     private var workers: List<Worker> = emptyList()
 
     class WorkerHolder(val viewBinding: CardWorkerBinding) :
@@ -30,12 +31,10 @@ class WorkerAdapter : RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
             functionFieldWorker.text = item.function
             projectFieldWorker.text = item.project
             photoWorker.setImageResource(R.drawable.ic_account_circle_24)
-
         }
+
         holder.itemView.setOnClickListener {
-            val intent = Intent(it.context, WorkerProfileActivity::class.java)
-            intent.putExtra("email", item.email)
-            it.context.startActivity(intent)
+            clickListener.invoke(item.email)
         }
     }
 

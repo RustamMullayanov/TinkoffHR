@@ -12,6 +12,7 @@ import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.databinding.FragmentWorkersBinding
 import com.example.tinkoff_hr.domain.entities.Worker
 import com.example.tinkoff_hr.presentation.WorkersPresenter
+import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 import com.example.tinkoff_hr.views.WorkersView
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
@@ -27,7 +28,7 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
     private val workersPresenter by moxyPresenter { presenterProvider.get() }
 
     private var _binding: FragmentWorkersBinding? = null
-    private val workerAdapter = WorkerAdapter()
+    private lateinit var workerAdapter: WorkerAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -36,6 +37,10 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
     override fun onCreate(savedInstanceState: Bundle?){
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
+
+        workerAdapter = WorkerAdapter { email ->
+            startActivity(WorkerProfileActivity.createIntent(requireContext(), email))
+        }
     }
 
     override fun onCreateView(
