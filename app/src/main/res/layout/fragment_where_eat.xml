@@ -15,15 +15,17 @@
         android:layout_height="match_parent" />
 
 
-    <include layout="@layout/bottom_sheet_where_eat"/>
+    <include
+        android:id="@+id/sheet"
+        layout="@layout/bottom_sheet_where_eat" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_expend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_near_me_24"
-        app:layout_anchor="@id/bottom_sheet_where_eat"
-        app:layout_anchorGravity="top|end"
         android:layout_margin="@dimen/activity_vertical_margin"
-        android:contentDescription="TODO" />
+        android:src="@drawable/ic_baseline_near_me_24"
+        app:layout_anchor="@id/map_where_eat"
+        app:layout_anchorGravity="bottom|end" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
