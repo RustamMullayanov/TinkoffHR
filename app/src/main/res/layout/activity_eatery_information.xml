@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="30dp"
-            android:hint="БИЗНЕС ЛАНЧ"
+            android:hint="@string/business_lunch"
             app:boxBackgroundColor="@color/white"
             app:boxCornerRadiusBottomEnd="14dp"
             app:boxCornerRadiusBottomStart="14dp"
@@ -35,8 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:cursorVisible="false"
-                android:focusable="false"
-                android:text="Да" />
+                android:focusable="false"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:hint="СРЕДНЯЯ СТОИМОСТЬ"
+            android:hint="@string/average_cost"
             app:boxBackgroundColor="@color/white"
             app:boxCornerRadiusBottomEnd="14dp"
             app:boxCornerRadiusBottomStart="14dp"
@@ -62,8 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:cursorVisible="false"
-                android:focusable="false"
-                android:text="180" />
+                android:focusable="false"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:hint="ПЛЮСЫ"
+            android:hint="@string/pluses"
             app:boxBackgroundColor="@color/white"
             app:boxCornerRadiusBottomEnd="14dp"
             app:boxCornerRadiusBottomStart="14dp"
@@ -90,8 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:cursorVisible="false"
-                android:focusable="false"
-                android:text="----" />
+                android:focusable="false" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,7 +99,7 @@
             android:layout_marginHorizontal="25dp"
             android:background="@color/white"
             android:padding="10dp"
-            android:text="Отзывы"
+            android:text="@string/reviews"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -115,7 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/design_default_color_primary"
-            android:text="Добавить"
+            android:text="@string/add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView"

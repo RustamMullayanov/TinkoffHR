@@ -25,7 +25,7 @@
             android:id="@+id/reviewer_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Иванов Иван"
+            android:text="@string/ivan_ivanov"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/reviewer_photo"
             app:layout_constraintEnd_toEndOf="parent"
