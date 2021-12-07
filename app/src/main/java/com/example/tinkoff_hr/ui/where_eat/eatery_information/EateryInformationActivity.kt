@@ -6,13 +6,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.RadioButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.databinding.ActivityEateryInformationBinding
-import com.example.tinkoff_hr.databinding.ActivityWorkerProfileBinding
 import com.example.tinkoff_hr.databinding.DialogEateryBinding
-import com.example.tinkoff_hr.databinding.ProfileDialogBinding
-import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 
 class EateryInformationActivity : AppCompatActivity() {
 

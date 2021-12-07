@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.CardEateryBinding
 
 class EateryAdapter(private val clickListener: (String) -> Unit) :
