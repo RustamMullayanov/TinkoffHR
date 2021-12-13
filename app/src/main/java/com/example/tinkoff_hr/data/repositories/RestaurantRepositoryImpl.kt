@@ -12,7 +12,7 @@ class RestaurantRepositoryImpl @Inject constructor() : RestaurantRepository {
             56.83369492735619, 60.60067545372085
         ),
         Restaurant(
-            2, "А ты где?", 7.5, false, 365.0,
+            2, "А ты где?", 8.2, false, 365.0,
             56.84363650463943, 60.64473482972403
         ),
         Restaurant(

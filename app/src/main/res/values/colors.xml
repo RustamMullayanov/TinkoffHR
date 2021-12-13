@@ -15,4 +15,8 @@
     <color name="pure_violet">#FF6200EE</color>
     <color name="very_soft_violet">#FFB190F4</color>
     <color name="gold">#FFFEBA0D</color>
+    <color name="rating_excellent">#04C300</color>
+    <color name="rating_very_good">#3C9506</color>
+    <color name="rating_good">#89B805</color>
+    <color name="rating_bad">#FF5106</color>
 </resources>
