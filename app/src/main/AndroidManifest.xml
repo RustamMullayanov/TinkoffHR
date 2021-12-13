@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tinkoff_hr">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -10,14 +13,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TinkoffHR">
-        <activity
-            android:name=".ui.where_eat.eatery_information.EateryInformationActivity"
-            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity
+            android:name=".ui.faq.parking.ParkingActivity"
+            android:exported="false"
+            android:label="@string/title_activity_parking" />
+        <activity
+            android:name=".ui.where_eat.eatery_information.EateryInformationActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.faq.sale.sale_partner.SalePartnerActivity"
             android:exported="false" />
