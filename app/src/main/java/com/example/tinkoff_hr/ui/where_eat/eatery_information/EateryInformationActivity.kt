@@ -20,17 +20,6 @@ class EateryInformationActivity : AppCompatActivity() {
 
     private val id: String by lazy { intent.getStringExtra(EXTRA_ID)!! }
 
-    companion object {
-
-        private const val EXTRA_ID = "extra_id"
-
-        fun createIntent(context: Context, id: String): Intent {
-            return Intent(context, EateryInformationActivity::class.java).apply {
-                putExtra(EXTRA_ID, id)
-            }
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -110,5 +99,16 @@ class EateryInformationActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    companion object {
+
+        private const val EXTRA_ID = "extra_id"
+
+        fun createIntent(context: Context, id: String): Intent {
+            return Intent(context, EateryInformationActivity::class.java).apply {
+                putExtra(EXTRA_ID, id)
+            }
+        }
     }
 }

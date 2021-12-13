@@ -8,7 +8,7 @@ import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.CardReviewEateryBinding
 
 
-class ReviewEateryAdapter: RecyclerView.Adapter<ReviewEateryAdapter.ReviewEateryHolder>() {
+class ReviewEateryAdapter : RecyclerView.Adapter<ReviewEateryAdapter.ReviewEateryHolder>() {
 
     private var reviews: List<ReviewEatery> = emptyList()
 
@@ -16,7 +16,8 @@ class ReviewEateryAdapter: RecyclerView.Adapter<ReviewEateryAdapter.ReviewEatery
         RecyclerView.ViewHolder(viewBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewEateryHolder {
-        val binding = CardReviewEateryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            CardReviewEateryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return ReviewEateryHolder(binding)
     }

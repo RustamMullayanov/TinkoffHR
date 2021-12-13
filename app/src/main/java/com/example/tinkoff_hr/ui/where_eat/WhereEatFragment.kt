@@ -56,13 +56,8 @@ class WhereEatFragment : Fragment(), OnMapReadyCallback {
             }
 
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                /*if (slideOffset<0.45) {
-                    if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_DRAGGING)
-                        onStateChanged(bottomSheet, BottomSheetBehavior.STATE_HIDDEN)
-                }*/
             }
         })
-
 
         binding.sheet.recEatery.apply {
             layoutManager = LinearLayoutManager(this.context)
@@ -96,7 +91,6 @@ class WhereEatFragment : Fragment(), OnMapReadyCallback {
         )
         return root
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

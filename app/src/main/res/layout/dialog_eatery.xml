@@ -42,10 +42,57 @@
             android:id="@+id/button_what_do_speaker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:maxLines="20"/>
+            android:maxLines="16"
+            android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/rate_star_1"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_baseline_star_rate_24"
+
+        app:layout_constraintEnd_toStartOf="@+id/rate_star_2"
+        app:layout_constraintTop_toTopOf="@id/rate_star_3"
+        app:tint="@color/gold" />
+
+    <ImageView
+        android:id="@+id/rate_star_2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_baseline_star_rate_24"
+        app:layout_constraintEnd_toStartOf="@id/rate_star_3"
+        app:layout_constraintTop_toTopOf="@id/rate_star_3"
+        app:tint="@color/gold" />
+
+    <ImageView
+        android:id="@+id/rate_star_3"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_baseline_star_rate_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_what_do_speaker"
+        app:tint="@color/gold" />
+
+    <ImageView
+        android:id="@+id/rate_star_4"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_baseline_star_rate_24"
+        app:layout_constraintStart_toEndOf="@id/rate_star_3"
+        app:layout_constraintTop_toTopOf="@id/rate_star_3"
+        app:tint="@color/gold" />
+
+    <ImageView
+        android:id="@+id/rate_star_5"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_baseline_star_rate_24"
+        app:layout_constraintStart_toEndOf="@id/rate_star_4"
+        app:layout_constraintTop_toTopOf="@id/rate_star_3"
+        app:tint="@color/light_grey" />
 
     <Button
         android:id="@+id/button_cancel"
