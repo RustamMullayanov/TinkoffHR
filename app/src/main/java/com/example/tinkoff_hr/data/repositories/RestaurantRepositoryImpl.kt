@@ -29,6 +29,29 @@ class RestaurantRepositoryImpl @Inject constructor() : RestaurantRepository {
         )
     )
 
+    private val reviews: List<RestaurantReview> = listOf(
+        RestaurantReview(
+            1, "test1@tin.koff", 1, "все отлично",
+            "вкусно", ""
+        ),
+        RestaurantReview(
+            2, "test1@tin2.koff", 1, "пойдет",
+            "чисто", "долго ждать заказ"
+        ),
+        RestaurantReview(
+            3, "test1@tin3.koff", 1, "наелся, сплю",
+            "отличный кофе", ""
+        ),
+        RestaurantReview(
+            4, "test1@tin.koff", 3, "сыр не тянется, не одобряю",
+            "дешево", ""
+        ),
+        RestaurantReview(
+            5, "test5@tin.koff", 3, "если неделю не кушал, то пойдет",
+            "чисто", ""
+        ),
+    )
+
     override fun getRestaurantInfoById(id: Int): Restaurant {
         return restaurants.first { r -> r.id == id }
         //TODO("Not yet implemented")
