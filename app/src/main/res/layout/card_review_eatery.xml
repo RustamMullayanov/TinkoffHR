@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_review_eatery"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:id="@+id/reviewer_photo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/reviewer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ivan_ivanov"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/reviewer_photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toEndOf="@id/reviewer_photo"
+            app:layout_constraintTop_toTopOf="@id/reviewer_photo" />
+
+        <ImageView
+            android:id="@+id/rate_star_1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_baseline_star_rate_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reviewer_photo"
+            app:tint="@color/gold" />
+
+        <ImageView
+            android:id="@+id/rate_star_2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_star_rate_24"
+            app:layout_constraintStart_toEndOf="@id/rate_star_1"
+            app:layout_constraintTop_toTopOf="@id/rate_star_1"
+            app:tint="@color/gold" />
+
+        <ImageView
+            android:id="@+id/rate_star_3"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_star_rate_24"
+            app:layout_constraintStart_toEndOf="@id/rate_star_2"
+            app:layout_constraintTop_toTopOf="@id/rate_star_1"
+            app:tint="@color/gold" />
+
+        <ImageView
+            android:id="@+id/rate_star_4"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_star_rate_24"
+            app:layout_constraintStart_toEndOf="@id/rate_star_3"
+            app:layout_constraintTop_toTopOf="@id/rate_star_1"
+            app:tint="@color/gold" />
+
+        <ImageView
+            android:id="@+id/rate_star_5"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_star_rate_24"
+            app:layout_constraintStart_toEndOf="@id/rate_star_4"
+            app:layout_constraintTop_toTopOf="@id/rate_star_1"
+            app:tint="@color/light_grey" />
+
+        <TextView
+            android:id="@+id/review_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:text="@tools:sample/lorem/random"
+            android:textSize="16sp"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rate_star_1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -11,6 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TinkoffHR">
         <activity
+            android:name=".ui.where_eat.eatery_information.EateryInformationActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
             android:name=".ui.faq.sale.sale_partner.SalePartnerActivity"
             android:exported="false" />
         <activity android:name=".ui.workers.worker_profile.WorkerProfileActivity" />

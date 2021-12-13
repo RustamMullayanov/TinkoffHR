@@ -34,4 +34,18 @@
     <string name="about">О себе</string>
     <string name="full_name">ФИО</string>
     <string name="writeFullName">Введите фамилию и имя</string>
+    <string name="title_where_eat">Где поесть?</string>
+    <string name="yes">Да</string>
+    <string name="add">Добавить</string>
+    <string name="reviews">Отзывы</string>
+    <string name="pluses">ПЛЮСЫ</string>
+    <string name="average_cost">СРЕДНЯЯ СТОИМОСТЬ</string>
+    <string name="business_lunch">БИЗНЕС ЛАНЧ</string>
+    <string name="num_2">2.0</string>
+    <string name="space">Космос</string>
+    <string name="ivan_ivanov">Иванов Иван</string>
+    <string name="text_dialog_eatery">Поделитесь своим мнением с другими сотрудниками</string>
+    <string name="write_review">Введите текст отзыва</string>
+    <string name="close">Закрыть</string>
+    <string name="save">Сохранить</string>
 </resources>
