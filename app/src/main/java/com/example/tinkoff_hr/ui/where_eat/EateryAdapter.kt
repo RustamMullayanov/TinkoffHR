@@ -24,7 +24,6 @@ class EateryAdapter(private val clickListener: (String) -> Unit) :
         return EateryHolder(binding)
     }
 
-    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: EateryHolder, position: Int) {
         val item = eateries[position]
         with(holder.viewBinding) {
