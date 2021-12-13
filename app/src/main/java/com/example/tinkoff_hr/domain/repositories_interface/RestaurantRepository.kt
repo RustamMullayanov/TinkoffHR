@@ -10,5 +10,5 @@ interface RestaurantRepository {
 
     fun getReviewsInfoByRestaurantId(id: Int): List<RestaurantReview>
 
-    fun saveRestaurantReview(review: RestaurantReview)
+    fun saveRestaurantReview(review: RestaurantReview): Boolean
 }
