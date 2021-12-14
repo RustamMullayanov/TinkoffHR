@@ -31,24 +31,24 @@ class RestaurantRepositoryImpl @Inject constructor() : RestaurantRepository {
 
     private val reviews: List<RestaurantReview> = listOf(
         RestaurantReview(
-            1, "test1@tin.koff", 1, "все отлично",
-            "вкусно", ""
+            1, "test1@tin.koff", "Муллаянов Рустам Радикович",
+            1, "все отлично", "вкусно", ""
         ),
         RestaurantReview(
-            2, "test1@tin2.koff", 1, "пойдет",
-            "чисто", "долго ждать заказ"
+            2, "test2@tin.koff", "Крыш Андрей Константинович",
+            1, "пойдет", "чисто", "долго ждать заказ"
         ),
         RestaurantReview(
-            3, "test1@tin3.koff", 1, "наелся, сплю",
-            "отличный кофе", ""
+            3, "test3@tin3.koff", "Петров Петр Петрович",
+            1, "наелся, сплю", "отличный кофе", ""
         ),
         RestaurantReview(
-            4, "test1@tin.koff", 3, "сыр не тянется, не одобряю",
-            "дешево", ""
+            4, "test1@tin.koff", "Муллаянов Рустам Радикович",
+            3, "сыр не тянется, не одобряю", "дешево", ""
         ),
         RestaurantReview(
-            5, "test5@tin.koff", 3, "если неделю не кушал, то пойдет",
-            "чисто", ""
+            5, "test5@tin.koff", "Васильев Василий Васильевич",
+            3, "если неделю не кушал, то пойдет", "чисто", ""
         ),
     )
 
@@ -63,7 +63,7 @@ class RestaurantRepositoryImpl @Inject constructor() : RestaurantRepository {
     }
 
     override fun getReviewsInfoByRestaurantId(restaurantId: Int): List<RestaurantReview> {
-        return reviews.filter { review->review.restaurantId == restaurantId }
+        return reviews.filter { review -> review.restaurantId == restaurantId }
         TODO("Not yet implemented")
     }
 
