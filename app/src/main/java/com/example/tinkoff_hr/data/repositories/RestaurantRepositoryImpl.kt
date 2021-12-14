@@ -62,7 +62,8 @@ class RestaurantRepositoryImpl @Inject constructor() : RestaurantRepository {
         //TODO("Not yet implemented")
     }
 
-    override fun getReviewsInfoByRestaurantId(id: Int): List<RestaurantReview> {
+    override fun getReviewsInfoByRestaurantId(restaurantId: Int): List<RestaurantReview> {
+        return reviews.filter { review->review.restaurantId == restaurantId }
         TODO("Not yet implemented")
     }
 
