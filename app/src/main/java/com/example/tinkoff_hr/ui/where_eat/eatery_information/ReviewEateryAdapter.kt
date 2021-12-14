@@ -26,7 +26,7 @@ class ReviewEateryAdapter : RecyclerView.Adapter<ReviewEateryAdapter.ReviewEater
     override fun onBindViewHolder(holder: ReviewEateryHolder, position: Int) {
         val item = reviews[position]
         with(holder.viewBinding) {
-            reviewerName.text = item.workerEmail
+            reviewerName.text = item.workerFullName
             reviewText.text = item.text
             reviewerPhoto.setImageResource(R.drawable.ic_account_circle_24)
         }

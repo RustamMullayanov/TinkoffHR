@@ -53,7 +53,6 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
         }
 
         eateryInfoPresenter.onAppearing(id.toInt())
-        eateryInfoPresenter.setRestaurantReviewsInfo(id.toInt())
     }
 
     private fun createDialog() {
@@ -91,17 +90,6 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
         return super.onOptionsItemSelected(item)
     }
 
-    companion object {
-
-        private const val EXTRA_ID = "extra_id"
-
-        fun createIntent(context: Context, id: String): Intent {
-            return Intent(context, EateryInformationActivity::class.java).apply {
-                putExtra(EXTRA_ID, id)
-            }
-        }
-    }
-
     override fun setRestaurantInfo(restaurant: Restaurant) {
         supportActionBar?.title = restaurant.name
         var businessLunch = "Нет"
@@ -124,5 +112,16 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
 
     override fun showSuccess(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    companion object {
+
+        private const val EXTRA_ID = "extra_id"
+
+        fun createIntent(context: Context, id: String): Intent {
+            return Intent(context, EateryInformationActivity::class.java).apply {
+                putExtra(EXTRA_ID, id)
+            }
+        }
     }
 }

@@ -18,10 +18,15 @@ class EateryInfoPresenter @Inject constructor(
     fun onAppearing(id: Int){
         val restaurant = getRestaurantInfoByIdUseCase.invoke(id)
         viewState.setRestaurantInfo(restaurant)
+        setRestaurantReviewsInfo(id)
     }
 
-    fun setRestaurantReviewsInfo(id: Int){
+    private fun setRestaurantReviewsInfo(id: Int){
         val reviews = getReviewsInfoByRestaurantIdUseCase(id)
+        if(reviews.isEmpty()){
+            viewState.showError("Отзывов нет")
+            return
+        }
         viewState.setRestaurantReviewsInfo(reviews)
         viewState.showSuccess("Отзывы успешно загрузились")
     }
