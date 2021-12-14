@@ -16,7 +16,7 @@ class EateryInfoPresenter @Inject constructor(
     private val saveRestaurantReview: SaveRestaurantReview
 ) : MvpPresenter<EateryInfoView>() {
     fun onAppearing(id: Int){
-        val restaurant = getRestaurantInfoByIdUseCase.invoke(id)
+        val restaurant = getRestaurantInfoByIdUseCase(id)
         viewState.setRestaurantInfo(restaurant)
         setRestaurantReviewsInfo(id)
     }
