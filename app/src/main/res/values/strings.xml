@@ -49,4 +49,5 @@
     <string name="close">Закрыть</string>
     <string name="save">Сохранить</string>
     <string name="title_activity_parking">ParkingActivity</string>
+    <string name="enter_address">Введите адрес</string>
 </resources>

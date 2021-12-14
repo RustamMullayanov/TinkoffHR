@@ -5,14 +5,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.faq.parking.ParkingActivity" >
+    tools:context=".ui.faq.parking.ParkingActivity">
 
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_search"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/enter_address"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomEnd="14dp"
+        app:boxCornerRadiusBottomStart="14dp"
+        app:boxCornerRadiusTopEnd="14dp"
+        app:boxCornerRadiusTopStart="14dp"
+
+        app:endIconDrawable="@drawable/ic_baseline_search_24"
+        app:endIconMode="custom"
+        app:endIconTint="@color/main_purple"
+        app:layout_anchor="@id/map"
+        app:layout_anchorGravity="top">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/field_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_find"
@@ -22,7 +48,7 @@
         android:backgroundTint="@color/main_purple"
         android:src="@drawable/ic_baseline_near_me_24"
         app:layout_anchor="@id/map"
-        app:layout_anchorGravity="bottom|end"
+        app:layout_anchorGravity="right|center"
         app:tint="@android:color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
