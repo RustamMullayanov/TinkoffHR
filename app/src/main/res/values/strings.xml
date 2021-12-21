@@ -48,4 +48,10 @@
     <string name="write_review">Введите текст отзыва</string>
     <string name="close">Закрыть</string>
     <string name="save">Сохранить</string>
+    <string name="title_activity_parking">ParkingActivity</string>
+    <string name="enter_address">Введите адрес</string>
+    <string name="allow_location">Разрешите доступ к вашему местоположению</string>
+    <string name="gps_on">GPS включён, можете повторить попытку</string>
+    <string name="app_not_determine_location">Приложение не сможет определить ваше местоположение</string>
+    <string name="turn_on_gps_app_determine_location">включите GPS, чтобы приложение определило ваще местоположение</string>
 </resources>
