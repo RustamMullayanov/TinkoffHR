@@ -27,12 +27,9 @@ import com.google.android.gms.location.*
 
 class ParkingActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    private lateinit var mMap: GoogleMap
+    private lateinit var map: GoogleMap
     private lateinit var binding: ActivityParkingBinding
-
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private val REQUEST_CODE_LOCATION = 1
-    private val REQUEST_LOCATION_SETTING = 999
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,16 +46,12 @@ class ParkingActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-
-        mMap.uiSettings.isMyLocationButtonEnabled = false
-
-        val central = LatLng(56.838248, 60.603481)
-        mMap.addMarker(
+        map = googleMap
+        map.uiSettings.isMyLocationButtonEnabled = false
+        map.addMarker(
             MarkerOptions().position(LatLng(56.772343, 60.58886)).title("Остановка Полисадная")
         )
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(central, 10.5f))
-
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLngYekaterinburg, CityZoom))
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         binding.btnFind.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
@@ -67,13 +60,8 @@ class ParkingActivity : AppCompatActivity(), OnMapReadyCallback {
             ) {
                 if (isLocationEnabled(this))
                     fusedLocationClient.lastLocation.addOnSuccessListener { l ->
-                        mMap.moveCamera(
-                            CameraUpdateFactory.newLatLngZoom(
-                                LatLng(
-                                    l.latitude,
-                                    l.longitude
-                                ), 13f
-                            )
+                        map.moveCamera(
+                            CameraUpdateFactory.newLatLngZoom(LatLng(l.latitude, l.longitude), 13f)
                         )
                     }
                 else {
@@ -91,15 +79,15 @@ class ParkingActivity : AppCompatActivity(), OnMapReadyCallback {
                             try {
                                 Toast.makeText(
                                     this,
-                                    "включите GPS, чтобы приложение определило ваще местоположение",
+                                    R.string.turn_on_gps_app_determine_location,
                                     Toast.LENGTH_SHORT
                                 ).show()
                                 e.startResolutionForResult(
                                     this,
                                     REQUEST_LOCATION_SETTING
                                 )
-
-                            } catch (sendEx: IntentSender.SendIntentException) {   }
+                            } catch (sendEx: IntentSender.SendIntentException) {
+                            }
                         }
                     }
                 }
@@ -111,7 +99,6 @@ class ParkingActivity : AppCompatActivity(), OnMapReadyCallback {
                 )
 
         }
-
         getLocationAccess()
     }
 
@@ -124,16 +111,15 @@ class ParkingActivity : AppCompatActivity(), OnMapReadyCallback {
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            mMap.isMyLocationEnabled = true
-        } else
+            ) == PackageManager.PERMISSION_GRANTED) {
+            map.isMyLocationEnabled = true
+        } else {
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 REQUEST_CODE_LOCATION
             )
-
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -155,11 +141,9 @@ class ParkingActivity : AppCompatActivity(), OnMapReadyCallback {
 
                     return
                 }
-                mMap.isMyLocationEnabled = true
+                map.isMyLocationEnabled = true
             } else {
-                Toast.makeText(this, "Разрешите доступ к вашему местоположению", Toast.LENGTH_SHORT)
-                    .show()
-
+                Toast.makeText(this, R.string.allow_location, Toast.LENGTH_SHORT).show()
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -167,12 +151,12 @@ class ParkingActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == REQUEST_LOCATION_SETTING){
-            if (resultCode == RESULT_OK){
-                Toast.makeText(this,"GPS включён, можете повторить попытку",Toast.LENGTH_SHORT).show()
+        if (requestCode == REQUEST_LOCATION_SETTING) {
+            if (resultCode == RESULT_OK) {
+                Toast.makeText(this, R.string.gps_on, Toast.LENGTH_SHORT).show()
             }
-            if (resultCode == RESULT_CANCELED){
-                Toast.makeText(this,"Приложение не сможет определить ваше местоположение",Toast.LENGTH_SHORT).show()
+            if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(this, R.string.app_not_determine_location, Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -186,5 +170,12 @@ class ParkingActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    companion object {
+        private const val REQUEST_CODE_LOCATION = 1
+        private const val REQUEST_LOCATION_SETTING = 999
+        private val LatLngYekaterinburg = LatLng(56.838248, 60.603481)
+        private const val CityZoom = 10.5f
     }
 }
