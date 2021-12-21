@@ -1,15 +1,19 @@
 package com.example.tinkoff_hr.ui.where_eat
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.CardEateryBinding
+import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 
 class EateryAdapter(private val clickListener: (String) -> Unit) :
     RecyclerView.Adapter<EateryAdapter.EateryHolder>() {
 
-    private var states: List<Eatery> = emptyList()
+    private var eateries: List<Restaurant> = emptyList()
 
     class EateryHolder(val viewBinding: CardEateryBinding) :
         RecyclerView.ViewHolder(viewBinding.root)
@@ -21,9 +25,10 @@ class EateryAdapter(private val clickListener: (String) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: EateryHolder, position: Int) {
-        val item = states[position]
+        val item = eateries[position]
         with(holder.viewBinding) {
             rating.text = item.rating.toString()
+            rating.setTextColor(setColor(item.rating, rating.context))
             name.text = item.name
         }
 
@@ -32,13 +37,23 @@ class EateryAdapter(private val clickListener: (String) -> Unit) :
         }
     }
 
+    private fun setColor(rating: Double, context: Context): Int {
+        if (rating >= 9)
+            return ContextCompat.getColor(context, R.color.rating_excellent)
+        if (rating >= 8)
+            return ContextCompat.getColor(context, R.color.rating_very_good)
+        if (rating >= 7)
+            return ContextCompat.getColor(context, R.color.rating_good)
+        return ContextCompat.getColor(context, R.color.rating_bad)
+    }
+
     override fun getItemCount(): Int {
-        return states.size
+        return eateries.size
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addList(list: List<Eatery>) {
-        states = list
+    fun setList(list: List<Restaurant>) {
+        eateries = list
         notifyDataSetChanged()
     }
 }

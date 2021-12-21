@@ -4,16 +4,33 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.databinding.FragmentWhereEatBinding
+import com.example.tinkoff_hr.domain.entities.Worker
+import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
+import com.example.tinkoff_hr.presentation.WorkersPresenter
+import com.example.tinkoff_hr.presentation.restaurant.WhereEatPresenter
 import com.example.tinkoff_hr.ui.where_eat.eatery_information.EateryInformationActivity
+import com.example.tinkoff_hr.views.WorkersView
+import com.example.tinkoff_hr.views.restaurant.WhereEatView
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import moxy.MvpAppCompatFragment
+import moxy.ktx.moxyPresenter
+import javax.inject.Inject
+import javax.inject.Provider
 
 
-class WhereEatFragment : Fragment(), OnMapReadyCallback {
+class WhereEatFragment : MvpAppCompatFragment(), WhereEatView, OnMapReadyCallback {
+
+    @Inject
+    lateinit var presenterProvider: Provider<WhereEatPresenter>
+
+    private val whereEatPresenter by moxyPresenter { presenterProvider.get() }
 
     private var _binding: FragmentWhereEatBinding? = null
     private lateinit var eateryAdapter: EateryAdapter
@@ -24,7 +41,7 @@ class WhereEatFragment : Fragment(), OnMapReadyCallback {
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
+        App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
 
         eateryAdapter = EateryAdapter { id ->
@@ -36,7 +53,7 @@ class WhereEatFragment : Fragment(), OnMapReadyCallback {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentWhereEatBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -69,26 +86,6 @@ class WhereEatFragment : Fragment(), OnMapReadyCallback {
             binding.btnExpend.hide()
         }
 
-        eateryAdapter.addList(
-            listOf(
-                Eatery(1, 6.0, "Рада", true, 203.4, ""),
-                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
-                Eatery(1, 6.0, "Рада", true, 203.4, ""),
-                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
-                Eatery(1, 6.0, "Рада", true, 203.4, ""),
-                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
-                Eatery(1, 6.0, "Рада", true, 203.4, ""),
-                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
-                Eatery(1, 6.0, "Рада", true, 203.4, ""),
-                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
-                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
-                Eatery(1, 6.0, "Рада", true, 203.4, ""),
-                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
-                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
-                Eatery(1, 6.0, "Рада", true, 203.4, ""),
-                Eatery(2, 5.3, "А ты где?", false, 100.0, ""),
-            )
-        )
         return root
     }
 
@@ -99,5 +96,17 @@ class WhereEatFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(map: GoogleMap) {
         googleMap = map
+    }
+
+    override fun setRestaurantsInfo(restaurants: List<Restaurant>) {
+        eateryAdapter.setList(restaurants)
+    }
+
+    override fun showError(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showSuccess(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 }

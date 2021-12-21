@@ -73,7 +73,6 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
         workerAdapter.setList(workers)
     }
 
-
     override fun showError(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
