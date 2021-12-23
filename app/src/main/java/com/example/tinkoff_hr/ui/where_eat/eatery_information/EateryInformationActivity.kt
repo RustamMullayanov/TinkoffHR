@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
@@ -98,12 +99,15 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
         with(binding){
             fieldBusinessLunch.setText(businessLunch)
             fieldAverageCost.setText(restaurant.averageCost.toString())
-            fieldPlus.setText("Заглушка")
         }
     }
 
     override fun setRestaurantReviewsInfo(reviews: List<RestaurantReview>) {
-        reviewAdapter.setList(reviews)
+        if(reviews.isNotEmpty()){
+            reviewAdapter.setList(reviews)
+            binding.emptyReviewField.visibility = View.GONE
+        }
+
     }
 
     override fun showError(message: String) {
