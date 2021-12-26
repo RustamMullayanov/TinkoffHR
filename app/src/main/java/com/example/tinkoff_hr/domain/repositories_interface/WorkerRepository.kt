@@ -1,13 +1,16 @@
 package com.example.tinkoff_hr.domain.repositories_interface
 
-import com.example.tinkoff_hr.domain.entities.Worker
+import com.example.tinkoff_hr.domain.entities.worker.Worker
+import io.reactivex.Single
 
 interface WorkerRepository {
-    fun getWorkerInfoByEmail(email: String): Worker
+    fun getWorkerInfoById(id: Long): Single<Worker>
 
-    fun getWorkersInfo(): List<Worker>
+    fun getWorkerInfoByEmail(email: String): Single<Worker>
 
-    fun searchWorkerInfoByName(searchedText: String) : List<Worker>
+    fun getWorkersInfo(): Single<List<Worker>>
 
-    fun updateWorkerInfo(worker: Worker) : Boolean
+    fun searchWorkerInfoByName(searchedText: String): List<Worker>
+
+    fun updateWorkerInfo(worker: Worker): Boolean
 }

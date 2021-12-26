@@ -5,16 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.databinding.FragmentWhereEatBinding
-import com.example.tinkoff_hr.domain.entities.Worker
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
-import com.example.tinkoff_hr.presentation.WorkersPresenter
 import com.example.tinkoff_hr.presentation.restaurant.WhereEatPresenter
 import com.example.tinkoff_hr.ui.where_eat.eatery_information.EateryInformationActivity
-import com.example.tinkoff_hr.views.WorkersView
 import com.example.tinkoff_hr.views.restaurant.WhereEatView
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback

@@ -1,14 +1,12 @@
 package com.example.tinkoff_hr.ui.workers
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.CardWorkerBinding
-import com.example.tinkoff_hr.domain.entities.Worker
-import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
+import com.example.tinkoff_hr.domain.entities.worker.Worker
 
 class WorkerAdapter(private val clickListener: (String) -> Unit) :
     RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
@@ -27,9 +25,9 @@ class WorkerAdapter(private val clickListener: (String) -> Unit) :
         val item = workers[position]
         with(holder.viewBinding) {
 
-            nameFieldWorker.text = "${item.surname} ${item.name} ${item.patronymic}"
+            nameFieldWorker.text = "${item.surname} ${item.name} ${item.patronymic ?: ""}"
             functionFieldWorker.text = item.function
-            projectFieldWorker.text = item.project
+            projectFieldWorker.text = item.project.toString()
             photoWorker.setImageResource(R.drawable.ic_account_circle_24)
         }
 
