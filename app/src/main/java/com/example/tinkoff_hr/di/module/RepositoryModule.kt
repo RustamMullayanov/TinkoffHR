@@ -11,8 +11,10 @@ import dagger.Provides
 @Module
 abstract class RepositoryModule {
     @Binds
-    abstract fun provideWorkerRepository(workerRepositoryImpl: WorkerRepositoryImpl): WorkerRepository
+    abstract fun provideWorkerRepository(workerRepositoryImpl: WorkerRepositoryImpl):
+            WorkerRepository
 
     @Binds
-    abstract fun provideRestaurantRepository(restaurantRepositoryImpl: RestaurantRepositoryImpl): RestaurantRepository
+    abstract fun provideRestaurantRepository(restaurantRepositoryImpl: RestaurantRepositoryImpl):
+            RestaurantRepository
 }
