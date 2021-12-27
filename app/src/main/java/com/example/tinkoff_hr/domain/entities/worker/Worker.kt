@@ -1,6 +1,10 @@
 package com.example.tinkoff_hr.domain.entities.worker
 
-class Worker(
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class Worker(
     val id: Long,
     val email: String,
     val name: String,
@@ -12,4 +16,4 @@ class Worker(
     val function: String,
     val about: String,
     val status: WorkerStatus
-)
+) : Parcelable

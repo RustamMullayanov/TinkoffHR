@@ -38,8 +38,8 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
 
-        workerAdapter = WorkerAdapter { email ->
-            startActivity(WorkerProfileActivity.createIntent(requireContext(), email))
+        workerAdapter = WorkerAdapter { worker ->
+            startActivity(WorkerProfileActivity.createIntent(requireContext(), worker))
         }
     }
 

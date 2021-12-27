@@ -26,7 +26,7 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
         ActivityWorkerProfileBinding.inflate(layoutInflater)
     }
 
-    private val workerId: Long by lazy { intent.getLongExtra(EXTRA_WORKER_ID, 0L) }
+    private val worker: Worker by lazy { intent.getParcelableExtra(EXTRA_WORKER)!! }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
@@ -35,7 +35,8 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        workerProfilePresenter.onAppearing(workerId)
+        //workerProfilePresenter.onAppearing(workerId)
+        showWorkerInfo(worker)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -51,11 +52,11 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
 
     override fun showWorkerInfo(worker: Worker) {
         with(binding) {
-            fieldFullName.setText("${worker.surname} ${worker.name} ${worker.patronymic}")
+            fieldFullName.setText("${worker.surname} ${worker.name} ${worker.patronymic ?: ""}")
             fieldMail.setText(worker.email)
             fieldAbout.setText(worker.about)
             fieldFunction.setText(worker.function)
-            fieldProject.setText(worker.project)
+            fieldProject.setText(worker.project.toString())
         }
         supportActionBar?.title = "${worker.surname} ${worker.name}"
     }
@@ -70,11 +71,11 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
 
     companion object {
 
-        private const val EXTRA_WORKER_ID = "extra_worker_id"
+        private const val EXTRA_WORKER = "extra_worker"
 
-        fun createIntent(context: Context, email: String): Intent {
+        fun createIntent(context: Context, email: Worker): Intent {
             return Intent(context, WorkerProfileActivity::class.java).apply {
-                putExtra(EXTRA_WORKER_ID, email)
+                putExtra(EXTRA_WORKER, email)
             }
         }
     }

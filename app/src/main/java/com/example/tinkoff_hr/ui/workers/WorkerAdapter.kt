@@ -8,7 +8,7 @@ import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.CardWorkerBinding
 import com.example.tinkoff_hr.domain.entities.worker.Worker
 
-class WorkerAdapter(private val clickListener: (String) -> Unit) :
+class WorkerAdapter(private val clickListener: (Worker) -> Unit) :
     RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
     private var workers: List<Worker> = emptyList()
 
@@ -32,7 +32,7 @@ class WorkerAdapter(private val clickListener: (String) -> Unit) :
         }
 
         holder.itemView.setOnClickListener {
-            clickListener.invoke(item.email)
+            clickListener.invoke(item)
         }
     }
 
