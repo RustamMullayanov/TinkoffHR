@@ -5,7 +5,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ECEAED"
+    android:background="@color/back_grey"
     tools:context=".actionbar.SettingsActivity">
 
     <Button
@@ -20,8 +20,8 @@
         android:paddingVertical="10dp"
         android:text="Изменить профиль"
         android:textAllCaps="false"
-        android:textColor="#B190F4"
-        android:textSize="24sp"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,8 +39,8 @@
         android:paddingVertical="10dp"
         android:text="Связь с модератором"
         android:textAllCaps="false"
-        android:textColor="#B190F4"
-        android:textSize="24sp"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,8 +58,8 @@
         android:paddingVertical="10dp"
         android:text="Настройки приложения"
         android:textAllCaps="false"
-        android:textColor="#B190F4"
-        android:textSize="24sp"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,8 +77,8 @@
         android:paddingVertical="10dp"
         android:text="Выход"
         android:textAllCaps="false"
-        android:textColor="#B190F4"
-        android:textSize="24sp"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -5,18 +5,17 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tinkoff_hr.databinding.StateItemBinding
+import com.example.tinkoff_hr.databinding.CardSaleBinding
 import com.example.tinkoff_hr.ui.faq.sale.sale_partner.SalePartnerActivity
-import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 
 class StateAdapter : RecyclerView.Adapter<StateAdapter.StateHolder>() {
 
     private var states: List<State> = emptyList()
 
-    class StateHolder(val viewBinding: StateItemBinding) : RecyclerView.ViewHolder(viewBinding.root)
+    class StateHolder(val viewBinding: CardSaleBinding) : RecyclerView.ViewHolder(viewBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StateHolder {
-        val binding = StateItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = CardSaleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return StateHolder(binding)
     }

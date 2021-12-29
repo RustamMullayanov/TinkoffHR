@@ -1,12 +1,14 @@
 package com.example.tinkoff_hr.ui.faq.sale
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.ActivitySaleBinding
+import com.example.tinkoff_hr.utils.PaddingItemDecoration
+import com.example.tinkoff_hr.utils.dpToPx
 
 class SaleActivity : AppCompatActivity() {
 
@@ -49,6 +51,20 @@ class SaleActivity : AppCompatActivity() {
         binging.recView.apply {
             layoutManager = LinearLayoutManager(this@SaleActivity)
             adapter = stateAdapter
+            addItemDecoration(
+                PaddingItemDecoration(
+                    bottom = dpToPx(DECORATOR_PADDING),
+                    filter = { holder ->
+                        holder.adapterPosition == stateAdapter.itemCount - 1
+                    })
+            )
+            addItemDecoration(
+                PaddingItemDecoration(
+                    top = dpToPx(DECORATOR_PADDING),
+                    filter = { holder ->
+                        holder.adapterPosition == 0
+                    })
+            )
         }
 
         stateAdapter.addList(
@@ -65,5 +81,9 @@ class SaleActivity : AppCompatActivity() {
                 State(fotoArray[3], "Любимый певец Дима", "Билайн")
             )
         )
+    }
+
+    private companion object {
+        const val DECORATOR_PADDING = 12F
     }
 }

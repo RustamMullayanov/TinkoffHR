@@ -1,11 +1,13 @@
 package com.example.tinkoff_hr.ui.faq.education
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.ActivityEducationBinding
+import com.example.tinkoff_hr.utils.PaddingItemDecoration
+import com.example.tinkoff_hr.utils.dpToPx
 
 class EducationActivity : AppCompatActivity() {
 
@@ -46,6 +48,20 @@ class EducationActivity : AppCompatActivity() {
         binging.recEducation.apply {
             layoutManager = LinearLayoutManager(this@EducationActivity)
             adapter = cardEducationAdapter
+            addItemDecoration(
+                PaddingItemDecoration(
+                    bottom = dpToPx(DECORATOR_PADDING),
+                    filter = { holder ->
+                        holder.adapterPosition == cardEducationAdapter.itemCount - 1
+                    })
+            )
+            addItemDecoration(
+                PaddingItemDecoration(
+                    top = dpToPx(DECORATOR_PADDING),
+                    filter = { holder ->
+                        holder.adapterPosition == 0
+                    })
+            )
         }
 
         cardEducationAdapter.addList(
@@ -72,5 +88,9 @@ class EducationActivity : AppCompatActivity() {
                 )
             )
         )
+    }
+
+    private companion object {
+        const val DECORATOR_PADDING = 12F
     }
 }

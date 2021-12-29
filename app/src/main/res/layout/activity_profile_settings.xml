@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/my_gradient_drawable"
     tools:context=".actionbar.ProfileSettingsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -95,6 +94,7 @@
                 android:id="@+id/field_project"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:layout_marginBottom="20dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -188,7 +188,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/my_edit_text_border"
             android:text="Сохранить"
-            android:textColor="#6200EE"
+            android:textColor="@color/black"
             app:boxCornerRadiusBottomEnd="26dp"
             app:boxCornerRadiusBottomStart="26dp"
             app:boxCornerRadiusTopEnd="26dp"

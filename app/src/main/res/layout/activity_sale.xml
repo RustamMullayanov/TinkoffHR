@@ -7,33 +7,16 @@
     android:background="@color/back_grey"
     tools:context=".ui.faq.sale.SaleActivity">
 
-    <TextView
-        android:id="@+id/text_sale_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/border_white_full_round"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/partners_tinkoff"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rec_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="15dp"
+        android:paddingHorizontal="20dp"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_sale_title" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/card_sale" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
