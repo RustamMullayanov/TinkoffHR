@@ -91,17 +91,17 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
         dialogBinding.apply {
 
             val dialog = AlertDialog.Builder(this@ProfileSettingsActivity).setTitle("Ачивки")
-                .setNegativeButton("Cancel") { d, _ ->
-                    d.dismiss()
-                }
                 .setView(dialogLayout)
                 .create()
+
+            dialogBinding.buttonCancel.setOnClickListener {
+                dialog.dismiss()
+            }
 
             radioGroup.setOnCheckedChangeListener { _, checkedId ->
                 radioGroup.findViewById<RadioButton>(checkedId)?.apply {
                     selectedId = checkedId
                     binding.fieldDialog.setText(this.text)
-
                 }
             }
 
