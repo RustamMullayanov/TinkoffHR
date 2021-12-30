@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/back_grey"
     tools:context=".ui.workers.worker_profile.WorkerProfileActivity">
 
     <ImageView
@@ -20,7 +19,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_full_name"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/TinkoffTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -42,14 +41,13 @@
             android:layout_marginBottom="15dp"
             android:cursorVisible="false"
             android:focusable="false"
-            android:padding="12dp"
-            android:textSize="12sp" />
+            android:padding="12dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_about"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/TinkoffTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -70,14 +68,13 @@
             android:layout_marginBottom="15dp"
             android:cursorVisible="false"
             android:focusable="false"
-            android:padding="12dp"
-            android:textSize="12sp" />
+            android:padding="12dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_project"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/TinkoffTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -98,14 +95,13 @@
             android:layout_marginBottom="15dp"
             android:cursorVisible="false"
             android:focusable="false"
-            android:padding="12dp"
-            android:textSize="12sp" />
+            android:padding="12dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_function"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/TinkoffTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -126,14 +122,13 @@
             android:layout_marginBottom="15dp"
             android:cursorVisible="false"
             android:focusable="false"
-            android:padding="12dp"
-            android:textSize="12sp" />
+            android:padding="12dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_mail"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/TinkoffTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -157,14 +152,13 @@
             android:layout_marginBottom="15dp"
             android:cursorVisible="false"
             android:focusable="false"
-            android:padding="12dp"
-            android:textSize="12sp" />
+            android:padding="12dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/workers_text_achievement"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/TinkoffTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -185,8 +179,7 @@
             android:layout_marginBottom="20dp"
             android:cursorVisible="false"
             android:focusable="false"
-            android:padding="12dp"
-            android:textSize="12sp" />
+            android:padding="12dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dialog_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/back_grey">
+    android:background="@drawable/border_white_full_round">
 
     <TextView
         android:id="@+id/text_dialog"
@@ -13,12 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:background="@color/white"
         android:fontFamily="@font/roboto_regular"
-        android:padding="10dp"
         android:text="@string/text_dialog_eatery"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +27,7 @@
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="40dp"
         android:hint="@string/write_review"
-        app:boxBackgroundColor="@color/pale_purple"
+        app:boxBackgroundColor="@color/white"
         app:counterEnabled="true"
         app:counterMaxLength="999"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,80 +44,75 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
-        android:id="@+id/rate_star_1"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_baseline_star_rate_24"
-
-        app:layout_constraintEnd_toStartOf="@+id/rate_star_2"
-        app:layout_constraintTop_toTopOf="@id/rate_star_3"
-        app:tint="@color/gold" />
-
-    <ImageView
-        android:id="@+id/rate_star_2"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_baseline_star_rate_24"
-        app:layout_constraintEnd_toStartOf="@id/rate_star_3"
-        app:layout_constraintTop_toTopOf="@id/rate_star_3"
-        app:tint="@color/gold" />
-
-    <ImageView
-        android:id="@+id/rate_star_3"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_baseline_star_rate_24"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_what_do_speaker"
-        app:tint="@color/gold" />
+        app:layout_constraintTop_toBottomOf="@+id/text_what_do_speaker">
 
-    <ImageView
-        android:id="@+id/rate_star_4"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_baseline_star_rate_24"
-        app:layout_constraintStart_toEndOf="@id/rate_star_3"
-        app:layout_constraintTop_toTopOf="@id/rate_star_3"
-        app:tint="@color/gold" />
+        <ImageView
+            android:id="@+id/rate_star_1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_star_rate_24"
+            app:tint="@color/gold" />
 
-    <ImageView
-        android:id="@+id/rate_star_5"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_baseline_star_rate_24"
-        app:layout_constraintStart_toEndOf="@id/rate_star_4"
-        app:layout_constraintTop_toTopOf="@id/rate_star_3"
-        app:tint="@color/light_grey" />
+        <ImageView
+            android:id="@+id/rate_star_2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_star_rate_24"
+            app:tint="@color/gold" />
+
+        <ImageView
+            android:id="@+id/rate_star_3"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_star_rate_24"
+            app:tint="@color/gold" />
+
+        <ImageView
+            android:id="@+id/rate_star_4"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_star_rate_24"
+            app:tint="@color/gold" />
+
+        <ImageView
+            android:id="@+id/rate_star_5"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_star_rate_24"
+            app:tint="@color/light_grey" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/button_cancel"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/design_default_color_primary"
-
+        android:layout_marginVertical="20dp"
+        android:backgroundTint="@color/primary_yellow"
         android:text="@string/close"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_add"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_what_do_speaker"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:shapeAppearanceOverlay="@style/shapeCutAll" />
 
     <Button
         android:id="@+id/button_add"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:backgroundTint="@color/design_default_color_primary"
+        android:backgroundTint="@color/primary_yellow"
         android:text="@string/save"
         android:textSize="14sp"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintBottom_toBottomOf="@id/button_cancel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
         app:layout_constraintStart_toEndOf="@id/button_cancel"
         app:layout_constraintTop_toTopOf="@id/button_cancel"
         app:shapeAppearanceOverlay="@style/shapeCutAll" />

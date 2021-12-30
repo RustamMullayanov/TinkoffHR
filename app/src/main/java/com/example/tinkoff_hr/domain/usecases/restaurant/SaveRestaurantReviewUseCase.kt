@@ -4,7 +4,7 @@ import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.domain.repositories_interface.RestaurantRepository
 import javax.inject.Inject
 
-class SaveRestaurantReview @Inject constructor(
+class SaveRestaurantReviewUseCase @Inject constructor(
     private val restaurantRepository: RestaurantRepository
 ) {
     operator fun invoke(restaurantReview: RestaurantReview): Boolean {

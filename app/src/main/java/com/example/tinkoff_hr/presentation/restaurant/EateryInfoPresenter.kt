@@ -1,9 +1,9 @@
 package com.example.tinkoff_hr.presentation.restaurant
 
 import com.example.tinkoff_hr.domain.usecases.restaurant.GetRestaurantInfoByIdUseCase
-import com.example.tinkoff_hr.domain.usecases.restaurant.GetRestaurantsInfoUseCase
 import com.example.tinkoff_hr.domain.usecases.restaurant.GetReviewsInfoByRestaurantIdUseCase
-import com.example.tinkoff_hr.domain.usecases.restaurant.SaveRestaurantReview
+import com.example.tinkoff_hr.domain.usecases.restaurant.SaveRestaurantReviewUseCase
+import com.example.tinkoff_hr.ui.where_eat.eatery_information.EateryContentState
 import com.example.tinkoff_hr.views.restaurant.EateryInfoView
 import moxy.InjectViewState
 import moxy.MvpPresenter
@@ -13,7 +13,7 @@ import javax.inject.Inject
 class EateryInfoPresenter @Inject constructor(
     private val getRestaurantInfoByIdUseCase: GetRestaurantInfoByIdUseCase,
     private val getReviewsInfoByRestaurantIdUseCase: GetReviewsInfoByRestaurantIdUseCase,
-    private val saveRestaurantReview: SaveRestaurantReview
+    private val saveRestaurantReviewUseCase: SaveRestaurantReviewUseCase
 ) : MvpPresenter<EateryInfoView>() {
     fun onAppearing(id: Int){
         val restaurant = getRestaurantInfoByIdUseCase(id)
@@ -21,13 +21,13 @@ class EateryInfoPresenter @Inject constructor(
         setRestaurantReviewsInfo(id)
     }
 
-    private fun setRestaurantReviewsInfo(id: Int){
+    private fun setRestaurantReviewsInfo(id: Int) {
         val reviews = getReviewsInfoByRestaurantIdUseCase(id)
-        if(reviews.isEmpty()){
-            viewState.showError("Отзывов нет")
-            return
+        if (reviews.isNotEmpty()) {
+            viewState.setContentState(EateryContentState.CONTENT)
+            viewState.setRestaurantReviewsInfo(reviews)
+        } else {
+            viewState.setContentState(EateryContentState.NO_CONTENT)
         }
-        viewState.setRestaurantReviewsInfo(reviews)
-        viewState.showSuccess("Отзывы успешно загрузились")
     }
 }

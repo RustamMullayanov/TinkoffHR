@@ -38,7 +38,9 @@
     <string name="title_where_eat">Где поесть?</string>
     <string name="yes">Да</string>
     <string name="add">Добавить</string>
+    <string name="no_reviews_found">На это заведение пока еще нет отзывов</string>
     <string name="reviews">Отзывы</string>
+    <string name="restaurant_info">Информация</string>
     <string name="pluses">ПЛЮСЫ</string>
     <string name="average_cost">СРЕДНЯЯ СТОИМОСТЬ</string>
     <string name="business_lunch">БИЗНЕС ЛАНЧ</string>

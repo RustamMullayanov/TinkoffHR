@@ -3,17 +3,16 @@ package com.example.tinkoff_hr.ui.where_eat.eatery_information
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.databinding.ActivityEateryInformationBinding
 import com.example.tinkoff_hr.databinding.DialogEateryBinding
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
-import com.example.tinkoff_hr.presentation.WorkerProfilePresenter
 import com.example.tinkoff_hr.presentation.restaurant.EateryInfoPresenter
 import com.example.tinkoff_hr.views.restaurant.EateryInfoView
 import moxy.MvpAppCompatActivity
@@ -95,7 +94,7 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
         var businessLunch = "Нет"
         if(restaurant.isHasLunch)
             businessLunch = "Есть"
-        with(binding){
+        with(binding) {
             fieldBusinessLunch.setText(businessLunch)
             fieldAverageCost.setText(restaurant.averageCost.toString())
             fieldPlus.setText("Заглушка")
@@ -104,6 +103,21 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
 
     override fun setRestaurantReviewsInfo(reviews: List<RestaurantReview>) {
         reviewAdapter.setList(reviews)
+    }
+
+    override fun setContentState(state: EateryContentState) {
+        with(binding) {
+            when (state) {
+                EateryContentState.CONTENT -> {
+                    noReviewsLabel.isVisible = false
+                    recReview.isVisible = true
+                }
+                EateryContentState.NO_CONTENT -> {
+                    noReviewsLabel.isVisible = true
+                    recReview.isVisible = false
+                }
+            }
+        }
     }
 
     override fun showError(message: String) {
