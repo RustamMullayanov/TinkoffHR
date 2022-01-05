@@ -41,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/black"
                 android:text="@string/text_basic_information_business_trip"
                 android:textSize="14sp" />
 
@@ -101,9 +102,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="16dp"
-                        android:text="Заглушка"
+                        android:text="@string/business_trip_location_description"
                         android:textAlignment="center"
-                        android:textSize="40sp" />
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
             </net.cachapa.expandablelayout.ExpandableLayout>
@@ -161,9 +163,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="16dp"
-                        android:text="Заглушка"
+                        android:text="@string/business_trip_id_description"
                         android:textAlignment="center"
-                        android:textSize="40sp" />
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
             </net.cachapa.expandablelayout.ExpandableLayout>
@@ -221,9 +224,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="16dp"
-                        android:text="Заглушка"
+                        android:text="@string/business_trip_finish_information_desctiption"
                         android:textAlignment="center"
-                        android:textSize="40sp" />
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
             </net.cachapa.expandablelayout.ExpandableLayout>
@@ -283,9 +287,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="16dp"
-                        android:text="Заглушка"
+                        android:text="@string/business_trip_contacts_information"
                         android:textAlignment="center"
-                        android:textSize="40sp" />
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
             </net.cachapa.expandablelayout.ExpandableLayout>

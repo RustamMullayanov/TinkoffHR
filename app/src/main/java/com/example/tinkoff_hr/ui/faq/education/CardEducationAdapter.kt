@@ -1,10 +1,19 @@
 package com.example.tinkoff_hr.ui.faq.education
 
 import android.annotation.SuppressLint
+import android.app.ProgressDialog.show
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tinkoff_hr.databinding.CardEducationBinding
+import androidx.core.content.ContextCompat.startActivity
+
+import android.content.Intent
+
+
+
 
 
 class CardEducationAdapter : RecyclerView.Adapter<CardEducationAdapter.CardEducationHolder>() {
@@ -26,9 +35,14 @@ class CardEducationAdapter : RecyclerView.Adapter<CardEducationAdapter.CardEduca
             titleEducation.text = item.title
             informationEducation.text = item.information
             logoEducation.setImageResource(item.logoResource)
+
+            holder.viewBinding.cardEducation.setOnClickListener {
+                val openURL = Intent(Intent.ACTION_VIEW)
+                openURL.data = Uri.parse(item.url)
+                it.context.startActivity(openURL)
+            }
         }
     }
-
 
     override fun getItemCount(): Int {
         return cardList.size

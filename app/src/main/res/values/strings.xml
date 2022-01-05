@@ -16,6 +16,10 @@
     <string name="text_1_what_do_speaker">1. Обсуждение с HR;</string>
     <string name="text_2_what_do_speaker">2. Подача доклада на конференцию/митап</string>
     <string name="title_basic_information">Основная информация</string>
+    <string name="business_trip_location_description">Для оформления командировок: БЦ “Водный“: г.Москва, Головинское ш.,5.</string>
+    <string name="business_trip_id_description">Пропуск в Тинькофф Кафе можно получить у Карповой Екатерины. Пропуск от этажа в БЦ Палладиум работает во всех ТЦР</string>
+    <string name="business_trip_finish_information_desctiption">Необходимо сдать своему офис-менеджеру: чеки с аэроэкспресс + выписки об оплате картой, посадочные талоны, электронный чек такси</string>
+    <string name="business_trip_contacts_information">Лена Калетина - +799999999999</string>
     <string name="listener_information">Информация для слушателя</string>
     <string name="write_codeword">Введите кодовое слово</string>
     <string name="send">Отправить</string>
