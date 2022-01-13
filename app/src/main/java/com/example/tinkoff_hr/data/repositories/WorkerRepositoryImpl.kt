@@ -28,15 +28,15 @@ class WorkerRepositoryImpl @Inject constructor(
         ),
         Worker(
             2,
-            "test2@tin.koff",
+            "a.krysh@tinkoff.ru",
             "Андрей",
             "Крыш",
             "Константинович",
             "todo",
             1,
             2,
-            "мобильный разработчик",
-            "люблю Warface",
+            "Мобильный разработчик",
+            "SME Android Dev",
             WorkerStatus.ACTIVE
         ),
         Worker(

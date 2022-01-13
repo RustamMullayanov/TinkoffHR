@@ -9,12 +9,15 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
+import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.ActivityEateryInformationBinding
 import com.example.tinkoff_hr.databinding.DialogEateryBinding
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.presentation.restaurant.EateryInfoPresenter
 import com.example.tinkoff_hr.views.restaurant.EateryInfoView
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 import javax.inject.Inject

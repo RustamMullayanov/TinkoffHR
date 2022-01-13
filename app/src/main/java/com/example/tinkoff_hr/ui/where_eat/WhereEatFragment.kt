@@ -7,13 +7,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
+import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentWhereEatBinding
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.presentation.restaurant.WhereEatPresenter
 import com.example.tinkoff_hr.ui.where_eat.eatery_information.EateryInformationActivity
 import com.example.tinkoff_hr.views.restaurant.WhereEatView
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
@@ -42,7 +47,10 @@ class WhereEatFragment : MvpAppCompatFragment(), WhereEatView, OnMapReadyCallbac
 
         eateryAdapter = EateryAdapter { id ->
             startActivity(EateryInformationActivity.createIntent(requireContext(), id))
+
         }
+        val mapFragment = parentFragmentManager.findFragmentById(R.id.map_where_eat) as? SupportMapFragment
+        mapFragment?.getMapAsync(this)
     }
 
     override fun onCreateView(
@@ -92,6 +100,12 @@ class WhereEatFragment : MvpAppCompatFragment(), WhereEatView, OnMapReadyCallbac
 
     override fun onMapReady(map: GoogleMap) {
         googleMap = map
+        val ural = LatLng(56.833332, 60.583332)
+        map.addMarker(
+            MarkerOptions()
+                .position(ural)
+                .title("Marker in Ural"))
+        map.moveCamera(CameraUpdateFactory.newLatLng(ural))
     }
 
     override fun setRestaurantsInfo(restaurants: List<Restaurant>) {
