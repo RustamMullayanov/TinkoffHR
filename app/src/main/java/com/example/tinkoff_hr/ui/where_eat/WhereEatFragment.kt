@@ -49,8 +49,6 @@ class WhereEatFragment : MvpAppCompatFragment(), WhereEatView, OnMapReadyCallbac
             startActivity(EateryInformationActivity.createIntent(requireContext(), id))
 
         }
-        val mapFragment = parentFragmentManager.findFragmentById(R.id.map_where_eat) as? SupportMapFragment
-        mapFragment?.getMapAsync(this)
     }
 
     override fun onCreateView(
@@ -89,6 +87,10 @@ class WhereEatFragment : MvpAppCompatFragment(), WhereEatView, OnMapReadyCallbac
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
             binding.btnExpend.hide()
         }
+        
+        val mapFragment =
+            childFragmentManager.findFragmentById(R.id.map_where_eat) as? SupportMapFragment
+        mapFragment?.getMapAsync(this)
 
         return root
     }
@@ -104,8 +106,9 @@ class WhereEatFragment : MvpAppCompatFragment(), WhereEatView, OnMapReadyCallbac
         map.addMarker(
             MarkerOptions()
                 .position(ural)
-                .title("Marker in Ural"))
-        map.moveCamera(CameraUpdateFactory.newLatLng(ural))
+                .title("Marker in Ural")
+        )
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(ural, 16.0F))
     }
 
     override fun setRestaurantsInfo(restaurants: List<Restaurant>) {
