@@ -55,4 +55,6 @@
     <string name="app_not_determine_location">Приложение не сможет определить ваше местоположение</string>
     <string name="turn_on_gps_app_determine_location">включите GPS, чтобы приложение определило ваще местоположение</string>
     <string name="empty_field_reviews_message">Ой , похоже другие пользователи ещё не оценили заведение ...</string>
+    <string name="orders">Заказы</string>
+    <string name="tribute">Соц дань</string>
 </resources>

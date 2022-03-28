@@ -7,9 +7,20 @@
         android:title="@string/title_workers" />
 
     <item
+        android:id="@+id/tribute"
+        android:icon="@drawable/ic_baseline_question_answer_24"
+        android:title="@string/tribute" />
+
+
+    <item
         android:id="@+id/navigation_faq"
-        android:icon="@drawable/ic_help_24"
+        android:icon="@drawable/ic_baseline_reorder_24"
         android:title="@string/title_faq" />
+
+    <item
+        android:id="@+id/orders"
+        android:icon="@drawable/ic_baseline_fact_check_24"
+        android:title="@string/orders" />
 
     <item
         android:id="@+id/navigation_where_eat"
