@@ -1,30 +1,21 @@
 package com.example.tinkoff_hr.actionbar
 
 import android.app.AlertDialog
-import android.app.Application
+import android.content.ClipData
 import android.content.ClipboardManager
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.RadioButton
+import android.widget.Toast
+import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.databinding.ActivityProfileSettingsBinding
 import com.example.tinkoff_hr.databinding.ProfileDialogBinding
-
-import android.content.ClipData
-import android.content.Intent
-import android.view.MenuItem
-import android.widget.Button
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
-import com.example.tinkoff_hr.App
-
-import com.example.tinkoff_hr.R
-import com.example.tinkoff_hr.di.AppComponent
-import com.example.tinkoff_hr.di.DaggerAppComponent
-import com.example.tinkoff_hr.domain.entities.Worker
+import com.example.tinkoff_hr.domain.entities.worker.Worker
+import com.example.tinkoff_hr.domain.entities.worker.WorkerStatus
 import com.example.tinkoff_hr.presentation.ProfilePresenter
 import com.example.tinkoff_hr.views.ProfileView
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
-import moxy.presenter.InjectPresenter
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -67,16 +58,17 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
         buttonSave.setOnClickListener {
             val fullName = binding.fieldFullName.text.toString().split(" ")
             val worker = Worker(
+                1,
                 binding.fieldMail.text.toString(),
                 fullName[1],
                 fullName[0],
                 fullName[2],
                 "", // хардкод
-                binding.fieldProject.text.toString(),
+                binding.fieldProject.text.toString().toInt(),
                 1,
                 binding.fieldFunction.text.toString(),
                 binding.fieldAbout.text.toString(),
-                ""
+                WorkerStatus.ACTIVE
             )
             profilePresenter.onSaveWorkerClicked(worker)
         }
@@ -122,11 +114,11 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
 
     override fun showWorkerInfo(worker: Worker) {
         with(binding) {
-            fieldFullName.setText("${worker.surname} ${worker.name} ${worker.patronymic}")
+            fieldFullName.setText("${worker.surname} ${worker.name} ${worker.patronymic ?: ""}")
             fieldMail.setText(worker.email)
             fieldAbout.setText(worker.about)
             fieldFunction.setText(worker.function)
-            fieldProject.setText(worker.project)
+            fieldProject.setText(worker.project.toString())
         }
     }
 

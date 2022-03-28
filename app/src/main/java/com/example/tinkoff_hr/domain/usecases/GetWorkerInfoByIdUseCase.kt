@@ -5,9 +5,8 @@ import com.example.tinkoff_hr.domain.repositories_interface.WorkerRepository
 import io.reactivex.Single
 import javax.inject.Inject
 
-class GetWorkerInfoByEmailUseCase @Inject constructor(private val workerRepository: WorkerRepository) {
-    operator fun invoke(email: String): Single<Worker> {
-
-        return workerRepository.getWorkerInfoByEmail(email);
+class GetWorkerInfoByIdUseCase @Inject constructor(private val workerRepository: WorkerRepository) {
+    operator fun invoke(id: Long): Single<Worker> {
+        return workerRepository.getWorkerInfoById(id);
     }
 }

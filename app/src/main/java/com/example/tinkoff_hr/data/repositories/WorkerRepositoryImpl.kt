@@ -1,84 +1,97 @@
 package com.example.tinkoff_hr.data.repositories
 
+import com.example.tinkoff_hr.data.api.RetrofitService
 import com.example.tinkoff_hr.data.dto.toDb
-import com.example.tinkoff_hr.domain.entities.Worker
+import com.example.tinkoff_hr.data.dto.toDomain
+import com.example.tinkoff_hr.domain.entities.worker.Worker
+import com.example.tinkoff_hr.domain.entities.worker.WorkerStatus
 import com.example.tinkoff_hr.domain.repositories_interface.WorkerRepository
+import io.reactivex.Single
 import javax.inject.Inject
 
-class WorkerRepositoryImpl @Inject constructor() : WorkerRepository {
+class WorkerRepositoryImpl @Inject constructor(
+    private val retrofitService: RetrofitService
+) : WorkerRepository {
     private val workers: List<Worker> = listOf(
         Worker(
+            1,
             "test1@tin.koff",
             "Рустам",
             "Муллаянов",
             "Радикович",
             "todo",
-            "тинькофф ТРЦ",
+            1,
             1,
             "мобильный разработчик",
             "20 лет",
-            "в работе"
+            WorkerStatus.ACTIVE
         ),
         Worker(
+            2,
             "test2@tin.koff",
             "Андрей",
             "Крыш",
             "Константинович",
             "todo",
-            "тинькофф ТРЦ",
+            1,
             2,
             "мобильный разработчик",
             "люблю Warface",
-            "в работе"
+            WorkerStatus.ACTIVE
         ),
         Worker(
+            3,
             "test3@tin.koff",
             "Петр",
             "Петров",
             "Петрович",
             "todo",
-            "не тинькофф ТРЦ",
+            2,
             3,
             "что-то делает",
             "19 лет",
-            "в работе"
+            WorkerStatus.ACTIVE
         ),
         Worker(
+            4,
             "test4@tin.koff",
             "Андрей",
             "Иванов",
             "Александрович",
             "todo",
-            "тинькофф ТРЦ",
+            1,
             4,
             "делает вещи",
             "22 года",
-            "в работе"
+            WorkerStatus.ACTIVE
         ),
         Worker(
+            5,
             "test5@tin.koff",
             "Василий",
             "Васильев",
             "Васильевич",
             "todo",
-            "тинькофф ТРЦ",
+            1,
             4,
             "дед",
             "28 лет",
-            "в работе"
+            WorkerStatus.ACTIVE
         )
     )
 
-    override fun getWorkerInfoByEmail(email: String): Worker {
-        // хардкод для теста
-        return workers.first { worker -> worker.email == email }
-        //TODO("Not yet implemented")
+    override fun getWorkerInfoById(id: Long): Single<Worker> {
+        return retrofitService.getWorkerById(id.toString()).asSingle()
+            .map { worker -> worker.toDomain() }
     }
 
-    override fun getWorkersInfo(): List<Worker> {
-        // хардкод для теста
-        return workers
-        //TODO("Not yet implemented")
+    override fun getWorkerInfoByEmail(email: String): Single<Worker> {
+        TODO("Not yet implemented")
+    }
+
+    override fun getWorkersInfo(): Single<List<Worker>> {
+        return retrofitService.getWorkersList().asSingle()
+            .map { list -> list.map { it.toDomain() } }
     }
 
     override fun searchWorkerInfoByName(searchedText: String): List<Worker> {

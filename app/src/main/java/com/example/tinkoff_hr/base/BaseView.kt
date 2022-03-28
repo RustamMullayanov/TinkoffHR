@@ -1,4 +1,4 @@
-package com.example.tinkoff_hr.views
+package com.example.tinkoff_hr.base
 
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy

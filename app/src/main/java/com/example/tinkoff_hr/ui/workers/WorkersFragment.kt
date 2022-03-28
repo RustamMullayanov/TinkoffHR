@@ -10,7 +10,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.databinding.FragmentWorkersBinding
-import com.example.tinkoff_hr.domain.entities.Worker
+import com.example.tinkoff_hr.domain.entities.worker.Worker
 import com.example.tinkoff_hr.presentation.WorkersPresenter
 import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 import com.example.tinkoff_hr.views.WorkersView
@@ -38,8 +38,8 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
 
-        workerAdapter = WorkerAdapter { email ->
-            startActivity(WorkerProfileActivity.createIntent(requireContext(), email))
+        workerAdapter = WorkerAdapter { worker ->
+            startActivity(WorkerProfileActivity.createIntent(requireContext(), worker))
         }
     }
 
