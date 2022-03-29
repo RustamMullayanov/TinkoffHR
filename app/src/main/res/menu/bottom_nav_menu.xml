@@ -7,7 +7,7 @@
         android:title="@string/title_workers" />
 
     <item
-        android:id="@+id/tribute"
+        android:id="@+id/navigation_tribute"
         android:icon="@drawable/ic_baseline_question_answer_24"
         android:title="@string/tribute" />
 
@@ -18,7 +18,7 @@
         android:title="@string/title_faq" />
 
     <item
-        android:id="@+id/orders"
+        android:id="@+id/navigation_orders"
         android:icon="@drawable/ic_baseline_fact_check_24"
         android:title="@string/orders" />
 
