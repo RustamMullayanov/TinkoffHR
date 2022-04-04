@@ -20,7 +20,7 @@ class ProfilePresenter @Inject constructor(
 
     override fun onFirstViewAttach() {
         //харкодный worker_id
-        onAppearing("46293357-87ee-4d2b-9246-70ebf2b698f5")
+        onAppearing("46293357-87ee-4d2b-9246-70ebf2b698f5") //пока что personId, потому сервер ждет его
     }
 
     private fun onAppearing(id: String) {

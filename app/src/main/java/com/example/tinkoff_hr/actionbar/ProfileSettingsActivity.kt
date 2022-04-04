@@ -59,7 +59,7 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
         buttonSave.setOnClickListener {
             val fullName = binding.fieldFullName.text.toString().split(" ")
             val worker = UpdatedWorkerInfo(
-                "46293357-87ee-4d2b-9246-70ebf2b698f5",
+                "46293357-87ee-4d2b-9246-70ebf2b698f5", //пока что personId, потому сервер ждет его
                 binding.fieldAbout.text.toString(),
                 binding.fieldFunction.text.toString(),
                 binding.fieldProject.text.toString(),
