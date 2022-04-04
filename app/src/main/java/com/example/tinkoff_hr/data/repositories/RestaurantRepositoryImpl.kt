@@ -2,13 +2,15 @@ package com.example.tinkoff_hr.data.repositories
 
 import com.example.tinkoff_hr.data.api.RetrofitServiceRestaurants
 import com.example.tinkoff_hr.data.api.RetrofitServiceWorkers
+import com.example.tinkoff_hr.data.dto.toDomain
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.domain.repositories_interface.RestaurantRepository
+import io.reactivex.Single
 import javax.inject.Inject
 
 class RestaurantRepositoryImpl @Inject constructor(
-    //private val retrofitService: RetrofitServiceRestaurants
+    private val retrofitService: RetrofitServiceRestaurants
 ) : RestaurantRepository {
     private val restaurants: List<Restaurant> = listOf(
         Restaurant(
@@ -56,20 +58,19 @@ class RestaurantRepositoryImpl @Inject constructor(
         ),
     )
 
-    override fun getRestaurantInfoById(id: Int): Restaurant {
-        return restaurants.first { r -> r.id == id }
-        //TODO("Not yet implemented")
+    override fun getRestaurantInfoById(id: Int): Single<Restaurant> {
+        return retrofitService.getRestaurantById(id.toString()).asSingle()
+            .map { restaurant -> restaurant.toDomain() }
     }
 
-    override fun getRestaurantsInfo(): List<Restaurant> {
-        //retrofitService.
-        return restaurants
-        //TODO("Not yet implemented")
+    override fun getRestaurantsInfo(): Single<List<Restaurant>> {
+        return retrofitService.getRestaurantsList().asSingle()
+            .map { list -> list.map { it.toDomain() } }
     }
 
-    override fun getReviewsInfoByRestaurantId(id: Int): List<RestaurantReview> {
-        return reviews.filter { review -> review.restaurantId == id }
-        //TODO("Not yet implemented")
+    override fun getReviewsInfoByRestaurantId(id: Int): Single<List<RestaurantReview>> {
+        return retrofitService.getRestaurantsReviewsList(id.toString()).asSingle()
+            .map { list -> list.map { it.toDomain() } }
     }
 
     override fun saveRestaurantReview(review: RestaurantReview): Boolean {

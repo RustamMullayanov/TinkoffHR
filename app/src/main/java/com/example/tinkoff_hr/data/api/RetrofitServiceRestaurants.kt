@@ -11,6 +11,9 @@ interface RetrofitServiceRestaurants {
     @GET("/api/restaurants")
     fun getRestaurantsList(): EnvelopeCall<List<RestaurantEntityForApi>>
 
+    @GET("/api/restaurants/{id}")
+    fun getRestaurantById(@Path("id") id: String): EnvelopeCall<RestaurantEntityForApi>
+
     @GET("/api/restaurants/{id}/reviews")
     fun getRestaurantsReviewsList(@Path("id") id: String): EnvelopeCall<List<RestaurantReviewEntityForApi>>
 }
