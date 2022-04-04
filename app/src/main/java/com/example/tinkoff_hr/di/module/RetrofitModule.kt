@@ -5,16 +5,19 @@ import com.example.tinkoff_hr.data.api.RetrofitServiceRestaurants
 import com.example.tinkoff_hr.data.api.RetrofitServiceWorkers
 import dagger.Module
 import dagger.Provides
+import kotlinx.serialization.ExperimentalSerializationApi
 
 
 @Module
 class RetrofitModule {
 
+    @ExperimentalSerializationApi
     @Provides
     fun provideRetrofitServiceWorkers(retrofitProvider: RetrofitProvider): RetrofitServiceWorkers {
         return retrofitProvider.retrofitServiceWorkers
     }
 
+    @ExperimentalSerializationApi
     @Provides
     fun provideRetrofitServiceRestaurants(retrofitProvider: RetrofitProvider): RetrofitServiceRestaurants {
         return retrofitProvider.retrofitServiceRestaurants

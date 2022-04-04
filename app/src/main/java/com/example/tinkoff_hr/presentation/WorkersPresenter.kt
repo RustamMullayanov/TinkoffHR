@@ -44,7 +44,7 @@ class WorkersPresenter @Inject constructor(
         }
         // workaround until real search doesn't work
         val filteredWorkers = workers!!.filter { worker ->
-            "${worker.surname} ${worker.name}".lowercase().contains(name)
+            "${worker.surname} ${worker.name}".lowercase().contains(name.lowercase())
         }
         viewState.showWorkersInfo(filteredWorkers)
     }
