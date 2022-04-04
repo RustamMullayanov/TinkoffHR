@@ -62,4 +62,8 @@
     <string name="frontend">Frontend</string>
     <string name="scala">Scala</string>
     <string name="pastaEducation">информация об образовательной программе информация об образовательной программе информация об образовательной программе</string>
+    <string name="meetup">Meetup’s</string>
+    <string name="meetupBigInfo">В Екатеринбурге мы организуем митапы по направлениям: Angular, Scala, Android.\nСпикеры - сотрудники ТЦРа и внешние докладчики. Если у тебя есть тема для доклада, то ты всегда можешь об этом сказать Елене Калетиной или Саше.</string>
+    <string name="meetupSmallLeft">Хочется выступить в роли спикера?</string>
+    <string name="meetupSmallRight">Или быть слушателем на встрече?</string>
 </resources>
