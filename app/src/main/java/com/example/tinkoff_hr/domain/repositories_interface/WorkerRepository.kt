@@ -6,7 +6,7 @@ import io.reactivex.Completable
 import io.reactivex.Single
 
 interface WorkerRepository {
-    fun getWorkerInfoById(id: Long): Single<Worker>
+    fun getWorkerInfoById(id: String): Single<Worker>
 
     fun getWorkerInfoByEmail(email: String): Single<Worker>
 
@@ -14,5 +14,5 @@ interface WorkerRepository {
 
     fun searchWorkerInfoByName(searchedText: String): List<Worker>
 
-    fun updateWorkerInfo(id: Int, worker: UpdatedWorkerInfoForApi): Completable
+    fun updateWorkerInfo(id: String, worker: UpdatedWorkerInfoForApi): Completable
 }

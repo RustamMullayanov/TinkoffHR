@@ -16,7 +16,7 @@ class WorkerProfilePresenter @Inject constructor(
 
     // Хотел сделать через onFirstViewAttach(),
     // но не нашел как передать презентеру в конструктор email
-    fun onAppearing(id: Long) {
+    fun onAppearing(id: String) {
         getWorkerInfoById(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

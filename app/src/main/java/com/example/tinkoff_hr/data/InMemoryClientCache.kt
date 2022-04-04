@@ -7,14 +7,14 @@ import com.example.tinkoff_hr.domain.entities.worker.WorkerStatus
 object InMemoryClientCache {
 
     var client: Worker = Worker(
-        2,
+        "2",
         "test2@tin.koff",
         "Андрей",
         "Крыш",
         "Константинович",
         "todo",
-        1,
-        2,
+        "1",
+        "2",
         "мобильный разработчик",
         "люблю Warface",
         WorkerStatus.ACTIVE

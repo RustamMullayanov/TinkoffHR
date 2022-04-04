@@ -20,10 +20,10 @@ class ProfilePresenter @Inject constructor(
 
     override fun onFirstViewAttach() {
         //харкодный worker_id
-        onAppearing(15)
+        onAppearing("46293357-87ee-4d2b-9246-70ebf2b698f5")
     }
 
-    private fun onAppearing(id: Long) {
+    private fun onAppearing(id: String) {
         getWorkerInfoById(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -39,10 +39,12 @@ class ProfilePresenter @Inject constructor(
         updateWorkerById(worker)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ viewState.showSuccess("Данные успешно обновились") },
+            .subscribe(
+                {viewState.showSuccess("Данные успешно сохранены")},
                 { error ->
-                viewState.showError("Не удалось обновить данные, повторите попытку позже")
-                Timber.e(error)
-            }).disposeOnFinish()
+                    viewState.showError("Не удалось обновить данные, повторите попытку позже")
+                    Timber.e(error)
+                })
+            .disposeOnFinish()
     }
 }

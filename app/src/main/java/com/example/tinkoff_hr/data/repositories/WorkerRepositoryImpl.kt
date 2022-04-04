@@ -15,35 +15,35 @@ class WorkerRepositoryImpl @Inject constructor(
 ) : WorkerRepository {
     private val workers: List<Worker> = listOf(
         Worker(
-            1,
+            "1",
             "test1@tin.koff",
             "Рустам",
             "Муллаянов",
             "Радикович",
             "todo",
-            1,
-            1,
+            "1",
+            "1",
             "мобильный разработчик",
             "20 лет",
             WorkerStatus.ACTIVE
         ),
         Worker(
-            2,
+            "2",
             "test2@tin.koff",
             "Андрей",
             "Крыш",
             "Константинович",
             "todo",
-            1,
-            2,
+            "1",
+            "2",
             "мобильный разработчик",
             "люблю Warface",
             WorkerStatus.ACTIVE
         )
     )
 
-    override fun getWorkerInfoById(id: Long): Single<Worker> {
-        return retrofitService.getWorkerById(id.toString())
+    override fun getWorkerInfoById(id: String): Single<Worker> {
+        return retrofitService.getWorkerById(id).asSingle()
             .map { worker -> worker.toDomain() }
     }
 
@@ -62,7 +62,7 @@ class WorkerRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun updateWorkerInfo(id: Int, worker: UpdatedWorkerInfoForApi): Completable {
-        return retrofitService.updateWorkerById(id.toString(), worker).asCompletable()
+    override fun updateWorkerInfo(id: String, worker: UpdatedWorkerInfoForApi): Completable {
+        return retrofitService.updateWorkerById(id, worker).asCompletable()
     }
 }
