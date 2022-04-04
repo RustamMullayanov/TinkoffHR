@@ -1,6 +1,8 @@
 package com.example.tinkoff_hr.domain.repositories_interface
 
+import com.example.tinkoff_hr.data.entities.UpdatedWorkerInfoForApi
 import com.example.tinkoff_hr.domain.entities.worker.Worker
+import io.reactivex.Completable
 import io.reactivex.Single
 
 interface WorkerRepository {
@@ -12,5 +14,5 @@ interface WorkerRepository {
 
     fun searchWorkerInfoByName(searchedText: String): List<Worker>
 
-    fun updateWorkerInfo(worker: Worker): Boolean
+    fun updateWorkerInfo(id: Int, worker: UpdatedWorkerInfoForApi): Completable
 }

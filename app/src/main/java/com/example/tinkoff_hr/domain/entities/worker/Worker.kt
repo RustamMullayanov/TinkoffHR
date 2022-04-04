@@ -2,6 +2,8 @@ package com.example.tinkoff_hr.domain.entities.worker
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Parcelize
 data class Worker(

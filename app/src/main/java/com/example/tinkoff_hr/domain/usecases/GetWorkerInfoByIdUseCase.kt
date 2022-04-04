@@ -7,6 +7,6 @@ import javax.inject.Inject
 
 class GetWorkerInfoByIdUseCase @Inject constructor(private val workerRepository: WorkerRepository) {
     operator fun invoke(id: Long): Single<Worker> {
-        return workerRepository.getWorkerInfoById(id);
+        return workerRepository.getWorkerInfoById(id)
     }
 }

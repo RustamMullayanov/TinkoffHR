@@ -21,6 +21,9 @@ class WorkerEntityForApi(
     @SerialName("surname")
     val surname: String,
 
+    @SerialName("patronymic")
+    val patronymic: String? = null,
+
     @SerialName("photo_url")
     val urlPhoto: String? = null,
 

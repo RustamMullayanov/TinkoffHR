@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.databinding.ActivityProfileSettingsBinding
 import com.example.tinkoff_hr.databinding.ProfileDialogBinding
+import com.example.tinkoff_hr.domain.entities.worker.UpdatedWorkerInfo
 import com.example.tinkoff_hr.domain.entities.worker.Worker
 import com.example.tinkoff_hr.domain.entities.worker.WorkerStatus
 import com.example.tinkoff_hr.presentation.ProfilePresenter
@@ -57,18 +58,13 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
         val buttonSave = binding.buttonSave
         buttonSave.setOnClickListener {
             val fullName = binding.fieldFullName.text.toString().split(" ")
-            val worker = Worker(
-                1,
-                binding.fieldMail.text.toString(),
-                fullName[1],
-                fullName[0],
-                fullName[2],
-                "", // хардкод
-                binding.fieldProject.text.toString().toInt(),
-                1,
-                binding.fieldFunction.text.toString(),
+            val worker = UpdatedWorkerInfo(
+                15,
                 binding.fieldAbout.text.toString(),
-                WorkerStatus.ACTIVE
+                binding.fieldFunction.text.toString(),
+                binding.fieldProject.text.toString().toInt(),
+                WorkerStatus.ACTIVE,
+                15
             )
             profilePresenter.onSaveWorkerClicked(worker)
         }

@@ -1,7 +1,9 @@
 package com.example.tinkoff_hr.data.dto
 
+import com.example.tinkoff_hr.data.entities.UpdatedWorkerInfoForApi
 import com.example.tinkoff_hr.data.entities.WorkerEntityForApi
 import com.example.tinkoff_hr.data.entities.WorkerEntityForDB
+import com.example.tinkoff_hr.domain.entities.worker.UpdatedWorkerInfo
 import com.example.tinkoff_hr.domain.entities.worker.Worker
 import com.example.tinkoff_hr.domain.entities.worker.WorkerStatus
 
@@ -41,9 +43,19 @@ fun WorkerEntityForApi.toDomain(): Worker =
         email = this.email,
         name = this.name,
         surname = this.surname,
+        patronymic = this.patronymic,
         project = this.project,
         table = this.table,
         function = this.function,
         about = this.about,
         status = WorkerStatus.fromValue(this.status),
+    )
+
+fun UpdatedWorkerInfo.toApi(): UpdatedWorkerInfoForApi =
+    UpdatedWorkerInfoForApi(
+        about = this.about,
+        function = this.function,
+        project = this.project,
+        status = WorkerStatus.fromBoolean(this.status),
+        table = this.table
     )

@@ -1,12 +1,11 @@
 package com.example.tinkoff_hr.presentation
 
 import com.example.tinkoff_hr.base.BasePresenter
-import com.example.tinkoff_hr.data.InMemoryClientCache
+import com.example.tinkoff_hr.domain.entities.worker.UpdatedWorkerInfo
 import com.example.tinkoff_hr.domain.entities.worker.Worker
 import com.example.tinkoff_hr.domain.usecases.GetWorkerInfoByIdUseCase
-import com.example.tinkoff_hr.domain.usecases.UpdateWorkerByEmailUseCase
+import com.example.tinkoff_hr.domain.usecases.UpdateWorkerByIdUseCase
 import com.example.tinkoff_hr.views.ProfileView
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import moxy.InjectViewState
@@ -16,17 +15,16 @@ import javax.inject.Inject
 @InjectViewState
 class ProfilePresenter @Inject constructor(
     private val getWorkerInfoById: GetWorkerInfoByIdUseCase,
-    private val updateWorkerByEmail: UpdateWorkerByEmailUseCase
+    private val updateWorkerById: UpdateWorkerByIdUseCase
 ) : BasePresenter<ProfileView>() {
 
     override fun onFirstViewAttach() {
         //харкодный worker_id
-        onAppearing(1)
+        onAppearing(15)
     }
 
     private fun onAppearing(id: Long) {
-//        getWorkerInfoById(id)
-        Single.just(InMemoryClientCache.client)
+        getWorkerInfoById(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ worker ->
@@ -37,13 +35,14 @@ class ProfilePresenter @Inject constructor(
             }).disposeOnFinish()
     }
 
-    fun onSaveWorkerClicked(worker: Worker) {
-//        if (updateWorkerByEmail(worker)){
-        if (true) {
-            InMemoryClientCache.client = worker
-            viewState.showSuccess("Данные успешно сохранены")
-            return
-        }
-        viewState.showError("Произошла ошибка при сохранении данных")
+    fun onSaveWorkerClicked(worker: UpdatedWorkerInfo) {
+        updateWorkerById(worker)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ viewState.showSuccess("Данные успешно обновились") },
+                { error ->
+                viewState.showError("Не удалось обновить данные, повторите попытку позже")
+                Timber.e(error)
+            }).disposeOnFinish()
     }
 }
