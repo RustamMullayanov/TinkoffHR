@@ -7,14 +7,14 @@ import kotlinx.serialization.Serializable
 
 @Parcelize
 data class Worker(
-    val id: Long,
+    val id: String,
     val email: String,
     val name: String,
     val surname: String,
     val patronymic: String? = null,
     val photo: String? = null,
-    val project: Int,
-    val table: Int,
+    val project: String,
+    val table: String,
     val function: String,
     val about: String,
     val status: WorkerStatus

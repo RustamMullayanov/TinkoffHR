@@ -12,11 +12,11 @@ class UpdatedWorkerInfoForApi(
     val function: String,
 
     @SerialName("project_id")
-    val project: Int,
+    val project: String,
 
     @SerialName("status")
     val status: Boolean,
 
     @SerialName("table_id")
-    val table: Int,
+    val table: String,
 )

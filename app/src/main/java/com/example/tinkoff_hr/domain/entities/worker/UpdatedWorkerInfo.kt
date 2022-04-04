@@ -5,10 +5,10 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class UpdatedWorkerInfo(
-    val id: Int,
+    val id: String,
     val about: String,
     val function: String,
-    val project: Int,
+    val project: String,
     val status: WorkerStatus,
-    val table: Int,
+    val table: String,
 ): Parcelable

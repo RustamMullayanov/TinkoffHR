@@ -10,7 +10,7 @@ class WorkerEntityForApi(
 //    val data: String,
 
     @SerialName("person_id")
-    val id: Long,
+    val id: String,
 
     @SerialName("email")
     val email: String,
@@ -28,10 +28,10 @@ class WorkerEntityForApi(
     val urlPhoto: String? = null,
 
     @SerialName("project_id")
-    val project: Int,
+    val project: String,
 
     @SerialName("table_id")
-    val table: Int,
+    val table: String,
 
     @SerialName("function_name")
     val function: String,
