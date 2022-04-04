@@ -1,11 +1,15 @@
 package com.example.tinkoff_hr.data.repositories
 
+import com.example.tinkoff_hr.data.api.RetrofitServiceRestaurants
+import com.example.tinkoff_hr.data.api.RetrofitServiceWorkers
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.domain.repositories_interface.RestaurantRepository
 import javax.inject.Inject
 
-class RestaurantRepositoryImpl @Inject constructor() : RestaurantRepository {
+class RestaurantRepositoryImpl @Inject constructor(
+    //private val retrofitService: RetrofitServiceRestaurants
+) : RestaurantRepository {
     private val restaurants: List<Restaurant> = listOf(
         Restaurant(
             1, "Своя компания", 4.5, true, 500.0,
@@ -58,6 +62,7 @@ class RestaurantRepositoryImpl @Inject constructor() : RestaurantRepository {
     }
 
     override fun getRestaurantsInfo(): List<Restaurant> {
+        //retrofitService.
         return restaurants
         //TODO("Not yet implemented")
     }
