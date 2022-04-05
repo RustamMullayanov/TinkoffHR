@@ -59,12 +59,12 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
         buttonSave.setOnClickListener {
             val fullName = binding.fieldFullName.text.toString().split(" ")
             val worker = UpdatedWorkerInfo(
-                "46293357-87ee-4d2b-9246-70ebf2b698f5", //пока что personId, потому сервер ждет его
+                "fa896ecf-c323-4002-87d7-3bd2f3551349",
                 binding.fieldAbout.text.toString(),
                 binding.fieldFunction.text.toString(),
                 binding.fieldProject.text.toString(),
                 WorkerStatus.ACTIVE,
-                "f4a6e3c6-92c6-4008-b5d5-8a4ddb60d08d"
+                "4b503258-b57d-47c7-8b8c-ecf6337fbb0d"
             )
             profilePresenter.onSaveWorkerClicked(worker)
         }

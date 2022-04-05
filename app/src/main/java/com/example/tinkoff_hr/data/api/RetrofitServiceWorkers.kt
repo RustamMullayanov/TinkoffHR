@@ -11,12 +11,12 @@ import retrofit2.http.Path
 interface RetrofitServiceWorkers {
 
     // Requests for Workers
-    @GET("/api/workers")
+    @GET("/api/employees")
     fun getWorkersList(): EnvelopeCall<List<WorkerEntityForApi>>
 
-    @GET("/api/workers/{id}")
+    @GET("/api/employees/{id}")
     fun getWorkerById(@Path("id") id: String): EnvelopeCall<WorkerEntityForApi>
 
-    @PUT("/api/workers/{id}")
+    @PUT("/api/employees/{id}")
     fun updateWorkerById(@Path("id") id: String, @Body worker: UpdatedWorkerInfoForApi) : EnvelopeCall<Unit>
 }
