@@ -6,7 +6,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class GetWorkerInfoByIdUseCase @Inject constructor(private val workerRepository: WorkerRepository) {
-    operator fun invoke(id: Long): Single<Worker> {
-        return workerRepository.getWorkerInfoById(id);
+    operator fun invoke(id: String): Single<Worker> {
+        return workerRepository.getWorkerInfoById(id)
     }
 }

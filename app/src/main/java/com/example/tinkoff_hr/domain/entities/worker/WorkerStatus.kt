@@ -9,5 +9,7 @@ enum class WorkerStatus(val value: Boolean) {
     companion object {
         fun fromValue(value: Boolean) =
             values().find { it.value == value } ?: throw IllegalStateException()
+        fun fromBoolean(status: WorkerStatus) =
+            status.value
     }
 }

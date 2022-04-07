@@ -47,10 +47,14 @@ class EnvelopeSerializer<T>(private val dataSerializer: KSerializer<T>) : KSeria
     }
 
     private fun parseOkResponse(decoder: JsonDecoder, element: JsonObject): Envelope<T> {
-        return Envelope(
+        if(element[DATA] != null)
+            return Envelope(
             data = decoder.json.decodeFromJsonElement(dataSerializer, element[DATA]!!),
             errorMessage = null
         )
+        return Envelope(
+            data = decoder.json.decodeFromJsonElement(dataSerializer, element),
+            errorMessage = null)
     }
 
     override fun serialize(encoder: Encoder, value: Envelope<T>) {
