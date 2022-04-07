@@ -13,13 +13,11 @@ object MeetUpDelegateProvider {
         { layoutInflater, root -> ItemMeetUpBinding.inflate(layoutInflater, root, false) }
     ) {
 
-        binding.cardBigTitle.text = getString(R.string.meetup)
-        binding.cardBigText.text = getString(R.string.meetupBigInfo)
-        binding.cardLeftText.text =getString(R.string.meetupSmallLeft)
-        binding.cardRightText.text = getString(R.string.meetupSmallRight)
-
         bind {
-
+            binding.cardBigTitle.text = getString(R.string.meetup)
+            binding.cardBigText.text = getString(R.string.meetupBigInfo)
+            binding.cardLeftText.text = getString(R.string.meetupSmallLeft)
+            binding.cardRightText.text = getString(R.string.meetupSmallRight)
         }
     }
 }
