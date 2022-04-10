@@ -66,4 +66,7 @@
     <string name="meetupBigInfo">В Екатеринбурге мы организуем митапы по направлениям: Angular, Scala, Android.\nСпикеры - сотрудники ТЦРа и внешние докладчики. Если у тебя есть тема для доклада, то ты всегда можешь об этом сказать Елене Калетиной или Саше.</string>
     <string name="meetupSmallLeft">Хочется выступить в роли спикера?</string>
     <string name="meetupSmallRight">Или быть слушателем на встрече?</string>
+    <string name="src_tinkoff_scala">https://www.tinkoff.ru/career/it/scala/</string>
+    <string name="src_tinkoff_frontend">https://www.tinkoff.ru/career/it/frontend/</string>
+    <string name="src_tinkoff_ios">https://fintech.tinkoff.ru/study/fintech/ios/</string>
 </resources>

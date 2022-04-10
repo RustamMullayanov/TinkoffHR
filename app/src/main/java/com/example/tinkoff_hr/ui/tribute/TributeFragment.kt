@@ -1,5 +1,7 @@
 package com.example.tinkoff_hr.ui.tribute
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +9,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentTributeBinding
+import com.example.tinkoff_hr.ui.tribute.data.Education
 import com.example.tinkoff_hr.ui.tribute.item.EducationItem
 import com.example.tinkoff_hr.ui.tribute.item.MeetUpItem
 import com.example.tinkoff_hr.ui.tribute.item.TitleItem
@@ -44,11 +48,28 @@ class TributeFragment : Fragment() {
                 })
         )
 
+        //хардкод
+        var educations = listOf(
+            Education(
+                getString(R.string.scala),
+                R.drawable.scala,
+                getString(R.string.src_tinkoff_scala),
+                information = getString(R.string.pastaEducation)
+            ),
+            Education(
+                getString(R.string.frontend),
+                R.drawable.frontend,
+                getString(R.string.src_tinkoff_frontend)
+            ),
+            Education(getString(R.string.ios), R.drawable.ios, getString(R.string.src_tinkoff_ios)),
+            Education(getString(R.string.ios), R.drawable.ios, getString(R.string.src_tinkoff_ios))
+        )
+        //educations = ArrayList<Education>()
 
         adapter.setNewItems(
             listOf(
                 TitleItem("Образовательные программы"),
-                EducationItem(),
+                EducationItem(educations),
                 TitleItem("Встречи"),
                 MeetUpItem(),
                 TitleItem("Встречи"),
@@ -73,11 +94,8 @@ class TributeFragment : Fragment() {
         }
 
         override fun onEducationItemClicked(id: String) {
-            Toast.makeText(
-                this@TributeFragment.context,
-                "You clicked on item with id: $id",
-                Toast.LENGTH_SHORT
-            ).show()
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(id))
+            startActivity(intent)
         }
 
         override fun onMeetUpItemClicked(id: String) {

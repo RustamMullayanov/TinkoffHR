@@ -21,6 +21,7 @@
         app:shapeAppearanceOverlay="@style/shapeCutAll">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card_const_l"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -91,6 +92,7 @@
         app:shapeAppearanceOverlay="@style/shapeCutAll">
 
         <LinearLayout
+            android:id="@+id/card_lin_s1"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -129,6 +131,7 @@
         app:shapeAppearanceOverlay="@style/shapeCutAll">
 
         <LinearLayout
+            android:id="@+id/card_lin_s2"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -167,6 +170,7 @@
         app:shapeAppearanceOverlay="@style/shapeCutAll">
 
         <LinearLayout
+            android:id="@+id/card_lin_s3"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
