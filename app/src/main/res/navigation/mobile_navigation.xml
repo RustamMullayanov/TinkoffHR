@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_workers" />
 
     <fragment
+        android:id="@+id/navigation_tribute"
+        android:name="com.example.tinkoff_hr.ui.tribute.TributeFragment"
+        android:label="@string/tribute"
+        tools:layout="@layout/fragment_tribute" />
+
+    <fragment
         android:id="@+id/navigation_faq"
         android:name="com.example.tinkoff_hr.ui.faq.FaqFragment"
         android:label="@string/title_faq"
