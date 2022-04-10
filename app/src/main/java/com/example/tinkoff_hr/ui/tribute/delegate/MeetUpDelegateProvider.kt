@@ -1,5 +1,6 @@
 package com.example.tinkoff_hr.ui.tribute.delegate
 
+import android.view.View
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.ItemMeetUpBinding
 import com.example.tinkoff_hr.ui.tribute.item.BaseListItem
@@ -12,12 +13,22 @@ object MeetUpDelegateProvider {
     ) = adapterDelegateViewBinding<MeetUpItem, BaseListItem, ItemMeetUpBinding>(
         { layoutInflater, root -> ItemMeetUpBinding.inflate(layoutInflater, root, false) }
     ) {
-
         bind {
-            binding.cardBigTitle.text = getString(R.string.meetup)
-            binding.cardBigText.text = getString(R.string.meetupBigInfo)
-            binding.cardLeftText.text = getString(R.string.meetupSmallLeft)
-            binding.cardRightText.text = getString(R.string.meetupSmallRight)
+            with(binding) {
+                cardBigTitle.text = item.largeMeetUp.title
+                cardBigText.text = item.largeMeetUp.information
+                cardLeftText.text = item.smallMeetUpList[0].question
+                cardRightText.text = item.smallMeetUpList[1].question
+
+                cardLinLeft.setOnClickListener {
+                    itemClickListener.invoke(item.smallMeetUpList[0].information)
+                }
+
+                cardLinRight.setOnClickListener {
+                    itemClickListener.invoke(item.smallMeetUpList[1].information)
+                }
+            }
+
         }
     }
 }

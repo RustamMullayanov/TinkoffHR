@@ -69,4 +69,6 @@
     <string name="src_tinkoff_scala">https://www.tinkoff.ru/career/it/scala/</string>
     <string name="src_tinkoff_frontend">https://www.tinkoff.ru/career/it/frontend/</string>
     <string name="src_tinkoff_ios">https://fintech.tinkoff.ru/study/fintech/ios/</string>
+    <string name="text_meetup_info_left">1. Обсуждение с HR;\n\n2. Подача доклада на конференцию/митап</string>
+    <string name="text_meetup_info_right">1. Не менее, чем за 2 месяца сообщить Елене Калетиной или Хромову Олег, а также тимлиду, какие темы тебе интересны и чем это будет полезно для проекта.\n\n2. Совместное решение о полной или частичной оплате конференции.</string>
 </resources>

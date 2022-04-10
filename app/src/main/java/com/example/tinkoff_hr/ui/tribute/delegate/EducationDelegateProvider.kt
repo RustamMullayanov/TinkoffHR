@@ -22,10 +22,10 @@ object EducationDelegateProvider {
             image.setImageResource(edu.scrImg)
         }
 
-        fun setLargeData(title: TextView, image: ImageView, edu: EducationLarge, information: TextView) {
+        fun setLargeData(title: TextView, image: ImageView, edu: EducationLarge, info: TextView) {
             title.text = edu.name
             image.setImageResource(edu.scrImg)
-            information.text = edu.information
+            info.text = edu.information
         }
 
         bind {
@@ -37,7 +37,7 @@ object EducationDelegateProvider {
                 }
 
                 if (item.smallEduList.size >= 1) {
-                    cardEducationS1.visibility =  View.VISIBLE
+                    cardEducationS1.visibility = View.VISIBLE
                     setData(titleEducationS1, logoEducationS1, item.smallEduList[0])
                     cardLinS1.setOnClickListener {
                         itemClickListener.invoke(item.smallEduList[0].url)
@@ -45,7 +45,7 @@ object EducationDelegateProvider {
                 } else cardEducationS1.visibility = View.GONE
 
                 if (item.smallEduList.size >= 2) {
-                    cardEducationS2.visibility =  View.VISIBLE
+                    cardEducationS2.visibility = View.VISIBLE
                     setData(titleEducationS2, logoEducationS2, item.smallEduList[1])
                     cardLinS2.setOnClickListener {
                         itemClickListener.invoke(item.smallEduList[1].url)
@@ -53,7 +53,7 @@ object EducationDelegateProvider {
                 } else cardEducationS2.visibility = View.GONE
 
                 if (item.smallEduList.size >= 3) {
-                    cardEducationS3.visibility =  View.VISIBLE
+                    cardEducationS3.visibility = View.VISIBLE
                     setData(titleEducationS3, logoEducationS3, item.smallEduList[2])
                     cardLinS3.setOnClickListener {
                         itemClickListener.invoke(item.smallEduList[2].url)

@@ -1,5 +1,6 @@
 package com.example.tinkoff_hr.ui.tribute
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -11,6 +12,8 @@ import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentTributeBinding
 import com.example.tinkoff_hr.ui.tribute.data.Education
 import com.example.tinkoff_hr.ui.tribute.data.EducationLarge
+import com.example.tinkoff_hr.ui.tribute.data.MeetUp
+import com.example.tinkoff_hr.ui.tribute.data.MeetUpLarge
 import com.example.tinkoff_hr.ui.tribute.item.EducationItem
 import com.example.tinkoff_hr.ui.tribute.item.MeetUpItem
 import com.example.tinkoff_hr.ui.tribute.item.TitleItem
@@ -55,14 +58,20 @@ class TributeFragment : Fragment(R.layout.fragment_tribute) {
         )
         //educations = ArrayList<Education>()
 
+        val largeMeetUpLarge = MeetUpLarge(getString(R.string.meetup),getString(R.string.meetupBigInfo))
+        val smallMeetup = listOf(
+            MeetUp(getString(R.string.meetupSmallLeft),getString(R.string.text_meetup_info_left)),
+            MeetUp(getString(R.string.meetupSmallRight),getString(R.string.text_meetup_info_right))
+        )
+
         adapter.setNewItems(
             listOf(
                 TitleItem("Образовательные программы"),
                 EducationItem(largeEdu,educations),
                 TitleItem("Встречи"),
-                MeetUpItem(),
+                MeetUpItem(largeMeetUpLarge,smallMeetup),
                 TitleItem("Встречи"),
-                MeetUpItem(),
+                MeetUpItem(largeMeetUpLarge,smallMeetup),
             )
         )
     }
@@ -82,11 +91,13 @@ class TributeFragment : Fragment(R.layout.fragment_tribute) {
         }
 
         override fun onMeetUpItemClicked(id: String) {
-            Toast.makeText(
-                this@TributeFragment.context,
-                "You clicked on item with id: $id",
-                Toast.LENGTH_SHORT
-            ).show()
+            AlertDialog.Builder(this@TributeFragment.context)
+                .setNegativeButton("Cancel") { d, _ ->
+                    d.dismiss()
+                }
+                .setMessage(id)
+                .create()
+                .show()
         }
 
     }
