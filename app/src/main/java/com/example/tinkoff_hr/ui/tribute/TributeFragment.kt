@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentTributeBinding
 import com.example.tinkoff_hr.ui.tribute.data.Education
+import com.example.tinkoff_hr.ui.tribute.data.EducationLarge
 import com.example.tinkoff_hr.ui.tribute.item.EducationItem
 import com.example.tinkoff_hr.ui.tribute.item.MeetUpItem
 import com.example.tinkoff_hr.ui.tribute.item.TitleItem
@@ -36,13 +37,14 @@ class TributeFragment : Fragment(R.layout.fragment_tribute) {
         )
 
         //хардкод
+        val largeEdu = EducationLarge(
+            getString(R.string.scala),
+            R.drawable.scala,
+            getString(R.string.src_tinkoff_scala),
+            getString(R.string.pastaEducation)
+        )
         var educations = listOf(
-            Education(
-                getString(R.string.scala),
-                R.drawable.scala,
-                getString(R.string.src_tinkoff_scala),
-                information = getString(R.string.pastaEducation)
-            ),
+
             Education(
                 getString(R.string.frontend),
                 R.drawable.frontend,
@@ -56,7 +58,7 @@ class TributeFragment : Fragment(R.layout.fragment_tribute) {
         adapter.setNewItems(
             listOf(
                 TitleItem("Образовательные программы"),
-                EducationItem(educations),
+                EducationItem(largeEdu,educations),
                 TitleItem("Встречи"),
                 MeetUpItem(),
                 TitleItem("Встречи"),

@@ -1,15 +1,13 @@
 package com.example.tinkoff_hr.ui.tribute.delegate
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.ItemEducationBinding
 import com.example.tinkoff_hr.ui.tribute.data.Education
+import com.example.tinkoff_hr.ui.tribute.data.EducationLarge
 import com.example.tinkoff_hr.ui.tribute.item.BaseListItem
 import com.example.tinkoff_hr.ui.tribute.item.EducationItem
-import com.google.android.material.card.MaterialCardView
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
 object EducationDelegateProvider {
@@ -19,48 +17,50 @@ object EducationDelegateProvider {
     ) = adapterDelegateViewBinding<EducationItem, BaseListItem, ItemEducationBinding>(
         { layoutInflater, root -> ItemEducationBinding.inflate(layoutInflater, root, false) }
     ) {
-
-
-
-        fun setData(title: TextView, image: ImageView, edu: Education, information: TextView?) {
+        fun setData(title: TextView, image: ImageView, edu: Education) {
             title.text = edu.name
             image.setImageResource(edu.scrImg)
-            information?.text = edu.information
+        }
+
+        fun setLargeData(title: TextView, image: ImageView, edu: EducationLarge, information: TextView) {
+            title.text = edu.name
+            image.setImageResource(edu.scrImg)
+            information.text = edu.information
         }
 
         bind {
             with(binding) {
-                if (item.list.size >= 1) {
-                    setData(titleEducationL, logoEducationL, item.list[0], informationEducation)
-                    cardConstL.setOnClickListener {
-                        itemClickListener.invoke(item.list[0].url)
-                    }
-                } else cardEducationL.visibility = View.GONE
+                //Large Education
+                setLargeData(titleEducationL, logoEducationL, item.largeEdu, informationEducation)
+                cardConstL.setOnClickListener {
+                    itemClickListener.invoke(item.largeEdu.url)
+                }
 
-                if (item.list.size >= 2) {
-                    setData(titleEducationS1, logoEducationS1, item.list[1], null)
+                if (item.smallEduList.size >= 1) {
+                    cardEducationS1.visibility =  View.VISIBLE
+                    setData(titleEducationS1, logoEducationS1, item.smallEduList[0])
                     cardLinS1.setOnClickListener {
-                        itemClickListener.invoke(item.list[1].url)
+                        itemClickListener.invoke(item.smallEduList[0].url)
                     }
                 } else cardEducationS1.visibility = View.GONE
 
-                if (item.list.size >= 3) {
-                    setData(titleEducationS2, logoEducationS2, item.list[2], null)
+                if (item.smallEduList.size >= 2) {
+                    cardEducationS2.visibility =  View.VISIBLE
+                    setData(titleEducationS2, logoEducationS2, item.smallEduList[1])
                     cardLinS2.setOnClickListener {
-                        itemClickListener.invoke(item.list[2].url)
+                        itemClickListener.invoke(item.smallEduList[1].url)
                     }
                 } else cardEducationS2.visibility = View.GONE
 
-                if (item.list.size >= 4) {
-                    setData(titleEducationS3, logoEducationS3, item.list[3], null)
+                if (item.smallEduList.size >= 3) {
+                    cardEducationS3.visibility =  View.VISIBLE
+                    setData(titleEducationS3, logoEducationS3, item.smallEduList[2])
                     cardLinS3.setOnClickListener {
-                        itemClickListener.invoke(item.list[3].url)
+                        itemClickListener.invoke(item.smallEduList[2].url)
                     }
                 } else cardEducationS3.visibility = View.GONE
             }
 
         }
     }
-
-
 }
