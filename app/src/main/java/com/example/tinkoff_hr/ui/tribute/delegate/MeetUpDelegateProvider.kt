@@ -1,6 +1,6 @@
 package com.example.tinkoff_hr.ui.tribute.delegate
 
-import com.example.tinkoff_hr.R
+import android.view.View
 import com.example.tinkoff_hr.databinding.ItemMeetUpBinding
 import com.example.tinkoff_hr.ui.tribute.item.BaseListItem
 import com.example.tinkoff_hr.ui.tribute.item.MeetUpItem
@@ -12,12 +12,32 @@ object MeetUpDelegateProvider {
     ) = adapterDelegateViewBinding<MeetUpItem, BaseListItem, ItemMeetUpBinding>(
         { layoutInflater, root -> ItemMeetUpBinding.inflate(layoutInflater, root, false) }
     ) {
-
         bind {
-            binding.cardBigTitle.text = getString(R.string.meetup)
-            binding.cardBigText.text = getString(R.string.meetupBigInfo)
-            binding.cardLeftText.text = getString(R.string.meetupSmallLeft)
-            binding.cardRightText.text = getString(R.string.meetupSmallRight)
+            with(binding) {
+
+                if (item.largeMeetUp != null) {
+                    cardLarge.visibility = View.VISIBLE
+                    cardBigTitle.text = item.largeMeetUp?.title
+                    cardBigText.text = item.largeMeetUp?.information
+                } else cardLarge.visibility = View.GONE
+
+                if (item.smallMeetUpList.size >= 1) {
+                    cardRight.visibility = View.VISIBLE
+                    cardLeftText.text = item.smallMeetUpList[0].question
+                    cardLinLeft.setOnClickListener {
+                        itemClickListener.invoke(item.smallMeetUpList[0].information)
+                    }
+                } else cardLeft.visibility = View.GONE
+
+                if (item.smallMeetUpList.size >= 2) {
+                    cardRight.visibility = View.VISIBLE
+                    cardRightText.text = item.smallMeetUpList[1].question
+                    cardLinRight.setOnClickListener {
+                        itemClickListener.invoke(item.smallMeetUpList[1].information)
+                    }
+                } else cardRight.visibility = View.GONE
+            }
+
         }
     }
 }

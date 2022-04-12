@@ -1,13 +1,19 @@
 package com.example.tinkoff_hr.ui.tribute
 
+import android.app.AlertDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentTributeBinding
+import com.example.tinkoff_hr.ui.tribute.data.Education
+import com.example.tinkoff_hr.ui.tribute.data.EducationLarge
+import com.example.tinkoff_hr.ui.tribute.data.MeetUp
+import com.example.tinkoff_hr.ui.tribute.data.MeetUpLarge
 import com.example.tinkoff_hr.ui.tribute.item.EducationItem
 import com.example.tinkoff_hr.ui.tribute.item.MeetUpItem
 import com.example.tinkoff_hr.ui.tribute.item.TitleItem
@@ -15,23 +21,12 @@ import com.example.tinkoff_hr.utils.ui.Dp
 import com.example.tinkoff_hr.utils.ui.PaddingItemDecoration
 import com.example.tinkoff_hr.utils.ui.dpToPx
 
-class TributeFragment : Fragment() {
-    private var _binding: FragmentTributeBinding? = null
+class TributeFragment : Fragment(R.layout.fragment_tribute) {
+    private lateinit var binding: FragmentTributeBinding
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentTributeBinding.inflate(inflater, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentTributeBinding.bind(view)
         val adapter = MyListAdapter(clickListener)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
@@ -44,26 +39,45 @@ class TributeFragment : Fragment() {
                 })
         )
 
+        //хардкод
+        val largeEdu = EducationLarge(
+            getString(R.string.scala),
+            R.drawable.scala,
+            getString(R.string.src_tinkoff_scala),
+            getString(R.string.pastaEducation)
+        )
+        var educations = listOf(
+
+            Education(
+                getString(R.string.frontend),
+                R.drawable.frontend,
+                getString(R.string.src_tinkoff_frontend)
+            ),
+            Education(getString(R.string.ios), R.drawable.ios, getString(R.string.src_tinkoff_ios)),
+            Education(getString(R.string.ios), R.drawable.ios, getString(R.string.src_tinkoff_ios))
+        )
+        //educations = ArrayList<Education>()
+
+        val largeMeetUpLarge =
+            MeetUpLarge(getString(R.string.meetup), getString(R.string.meetupBigInfo))
+        val smallMeetup = listOf(
+            MeetUp(getString(R.string.meetupSmallLeft), getString(R.string.text_meetup_info_left)),
+            MeetUp(getString(R.string.meetupSmallRight), getString(R.string.text_meetup_info_right))
+        )
 
         adapter.setNewItems(
             listOf(
                 TitleItem("Образовательные программы"),
-                EducationItem(),
+                EducationItem(largeEdu, educations),
                 TitleItem("Встречи"),
-                MeetUpItem(),
+                MeetUpItem(largeMeetUpLarge, smallMeetup),
                 TitleItem("Встречи"),
-                MeetUpItem(),
+                MeetUpItem(null, smallMeetup),
             )
         )
-        return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    val clickListener = object : MyListAdapter.ClickListener {
+    private val clickListener = object : MyListAdapter.ClickListener {
         override fun onTitleItemClicked(id: String) {
             Toast.makeText(
                 this@TributeFragment.context,
@@ -73,23 +87,22 @@ class TributeFragment : Fragment() {
         }
 
         override fun onEducationItemClicked(id: String) {
-            Toast.makeText(
-                this@TributeFragment.context,
-                "You clicked on item with id: $id",
-                Toast.LENGTH_SHORT
-            ).show()
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(id))
+            startActivity(intent)
         }
 
         override fun onMeetUpItemClicked(id: String) {
-            Toast.makeText(
-                this@TributeFragment.context,
-                "You clicked on item with id: $id",
-                Toast.LENGTH_SHORT
-            ).show()
+            AlertDialog.Builder(this@TributeFragment.context)
+                .setNegativeButton("Cancel") { d, _ ->
+                    d.dismiss()
+                }
+                .setMessage(id)
+                .create()
+                .show()
         }
 
     }
-
+    
     private companion object {
         @Dp
         const val EDUCATION_LIST_BOTTOM_PADDING = 16F

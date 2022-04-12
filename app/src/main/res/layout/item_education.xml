@@ -21,6 +21,7 @@
         app:shapeAppearanceOverlay="@style/shapeCutAll">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card_const_l"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -39,6 +40,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
+                android:layout_marginEnd="4dp"
+                android:ellipsize="none"
+                android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
                 android:textAlignment="center"
                 android:textColor="@color/purple_700"
                 android:textSize="25sp"
@@ -91,9 +96,10 @@
         app:shapeAppearanceOverlay="@style/shapeCutAll">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:id="@+id/card_lin_s1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/logo_education_s1"
@@ -103,11 +109,15 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:layout_gravity="center"
                 android:id="@+id/title_education_s1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="4dp"
+                android:ellipsize="none"
+                android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
                 android:textColor="@color/purple_700"
                 android:textSize="20sp"
                 tools:text="@tools:sample/first_names" />
@@ -129,9 +139,10 @@
         app:shapeAppearanceOverlay="@style/shapeCutAll">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:id="@+id/card_lin_s2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/logo_education_s2"
@@ -144,10 +155,14 @@
                 android:id="@+id/title_education_s2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="4dp"
+                android:ellipsize="none"
+                android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
                 android:textColor="@color/purple_700"
                 android:textSize="20sp"
-                android:layout_gravity="center"
                 tools:text="@tools:sample/first_names" />
 
         </LinearLayout>
@@ -167,9 +182,10 @@
         app:shapeAppearanceOverlay="@style/shapeCutAll">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:id="@+id/card_lin_s3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/logo_education_s3"
@@ -179,11 +195,15 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:layout_gravity="center"
                 android:id="@+id/title_education_s3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="4dp"
+                android:ellipsize="none"
+                android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
                 android:textColor="@color/purple_700"
                 android:textSize="20sp"
                 tools:text="@tools:sample/first_names" />
