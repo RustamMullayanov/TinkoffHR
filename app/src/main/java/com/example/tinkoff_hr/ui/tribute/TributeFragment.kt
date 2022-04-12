@@ -11,6 +11,9 @@ import com.example.tinkoff_hr.databinding.FragmentTributeBinding
 import com.example.tinkoff_hr.ui.tribute.item.EducationItem
 import com.example.tinkoff_hr.ui.tribute.item.MeetUpItem
 import com.example.tinkoff_hr.ui.tribute.item.TitleItem
+import com.example.tinkoff_hr.utils.ui.Dp
+import com.example.tinkoff_hr.utils.ui.PaddingItemDecoration
+import com.example.tinkoff_hr.utils.ui.dpToPx
 
 class TributeFragment : Fragment() {
     private var _binding: FragmentTributeBinding? = null
@@ -33,6 +36,13 @@ class TributeFragment : Fragment() {
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.addItemDecoration(
+            PaddingItemDecoration(
+                bottom = requireContext().dpToPx(EDUCATION_LIST_BOTTOM_PADDING),
+                filter = { holder ->
+                    holder.absoluteAdapterPosition == adapter.itemCount - 1
+                })
+        )
 
 
         adapter.setNewItems(
@@ -78,6 +88,11 @@ class TributeFragment : Fragment() {
             ).show()
         }
 
+    }
+
+    private companion object {
+        @Dp
+        const val EDUCATION_LIST_BOTTOM_PADDING = 16F
     }
 
 }
