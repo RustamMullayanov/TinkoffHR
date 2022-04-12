@@ -36,3 +36,14 @@ fun RestaurantReviewEntityForApi.toDomain(): RestaurantReview =
         pros = this.pros,
         cons = this.cons
     )
+
+fun RestaurantReview.toApi(): RestaurantReviewEntityForApi =
+    RestaurantReviewEntityForApi(
+        id = this.id,
+        workerId = this.workerId,
+        workerFullName = this.workerFullName,
+        restaurantId = this.restaurantId,
+        text = this.text,
+        pros = this.pros,
+        cons = this.cons
+    )
