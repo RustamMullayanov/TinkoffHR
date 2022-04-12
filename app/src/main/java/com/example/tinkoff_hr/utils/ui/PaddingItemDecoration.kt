@@ -5,9 +5,6 @@ import android.view.View
 import androidx.annotation.Px
 import androidx.recyclerview.widget.RecyclerView
 
-/**
- * @author m.a.kovalev
- */
 class PaddingItemDecoration(
     @Px val left: Int = 0,
     @Px val top: Int = 0,

@@ -6,9 +6,6 @@ import androidx.annotation.Dimension
 import androidx.annotation.Px
 import kotlin.math.roundToInt
 
-/**
- * @author m.a.kovalev
- */
 @Dimension(unit = Dimension.DP)
 annotation class Dp
 
