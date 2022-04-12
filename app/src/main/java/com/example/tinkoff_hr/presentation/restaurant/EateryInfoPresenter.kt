@@ -1,6 +1,7 @@
 package com.example.tinkoff_hr.presentation.restaurant
 
 import com.example.tinkoff_hr.base.BasePresenter
+import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.domain.usecases.restaurant.GetRestaurantInfoByIdUseCase
 import com.example.tinkoff_hr.domain.usecases.restaurant.GetReviewsInfoByRestaurantIdUseCase
 import com.example.tinkoff_hr.domain.usecases.restaurant.SaveRestaurantReview
@@ -43,4 +44,10 @@ class EateryInfoPresenter @Inject constructor(
                 Timber.e(error)
             }).disposeOnFinish()
     }
+
+    private fun saveRestaurantReview(review: RestaurantReview){
+
+    }
+
+
 }

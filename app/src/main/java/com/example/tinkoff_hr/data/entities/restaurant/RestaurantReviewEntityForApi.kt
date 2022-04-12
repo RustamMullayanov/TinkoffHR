@@ -1,11 +1,28 @@
 package com.example.tinkoff_hr.data.entities.restaurant
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 class RestaurantReviewEntityForApi(
-    val id: Int,
-    val workerEmail: String,
-    val restaurantId: Int,
+    @SerialName("review_id")
+    val id: String,
+
+    @SerialName("worker_id")
+    val workerId: String,
+
+    @SerialName("worker_full_name")
     val workerFullName: String,
+
+    @SerialName("restaurant_id")
+    val restaurantId: String,
+
+    @SerialName("review_text")
     val text: String,
+
+    @SerialName("pros")
     val pros: String,
+
+    @SerialName("cons")
     val cons: String
 )
