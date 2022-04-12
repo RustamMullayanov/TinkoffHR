@@ -1,7 +1,6 @@
 package com.example.tinkoff_hr.ui.tribute.delegate
 
 import android.view.View
-import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.ItemMeetUpBinding
 import com.example.tinkoff_hr.ui.tribute.item.BaseListItem
 import com.example.tinkoff_hr.ui.tribute.item.MeetUpItem
@@ -15,18 +14,28 @@ object MeetUpDelegateProvider {
     ) {
         bind {
             with(binding) {
-                cardBigTitle.text = item.largeMeetUp.title
-                cardBigText.text = item.largeMeetUp.information
-                cardLeftText.text = item.smallMeetUpList[0].question
-                cardRightText.text = item.smallMeetUpList[1].question
 
-                cardLinLeft.setOnClickListener {
-                    itemClickListener.invoke(item.smallMeetUpList[0].information)
-                }
+                if (item.largeMeetUp != null) {
+                    cardLarge.visibility = View.VISIBLE
+                    cardBigTitle.text = item.largeMeetUp?.title
+                    cardBigText.text = item.largeMeetUp?.information
+                } else cardLarge.visibility = View.GONE
 
-                cardLinRight.setOnClickListener {
-                    itemClickListener.invoke(item.smallMeetUpList[1].information)
-                }
+                if (item.smallMeetUpList.size >= 1) {
+                    cardRight.visibility = View.VISIBLE
+                    cardLeftText.text = item.smallMeetUpList[0].question
+                    cardLinLeft.setOnClickListener {
+                        itemClickListener.invoke(item.smallMeetUpList[0].information)
+                    }
+                } else cardLeft.visibility = View.GONE
+
+                if (item.smallMeetUpList.size >= 2) {
+                    cardRight.visibility = View.VISIBLE
+                    cardRightText.text = item.smallMeetUpList[1].question
+                    cardLinRight.setOnClickListener {
+                        itemClickListener.invoke(item.smallMeetUpList[1].information)
+                    }
+                } else cardRight.visibility = View.GONE
             }
 
         }

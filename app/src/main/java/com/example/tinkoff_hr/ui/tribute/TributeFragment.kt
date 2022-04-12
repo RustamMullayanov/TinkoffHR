@@ -58,20 +58,21 @@ class TributeFragment : Fragment(R.layout.fragment_tribute) {
         )
         //educations = ArrayList<Education>()
 
-        val largeMeetUpLarge = MeetUpLarge(getString(R.string.meetup),getString(R.string.meetupBigInfo))
+        val largeMeetUpLarge =
+            MeetUpLarge(getString(R.string.meetup), getString(R.string.meetupBigInfo))
         val smallMeetup = listOf(
-            MeetUp(getString(R.string.meetupSmallLeft),getString(R.string.text_meetup_info_left)),
-            MeetUp(getString(R.string.meetupSmallRight),getString(R.string.text_meetup_info_right))
+            MeetUp(getString(R.string.meetupSmallLeft), getString(R.string.text_meetup_info_left)),
+            MeetUp(getString(R.string.meetupSmallRight), getString(R.string.text_meetup_info_right))
         )
 
         adapter.setNewItems(
             listOf(
                 TitleItem("Образовательные программы"),
-                EducationItem(largeEdu,educations),
+                EducationItem(largeEdu, educations),
                 TitleItem("Встречи"),
-                MeetUpItem(largeMeetUpLarge,smallMeetup),
+                MeetUpItem(largeMeetUpLarge, smallMeetup),
                 TitleItem("Встречи"),
-                MeetUpItem(largeMeetUpLarge,smallMeetup),
+                MeetUpItem(null, smallMeetup),
             )
         )
     }
