@@ -43,4 +43,9 @@ class ReviewEateryAdapter : RecyclerView.Adapter<ReviewEateryAdapter.ReviewEater
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun setReview(review: RestaurantReview){
+        reviews = reviews + listOf(review)
+        notifyDataSetChanged()
+    }
 }

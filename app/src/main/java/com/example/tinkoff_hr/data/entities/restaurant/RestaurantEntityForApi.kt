@@ -6,11 +6,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 class RestaurantEntityForApi(
     @SerialName("id")
-    val id: Int,
+    val id: String,
 
     @SerialName("name")
     val name: String,
 
+    @SerialName("rating")
     val rating: Double? = null,
 
     @SerialName("business_lunch")

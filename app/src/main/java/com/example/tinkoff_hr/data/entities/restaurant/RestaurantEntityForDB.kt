@@ -1,7 +1,7 @@
 package com.example.tinkoff_hr.data.entities.restaurant
 
 class RestaurantEntityForDB(
-    val id: Int,
+    val id: String,
     val name: String,
     val rating: Double? = null,
     val isHasLunch: Boolean,

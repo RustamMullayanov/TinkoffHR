@@ -10,10 +10,10 @@ import retrofit2.http.Path
 
 interface RetrofitServiceRestaurants {
     // Requests for Restaurants and RestaurantsReviews
-    @GET("/api/restaurants")
+    @GET("/api/faq/restaurants")
     fun getRestaurantsList(): EnvelopeCall<List<RestaurantEntityForApi>>
 
-    @GET("/api/restaurants/{id}")
+    @GET("/api/faq/restaurants/{id}")
     fun getRestaurantById(@Path("id") id: String): EnvelopeCall<RestaurantEntityForApi>
 
     @GET("/api/restaurants/{id}/reviews")

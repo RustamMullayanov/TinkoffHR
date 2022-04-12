@@ -1,10 +1,11 @@
 package com.example.tinkoff_hr.presentation.restaurant
 
 import com.example.tinkoff_hr.base.BasePresenter
+import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.domain.usecases.restaurant.GetRestaurantInfoByIdUseCase
 import com.example.tinkoff_hr.domain.usecases.restaurant.GetReviewsInfoByRestaurantIdUseCase
-import com.example.tinkoff_hr.domain.usecases.restaurant.SaveRestaurantReview
+import com.example.tinkoff_hr.domain.usecases.restaurant.SaveRestaurantReviewUseCase
 import com.example.tinkoff_hr.views.restaurant.EateryInfoView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -16,9 +17,10 @@ import javax.inject.Inject
 class EateryInfoPresenter @Inject constructor(
     private val getRestaurantInfoByIdUseCase: GetRestaurantInfoByIdUseCase,
     private val getReviewsInfoByRestaurantIdUseCase: GetReviewsInfoByRestaurantIdUseCase,
-    private val saveRestaurantReview: SaveRestaurantReview
+    private val saveRestaurantReviewUseCase: SaveRestaurantReviewUseCase
 ) : BasePresenter<EateryInfoView>() {
-    fun onAppearing(id: Int){
+
+    fun onAppearing(id: String) {
         return getRestaurantInfoByIdUseCase(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -29,10 +31,9 @@ class EateryInfoPresenter @Inject constructor(
                 viewState.showError("Данные недоступны, повторите попытку позже")
                 Timber.e(error)
             }).disposeOnFinish()
-
     }
 
-    private fun setRestaurantReviewsInfo(id: Int){
+    private fun setRestaurantReviewsInfo(id: String) {
         return getReviewsInfoByRestaurantIdUseCase(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -45,9 +46,16 @@ class EateryInfoPresenter @Inject constructor(
             }).disposeOnFinish()
     }
 
-    private fun saveRestaurantReview(review: RestaurantReview){
-
+    fun saveRestaurantReview(restaurantId: String, review: RestaurantReview) {
+        return saveRestaurantReviewUseCase(restaurantId, review)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ newReview ->
+                viewState.setRestaurantReviewInfo(newReview)
+                viewState.showSuccess("Отзыв успешно сохранен")
+            }, { error ->
+                viewState.showError("Данные недоступны, повторите попытку позже")
+                Timber.e(error)
+            }).disposeOnFinish()
     }
-
-
 }

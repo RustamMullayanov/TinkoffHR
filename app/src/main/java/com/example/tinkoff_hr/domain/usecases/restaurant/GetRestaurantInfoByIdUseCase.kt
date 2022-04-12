@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetRestaurantInfoByIdUseCase @Inject constructor(
     private val restaurantRepository: RestaurantRepository
 ) {
-    operator fun invoke(id: Int): Single<Restaurant> {
+    operator fun invoke(id: String): Single<Restaurant> {
         return restaurantRepository.getRestaurantInfoById(id)
     }
 }
