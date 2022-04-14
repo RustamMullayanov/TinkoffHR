@@ -5,5 +5,6 @@ class RestaurantReviewEntityForDB(
     val workerId: String,
     val workerFullName: String,
     val restaurantId: String,
+    val rating: Double,
     val text: String
 )

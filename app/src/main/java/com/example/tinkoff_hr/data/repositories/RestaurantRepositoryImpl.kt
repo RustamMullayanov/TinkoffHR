@@ -27,11 +27,11 @@ class RestaurantRepositoryImpl @Inject constructor(
     private val reviews: List<RestaurantReview> = listOf(
         RestaurantReview(
             "1", "test1@tin.koff", "Муллаянов Рустам Радикович",
-            "1", "все отлично", "вкусно", ""
+            5.0, "1", "все отлично"
         ),
         RestaurantReview(
             "2", "test2@tin.koff", "Крыш Андрей Константинович",
-            "1", "пойдет", "чисто", "долго ждать заказ"
+            5.0, "1", "пойдет"
         )
     )
 
@@ -50,7 +50,10 @@ class RestaurantRepositoryImpl @Inject constructor(
             .map { list -> list.map { it.toDomain() } }
     }
 
-    override fun saveRestaurantReview(restaurantId: String, reviewApi: RestaurantReviewEntityForApi): Single<RestaurantReview> {
+    override fun saveRestaurantReview(
+        restaurantId: String,
+        reviewApi: RestaurantReviewEntityForApi
+    ): Single<RestaurantReview> {
         return retrofitService.saveRestaurantReview(restaurantId, reviewApi).asSingle()
             .map { review -> review.toDomain() }
     }

@@ -14,6 +14,8 @@ class RestaurantReviewEntityForApi(
     @SerialName("worker_full_name")
     val workerFullName: String,
 
+    val rating: Double,
+
     @SerialName("restaurant_id")
     val restaurantId: String,
 

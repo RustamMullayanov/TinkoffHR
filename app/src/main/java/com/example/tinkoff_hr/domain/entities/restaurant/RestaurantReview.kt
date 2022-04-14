@@ -4,6 +4,7 @@ class RestaurantReview(
     val id: String,
     val workerId: String,
     val workerFullName: String,
+    val rating: Double,
     val restaurantId: String,
     val text: String,
 )

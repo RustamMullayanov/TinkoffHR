@@ -37,8 +37,8 @@ class EateryAdapter(private val clickListener: (String) -> Unit) :
         }
     }
 
-    private fun setColor(rating: Double?, context: Context): Int {
-        if (rating!! >= 4.5)
+    private fun setColor(rating: Double, context: Context): Int {
+        if (rating >= 4.5)
             return ContextCompat.getColor(context, R.color.rating_excellent)
         if (rating >= 4)
             return ContextCompat.getColor(context, R.color.rating_very_good)

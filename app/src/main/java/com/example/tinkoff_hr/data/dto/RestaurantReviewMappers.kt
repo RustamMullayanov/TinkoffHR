@@ -10,6 +10,7 @@ fun RestaurantReview.toDb(): RestaurantReviewEntityForDB =
         workerId = this.workerId,
         workerFullName = this.workerFullName,
         restaurantId = this.restaurantId,
+        rating = this.rating,
         text = this.text
     )
 
@@ -19,6 +20,7 @@ fun RestaurantReviewEntityForDB.toDomain(): RestaurantReview =
         workerId = this.workerId,
         workerFullName = this.workerFullName,
         restaurantId = this.restaurantId,
+        rating = this.rating,
         text = this.text
     )
 
@@ -28,6 +30,7 @@ fun RestaurantReviewEntityForApi.toDomain(): RestaurantReview =
         workerId = this.workerId,
         workerFullName = this.workerFullName,
         restaurantId = this.restaurantId,
+        rating = this.rating,
         text = this.text
     )
 
@@ -37,5 +40,6 @@ fun RestaurantReview.toApi(): RestaurantReviewEntityForApi =
         workerId = this.workerId,
         workerFullName = this.workerFullName,
         restaurantId = this.restaurantId,
+        rating = this.rating,
         text = this.text
     )

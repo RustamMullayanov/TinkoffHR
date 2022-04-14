@@ -12,7 +12,7 @@ class RestaurantEntityForApi(
     val name: String,
 
     @SerialName("rating")
-    val rating: Double? = null,
+    val rating: Double,
 
     @SerialName("business_lunch")
     val isHasLunch: Boolean,

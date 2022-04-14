@@ -77,10 +77,9 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
                         "",
                         "1",
                         "Иванов Петя",
+                        5.0,
                         id,
-                        dialogBinding.fieldReview.text.toString(),
-                        "",
-                        ""
+                        dialogBinding.fieldReview.text.toString()
                     )
                 )
                 dialog.dismiss()
