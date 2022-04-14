@@ -10,9 +10,7 @@ fun RestaurantReview.toDb(): RestaurantReviewEntityForDB =
         workerId = this.workerId,
         workerFullName = this.workerFullName,
         restaurantId = this.restaurantId,
-        text = this.text,
-        pros = this.pros,
-        cons = this.cons
+        text = this.text
     )
 
 fun RestaurantReviewEntityForDB.toDomain(): RestaurantReview =
@@ -21,9 +19,7 @@ fun RestaurantReviewEntityForDB.toDomain(): RestaurantReview =
         workerId = this.workerId,
         workerFullName = this.workerFullName,
         restaurantId = this.restaurantId,
-        text = this.text,
-        pros = this.pros,
-        cons = this.cons
+        text = this.text
     )
 
 fun RestaurantReviewEntityForApi.toDomain(): RestaurantReview =
@@ -32,9 +28,7 @@ fun RestaurantReviewEntityForApi.toDomain(): RestaurantReview =
         workerId = this.workerId,
         workerFullName = this.workerFullName,
         restaurantId = this.restaurantId,
-        text = this.text,
-        pros = this.pros,
-        cons = this.cons
+        text = this.text
     )
 
 fun RestaurantReview.toApi(): RestaurantReviewEntityForApi =
@@ -43,7 +37,5 @@ fun RestaurantReview.toApi(): RestaurantReviewEntityForApi =
         workerId = this.workerId,
         workerFullName = this.workerFullName,
         restaurantId = this.restaurantId,
-        text = this.text,
-        pros = this.pros,
-        cons = this.cons
+        text = this.text
     )
