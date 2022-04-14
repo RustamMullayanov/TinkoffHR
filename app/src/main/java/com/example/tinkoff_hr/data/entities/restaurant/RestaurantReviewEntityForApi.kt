@@ -19,10 +19,4 @@ class RestaurantReviewEntityForApi(
 
     @SerialName("review_text")
     val text: String,
-
-    @SerialName("pros")
-    val pros: String,
-
-    @SerialName("cons")
-    val cons: String
 )

@@ -6,6 +6,4 @@ class RestaurantReview(
     val workerFullName: String,
     val restaurantId: String,
     val text: String,
-    val pros: String,
-    val cons: String
 )
