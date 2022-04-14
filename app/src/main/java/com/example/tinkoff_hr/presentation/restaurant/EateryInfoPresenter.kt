@@ -22,11 +22,11 @@ class EateryInfoPresenter @Inject constructor(
 
     fun onAppearing(id: String) {
         return getRestaurantInfoByIdUseCase(id)
+            .doOnSuccess { restaurant -> setRestaurantReviewsInfo(restaurant.id) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ restaurant ->
                 viewState.setRestaurantInfo(restaurant)
-                setRestaurantReviewsInfo(restaurant.id)
             }, { error ->
                 viewState.showError("Данные недоступны, повторите попытку позже")
                 Timber.e(error)
