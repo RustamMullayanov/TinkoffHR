@@ -101,9 +101,9 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
 
     override fun setRestaurantInfo(restaurant: Restaurant) {
         supportActionBar?.title = restaurant.name
-        var businessLunch = "Нет"
-        if (restaurant.isHasLunch)
-            businessLunch = "Есть"
+        val businessLunch =
+            if (restaurant.isHasLunch) "Есть"
+            else "Нет"
         with(binding) {
             fieldBusinessLunch.setText(businessLunch)
             fieldAverageCost.setText(restaurant.averageCost.toString())
