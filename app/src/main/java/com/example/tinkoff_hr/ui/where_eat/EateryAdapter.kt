@@ -33,7 +33,7 @@ class EateryAdapter(private val clickListener: (String) -> Unit) :
         }
 
         holder.itemView.setOnClickListener {
-            clickListener.invoke(item.id.toString())
+            clickListener.invoke(item.id)
         }
     }
 

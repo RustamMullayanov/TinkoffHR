@@ -22,7 +22,7 @@ class RetrofitProvider @Inject constructor() {
         .build()
 
     @ExperimentalSerializationApi
-    val retrofitService: RetrofitService = Retrofit.Builder()
+    val retrofitServiceWorkers: RetrofitServiceWorkers = Retrofit.Builder()
         .baseUrl(BuildConfig.API_BASE_URL)
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addCallAdapterFactory(EnvelopeCallAdapterFactory())
@@ -31,6 +31,18 @@ class RetrofitProvider @Inject constructor() {
         }.asConverterFactory("application/json".toMediaType()))
         .client(httpClient)
         .build()
-        .create(RetrofitService::class.java)
+        .create(RetrofitServiceWorkers::class.java)
+
+    @ExperimentalSerializationApi
+    val retrofitServiceRestaurants: RetrofitServiceRestaurants = Retrofit.Builder()
+        .baseUrl(BuildConfig.API_BASE_URL)
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .addCallAdapterFactory(EnvelopeCallAdapterFactory())
+        .addConverterFactory(Json {
+            ignoreUnknownKeys = true
+        }.asConverterFactory("application/json".toMediaType()))
+        .client(httpClient)
+        .build()
+        .create( RetrofitServiceRestaurants::class.java)
 
 }

@@ -10,4 +10,5 @@ import moxy.viewstate.strategy.StateStrategyType
 interface EateryInfoView: BaseView {
     fun setRestaurantInfo(restaurant: Restaurant)
     fun setRestaurantReviewsInfo(reviews: List<RestaurantReview>)
+    fun setRestaurantReviewInfo(review: RestaurantReview)
 }

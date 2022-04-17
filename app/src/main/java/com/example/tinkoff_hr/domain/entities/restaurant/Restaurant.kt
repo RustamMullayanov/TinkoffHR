@@ -1,7 +1,7 @@
 package com.example.tinkoff_hr.domain.entities.restaurant
 
 class Restaurant(
-    val id: Int,
+    val id: String,
     val name: String,
     val rating: Double,
     val isHasLunch: Boolean,

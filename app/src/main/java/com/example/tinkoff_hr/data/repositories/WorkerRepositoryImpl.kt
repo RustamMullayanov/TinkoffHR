@@ -1,6 +1,6 @@
 package com.example.tinkoff_hr.data.repositories
 
-import com.example.tinkoff_hr.data.api.RetrofitService
+import com.example.tinkoff_hr.data.api.RetrofitServiceWorkers
 import com.example.tinkoff_hr.data.dto.toDomain
 import com.example.tinkoff_hr.data.entities.UpdatedWorkerInfoForApi
 import com.example.tinkoff_hr.domain.entities.worker.Worker
@@ -11,7 +11,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class WorkerRepositoryImpl @Inject constructor(
-    private val retrofitService: RetrofitService
+    private val retrofitService: RetrofitServiceWorkers
 ) : WorkerRepository {
     private val workers: List<Worker> = listOf(
         Worker(

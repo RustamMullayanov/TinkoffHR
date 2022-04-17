@@ -3,7 +3,6 @@ package com.example.tinkoff_hr.ui.where_eat.eatery_information
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -14,7 +13,6 @@ import com.example.tinkoff_hr.databinding.ActivityEateryInformationBinding
 import com.example.tinkoff_hr.databinding.DialogEateryBinding
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
-import com.example.tinkoff_hr.presentation.WorkerProfilePresenter
 import com.example.tinkoff_hr.presentation.restaurant.EateryInfoPresenter
 import com.example.tinkoff_hr.views.restaurant.EateryInfoView
 import moxy.MvpAppCompatActivity
@@ -53,7 +51,7 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
             createDialog()
         }
 
-        eateryInfoPresenter.onAppearing(id.toInt())
+        eateryInfoPresenter.onAppearing(id)
     }
 
     private fun createDialog() {
@@ -73,9 +71,19 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
             }
 
             buttonAdd.setOnClickListener {
+                eateryInfoPresenter.saveRestaurantReview(
+                    "1",
+                    RestaurantReview(
+                        "",
+                        "1",
+                        "Иванов Петя",
+                        5.0,
+                        id,
+                        dialogBinding.fieldReview.text.toString()
+                    )
+                )
                 dialog.dismiss()
             }
-
             dialog.show()
         }
     }
@@ -93,21 +101,25 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
 
     override fun setRestaurantInfo(restaurant: Restaurant) {
         supportActionBar?.title = restaurant.name
-        var businessLunch = "Нет"
-        if(restaurant.isHasLunch)
-            businessLunch = "Есть"
-        with(binding){
+        val businessLunch =
+            if (restaurant.isHasLunch) "Есть"
+            else "Нет"
+        with(binding) {
             fieldBusinessLunch.setText(businessLunch)
             fieldAverageCost.setText(restaurant.averageCost.toString())
         }
     }
 
     override fun setRestaurantReviewsInfo(reviews: List<RestaurantReview>) {
-        if(reviews.isNotEmpty()){
+        if (reviews.isNotEmpty()) {
             reviewAdapter.setList(reviews)
             binding.emptyReviewField.visibility = View.GONE
         }
 
+    }
+
+    override fun setRestaurantReviewInfo(review: RestaurantReview) {
+        reviewAdapter.setReview(review)
     }
 
     override fun showError(message: String) {
