@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.databinding.FragmentWorkersBinding
 import com.example.tinkoff_hr.domain.entities.worker.Worker
+import com.example.tinkoff_hr.domain.entities.worker.WorkerStatus
 import com.example.tinkoff_hr.presentation.WorkersPresenter
 import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 import com.example.tinkoff_hr.views.WorkersView
@@ -34,13 +35,96 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?){
+    override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
 
         workerAdapter = WorkerAdapter { worker ->
             startActivity(WorkerProfileActivity.createIntent(requireContext(), worker))
         }
+
+        /*workerAdapter.setList(
+            listOf(
+                Worker(
+                    "1",
+                    "mail",
+                    "Ivan",
+                    "Kurtka",
+                    "Ivanovich",
+                    null,
+                    "WoT",
+                    "1",
+                    "cybersport",
+                    "the best",
+                    WorkerStatus.ACTIVE
+                ),
+                Worker(
+                    "1",
+                    "mail",
+                    "Ivan",
+                    "Kurtka",
+                    "Ivanovich",
+                    null,
+                    "WoT",
+                    "1",
+                    "cybersport",
+                    "the best",
+                    WorkerStatus.ACTIVE
+                ),
+                Worker(
+                    "1",
+                    "mail",
+                    "Ivan",
+                    "Kurtka",
+                    "Ivanovich",
+                    null,
+                    "WoT",
+                    "1",
+                    "cybersport",
+                    "the best",
+                    WorkerStatus.ACTIVE
+                ),
+                Worker(
+                    "1",
+                    "mail",
+                    "Ivan",
+                    "Kurtka",
+                    "Ivanovich",
+                    null,
+                    "WoT",
+                    "1",
+                    "cybersport",
+                    "the best",
+                    WorkerStatus.ACTIVE
+                ),
+                Worker(
+                    "1",
+                    "mail",
+                    "Ivan",
+                    "Kurtka",
+                    "Ivanovich",
+                    null,
+                    "WoT",
+                    "1",
+                    "cybersport",
+                    "the best",
+                    WorkerStatus.ACTIVE
+                ),
+                Worker(
+                    "1",
+                    "mail",
+                    "Ivan",
+                    "Kurtka",
+                    "Ivanovich",
+                    null,
+                    "WoT",
+                    "1",
+                    "cybersport",
+                    "the best",
+                    WorkerStatus.ACTIVE
+                ),
+            )
+        )*/
     }
 
     override fun onCreateView(
@@ -61,8 +145,8 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
             workersPresenter.filterWorkersByName(workerName)
         }
 
-        binding.fieldSearch.addTextChangedListener{
-            if(binding.fieldSearch.text.toString().isEmpty())
+        binding.fieldSearch.addTextChangedListener {
+            if (binding.fieldSearch.text.toString().isEmpty())
                 workersPresenter.filterWorkersByName("")
         }
 
