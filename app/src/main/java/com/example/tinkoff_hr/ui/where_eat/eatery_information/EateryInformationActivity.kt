@@ -33,7 +33,7 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
 
     private val reviewAdapter = ReviewEateryAdapter()
 
-    private val id: String by lazy { intent.getStringExtra(EXTRA_ID)!! }
+    private val restaurant_id: String by lazy { intent.getStringExtra(EXTRA_ID)!! }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
@@ -51,7 +51,7 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
             createDialog()
         }
 
-        eateryInfoPresenter.onAppearing(id)
+        eateryInfoPresenter.onAppearing(restaurant_id)
     }
 
     private fun createDialog() {
@@ -75,10 +75,10 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
                     "1",
                     RestaurantReview(
                         "",
-                        "1",
-                        "Иванов Петя",
+                        "8827aa5d-80ca-4435-9d62-f8b57d4f5f64",
+                        "",
                         5.0,
-                        id,
+                        restaurant_id,
                         dialogBinding.fieldReview.text.toString()
                     )
                 )
