@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
+import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentWorkersBinding
 import com.example.tinkoff_hr.domain.entities.worker.Worker
 import com.example.tinkoff_hr.domain.entities.worker.WorkerStatus
@@ -20,26 +21,29 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 
-class WorkersFragment : MvpAppCompatFragment(), WorkersView {
+class WorkersFragment : MvpAppCompatFragment(R.layout.fragment_workers), WorkersView {
 
     @Inject
     lateinit var presenterProvider: Provider<WorkersPresenter>
 
     private val workersPresenter by moxyPresenter { presenterProvider.get() }
 
-    private var _binding: FragmentWorkersBinding? = null
+    private lateinit var binding: FragmentWorkersBinding
     private lateinit var workerAdapter: WorkerAdapter
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentWorkersBinding.bind(view)
 
         workerAdapter = WorkerAdapter(clickListener)
-        workerAdapter.setNewItems(
+
+        //хардкод данные
+        /*workerAdapter.setNewItems(
             listOf(
                 Worker(
                     "1",
@@ -120,33 +124,24 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
                     WorkerStatus.ACTIVE
                 ),
             )
-        )
-    }
+        )*/
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentWorkersBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        with(binding) {
+            recWorkers.apply {
+                layoutManager = LinearLayoutManager(this.context)
+                adapter = workerAdapter
+            }
 
-        binding.recWorkers.apply {
-            layoutManager = LinearLayoutManager(this.context)
-            adapter = workerAdapter
+            textSearch.setEndIconOnClickListener {
+                val workerName = fieldSearch.text.toString()
+                workersPresenter.filterWorkersByName(workerName)
+            }
+
+            fieldSearch.addTextChangedListener {
+                if (fieldSearch.text.toString().isEmpty())
+                    workersPresenter.filterWorkersByName("")
+            }
         }
-
-        binding.textSearch.setEndIconOnClickListener {
-            val workerName = binding.fieldSearch.text.toString()
-            workersPresenter.filterWorkersByName(workerName)
-        }
-
-        binding.fieldSearch.addTextChangedListener {
-            if (binding.fieldSearch.text.toString().isEmpty())
-                workersPresenter.filterWorkersByName("")
-        }
-
-        return root
     }
 
     override fun showWorkersInfo(workers: List<Worker>) {
