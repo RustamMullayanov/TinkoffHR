@@ -40,9 +40,25 @@ class WhereEatFragment : MvpAppCompatFragment(), WhereEatView, OnMapReadyCallbac
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
 
-        eateryAdapter = EateryAdapter { id ->
-            startActivity(EateryInformationActivity.createIntent(requireContext(), id))
-        }
+        eateryAdapter = EateryAdapter(clickListener)
+
+        eateryAdapter.setNewItems(
+            listOf(
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+
+            )
+        )
     }
 
     override fun onCreateView(
@@ -95,7 +111,7 @@ class WhereEatFragment : MvpAppCompatFragment(), WhereEatView, OnMapReadyCallbac
     }
 
     override fun setRestaurantsInfo(restaurants: List<Restaurant>) {
-        eateryAdapter.setList(restaurants)
+        eateryAdapter.setNewItems(restaurants)
     }
 
     override fun showError(message: String) {
@@ -104,5 +120,11 @@ class WhereEatFragment : MvpAppCompatFragment(), WhereEatView, OnMapReadyCallbac
 
     override fun showSuccess(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    private val clickListener = object : EateryAdapter.ClickListener {
+        override fun onEateryClicked(id: String) {
+            startActivity(EateryInformationActivity.createIntent(requireContext(), id))
+        }
     }
 }
