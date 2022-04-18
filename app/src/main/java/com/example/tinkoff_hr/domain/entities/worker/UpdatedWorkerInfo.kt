@@ -9,6 +9,8 @@ data class UpdatedWorkerInfo(
     val about: String,
     val function: String,
     val project: String,
-    val status: WorkerStatus,
+    val status: WorkerStatus = WorkerStatus.ACTIVE,
     val table: String,
+    val state_id: String,
+    val permission_id: String
 ): Parcelable

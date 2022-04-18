@@ -6,10 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 class WorkerEntityForApi(
 
-//    @SerialName("data")
-//    val data: String,
-
-    @SerialName("person_id")
+    @SerialName("employee_id")
     val id: String,
 
     @SerialName("email")
@@ -27,18 +24,24 @@ class WorkerEntityForApi(
     @SerialName("photo_url")
     val urlPhoto: String? = null,
 
-    @SerialName("project_id")
+    @SerialName("project")
     val project: String,
 
     @SerialName("table_id")
     val table: String,
 
-    @SerialName("function_name")
+    @SerialName("function")
     val function: String,
 
-    @SerialName("about")
+    @SerialName("about_worker")
     val about: String,
 
     @SerialName("status")
-    val status: Boolean // change to Enum
+    val status: Boolean = true,
+
+    @SerialName("state_id")
+    val state_id: String,
+
+    @SerialName("permission_id")
+    val permission_id: String
 )

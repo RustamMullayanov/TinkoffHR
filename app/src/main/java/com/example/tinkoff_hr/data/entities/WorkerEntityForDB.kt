@@ -11,5 +11,7 @@ class WorkerEntityForDB(
     val table: String,
     val function: String,
     val about: String,
-    val status: Boolean
+    val status: Boolean = true,
+    val state_id: String,
+    val permission_id: String
 )

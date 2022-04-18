@@ -8,38 +8,46 @@ fun RestaurantReview.toDb(): RestaurantReviewEntityForDB =
     RestaurantReviewEntityForDB(
         id = this.id,
         workerId = this.workerId,
-        workerFullName = this.workerFullName,
         restaurantId = this.restaurantId,
         rating = this.rating,
-        text = this.text
+        text = this.text,
+        workerName = this.workerName,
+        workerSurname = this.workerSurname,
+        workerPatronymic = this.workerPatronymic
     )
 
 fun RestaurantReviewEntityForDB.toDomain(): RestaurantReview =
     RestaurantReview(
         id = this.id,
         workerId = this.workerId,
-        workerFullName = this.workerFullName,
         restaurantId = this.restaurantId,
         rating = this.rating,
-        text = this.text
+        text = this.text,
+        workerName = this.workerName,
+        workerSurname = this.workerSurname,
+        workerPatronymic = this.workerPatronymic
     )
 
 fun RestaurantReviewEntityForApi.toDomain(): RestaurantReview =
     RestaurantReview(
         id = this.id,
         workerId = this.workerId,
-        workerFullName = this.workerFullName,
         restaurantId = this.restaurantId,
         rating = this.rating,
-        text = this.text
+        text = this.text,
+        workerName = this.workerName,
+        workerSurname = this.workerSurname,
+        workerPatronymic = this.workerPatronymic
     )
 
 fun RestaurantReview.toApi(): RestaurantReviewEntityForApi =
     RestaurantReviewEntityForApi(
         id = this.id,
         workerId = this.workerId,
-        workerFullName = this.workerFullName,
         restaurantId = this.restaurantId,
         rating = this.rating,
-        text = this.text
+        text = this.text,
+        workerName = this.workerName,
+        workerSurname = this.workerSurname,
+        workerPatronymic = this.workerPatronymic
     )
