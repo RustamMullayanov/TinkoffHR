@@ -5,18 +5,24 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class UpdatedWorkerInfoForApi(
-    @SerialName("about")
+    @SerialName("about_worker")
     val about: String,
 
     @SerialName("function")
     val function: String,
 
-    @SerialName("project_id")
+    @SerialName("project")
     val project: String,
 
     @SerialName("status")
-    val status: Boolean,
+    val status: Boolean = true,
 
     @SerialName("table_id")
     val table: String,
+
+    @SerialName("state_id")
+    val state_id: String,
+
+    @SerialName("permission_id")
+    val permission_id: String
 )

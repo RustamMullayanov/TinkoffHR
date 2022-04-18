@@ -19,7 +19,9 @@ fun Worker.toDb(): WorkerEntityForDB =
         table = this.table,
         function = this.function,
         about = this.about,
-        status = this.status.value
+        status = this.status.value,
+        state_id = this.state_id,
+        permission_id = this.permission_id
     )
 
 fun WorkerEntityForDB.toDomain(): Worker =
@@ -34,7 +36,9 @@ fun WorkerEntityForDB.toDomain(): Worker =
         table = this.table,
         function = this.function,
         about = this.about,
-        status = WorkerStatus.fromValue(this.status)
+        status = WorkerStatus.fromValue(this.status),
+        state_id = this.state_id,
+        permission_id = this.permission_id
     )
 
 fun WorkerEntityForApi.toDomain(): Worker =
@@ -49,6 +53,8 @@ fun WorkerEntityForApi.toDomain(): Worker =
         function = this.function,
         about = this.about,
         status = WorkerStatus.fromValue(this.status),
+        state_id = this.state_id,
+        permission_id = this.permission_id
     )
 
 fun UpdatedWorkerInfo.toApi(): UpdatedWorkerInfoForApi =
@@ -57,5 +63,7 @@ fun UpdatedWorkerInfo.toApi(): UpdatedWorkerInfoForApi =
         function = this.function,
         project = this.project,
         status = WorkerStatus.fromBoolean(this.status),
-        table = this.table
+        table = this.table,
+        state_id = this.state_id,
+        permission_id = this.permission_id
     )

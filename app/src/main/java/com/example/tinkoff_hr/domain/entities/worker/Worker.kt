@@ -2,8 +2,6 @@ package com.example.tinkoff_hr.domain.entities.worker
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
 @Parcelize
 data class Worker(
@@ -17,5 +15,7 @@ data class Worker(
     val table: String,
     val function: String,
     val about: String,
-    val status: WorkerStatus
+    val status: WorkerStatus = WorkerStatus.ACTIVE,
+    val state_id: String,
+    val permission_id: String
 ) : Parcelable
