@@ -54,7 +54,7 @@ class EateryInfoPresenter @Inject constructor(
                 viewState.setRestaurantReviewInfo(newReview)
                 viewState.showSuccess("Отзыв успешно сохранен")
             }, { error ->
-                viewState.showError("Данные недоступны, повторите попытку позже")
+                viewState.showError("Отзыв не сохранен, повторите попытку позже")
                 Timber.e(error)
             }).disposeOnFinish()
     }

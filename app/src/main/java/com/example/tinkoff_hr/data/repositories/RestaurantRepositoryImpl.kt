@@ -26,12 +26,10 @@ class RestaurantRepositoryImpl @Inject constructor(
 
     private val reviews: List<RestaurantReview> = listOf(
         RestaurantReview(
-            "1", "test1@tin.koff", "Муллаянов Рустам Радикович",
-            5.0, "1", "все отлично"
+            "1", "test1@tin.koff", 5.0, "1", "все отлично"
         ),
         RestaurantReview(
-            "2", "test2@tin.koff", "Крыш Андрей Константинович",
-            5.0, "1", "пойдет"
+            "2", "test2@tin.koff", 5.0, "1", "пойдет"
         )
     )
 
