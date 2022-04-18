@@ -56,7 +56,7 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
             fieldMail.setText(worker.email)
             fieldAbout.setText(worker.about)
             fieldFunction.setText(worker.function)
-            fieldProject.setText(worker.project.toString())
+            fieldProject.setText(worker.project)
         }
         supportActionBar?.title = "${worker.surname} ${worker.name}"
     }

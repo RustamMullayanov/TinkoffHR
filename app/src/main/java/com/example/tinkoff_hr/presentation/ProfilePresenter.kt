@@ -1,6 +1,7 @@
 package com.example.tinkoff_hr.presentation
 
 import com.example.tinkoff_hr.base.BasePresenter
+import com.example.tinkoff_hr.data.UserCacheManager
 import com.example.tinkoff_hr.domain.entities.worker.UpdatedWorkerInfo
 import com.example.tinkoff_hr.domain.entities.worker.Worker
 import com.example.tinkoff_hr.domain.usecases.GetWorkerInfoByIdUseCase
@@ -28,6 +29,7 @@ class ProfilePresenter @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ worker ->
+                UserCacheManager.setUserCache(worker)
                 viewState.showWorkerInfo(worker)
             }, { error ->
                 viewState.showError("Данные недоступны, повторите попытку позже")
