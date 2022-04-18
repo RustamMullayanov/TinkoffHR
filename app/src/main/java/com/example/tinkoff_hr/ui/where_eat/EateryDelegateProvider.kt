@@ -10,7 +10,7 @@ import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
 object EateryDelegateProvider {
     fun provideDelegate(
-        itemClickListener: (id:String) -> Unit
+        itemClickListener: (id: String) -> Unit
     ) = adapterDelegateViewBinding<Restaurant, BaseListItem, ItemEateryBinding>(
         { layoutInflater, root -> ItemEateryBinding.inflate(layoutInflater, root, false) }
     ) {
