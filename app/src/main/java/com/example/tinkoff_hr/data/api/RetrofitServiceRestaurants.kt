@@ -10,16 +10,16 @@ import retrofit2.http.Path
 
 interface RetrofitServiceRestaurants {
     // Requests for Restaurants and RestaurantsReviews
-    @GET("/api/faq/restaurants")
+    @GET("/api/restaurants")
     fun getRestaurantsList(): EnvelopeCall<List<RestaurantEntityForApi>>
 
-    @GET("/api/faq/restaurants/{id}")
+    @GET("/api/restaurants/{id}")
     fun getRestaurantById(@Path("id") id: String): EnvelopeCall<RestaurantEntityForApi>
 
-    @GET("/api/restaurants/{id}/reviews")
+    @GET("/restaurants/{id}/reviews")
     fun getRestaurantsReviewsList(@Path("id") id: String): EnvelopeCall<List<RestaurantReviewEntityForApi>>
 
-    @POST("/api/restaurants/{id}/reviews")
+    @POST("/restaurants/{id}/reviews")
     fun saveRestaurantReview(
         @Path("id") id: String,
         @Body review: RestaurantReviewEntityForApi
