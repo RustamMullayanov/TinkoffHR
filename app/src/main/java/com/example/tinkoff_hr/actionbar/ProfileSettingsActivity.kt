@@ -64,7 +64,9 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
                 binding.fieldFunction.text.toString(),
                 binding.fieldProject.text.toString(),
                 WorkerStatus.ACTIVE,
-                "4b503258-b57d-47c7-8b8c-ecf6337fbb0d"
+                "4b503258-b57d-47c7-8b8c-ecf6337fbb0d",
+                "",
+                ""
             )
             profilePresenter.onSaveWorkerClicked(worker)
         }

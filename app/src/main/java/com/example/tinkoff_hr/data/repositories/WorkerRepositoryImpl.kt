@@ -25,7 +25,9 @@ class WorkerRepositoryImpl @Inject constructor(
             "1",
             "мобильный разработчик",
             "20 лет",
-            WorkerStatus.ACTIVE
+            WorkerStatus.ACTIVE,
+            "",
+            ""
         ),
         Worker(
             "2",
@@ -38,7 +40,9 @@ class WorkerRepositoryImpl @Inject constructor(
             "2",
             "мобильный разработчик",
             "люблю Warface",
-            WorkerStatus.ACTIVE
+            WorkerStatus.ACTIVE,
+            "",
+            ""
         )
     )
 

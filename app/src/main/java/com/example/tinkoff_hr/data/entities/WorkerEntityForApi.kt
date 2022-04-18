@@ -30,7 +30,7 @@ class WorkerEntityForApi(
     @SerialName("table_id")
     val table: String,
 
-    @SerialName("function_name")
+    @SerialName("function")
     val function: String,
 
     @SerialName("about_worker")
