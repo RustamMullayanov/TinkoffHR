@@ -1,10 +1,8 @@
 package com.example.tinkoff_hr.ui.where_eat.eatery_information
 
 import android.annotation.SuppressLint
-import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.ui.tribute.item.BaseListItem
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
-import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegate
 
 
 class ReviewEateryAdapter : ListDelegationAdapter<List<BaseListItem>>(){

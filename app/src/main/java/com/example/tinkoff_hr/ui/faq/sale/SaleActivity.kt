@@ -1,8 +1,6 @@
 package com.example.tinkoff_hr.ui.faq.sale
 
-import android.app.AlertDialog
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -12,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.ActivitySaleBinding
 import com.example.tinkoff_hr.ui.faq.sale.sale_partner.SalePartnerActivity
-import com.example.tinkoff_hr.ui.tribute.MyListAdapter
 import com.example.tinkoff_hr.ui.tribute.item.TitleItem
 
 class SaleActivity : AppCompatActivity() {
