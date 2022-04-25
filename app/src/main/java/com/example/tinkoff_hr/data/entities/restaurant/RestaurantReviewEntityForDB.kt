@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "restaurant_reviews")
+@Entity(tableName = RestaurantReviewEntityForDB.TABLE_NAME)
 class RestaurantReviewEntityForDB(
 
     @PrimaryKey @ColumnInfo(name = "review_id")
@@ -30,4 +30,8 @@ class RestaurantReviewEntityForDB(
 
     @ColumnInfo(name = "worker_patronymic")
     val workerPatronymic: String
-)
+) {
+    companion object {
+        const val TABLE_NAME = "restaurant_reviews"
+    }
+}
