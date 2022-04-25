@@ -1,5 +1,6 @@
 package com.example.tinkoff_hr.data.repositories
 
+import com.example.tinkoff_hr.data.UserCacheManager
 import com.example.tinkoff_hr.data.api.RetrofitServiceWorkers
 import com.example.tinkoff_hr.data.dto.toDomain
 import com.example.tinkoff_hr.data.entities.UpdatedWorkerInfoForApi
@@ -11,7 +12,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class WorkerRepositoryImpl @Inject constructor(
-    private val retrofitService: RetrofitServiceWorkers
+    private val retrofitService: RetrofitServiceWorkers,
 ) : WorkerRepository {
     private val workers: List<Worker> = listOf(
         Worker(
@@ -68,5 +69,9 @@ class WorkerRepositoryImpl @Inject constructor(
 
     override fun updateWorkerInfo(id: String, worker: UpdatedWorkerInfoForApi): Completable {
         return retrofitService.updateWorkerById(id, worker).asCompletable()
+    }
+
+    override fun saveUserCache(user: Worker) {
+        UserCacheManager.setUserCache(user)
     }
 }

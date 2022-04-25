@@ -5,6 +5,7 @@ import com.example.tinkoff_hr.data.UserCacheManager
 import com.example.tinkoff_hr.domain.entities.worker.UpdatedWorkerInfo
 import com.example.tinkoff_hr.domain.entities.worker.Worker
 import com.example.tinkoff_hr.domain.usecases.GetWorkerInfoByIdUseCase
+import com.example.tinkoff_hr.domain.usecases.SaveUserCacheUseCase
 import com.example.tinkoff_hr.domain.usecases.UpdateWorkerByIdUseCase
 import com.example.tinkoff_hr.views.ProfileView
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,7 +17,8 @@ import javax.inject.Inject
 @InjectViewState
 class ProfilePresenter @Inject constructor(
     private val getWorkerInfoById: GetWorkerInfoByIdUseCase,
-    private val updateWorkerById: UpdateWorkerByIdUseCase
+    private val updateWorkerById: UpdateWorkerByIdUseCase,
+    private val saveUserCacheUseCase: SaveUserCacheUseCase
 ) : BasePresenter<ProfileView>() {
 
     override fun onFirstViewAttach() {
@@ -26,10 +28,10 @@ class ProfilePresenter @Inject constructor(
 
     private fun onAppearing(id: String) {
         getWorkerInfoById(id)
+            .doOnSuccess { worker -> saveUserCache(worker) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ worker ->
-                UserCacheManager.setUserCache(worker)
                 viewState.showWorkerInfo(worker)
             }, { error ->
                 viewState.showError("Данные недоступны, повторите попытку позже")
@@ -48,5 +50,9 @@ class ProfilePresenter @Inject constructor(
                     Timber.e(error)
                 })
             .disposeOnFinish()
+    }
+
+    private fun saveUserCache(user: Worker){
+        saveUserCacheUseCase(user)
     }
 }

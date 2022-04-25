@@ -15,4 +15,6 @@ interface WorkerRepository {
     fun searchWorkerInfoByName(searchedText: String): List<Worker>
 
     fun updateWorkerInfo(id: String, worker: UpdatedWorkerInfoForApi): Completable
+
+    fun saveUserCache(user: Worker)
 }
