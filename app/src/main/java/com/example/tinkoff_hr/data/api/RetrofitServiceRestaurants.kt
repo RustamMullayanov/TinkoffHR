@@ -23,5 +23,5 @@ interface RetrofitServiceRestaurants {
     fun saveRestaurantReview(
         @Path("id") id: String,
         @Body review: RestaurantReviewEntityForApi
-    ): EnvelopeCall<RestaurantReviewEntityForApi>
+    ): EnvelopeCall<Unit>
 }

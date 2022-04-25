@@ -55,12 +55,12 @@ class EateryInfoPresenter @Inject constructor(
             .map { r -> factory.createRestaurantReviewItem(r) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ newReview ->
-                viewState.setRestaurantReviewInfo(newReview)
-                viewState.showSuccess("Отзыв успешно сохранен")
-            }, { error ->
-                viewState.showError("Отзыв не сохранен, повторите попытку позже")
-                Timber.e(error)
-            }).disposeOnFinish()
+            .subscribe(
+                { viewState.showSuccess("Отзыв сохранен и отправлен на премодерацию") },
+                { error ->
+                    viewState.showError("Отзыв не сохранен, повторите попытку позже")
+                    Timber.e(error)
+                })
+            .disposeOnFinish()
     }
 }

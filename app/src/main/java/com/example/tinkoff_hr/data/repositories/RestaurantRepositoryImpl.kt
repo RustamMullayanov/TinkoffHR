@@ -7,6 +7,7 @@ import com.example.tinkoff_hr.data.entities.restaurant.RestaurantReviewEntityFor
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.domain.repositories_interface.RestaurantRepository
+import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -51,8 +52,7 @@ class RestaurantRepositoryImpl @Inject constructor(
     override fun saveRestaurantReview(
         restaurantId: String,
         reviewApi: RestaurantReviewEntityForApi
-    ): Single<RestaurantReview> {
-        return retrofitService.saveRestaurantReview(restaurantId, reviewApi).asSingle()
-            .map { review -> review.toDomain() }
+    ): Completable {
+        return retrofitService.saveRestaurantReview(restaurantId, reviewApi).asCompletable()
     }
 }
