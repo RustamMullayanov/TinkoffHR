@@ -5,7 +5,8 @@
     android:id="@+id/card_education"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_marginHorizontal="15dp"
+    android:layout_marginVertical="10dp"
     android:background="@color/white"
     android:checkable="true"
     android:clickable="true"
@@ -20,8 +21,10 @@
             android:id="@+id/logo_sale"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_margin="5dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/name_sale"
@@ -35,20 +38,24 @@
             app:layout_constraintBottom_toTopOf="@id/information_sale"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/logo_sale"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/logo_sale"
+            tools:text="@tools:sample/first_names" />
 
         <TextView
             android:id="@+id/information_sale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
             android:fontFamily="@font/roboto_regular"
             android:textAlignment="center"
             android:textColor="@color/very_soft_violet"
             android:textSize="18sp"
+            android:layout_marginBottom="5dp"
             app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/logo_sale" />
+            app:layout_constraintStart_toEndOf="@id/logo_sale"
+            tools:text="@tools:sample/lorem[20]" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

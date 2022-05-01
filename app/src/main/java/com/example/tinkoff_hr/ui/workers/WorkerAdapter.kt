@@ -1,49 +1,27 @@
 package com.example.tinkoff_hr.ui.workers
 
 import android.annotation.SuppressLint
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.example.tinkoff_hr.R
-import com.example.tinkoff_hr.databinding.CardWorkerBinding
 import com.example.tinkoff_hr.domain.entities.worker.Worker
+import com.example.tinkoff_hr.domain.entities.worker.WorkerItem
+import com.example.tinkoff_hr.ui.tribute.item.BaseListItem
+import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 
-class WorkerAdapter(private val clickListener: (Worker) -> Unit) :
-    RecyclerView.Adapter<WorkerAdapter.WorkerHolder>() {
-    private var workers: List<Worker> = emptyList()
+class WorkerAdapter(clickListener: ClickListener) : ListDelegationAdapter<List<BaseListItem>>() {
 
-    class WorkerHolder(val viewBinding: CardWorkerBinding) :
-        RecyclerView.ViewHolder(viewBinding.root)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkerHolder {
-        val binding = CardWorkerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
-        return WorkerHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: WorkerHolder, position: Int) {
-        val item = workers[position]
-        with(holder.viewBinding) {
-
-            nameFieldWorker.text = "${item.surname} ${item.name} ${item.patronymic ?: ""}"
-            functionFieldWorker.text = item.function
-            projectFieldWorker.text = item.project.toString()
-            photoWorker.setImageResource(R.drawable.ic_account_circle_24)
+    init {
+        delegatesManager.apply {
+            addDelegate(WorkerDelegateProvider.provideDelegate(clickListener::onWorkerClicked))
         }
-
-        holder.itemView.setOnClickListener {
-            clickListener.invoke(item)
-        }
-    }
-
-    override fun getItemCount(): Int {
-        return workers.size
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setList(list: List<Worker>) {
-        workers = list
+    fun setNewItems(newItems: List<BaseListItem>) {
+        items = newItems
         notifyDataSetChanged()
+    }
+
+    interface ClickListener {
+        fun onWorkerClicked(worker: WorkerItem)
     }
 
 }

@@ -1,7 +1,8 @@
 package com.example.tinkoff_hr.presentation
 
 import com.example.tinkoff_hr.base.BasePresenter
-import com.example.tinkoff_hr.domain.entities.worker.Worker
+import com.example.tinkoff_hr.domain.entities.worker.WorkerItem
+import com.example.tinkoff_hr.domain.factories.DataItemFactory
 import com.example.tinkoff_hr.domain.usecases.GetWorkersInfoUseCase
 import com.example.tinkoff_hr.domain.usecases.SearchWorkersInfoByNameUseCase
 import com.example.tinkoff_hr.views.WorkersView
@@ -18,14 +19,14 @@ class WorkersPresenter @Inject constructor(
 ) : BasePresenter<WorkersView>() {
 
     // workaround until real search doesn't work
-    private var workers: List<Worker>? = null
+    private var workers: List<WorkerItem>? = null
 
     override fun onFirstViewAttach() {
         getWorkers()
     }
 
     private fun getWorkers() {
-        getWorkersInfo()
+        getWorkersInfo().map { list -> DataItemFactory.createWorkerItems(list) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ workers ->

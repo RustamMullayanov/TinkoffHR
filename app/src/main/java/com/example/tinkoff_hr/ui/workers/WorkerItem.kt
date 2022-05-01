@@ -1,11 +1,12 @@
 package com.example.tinkoff_hr.domain.entities.worker
 
 import android.os.Parcelable
+import com.example.tinkoff_hr.ui.tribute.item.BaseListItem
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Worker(
-    val id: String,
+data class WorkerItem(
+    override val id: String,
     val email: String,
     val name: String,
     val surname: String,
@@ -15,7 +16,7 @@ data class Worker(
     val table: String,
     val function: String,
     val about: String,
-    val status: WorkerStatus = WorkerStatus.ACTIVE,
+    val status: WorkerStatus,
     val state_id: String,
     val permission_id: String
-) : Parcelable
+) : BaseListItem, Parcelable

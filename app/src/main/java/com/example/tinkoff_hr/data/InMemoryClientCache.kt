@@ -18,7 +18,7 @@ object InMemoryClientCache {
         "мобильный разработчик",
         "люблю Warface",
         WorkerStatus.ACTIVE,
-        "",
-        ""
+        "1",
+        "1"
     )
 }

@@ -1,16 +1,15 @@
 package com.example.tinkoff_hr.ui.workers
 
 import android.os.Bundle
-
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
+import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentWorkersBinding
-import com.example.tinkoff_hr.domain.entities.worker.Worker
+import com.example.tinkoff_hr.domain.entities.worker.WorkerItem
+import com.example.tinkoff_hr.domain.entities.worker.WorkerStatus
 import com.example.tinkoff_hr.presentation.WorkersPresenter
 import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 import com.example.tinkoff_hr.views.WorkersView
@@ -20,57 +19,47 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 
-class WorkersFragment : MvpAppCompatFragment(), WorkersView {
+class WorkersFragment : MvpAppCompatFragment(R.layout.fragment_workers), WorkersView {
 
     @Inject
     lateinit var presenterProvider: Provider<WorkersPresenter>
 
     private val workersPresenter by moxyPresenter { presenterProvider.get() }
 
-    private var _binding: FragmentWorkersBinding? = null
+    private lateinit var binding: FragmentWorkersBinding
     private lateinit var workerAdapter: WorkerAdapter
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreate(savedInstanceState: Bundle?){
+    override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
+    }
 
-        workerAdapter = WorkerAdapter { worker ->
-            startActivity(WorkerProfileActivity.createIntent(requireContext(), worker))
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentWorkersBinding.bind(view)
+
+        workerAdapter = WorkerAdapter(clickListener)
+
+        with(binding) {
+            recWorkers.apply {
+                layoutManager = LinearLayoutManager(this.context)
+                adapter = workerAdapter
+            }
+
+            textSearch.setEndIconOnClickListener {
+                val workerName = fieldSearch.text.toString()
+                workersPresenter.filterWorkersByName(workerName)
+            }
+
+            fieldSearch.addTextChangedListener {
+                if (fieldSearch.text.toString().isEmpty())
+                    workersPresenter.filterWorkersByName("")
+            }
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentWorkersBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        binding.recWorkers.apply {
-            layoutManager = LinearLayoutManager(this.context)
-            adapter = workerAdapter
-        }
-
-        binding.textSearch.setEndIconOnClickListener {
-            val workerName = binding.fieldSearch.text.toString()
-            workersPresenter.filterWorkersByName(workerName)
-        }
-
-        binding.fieldSearch.addTextChangedListener{
-            if(binding.fieldSearch.text.toString().isEmpty())
-                workersPresenter.filterWorkersByName("")
-        }
-
-        return root
-    }
-
-    override fun showWorkersInfo(workers: List<Worker>) {
-        workerAdapter.setList(workers)
+    override fun showWorkersInfo(workers: List<WorkerItem>) {
+        workerAdapter.setNewItems(workers)
     }
 
     override fun showError(message: String) {
@@ -79,5 +68,13 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
 
     override fun showSuccess(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    private val clickListener = object : WorkerAdapter.ClickListener {
+
+        override fun onWorkerClicked(worker: WorkerItem) {
+            startActivity(WorkerProfileActivity.createIntent(requireContext(), worker))
+        }
+
     }
 }

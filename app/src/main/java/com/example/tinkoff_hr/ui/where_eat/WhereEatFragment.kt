@@ -1,12 +1,11 @@
 package com.example.tinkoff_hr.ui.where_eat
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
+import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentWhereEatBinding
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.presentation.restaurant.WhereEatPresenter
@@ -21,38 +20,46 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 
-class WhereEatFragment : MvpAppCompatFragment(), WhereEatView, OnMapReadyCallback {
+class WhereEatFragment : MvpAppCompatFragment(R.layout.fragment_where_eat), WhereEatView,
+    OnMapReadyCallback {
 
     @Inject
     lateinit var presenterProvider: Provider<WhereEatPresenter>
 
     private val whereEatPresenter by moxyPresenter { presenterProvider.get() }
 
-    private var _binding: FragmentWhereEatBinding? = null
     private lateinit var eateryAdapter: EateryAdapter
     private lateinit var googleMap: GoogleMap
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentWhereEatBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
-
-        eateryAdapter = EateryAdapter { id ->
-            startActivity(EateryInformationActivity.createIntent(requireContext(), id))
-        }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentWhereEatBinding.bind(view)
 
-        _binding = FragmentWhereEatBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        eateryAdapter = EateryAdapter(clickListener)
+        //хардкод данный
+        /*eateryAdapter.setNewItems(
+            listOf(
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
+
+                )
+        )*/
 
         val bottomSheetBehavior = BottomSheetBehavior.from(binding.sheet.bottomSheetWhereEat)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
@@ -81,13 +88,6 @@ class WhereEatFragment : MvpAppCompatFragment(), WhereEatView, OnMapReadyCallbac
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
             binding.btnExpend.hide()
         }
-
-        return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onMapReady(map: GoogleMap) {
@@ -95,7 +95,7 @@ class WhereEatFragment : MvpAppCompatFragment(), WhereEatView, OnMapReadyCallbac
     }
 
     override fun setRestaurantsInfo(restaurants: List<Restaurant>) {
-        eateryAdapter.setList(restaurants)
+        eateryAdapter.setNewItems(restaurants)
     }
 
     override fun showError(message: String) {
@@ -104,5 +104,11 @@ class WhereEatFragment : MvpAppCompatFragment(), WhereEatView, OnMapReadyCallbac
 
     override fun showSuccess(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    private val clickListener = object : EateryAdapter.ClickListener {
+        override fun onEateryClicked(id: String) {
+            startActivity(EateryInformationActivity.createIntent(requireContext(), id))
+        }
     }
 }
