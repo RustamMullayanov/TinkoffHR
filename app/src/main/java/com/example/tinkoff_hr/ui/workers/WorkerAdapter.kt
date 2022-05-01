@@ -21,7 +21,7 @@ class WorkerAdapter(clickListener: ClickListener) : ListDelegationAdapter<List<B
     }
 
     interface ClickListener {
-        fun onWorkerClicked(worker: WorkerItem)
+        fun onWorkerClicked(workerId: String)
     }
 
 }

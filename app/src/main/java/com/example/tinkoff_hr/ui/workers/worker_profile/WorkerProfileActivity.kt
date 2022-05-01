@@ -27,7 +27,8 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
         ActivityWorkerProfileBinding.inflate(layoutInflater)
     }
 
-    private val worker: WorkerItem by lazy { intent.getParcelableExtra(EXTRA_WORKER)!! }
+    //private val worker: WorkerItem by lazy { intent.getParcelableExtra(EXTRA_WORKER)!! }
+    private val workerId: String by lazy { intent.getStringExtra(EXTRA_WORKER_ID)!! }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
@@ -35,9 +36,7 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        //workerProfilePresenter.onAppearing(workerId)
-        showWorkerInfo(worker)
+        workerProfilePresenter.onAppearing(workerId)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -51,7 +50,7 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun showWorkerInfo(worker: WorkerItem) {
+    override fun showWorkerInfo(worker: Worker) {
         with(binding) {
             fieldFullName.setText("${worker.surname} ${worker.name} ${worker.patronymic ?: ""}")
             fieldMail.setText(worker.email)
@@ -72,11 +71,11 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
 
     companion object {
 
-        private const val EXTRA_WORKER = "extra_worker"
+        private const val EXTRA_WORKER_ID = "extra_worker_id"
 
-        fun createIntent(context: Context, worker: WorkerItem): Intent {
+        fun createIntent(context: Context, workerId: String): Intent {
             return Intent(context, WorkerProfileActivity::class.java).apply {
-                putExtra(EXTRA_WORKER, worker)
+                putExtra(EXTRA_WORKER_ID, workerId)
             }
         }
     }
