@@ -2,7 +2,6 @@ package com.example.tinkoff_hr.presentation
 
 import com.example.tinkoff_hr.base.BasePresenter
 import com.example.tinkoff_hr.domain.entities.worker.UpdatedWorkerInfo
-import com.example.tinkoff_hr.domain.entities.worker.Worker
 import com.example.tinkoff_hr.domain.usecases.GetWorkerInfoByIdUseCase
 import com.example.tinkoff_hr.domain.usecases.UpdateWorkerByIdUseCase
 import com.example.tinkoff_hr.views.ProfileView

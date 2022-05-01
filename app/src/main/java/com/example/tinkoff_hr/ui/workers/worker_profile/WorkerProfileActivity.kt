@@ -8,7 +8,6 @@ import android.widget.Toast
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.databinding.ActivityWorkerProfileBinding
 import com.example.tinkoff_hr.domain.entities.worker.Worker
-import com.example.tinkoff_hr.domain.entities.worker.WorkerItem
 import com.example.tinkoff_hr.presentation.WorkerProfilePresenter
 import com.example.tinkoff_hr.views.WorkerProfileView
 import moxy.MvpAppCompatActivity
@@ -27,7 +26,6 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
         ActivityWorkerProfileBinding.inflate(layoutInflater)
     }
 
-    //private val worker: WorkerItem by lazy { intent.getParcelableExtra(EXTRA_WORKER)!! }
     private val workerId: String by lazy { intent.getStringExtra(EXTRA_WORKER_ID)!! }
 
     override fun onCreate(savedInstanceState: Bundle?) {
