@@ -1,6 +1,7 @@
 package com.example.tinkoff_hr.domain.entities.worker
 
 import android.os.Parcelable
+import com.example.tinkoff_hr.ui.tribute.item.BaseListItem
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="10dp"
@@ -21,7 +22,8 @@
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/name_worker"
@@ -53,7 +55,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@id/function_worker"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/full_names" />
 
         <TextView
             android:id="@+id/function_worker"
@@ -84,7 +87,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@id/function_worker"
-            app:layout_constraintTop_toBottomOf="@id/name_field_worker" />
+            app:layout_constraintTop_toBottomOf="@id/name_field_worker"
+            tools:text="@tools:sample/lorem[2]" />
 
         <TextView
             android:id="@+id/project_worker"
@@ -114,7 +118,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@id/function_worker"
-            app:layout_constraintTop_toBottomOf="@id/function_field_worker" />
+            app:layout_constraintTop_toBottomOf="@id/function_field_worker"
+            tools:text="@tools:sample/lorem[2]" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

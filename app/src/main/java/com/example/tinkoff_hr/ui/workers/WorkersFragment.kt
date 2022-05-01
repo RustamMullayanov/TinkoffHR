@@ -1,7 +1,6 @@
 package com.example.tinkoff_hr.ui.workers
 
 import android.os.Bundle
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,11 +38,8 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
 
-        workerAdapter = WorkerAdapter { worker ->
-            startActivity(WorkerProfileActivity.createIntent(requireContext(), worker))
-        }
-
-        /*workerAdapter.setList(
+        workerAdapter = WorkerAdapter(clickListener)
+        workerAdapter.setNewItems(
             listOf(
                 Worker(
                     "1",
@@ -124,7 +120,7 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
                     WorkerStatus.ACTIVE
                 ),
             )
-        )*/
+        )
     }
 
     override fun onCreateView(
@@ -154,7 +150,7 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
     }
 
     override fun showWorkersInfo(workers: List<Worker>) {
-        workerAdapter.setList(workers)
+        workerAdapter.setNewItems(workers)
     }
 
     override fun showError(message: String) {
@@ -163,5 +159,13 @@ class WorkersFragment : MvpAppCompatFragment(), WorkersView {
 
     override fun showSuccess(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    private val clickListener = object : WorkerAdapter.ClickListener {
+
+        override fun onWorkerClicked(worker: Worker) {
+            startActivity(WorkerProfileActivity.createIntent(requireContext(), worker))
+        }
+
     }
 }
