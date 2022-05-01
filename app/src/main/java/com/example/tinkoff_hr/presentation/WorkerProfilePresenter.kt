@@ -1,6 +1,7 @@
 package com.example.tinkoff_hr.presentation
 
 import com.example.tinkoff_hr.base.BasePresenter
+import com.example.tinkoff_hr.data.dto.toListItem
 import com.example.tinkoff_hr.domain.usecases.GetWorkerInfoByIdUseCase
 import com.example.tinkoff_hr.views.WorkerProfileView
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -17,7 +18,7 @@ class WorkerProfilePresenter @Inject constructor(
     // Хотел сделать через onFirstViewAttach(),
     // но не нашел как передать презентеру в конструктор email
     fun onAppearing(id: String) {
-        getWorkerInfoById(id)
+        getWorkerInfoById(id).map { worker -> worker.toListItem() }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ worker ->

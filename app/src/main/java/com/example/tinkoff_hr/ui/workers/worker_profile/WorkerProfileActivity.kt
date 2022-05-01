@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.databinding.ActivityWorkerProfileBinding
 import com.example.tinkoff_hr.domain.entities.worker.Worker
+import com.example.tinkoff_hr.domain.entities.worker.WorkerItem
 import com.example.tinkoff_hr.presentation.WorkerProfilePresenter
 import com.example.tinkoff_hr.views.WorkerProfileView
 import moxy.MvpAppCompatActivity
@@ -26,7 +27,7 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
         ActivityWorkerProfileBinding.inflate(layoutInflater)
     }
 
-    private val worker: Worker by lazy { intent.getParcelableExtra(EXTRA_WORKER)!! }
+    private val worker: WorkerItem by lazy { intent.getParcelableExtra(EXTRA_WORKER)!! }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
@@ -50,13 +51,13 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun showWorkerInfo(worker: Worker) {
+    override fun showWorkerInfo(worker: WorkerItem) {
         with(binding) {
             fieldFullName.setText("${worker.surname} ${worker.name} ${worker.patronymic ?: ""}")
             fieldMail.setText(worker.email)
             fieldAbout.setText(worker.about)
             fieldFunction.setText(worker.function)
-            fieldProject.setText(worker.project.toString())
+            fieldProject.setText(worker.project)
         }
         supportActionBar?.title = "${worker.surname} ${worker.name}"
     }
@@ -73,9 +74,9 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
 
         private const val EXTRA_WORKER = "extra_worker"
 
-        fun createIntent(context: Context, email: Worker): Intent {
+        fun createIntent(context: Context, worker: WorkerItem): Intent {
             return Intent(context, WorkerProfileActivity::class.java).apply {
-                putExtra(EXTRA_WORKER, email)
+                putExtra(EXTRA_WORKER, worker)
             }
         }
     }

@@ -1,16 +1,14 @@
 package com.example.tinkoff_hr.ui.workers
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentWorkersBinding
-import com.example.tinkoff_hr.domain.entities.worker.Worker
+import com.example.tinkoff_hr.domain.entities.worker.WorkerItem
 import com.example.tinkoff_hr.domain.entities.worker.WorkerStatus
 import com.example.tinkoff_hr.presentation.WorkersPresenter
 import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
@@ -42,90 +40,6 @@ class WorkersFragment : MvpAppCompatFragment(R.layout.fragment_workers), Workers
 
         workerAdapter = WorkerAdapter(clickListener)
 
-        //хардкод данные
-        /*workerAdapter.setNewItems(
-            listOf(
-                Worker(
-                    "1",
-                    "mail",
-                    "Ivan",
-                    "Kurtka",
-                    "Ivanovich",
-                    null,
-                    "WoT",
-                    "1",
-                    "cybersport",
-                    "the best",
-                    WorkerStatus.ACTIVE
-                ),
-                Worker(
-                    "1",
-                    "mail",
-                    "Ivan",
-                    "Kurtka",
-                    "Ivanovich",
-                    null,
-                    "WoT",
-                    "1",
-                    "cybersport",
-                    "the best",
-                    WorkerStatus.ACTIVE
-                ),
-                Worker(
-                    "1",
-                    "mail",
-                    "Ivan",
-                    "Kurtka",
-                    "Ivanovich",
-                    null,
-                    "WoT",
-                    "1",
-                    "cybersport",
-                    "the best",
-                    WorkerStatus.ACTIVE
-                ),
-                Worker(
-                    "1",
-                    "mail",
-                    "Ivan",
-                    "Kurtka",
-                    "Ivanovich",
-                    null,
-                    "WoT",
-                    "1",
-                    "cybersport",
-                    "the best",
-                    WorkerStatus.ACTIVE
-                ),
-                Worker(
-                    "1",
-                    "mail",
-                    "Ivan",
-                    "Kurtka",
-                    "Ivanovich",
-                    null,
-                    "WoT",
-                    "1",
-                    "cybersport",
-                    "the best",
-                    WorkerStatus.ACTIVE
-                ),
-                Worker(
-                    "1",
-                    "mail",
-                    "Ivan",
-                    "Kurtka",
-                    "Ivanovich",
-                    null,
-                    "WoT",
-                    "1",
-                    "cybersport",
-                    "the best",
-                    WorkerStatus.ACTIVE
-                ),
-            )
-        )*/
-
         with(binding) {
             recWorkers.apply {
                 layoutManager = LinearLayoutManager(this.context)
@@ -144,7 +58,7 @@ class WorkersFragment : MvpAppCompatFragment(R.layout.fragment_workers), Workers
         }
     }
 
-    override fun showWorkersInfo(workers: List<Worker>) {
+    override fun showWorkersInfo(workers: List<WorkerItem>) {
         workerAdapter.setNewItems(workers)
     }
 
@@ -158,7 +72,7 @@ class WorkersFragment : MvpAppCompatFragment(R.layout.fragment_workers), Workers
 
     private val clickListener = object : WorkerAdapter.ClickListener {
 
-        override fun onWorkerClicked(worker: Worker) {
+        override fun onWorkerClicked(worker: WorkerItem) {
             startActivity(WorkerProfileActivity.createIntent(requireContext(), worker))
         }
 

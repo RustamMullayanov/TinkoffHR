@@ -2,6 +2,7 @@ package com.example.tinkoff_hr.ui.workers
 
 import android.annotation.SuppressLint
 import com.example.tinkoff_hr.domain.entities.worker.Worker
+import com.example.tinkoff_hr.domain.entities.worker.WorkerItem
 import com.example.tinkoff_hr.ui.tribute.item.BaseListItem
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 
@@ -20,7 +21,7 @@ class WorkerAdapter(clickListener: ClickListener) : ListDelegationAdapter<List<B
     }
 
     interface ClickListener {
-        fun onWorkerClicked(worker: Worker)
+        fun onWorkerClicked(worker: WorkerItem)
     }
 
 }

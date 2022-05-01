@@ -2,14 +2,14 @@ package com.example.tinkoff_hr.ui.workers
 
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.ItemWorkerBinding
-import com.example.tinkoff_hr.domain.entities.worker.Worker
+import com.example.tinkoff_hr.domain.entities.worker.WorkerItem
 import com.example.tinkoff_hr.ui.tribute.item.BaseListItem
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
 object WorkerDelegateProvider {
     fun provideDelegate(
-        itemClickListener: (Worker) -> Unit
-    ) = adapterDelegateViewBinding<Worker, BaseListItem, ItemWorkerBinding>(
+        itemClickListener: (WorkerItem) -> Unit
+    ) = adapterDelegateViewBinding<WorkerItem, BaseListItem, ItemWorkerBinding>(
         { layoutInflater, root -> ItemWorkerBinding.inflate(layoutInflater, root, false) }
     ) {
         bind {
