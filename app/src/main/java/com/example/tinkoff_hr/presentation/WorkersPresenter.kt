@@ -26,7 +26,8 @@ class WorkersPresenter @Inject constructor(
     }
 
     private fun getWorkers() {
-        getWorkersInfo().map { list -> DataItemFactory.createWorkerItems(list) }
+        getWorkersInfo()
+            .map { list -> DataItemFactory().createWorkerItems(list) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ workers ->
