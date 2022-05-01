@@ -13,7 +13,7 @@ object ReviewEateryDelegateProvider {
     ) {
         bind {
             with(binding) {
-                reviewerName.text = item.workerFullName
+                reviewerName.text = "${item.workerSurname} ${item.workerName} ${item.workerPatronymic ?: ""}"
                 reviewText.text = item.text
                 reviewerPhoto.setImageResource(R.drawable.ic_account_circle_24)
             }
