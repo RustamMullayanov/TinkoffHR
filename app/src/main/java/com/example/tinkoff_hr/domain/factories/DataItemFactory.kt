@@ -32,8 +32,6 @@ class DataItemFactory @Inject constructor() {
             id = this.id,
             name = this.name,
             rating = this.rating,
-            isHasLunch = this.isHasLunch,
-            averageCost = this.averageCost,
             latitude = this.latitude,
             longitude = this.longitude
         )
