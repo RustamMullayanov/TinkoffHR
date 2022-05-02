@@ -41,24 +41,6 @@ class WhereEatFragment : MvpAppCompatFragment(R.layout.fragment_where_eat), Wher
         binding = FragmentWhereEatBinding.bind(view)
 
         eateryAdapter = EateryAdapter(clickListener)
-        //хардкод данный
-        /*eateryAdapter.setNewItems(
-            listOf(
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-
-                )
-        )*/
 
         val bottomSheetBehavior = BottomSheetBehavior.from(binding.sheet.bottomSheetWhereEat)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
