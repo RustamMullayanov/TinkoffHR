@@ -9,7 +9,6 @@ import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentWorkersBinding
 import com.example.tinkoff_hr.domain.entities.worker.WorkerItem
-import com.example.tinkoff_hr.domain.entities.worker.WorkerStatus
 import com.example.tinkoff_hr.presentation.WorkersPresenter
 import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 import com.example.tinkoff_hr.views.WorkersView
@@ -72,8 +71,8 @@ class WorkersFragment : MvpAppCompatFragment(R.layout.fragment_workers), Workers
 
     private val clickListener = object : WorkerAdapter.ClickListener {
 
-        override fun onWorkerClicked(worker: WorkerItem) {
-            startActivity(WorkerProfileActivity.createIntent(requireContext(), worker))
+        override fun onWorkerClicked(workerId: String) {
+            startActivity(WorkerProfileActivity.createIntent(requireContext(), workerId))
         }
 
     }

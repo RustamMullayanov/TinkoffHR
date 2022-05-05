@@ -8,7 +8,7 @@ import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
 object WorkerDelegateProvider {
     fun provideDelegate(
-        itemClickListener: (WorkerItem) -> Unit
+        itemClickListener: (String) -> Unit
     ) = adapterDelegateViewBinding<WorkerItem, BaseListItem, ItemWorkerBinding>(
         { layoutInflater, root -> ItemWorkerBinding.inflate(layoutInflater, root, false) }
     ) {
@@ -20,7 +20,7 @@ object WorkerDelegateProvider {
                 photoWorker.setImageResource(R.drawable.ic_account_circle_24)
             }
             itemView.setOnClickListener {
-                itemClickListener.invoke(item)
+                itemClickListener.invoke(item.id)
             }
         }
     }
