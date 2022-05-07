@@ -1,9 +1,11 @@
 package com.example.tinkoff_hr.domain.factories
 
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
+import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.domain.entities.worker.Worker
 import com.example.tinkoff_hr.ui.workers.WorkerItem
 import com.example.tinkoff_hr.ui.where_eat.RestaurantItem
+import com.example.tinkoff_hr.ui.where_eat.eatery_information.RestaurantReviewItem
 import javax.inject.Inject
 
 class DataItemFactory @Inject constructor() {
@@ -35,4 +37,22 @@ class DataItemFactory @Inject constructor() {
             latitude = this.latitude,
             longitude = this.longitude
         )
+
+    fun createRestaurantReviewItems(reviews: List<RestaurantReview>): List<RestaurantReviewItem> {
+        return reviews.map { review -> review.toListItem() }
+    }
+
+    private fun RestaurantReview.toListItem(): RestaurantReviewItem =
+        RestaurantReviewItem(
+            id = id,
+            workerId = workerId,
+            rating = rating,
+            restaurantId = restaurantId,
+            text = text,
+            workerName = workerName,
+            workerSurname = workerSurname,
+            workerPatronymic = workerPatronymic
+        )
 }
+
+
