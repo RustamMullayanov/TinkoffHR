@@ -1,4 +1,4 @@
-package com.example.tinkoff_hr.domain.entities.worker
+package com.example.tinkoff_hr.ui.workers
 
 import android.os.Parcelable
 import com.example.tinkoff_hr.ui.tribute.item.BaseListItem

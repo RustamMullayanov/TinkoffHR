@@ -2,7 +2,6 @@ package com.example.tinkoff_hr.ui.workers
 
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.ItemWorkerBinding
-import com.example.tinkoff_hr.domain.entities.worker.WorkerItem
 import com.example.tinkoff_hr.ui.tribute.item.BaseListItem
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 

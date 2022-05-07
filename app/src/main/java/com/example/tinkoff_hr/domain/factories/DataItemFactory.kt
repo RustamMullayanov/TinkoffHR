@@ -2,7 +2,7 @@ package com.example.tinkoff_hr.domain.factories
 
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.worker.Worker
-import com.example.tinkoff_hr.domain.entities.worker.WorkerItem
+import com.example.tinkoff_hr.ui.workers.WorkerItem
 import com.example.tinkoff_hr.ui.where_eat.RestaurantItem
 import javax.inject.Inject
 

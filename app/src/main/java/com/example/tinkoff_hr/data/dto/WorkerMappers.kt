@@ -5,7 +5,6 @@ import com.example.tinkoff_hr.data.entities.WorkerEntityForApi
 import com.example.tinkoff_hr.data.entities.WorkerEntityForDB
 import com.example.tinkoff_hr.domain.entities.worker.UpdatedWorkerInfo
 import com.example.tinkoff_hr.domain.entities.worker.Worker
-import com.example.tinkoff_hr.domain.entities.worker.WorkerItem
 import com.example.tinkoff_hr.domain.entities.worker.WorkerStatus
 
 fun Worker.toDb(): WorkerEntityForDB =
