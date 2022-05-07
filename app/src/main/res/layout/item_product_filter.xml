@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:shapeAppearanceOverlay="@style/shapeCutAll"
-    android:backgroundTint="@color/main_purple">
+    android:backgroundTint="@color/main_purple"
+    app:shapeAppearanceOverlay="@style/shapeCutAll">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/white"
         android:layout_marginHorizontal="5dp"
-        tools:text="@tools:sample/lorem"/>
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        tools:text="@tools:sample/lorem" />
 
 </com.google.android.material.card.MaterialCardView>
