@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentWhereEatBinding
-import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.presentation.restaurant.WhereEatPresenter
 import com.example.tinkoff_hr.ui.where_eat.eatery_information.EateryInformationActivity
 import com.example.tinkoff_hr.views.restaurant.WhereEatView
@@ -42,24 +41,6 @@ class WhereEatFragment : MvpAppCompatFragment(R.layout.fragment_where_eat), Wher
         binding = FragmentWhereEatBinding.bind(view)
 
         eateryAdapter = EateryAdapter(clickListener)
-        //хардкод данный
-        /*eateryAdapter.setNewItems(
-            listOf(
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-                Restaurant("1", "KFC", 4.5, false, 367.5, 3.3, 3.3),
-
-                )
-        )*/
 
         val bottomSheetBehavior = BottomSheetBehavior.from(binding.sheet.bottomSheetWhereEat)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
@@ -94,7 +75,7 @@ class WhereEatFragment : MvpAppCompatFragment(R.layout.fragment_where_eat), Wher
         googleMap = map
     }
 
-    override fun setRestaurantsInfo(restaurants: List<Restaurant>) {
+    override fun setRestaurantsInfo(restaurants: List<RestaurantItem>) {
         eateryAdapter.setNewItems(restaurants)
     }
 

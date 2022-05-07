@@ -1,6 +1,7 @@
 package com.example.tinkoff_hr.presentation.restaurant
 
 import com.example.tinkoff_hr.base.BasePresenter
+import com.example.tinkoff_hr.domain.factories.DataItemFactory
 import com.example.tinkoff_hr.domain.usecases.restaurant.GetRestaurantsInfoUseCase
 import com.example.tinkoff_hr.views.restaurant.WhereEatView
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -19,6 +20,7 @@ class WhereEatPresenter @Inject constructor(
 
     private fun setRestaurants() {
         return getRestaurantsInfoUseCase()
+            .map { restaurants -> DataItemFactory().createRestaurantItems(restaurants) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ restaurants ->
