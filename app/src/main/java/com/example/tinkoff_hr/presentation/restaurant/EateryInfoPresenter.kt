@@ -1,7 +1,6 @@
 package com.example.tinkoff_hr.presentation.restaurant
 
 import com.example.tinkoff_hr.base.BasePresenter
-import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.domain.usecases.restaurant.GetRestaurantInfoByIdUseCase
 import com.example.tinkoff_hr.domain.usecases.restaurant.GetReviewsInfoByRestaurantIdUseCase

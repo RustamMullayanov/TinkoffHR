@@ -8,7 +8,7 @@ import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
 object ReviewEateryDelegateProvider {
     fun provideDelegate(
-    ) = adapterDelegateViewBinding<RestaurantReview, BaseListItem, ItemReviewEateryBinding>(
+    ) = adapterDelegateViewBinding<RestaurantReviewItem, BaseListItem, ItemReviewEateryBinding>(
         { layoutInflater, root -> ItemReviewEateryBinding.inflate(layoutInflater, root, false) }
     ) {
         bind {
