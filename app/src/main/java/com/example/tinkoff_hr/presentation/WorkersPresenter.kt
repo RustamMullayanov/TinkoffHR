@@ -1,7 +1,7 @@
 package com.example.tinkoff_hr.presentation
 
 import com.example.tinkoff_hr.base.BasePresenter
-import com.example.tinkoff_hr.domain.entities.worker.WorkerItem
+import com.example.tinkoff_hr.ui.workers.WorkerItem
 import com.example.tinkoff_hr.domain.factories.DataItemFactory
 import com.example.tinkoff_hr.domain.usecases.GetWorkersInfoUseCase
 import com.example.tinkoff_hr.domain.usecases.SearchWorkersInfoByNameUseCase

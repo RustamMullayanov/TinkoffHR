@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentWorkersBinding
-import com.example.tinkoff_hr.domain.entities.worker.WorkerItem
 import com.example.tinkoff_hr.presentation.WorkersPresenter
 import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 import com.example.tinkoff_hr.views.WorkersView
