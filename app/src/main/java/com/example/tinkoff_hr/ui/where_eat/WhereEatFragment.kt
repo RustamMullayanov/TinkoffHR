@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentWhereEatBinding
-import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.presentation.restaurant.WhereEatPresenter
 import com.example.tinkoff_hr.ui.where_eat.eatery_information.EateryInformationActivity
 import com.example.tinkoff_hr.views.restaurant.WhereEatView
@@ -94,7 +93,7 @@ class WhereEatFragment : MvpAppCompatFragment(R.layout.fragment_where_eat), Wher
         googleMap = map
     }
 
-    override fun setRestaurantsInfo(restaurants: List<Restaurant>) {
+    override fun setRestaurantsInfo(restaurants: List<RestaurantItem>) {
         eateryAdapter.setNewItems(restaurants)
     }
 
