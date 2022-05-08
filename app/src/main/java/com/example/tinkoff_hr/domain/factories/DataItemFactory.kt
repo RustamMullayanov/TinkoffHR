@@ -42,6 +42,9 @@ class DataItemFactory @Inject constructor() {
         return reviews.map { review -> review.toListItem() }
     }
 
+    fun createRestaurantReviewItem(review: RestaurantReview): RestaurantReviewItem =
+        review.toListItem()
+
     private fun RestaurantReview.toListItem(): RestaurantReviewItem =
         RestaurantReviewItem(
             id = id,
@@ -53,6 +56,7 @@ class DataItemFactory @Inject constructor() {
             workerSurname = workerSurname,
             workerPatronymic = workerPatronymic
         )
+
 }
 
 

@@ -21,6 +21,8 @@ class EateryInfoPresenter @Inject constructor(
     private val saveRestaurantReviewUseCase: SaveRestaurantReviewUseCase
 ) : BasePresenter<EateryInfoView>() {
 
+    val factory = DataItemFactory()
+
     fun onAppearing(id: String) {
         return getRestaurantInfoByIdUseCase(id)
             .doOnSuccess { restaurant -> setRestaurantReviewsInfo(restaurant.id) }
@@ -36,7 +38,7 @@ class EateryInfoPresenter @Inject constructor(
 
     private fun setRestaurantReviewsInfo(id: String) {
         return getReviewsInfoByRestaurantIdUseCase(id)
-            .map { reviews-> DataItemFactory().createRestaurantReviewItems(reviews) }
+            .map { reviews -> factory.createRestaurantReviewItems(reviews) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ reviews ->
@@ -50,7 +52,7 @@ class EateryInfoPresenter @Inject constructor(
 
     fun saveRestaurantReview(restaurantId: String, review: RestaurantReview) {
         return saveRestaurantReviewUseCase(restaurantId, review)
-            .map { r-> DataItemFactory().createRestaurantReviewItems(listOf(r)).first() }
+            .map { r -> factory.createRestaurantReviewItem(r) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ newReview ->
