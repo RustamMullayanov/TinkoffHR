@@ -46,51 +46,6 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
             layoutManager = LinearLayoutManager(this@EateryInformationActivity)
             adapter = reviewAdapter
         }
-        //хардкод данных
-        /*reviewAdapter.setNewItems(
-            listOf(
-                RestaurantReview(
-                    "1",
-                    "1",
-                    "Kurtka Ivan Ivanovich",
-                    4.5,
-                    "1",
-                    "Заходит лучше, чем не заходит"
-                ),
-                RestaurantReview(
-                    "1",
-                    "1",
-                    "Kurtka Ivan Ivanovich",
-                    4.5,
-                    "1",
-                    "Заходит лучше, чем не заходит"
-                ),
-                RestaurantReview(
-                    "1",
-                    "1",
-                    "Kurtka Ivan Ivanovich",
-                    4.5,
-                    "1",
-                    "Заходит лучше, чем не заходит"
-                ),
-                RestaurantReview(
-                    "1",
-                    "1",
-                    "Kurtka Ivan Ivanovich",
-                    4.5,
-                    "1",
-                    "Заходит лучше, чем не заходит"
-                ),
-                RestaurantReview(
-                    "1",
-                    "1",
-                    "Kurtka Ivan Ivanovich",
-                    4.5,
-                    "1",
-                    "Заходит лучше, чем не заходит"
-                ),
-            )
-        )*/
 
         binding.buttonAdd.setOnClickListener {
             createDialog()
@@ -154,7 +109,7 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
         }
     }
 
-    override fun setRestaurantReviewsInfo(reviews: List<RestaurantReview>) {
+    override fun setRestaurantReviewsInfo(reviews: List<RestaurantReviewItem>) {
         if (reviews.isNotEmpty()) {
             reviewAdapter.setNewItems(reviews)
             binding.emptyReviewField.visibility = View.GONE
@@ -162,7 +117,7 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
 
     }
 
-    override fun setRestaurantReviewInfo(review: RestaurantReview) {
+    override fun setRestaurantReviewInfo(review: RestaurantReviewItem) {
         reviewAdapter.setItem(review)
     }
 

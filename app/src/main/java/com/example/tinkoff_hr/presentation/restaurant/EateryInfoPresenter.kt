@@ -1,11 +1,12 @@
 package com.example.tinkoff_hr.presentation.restaurant
 
 import com.example.tinkoff_hr.base.BasePresenter
-import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
+import com.example.tinkoff_hr.domain.factories.DataItemFactory
 import com.example.tinkoff_hr.domain.usecases.restaurant.GetRestaurantInfoByIdUseCase
 import com.example.tinkoff_hr.domain.usecases.restaurant.GetReviewsInfoByRestaurantIdUseCase
 import com.example.tinkoff_hr.domain.usecases.restaurant.SaveRestaurantReviewUseCase
+import com.example.tinkoff_hr.ui.where_eat.eatery_information.RestaurantReviewItem
 import com.example.tinkoff_hr.views.restaurant.EateryInfoView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -19,6 +20,8 @@ class EateryInfoPresenter @Inject constructor(
     private val getReviewsInfoByRestaurantIdUseCase: GetReviewsInfoByRestaurantIdUseCase,
     private val saveRestaurantReviewUseCase: SaveRestaurantReviewUseCase
 ) : BasePresenter<EateryInfoView>() {
+
+    val factory = DataItemFactory()
 
     fun onAppearing(id: String) {
         return getRestaurantInfoByIdUseCase(id)
@@ -35,6 +38,7 @@ class EateryInfoPresenter @Inject constructor(
 
     private fun setRestaurantReviewsInfo(id: String) {
         return getReviewsInfoByRestaurantIdUseCase(id)
+            .map { reviews -> factory.createRestaurantReviewItems(reviews) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ reviews ->
@@ -48,6 +52,7 @@ class EateryInfoPresenter @Inject constructor(
 
     fun saveRestaurantReview(restaurantId: String, review: RestaurantReview) {
         return saveRestaurantReviewUseCase(restaurantId, review)
+            .map { r -> factory.createRestaurantReviewItem(r) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ newReview ->
