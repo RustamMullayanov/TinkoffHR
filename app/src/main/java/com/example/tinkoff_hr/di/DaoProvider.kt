@@ -20,4 +20,7 @@ class DaoProvider @Inject constructor(context: Context) {
 
     val restaurantsDao
         get() = database.restaurantsDao()
+
+    val cachesStatusDao
+        get() = database.cachesStatusDao()
 }

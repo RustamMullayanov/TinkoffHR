@@ -1,5 +1,6 @@
 package com.example.tinkoff_hr.di.module
 
+import com.example.tinkoff_hr.data.dao.CachesStatusDao
 import com.example.tinkoff_hr.data.dao.RestaurantReviewsDao
 import com.example.tinkoff_hr.data.dao.RestaurantsDao
 import com.example.tinkoff_hr.di.DaoProvider
@@ -20,5 +21,11 @@ class RoomModule {
     @Singleton
     fun provideRestaurantsDao(daoProvider: DaoProvider): RestaurantsDao{
         return daoProvider.restaurantsDao
+    }
+
+    @Provides
+    @Singleton
+    fun provideCachesStatusDao(daoProvider: DaoProvider): CachesStatusDao{
+        return daoProvider.cachesStatusDao
     }
 }
