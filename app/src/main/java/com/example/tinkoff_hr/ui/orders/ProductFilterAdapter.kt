@@ -20,7 +20,7 @@ class ProductFilterAdapter(clickListener: ClickListener) :
     }
 
     interface ClickListener {
-        fun onProductFilterClicked(productType: String)
+        fun onProductFilterClicked(productType: String, isSelected: Boolean)
     }
 
 }

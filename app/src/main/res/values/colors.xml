@@ -19,4 +19,5 @@
     <color name="rating_very_good">#3C9506</color>
     <color name="rating_good">#89B805</color>
     <color name="rating_bad">#FF5106</color>
+    <color name="pale_yellow">#FFF1B5</color>
 </resources>

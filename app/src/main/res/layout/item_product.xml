@@ -6,7 +6,7 @@
     android:layout_height="184dp"
     android:layout_margin="10dp"
     android:backgroundTint="@color/white"
-    app:shapeAppearanceOverlay="@style/shapeCutAll">
+    app:shapeAppearanceOverlay="@style/shapeCutBottom">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
