@@ -2,6 +2,8 @@ package com.example.tinkoff_hr.data.repositories
 
 import com.example.tinkoff_hr.data.api.RetrofitServiceRestaurants
 import com.example.tinkoff_hr.data.dao.RestaurantReviewsDao
+import com.example.tinkoff_hr.data.dao.RestaurantsDao
+import com.example.tinkoff_hr.data.dto.toDb
 import com.example.tinkoff_hr.data.dto.toDomain
 import com.example.tinkoff_hr.data.entities.restaurant.RestaurantReviewEntityForApi
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
@@ -13,7 +15,8 @@ import javax.inject.Inject
 
 class RestaurantRepositoryImpl @Inject constructor(
     private val retrofitService: RetrofitServiceRestaurants,
-    private val restaurantReviewsDao: RestaurantReviewsDao
+    private val restaurantReviewsDao: RestaurantReviewsDao,
+    private val restaurantsDao: RestaurantsDao
 ) : RestaurantRepository {
     private val restaurants: List<Restaurant> = listOf(
         Restaurant(
@@ -38,16 +41,26 @@ class RestaurantRepositoryImpl @Inject constructor(
     override fun getRestaurantInfoById(id: String): Single<Restaurant> {
         return retrofitService.getRestaurantById(id).asSingle()
             .map { restaurant -> restaurant.toDomain() }
+        //return restaurantsDao.getCachedRestaurantById(id).map { restaurant -> restaurant.toDomain() }
     }
 
     override fun getRestaurantsInfo(): Single<List<Restaurant>> {
         return retrofitService.getRestaurantsList().asSingle()
             .map { list -> list.map { it.toDomain() } }
+            .doOnSuccess { list ->
+                restaurantsDao.cachedRestaurants(list.map { it.toDb() })
+            }
+        //return restaurantsDao.getCachedRestaurants().map { list -> list.map { it.toDomain() } }
     }
 
     override fun getReviewsInfoByRestaurantId(id: String): Single<List<RestaurantReview>> {
         return retrofitService.getRestaurantsReviewsList(id).asSingle()
             .map { list -> list.map { it.toDomain() } }
+            .doOnSuccess { list ->
+                restaurantReviewsDao.cachedRestaurantsReviews(list.map { it.toDb() })
+            }
+        //return restaurantReviewsDao.getCachedRestaurantsReviews(id)
+            //.map { list -> list.map { it.toDomain() } }
     }
 
     override fun saveRestaurantReview(
