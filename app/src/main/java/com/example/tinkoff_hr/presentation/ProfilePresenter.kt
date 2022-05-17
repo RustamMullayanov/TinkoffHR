@@ -3,6 +3,7 @@ package com.example.tinkoff_hr.presentation
 import com.example.tinkoff_hr.base.BasePresenter
 import com.example.tinkoff_hr.data.UserCacheManager
 import com.example.tinkoff_hr.domain.entities.worker.UpdatedWorkerInfo
+import com.example.tinkoff_hr.domain.entities.worker.Worker
 import com.example.tinkoff_hr.domain.usecases.GetWorkerInfoByIdUseCase
 import com.example.tinkoff_hr.domain.usecases.SaveUserCacheUseCase
 import com.example.tinkoff_hr.domain.usecases.UpdateWorkerByIdUseCase

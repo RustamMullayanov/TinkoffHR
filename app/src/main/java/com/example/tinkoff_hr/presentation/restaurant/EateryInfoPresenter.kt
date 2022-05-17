@@ -51,8 +51,8 @@ class EateryInfoPresenter @Inject constructor(
     }
 
     fun saveRestaurantReview(restaurantId: String, review: RestaurantReview) {
+        saveRestaurantReviewUseCase(restaurantId, review)
         return saveRestaurantReviewUseCase(restaurantId, review)
-            .map { r -> factory.createRestaurantReviewItem(r) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

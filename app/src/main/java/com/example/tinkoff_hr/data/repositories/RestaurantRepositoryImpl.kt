@@ -53,8 +53,9 @@ class RestaurantRepositoryImpl @Inject constructor(
     override fun getRestaurantsInfo(): Single<List<Restaurant>> {
         //val cacheStatus =
             //cachesStatusDao.getCacheStatusByTableName(RestaurantEntityForDB.TABLE_NAME)
-        //val newCacheStatus =
-            //CacheStatusEntity(RestaurantEntityForDB.TABLE_NAME, Calendar.getInstance().time.time)
+        val newCacheStatus =
+            CacheStatusEntity(RestaurantEntityForDB.TABLE_NAME, Calendar.getInstance().time.time)
+        val date: Date = Date(newCacheStatus.cachingDate)
         val text = Calendar.getInstance().time.toString()
         return retrofitService.getRestaurantsList().asSingle()
                 .map { list -> list.map { it.toDomain() } }
