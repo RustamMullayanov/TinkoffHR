@@ -7,6 +7,9 @@ import com.example.tinkoff_hr.domain.usecases.orders.GetProductsInfoUseCase
 import com.example.tinkoff_hr.ui.orders.ProductFilterItem
 import com.example.tinkoff_hr.ui.orders.ProductItem
 import com.example.tinkoff_hr.views.orders.OrdersView
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import javax.inject.Inject
 
 class OrdersPresenter @Inject constructor(
@@ -19,9 +22,7 @@ class OrdersPresenter @Inject constructor(
     private val activeFilters: MutableList<String> = mutableListOf()
 
     fun getProducts() {
-        products = DataItemFactory().createProductItems(getProductsInfo())
-        viewState.showProductsInfo(products!!)
-        /* getProductsInfo()
+         getProductsInfo()
              .map { list -> DataItemFactory().createProductItems(list) }
              .subscribeOn(Schedulers.io())
              .observeOn(AndroidSchedulers.mainThread())
@@ -31,13 +32,10 @@ class OrdersPresenter @Inject constructor(
              }, { error ->
                  viewState.showError("Данные недоступны, повторите попытку позже")
                  Timber.e(error)
-             }).disposeOnFinish()*/
+             }).disposeOnFinish()
     }
 
-    fun getProductFilters() {
-        filters = DataItemFactory().createProductFilterItems(getProductFiltersInfo())
-        viewState.showProductFiltersInfo(filters!!)
-        /*getProductFiltersInfo()
+    fun getProductFilters() {getProductFiltersInfo()
             .map { list -> DataItemFactory().createProductFilterItems(list) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -47,7 +45,7 @@ class OrdersPresenter @Inject constructor(
             }, { error ->
                 viewState.showError("Данные недоступны, повторите попытку позже")
                 Timber.e(error)
-            }).disposeOnFinish()*/
+            }).disposeOnFinish()
     }
 
     fun addFilter(filter: String) {

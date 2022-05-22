@@ -6,7 +6,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class GetProductsInfoUseCase @Inject constructor(private val ordersRepository: OrdersRepository) {
-    operator fun invoke(): List<Product> {
+    operator fun invoke(): Single<List<Product>> {
         return ordersRepository.getProductsInfo()
     }
 }

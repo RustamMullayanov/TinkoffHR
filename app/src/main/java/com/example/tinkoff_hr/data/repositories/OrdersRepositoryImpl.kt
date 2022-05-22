@@ -30,12 +30,12 @@ class OrdersRepositoryImpl @Inject constructor() : OrdersRepository {
         ProductFilter("4", "Фильтр 4"),
     )
 
-    override fun getProductsInfo(): List<Product> {
+    override fun getProductsInfo(): Single<List<Product>> {
 
-        return products
+        return Single.just(products)
     }
 
-    override fun getProductFiltersInfo(): List<ProductFilter> {
-        return filters
+    override fun getProductFiltersInfo(): Single<List<ProductFilter>> {
+        return Single.just(filters)
     }
 }

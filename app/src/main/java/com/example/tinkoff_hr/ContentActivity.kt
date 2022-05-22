@@ -36,13 +36,18 @@ class ContentActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_workers,R.id.navigation_tribute ,R.id.navigation_faq, R.id.navigation_where_eat
+                R.id.navigation_workers,
+                R.id.navigation_tribute,
+                R.id.navigation_faq,
+                R.id.navigation_orders,
+                R.id.navigation_where_eat
             )
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.action_menu, menu)
         return true
@@ -51,7 +56,7 @@ class ContentActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_settings -> {
-                val  intent = Intent(this, SettingsActivity::class.java)
+                val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
             }
         }

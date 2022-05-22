@@ -7,7 +7,7 @@ import io.reactivex.Single
 
 interface OrdersRepository {
 
-    fun getProductsInfo(): List<Product>
+    fun getProductsInfo(): Single<List<Product>>
 
-    fun getProductFiltersInfo(): List<ProductFilter>
+    fun getProductFiltersInfo(): Single<List<ProductFilter>>
 }
