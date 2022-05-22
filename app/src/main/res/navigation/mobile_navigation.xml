@@ -24,6 +24,12 @@
         tools:layout="@layout/fragment_faq" />
 
     <fragment
+        android:id="@+id/navigation_orders"
+        android:name="com.example.tinkoff_hr.ui.orders.OrdersFragment"
+        android:label="@string/orders"
+        tools:layout="@layout/fragment_orders" />
+
+    <fragment
         android:id="@+id/navigation_where_eat"
         android:name="com.example.tinkoff_hr.ui.where_eat.WhereEatFragment"
         android:label="@string/title_where_eat"

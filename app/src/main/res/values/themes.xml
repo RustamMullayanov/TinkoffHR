@@ -38,4 +38,11 @@
         <item name="cornerSize">0dp</item>
     </style>
 
+    <style name="shapeCutBottom" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamilyBottomRight">cut</item>
+        <item name="cornerFamilyBottomLeft">cut</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+    </style>
+
 </resources>

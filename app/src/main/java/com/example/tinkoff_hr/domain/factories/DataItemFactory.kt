@@ -1,8 +1,12 @@
 package com.example.tinkoff_hr.domain.factories
 
+import com.example.tinkoff_hr.domain.entities.orders.Product
+import com.example.tinkoff_hr.domain.entities.orders.ProductFilter
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.domain.entities.worker.Worker
+import com.example.tinkoff_hr.ui.orders.ProductFilterItem
+import com.example.tinkoff_hr.ui.orders.ProductItem
 import com.example.tinkoff_hr.ui.workers.WorkerItem
 import com.example.tinkoff_hr.ui.where_eat.RestaurantItem
 import com.example.tinkoff_hr.ui.where_eat.eatery_information.RestaurantReviewItem
@@ -57,6 +61,26 @@ class DataItemFactory @Inject constructor() {
             workerPatronymic = workerPatronymic
         )
 
+    fun createProductItems(products: List<Product>): List<ProductItem> {
+        return products.map { product -> product.toListItem() }
+    }
+
+    private fun Product.toListItem(): ProductItem =
+        ProductItem(
+            id = this.id,
+            name = this.name,
+            types = this.types
+        )
+
+    fun createProductFilterItems(filters: List<ProductFilter>): List<ProductFilterItem> {
+        return filters.map { filter -> filter.toListItem() }
+    }
+
+    private fun ProductFilter.toListItem(): ProductFilterItem =
+        ProductFilterItem(
+            id = this.id,
+            typeProduct = this.typeProduct
+        )
 }
 
 
