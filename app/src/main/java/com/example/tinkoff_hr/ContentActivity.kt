@@ -47,20 +47,4 @@ class ContentActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.action_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_settings -> {
-                val intent = Intent(this, SettingsActivity::class.java)
-                startActivity(intent)
-            }
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
 }
