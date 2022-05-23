@@ -1,7 +1,7 @@
 package com.example.tinkoff_hr.data.repositories
 
 import com.example.tinkoff_hr.data.api.RetrofitServiceRestaurants
-import com.example.tinkoff_hr.data.api.RetrofitServiceWorkers
+import com.example.tinkoff_hr.data.dao.RestaurantReviewsDao
 import com.example.tinkoff_hr.data.dto.toDomain
 import com.example.tinkoff_hr.data.entities.restaurant.RestaurantReviewEntityForApi
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
@@ -12,7 +12,8 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class RestaurantRepositoryImpl @Inject constructor(
-    private val retrofitService: RetrofitServiceRestaurants
+    private val retrofitService: RetrofitServiceRestaurants,
+    private val restaurantReviewsDao: RestaurantReviewsDao
 ) : RestaurantRepository {
     private val restaurants: List<Restaurant> = listOf(
         Restaurant(

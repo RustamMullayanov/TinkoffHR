@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.databinding.ActivityProfileSettingsBinding
 import com.example.tinkoff_hr.databinding.ProfileDialogBinding
+import com.example.tinkoff_hr.di.DaggerAppComponent
 import com.example.tinkoff_hr.domain.entities.worker.UpdatedWorkerInfo
 import com.example.tinkoff_hr.domain.entities.worker.Worker
 import com.example.tinkoff_hr.domain.entities.worker.WorkerStatus
@@ -36,8 +37,8 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
     private var selectedId = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        App.appComponent.inject(this)
-
+        //App.appComponent.inject(this)
+        DaggerAppComponent.factory().create(applicationContext).inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 

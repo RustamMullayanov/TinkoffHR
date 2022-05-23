@@ -12,6 +12,7 @@ import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.data.UserCacheManager
 import com.example.tinkoff_hr.databinding.ActivityEateryInformationBinding
 import com.example.tinkoff_hr.databinding.DialogEateryBinding
+import com.example.tinkoff_hr.di.DaggerAppComponent
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.presentation.restaurant.EateryInfoPresenter
@@ -37,7 +38,8 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
     private val restaurantId: String by lazy { intent.getStringExtra(EXTRA_ID)!! }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        App.appComponent.inject(this)
+        //App.appComponent.inject(this)
+        DaggerAppComponent.factory().create(applicationContext).inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 

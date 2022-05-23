@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.databinding.ActivityWorkerProfileBinding
+import com.example.tinkoff_hr.di.DaggerAppComponent
 import com.example.tinkoff_hr.domain.entities.worker.Worker
 import com.example.tinkoff_hr.presentation.WorkerProfilePresenter
 import com.example.tinkoff_hr.views.WorkerProfileView
@@ -29,7 +30,8 @@ class WorkerProfileActivity : MvpAppCompatActivity(), WorkerProfileView {
     private val workerId: String by lazy { intent.getStringExtra(EXTRA_WORKER_ID)!! }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        App.appComponent.inject(this)
+        //App.appComponent.inject(this)
+        DaggerAppComponent.factory().create(applicationContext).inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
