@@ -17,10 +17,6 @@ object ProductDelegateProvider {
                 productName.text = item.name
             }
 
-            itemView.setOnClickListener {
-                itemClickListener.invoke("")
-            }
-
         }
     }
 }

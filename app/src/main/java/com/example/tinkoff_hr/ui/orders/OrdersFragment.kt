@@ -63,7 +63,7 @@ class OrdersFragment : MvpAppCompatFragment(R.layout.fragment_orders), OrdersVie
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.action_menu_basket,menu)
+        inflater.inflate(R.menu.action_menu_basket, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -85,7 +85,7 @@ class OrdersFragment : MvpAppCompatFragment(R.layout.fragment_orders), OrdersVie
     private val clickListenerProduct = object : ProductAdapter.ClickListener {
 
         override fun onProductClicked(productId: String) {
-            startActivity(Intent(context, BasketActivity::class.java))
+
         }
     }
 

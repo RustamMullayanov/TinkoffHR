@@ -122,7 +122,7 @@ class TributeFragment : Fragment(R.layout.fragment_tribute) {
             else -> super.onOptionsItemSelected(item)
         }
     }
-    
+
     private companion object {
         @Dp
         const val EDUCATION_LIST_BOTTOM_PADDING = 16F

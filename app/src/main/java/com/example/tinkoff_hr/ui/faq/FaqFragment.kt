@@ -3,19 +3,15 @@ package com.example.tinkoff_hr.ui.faq
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.actionbar.SettingsActivity
 import com.example.tinkoff_hr.databinding.FragmentFaqBinding
-import com.example.tinkoff_hr.databinding.FragmentWorkersBinding
 import com.example.tinkoff_hr.ui.faq.MeetUp.MeetUpActivity
 import com.example.tinkoff_hr.ui.faq.education.EducationActivity
 import com.example.tinkoff_hr.ui.faq.business_trip.BusinessTripActivity
 import com.example.tinkoff_hr.ui.faq.parking.ParkingActivity
 import com.example.tinkoff_hr.ui.faq.sale.SaleActivity
-import com.example.tinkoff_hr.ui.workers.WorkerAdapter
 
 class FaqFragment : Fragment(R.layout.fragment_faq) {
 

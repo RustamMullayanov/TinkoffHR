@@ -1,21 +1,12 @@
 package com.example.tinkoff_hr
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.tinkoff_hr.actionbar.SettingsActivity
 import com.example.tinkoff_hr.databinding.ActivityContentBinding
-import com.example.tinkoff_hr.ui.faq.FaqFragment
-import com.example.tinkoff_hr.ui.tribute.TributeFragment
-import com.example.tinkoff_hr.ui.where_eat.WhereEatFragment
-import com.example.tinkoff_hr.ui.workers.WorkersFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ContentActivity : AppCompatActivity() {
