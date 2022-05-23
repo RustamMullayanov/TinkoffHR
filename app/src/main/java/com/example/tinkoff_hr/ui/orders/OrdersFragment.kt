@@ -24,6 +24,7 @@ import javax.inject.Provider
 class OrdersFragment : MvpAppCompatFragment(R.layout.fragment_orders), OrdersView {
 
     private lateinit var binding: FragmentOrdersBinding
+    private lateinit var basketMenu: MenuItem
     private lateinit var productAdapter: ProductAdapter
     private lateinit var productFilterAdapter: ProductFilterAdapter
 
@@ -64,6 +65,7 @@ class OrdersFragment : MvpAppCompatFragment(R.layout.fragment_orders), OrdersVie
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.action_menu_basket, menu)
+        basketMenu = menu.findItem(R.id.menu_basket)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -76,6 +78,7 @@ class OrdersFragment : MvpAppCompatFragment(R.layout.fragment_orders), OrdersVie
             }
             R.id.menu_basket -> {
                 startActivity(Intent(context, BasketActivity::class.java))
+
                 return true
             }
             else -> super.onOptionsItemSelected(item)
@@ -85,7 +88,7 @@ class OrdersFragment : MvpAppCompatFragment(R.layout.fragment_orders), OrdersVie
     private val clickListenerProduct = object : ProductAdapter.ClickListener {
 
         override fun onProductClicked(productId: String) {
-
+            basketMenu.setIcon(R.drawable.ic_shopping_cart_point)
         }
     }
 
