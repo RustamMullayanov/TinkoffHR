@@ -66,7 +66,7 @@ class RestaurantRepositoryImpl @Inject constructor(
     }
 
     override fun getReviewsInfoByRestaurantId(id: String): Single<List<RestaurantReview>> {
-        return cacheManager.isCacheActual(RestaurantReviewEntityForDB.TABLE_NAME)
+        return cacheManager.isCacheActual(RestaurantReviewEntityForDB.TABLE_NAME + id)
             .flatMap { cacheActual ->
                 if (cacheActual) {
                     restaurantReviewsDao.getCachedRestaurantsReviews(id)
@@ -74,7 +74,7 @@ class RestaurantRepositoryImpl @Inject constructor(
                 } else {
                     retrofitService.getRestaurantsReviewsList(id).asSingle()
                         .map { list -> list.map { it.toDomain() } }
-                        .doOnSuccess { list -> cacheManager.updateRestaurantReviewsCache(list) }
+                        .doOnSuccess { list -> cacheManager.updateRestaurantReviewsCache(id, list) }
                 }
             }
     }

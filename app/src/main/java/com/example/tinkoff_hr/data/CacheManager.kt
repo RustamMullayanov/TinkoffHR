@@ -32,9 +32,15 @@ class CacheManager @Inject constructor(
         updateCacheStatus(RestaurantEntityForDB.TABLE_NAME, DateTime.now().millis)
     }
 
-    fun updateRestaurantReviewsCache(restaurantReviews: List<RestaurantReview>) {
+    fun updateRestaurantReviewsCache(
+        restaurantId: String,
+        restaurantReviews: List<RestaurantReview>
+    ) {
         restaurantReviewsDao.cachedRestaurantsReviews(restaurantReviews.map { it.toDb() })
-        updateCacheStatus(RestaurantReviewEntityForDB.TABLE_NAME, DateTime.now().millis)
+        updateCacheStatus(
+            RestaurantReviewEntityForDB.TABLE_NAME + restaurantId,
+            DateTime.now().millis
+        )
     }
 
     private fun updateCacheStatus(tableName: String, date: Long) {
