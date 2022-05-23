@@ -1,5 +1,6 @@
 package com.example.tinkoff_hr.data.repositories
 
+import com.example.tinkoff_hr.data.CacheManager
 import com.example.tinkoff_hr.data.api.RetrofitServiceRestaurants
 import com.example.tinkoff_hr.data.dao.CachesStatusDao
 import com.example.tinkoff_hr.data.dao.RestaurantReviewsDao
@@ -23,7 +24,7 @@ class RestaurantRepositoryImpl @Inject constructor(
     private val retrofitService: RetrofitServiceRestaurants,
     private val restaurantReviewsDao: RestaurantReviewsDao,
     private val restaurantsDao: RestaurantsDao,
-    private val cachesStatusDao: CachesStatusDao
+    private val cacheManager: CacheManager
 ) : RestaurantRepository {
     private val restaurants: List<Restaurant> = listOf(
         Restaurant(
@@ -51,28 +52,31 @@ class RestaurantRepositoryImpl @Inject constructor(
     }
 
     override fun getRestaurantsInfo(): Single<List<Restaurant>> {
-        //val cacheStatus =
-            //cachesStatusDao.getCacheStatusByTableName(RestaurantEntityForDB.TABLE_NAME)
-        val newCacheStatus =
-            CacheStatusEntity(RestaurantEntityForDB.TABLE_NAME, Calendar.getInstance().time.time)
-        val date: Date = Date(newCacheStatus.cachingDate)
-        val text = Calendar.getInstance().time.toString()
-        return retrofitService.getRestaurantsList().asSingle()
-                .map { list -> list.map { it.toDomain() } }
-                .doOnSuccess { list -> restaurantsDao.cachedRestaurants(list.map { it.toDb() }) }
-                //.doOnSuccess { cachesStatusDao.saveCacheStatus(newCacheStatus) }
-        //else
-            //restaurantsDao.getCachedRestaurants().map { list -> list.map { it.toDomain() } }
+        return cacheManager.isCacheActual(RestaurantEntityForDB.TABLE_NAME)
+            .flatMap { cacheActual ->
+                if (cacheActual) {
+                    restaurantsDao.getCachedRestaurants()
+                        .map { list -> list.map { it.toDomain() } }
+                } else {
+                    retrofitService.getRestaurantsList().asSingle()
+                        .map { list -> list.map { it.toDomain() } }
+                        .doOnSuccess { list -> cacheManager.updateRestaurantsCache(list) }
+                }
+            }
     }
 
     override fun getReviewsInfoByRestaurantId(id: String): Single<List<RestaurantReview>> {
-        return retrofitService.getRestaurantsReviewsList(id).asSingle()
-            .map { list -> list.map { it.toDomain() } }
-            .doOnSuccess { list ->
-                restaurantReviewsDao.cachedRestaurantsReviews(list.map { it.toDb() })
+        return cacheManager.isCacheActual(RestaurantReviewEntityForDB.TABLE_NAME)
+            .flatMap { cacheActual ->
+                if (cacheActual) {
+                    restaurantReviewsDao.getCachedRestaurantsReviews(id)
+                        .map { list -> list.map { it.toDomain() } }
+                } else {
+                    retrofitService.getRestaurantsReviewsList(id).asSingle()
+                        .map { list -> list.map { it.toDomain() } }
+                        .doOnSuccess { list -> cacheManager.updateRestaurantReviewsCache(list) }
+                }
             }
-        //return restaurantReviewsDao.getCachedRestaurantsReviews(id)
-        //.map { list -> list.map { it.toDomain() } }
     }
 
     override fun saveRestaurantReview(
