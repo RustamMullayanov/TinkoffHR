@@ -31,8 +31,7 @@ class WorkersFragment : MvpAppCompatFragment(R.layout.fragment_workers), Workers
 
 
     override fun onCreate(savedInstanceState: Bundle?){
-        //App.appComponent.inject(this)
-        DaggerAppComponent.factory().create(requireContext().applicationContext).inject(this)
+        App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
     }
 

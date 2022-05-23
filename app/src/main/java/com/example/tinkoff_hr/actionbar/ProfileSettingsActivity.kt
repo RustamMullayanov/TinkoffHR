@@ -37,8 +37,7 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
     private var selectedId = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //App.appComponent.inject(this)
-        DaggerAppComponent.factory().create(applicationContext).inject(this)
+        App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -117,7 +116,7 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
             fieldMail.setText(worker.email)
             fieldAbout.setText(worker.about)
             fieldFunction.setText(worker.function)
-            fieldProject.setText(worker.project.toString())
+            fieldProject.setText(worker.project)
         }
     }
 

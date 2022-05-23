@@ -38,8 +38,7 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
     private val restaurantId: String by lazy { intent.getStringExtra(EXTRA_ID)!! }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //App.appComponent.inject(this)
-        DaggerAppComponent.factory().create(applicationContext).inject(this)
+        App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 

@@ -34,8 +34,7 @@ class WhereEatFragment : MvpAppCompatFragment(R.layout.fragment_where_eat), Wher
     private lateinit var binding: FragmentWhereEatBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //App.appComponent.inject(this)
-        DaggerAppComponent.factory().create(requireContext().applicationContext).inject(this)
+        App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
     }
 
