@@ -75,4 +75,5 @@
     <string name="text_confirm_products">Подтвердите выбранные позиции</string>
     <string name="confirm">Подтвердить</string>
     <string name="text_no_order">В данный момент у Вас нет заказанных товаров</string>
+    <string name="basket">Корзина</string>
 </resources>

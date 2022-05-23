@@ -1,9 +1,12 @@
 package com.example.tinkoff_hr.ui.orders.basket
 
 import android.os.Bundle
+import android.text.BoringLayout
 import android.view.MenuItem
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
+import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.ActivityBasketBinding
 import com.example.tinkoff_hr.presentation.WorkerProfilePresenter
 import com.example.tinkoff_hr.presentation.orders.basket.BasketPresenter
@@ -13,6 +16,7 @@ import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 import com.example.tinkoff_hr.views.orders.BasketView
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
+import java.text.FieldPosition
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -30,9 +34,9 @@ class BasketActivity : MvpAppCompatActivity(), BasketView {
     private lateinit var basketAdapter: BasketAdapter
 
     var products: List<ProductItem> = listOf(
-        ProductItem("", "Milk", listOf()),
-        ProductItem("", "Milk", listOf()),
-        ProductItem("", "Milk", listOf())
+        ProductItem("", "Milk1", listOf()),
+        ProductItem("", "Milk2", listOf()),
+        ProductItem("", "Milk3", listOf())
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +45,7 @@ class BasketActivity : MvpAppCompatActivity(), BasketView {
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.basket)
 
         basketAdapter = BasketAdapter(clickListener)
 
@@ -49,6 +54,7 @@ class BasketActivity : MvpAppCompatActivity(), BasketView {
                 layoutManager = LinearLayoutManager(this.context)
                 adapter = basketAdapter
                 basketAdapter.setNewItems(products)
+                updateUI(basketAdapter.noItems())
             }
         }
     }
@@ -78,9 +84,27 @@ class BasketActivity : MvpAppCompatActivity(), BasketView {
 
     private val clickListener = object : BasketAdapter.ClickListener {
 
-        override fun onProductClicked() {
-            TODO("Not yet implemented")
+        override fun onProductClicked(product: ProductItem) {
+            basketAdapter.deleteItem(product)
+            if (basketAdapter.noItems())
+                updateUI(true)
         }
 
+    }
+
+    fun updateUI(noItems: Boolean){
+        with(binding) {
+            if (noItems) {
+                textNoOrder.visibility = View.VISIBLE
+                textConfirm.visibility = View.GONE
+                recProducts.visibility = View.GONE
+                buttonConfirm.visibility = View.GONE
+            }else{
+                textNoOrder.visibility = View.GONE
+                textConfirm.visibility = View.VISIBLE
+                recProducts.visibility = View.VISIBLE
+                buttonConfirm.visibility = View.VISIBLE
+            }
+        }
     }
 }
