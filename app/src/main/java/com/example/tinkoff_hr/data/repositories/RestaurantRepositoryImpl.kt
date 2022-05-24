@@ -16,8 +16,7 @@ import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.domain.repositories_interface.RestaurantRepository
 import io.reactivex.Completable
 import io.reactivex.Single
-import java.time.LocalDate
-import java.util.*
+import org.joda.time.DateTime
 import javax.inject.Inject
 
 class RestaurantRepositoryImpl @Inject constructor(
@@ -54,28 +53,16 @@ class RestaurantRepositoryImpl @Inject constructor(
     override fun getRestaurantsInfo(): Single<List<Restaurant>> {
         return cacheManager.isCacheActual(RestaurantEntityForDB.TABLE_NAME)
             .flatMap { cacheActual ->
-                if (cacheActual) {
-                    restaurantsDao.getCachedRestaurants()
-                        .map { list -> list.map { it.toDomain() } }
-                } else {
-                    retrofitService.getRestaurantsList().asSingle()
-                        .map { list -> list.map { it.toDomain() } }
-                        .doOnSuccess { list -> cacheManager.updateRestaurantsCache(list) }
-                }
+                if (cacheActual) getRestaurantsFromCache()
+                else getRestaurantsFromServer()
             }
     }
 
     override fun getReviewsInfoByRestaurantId(id: String): Single<List<RestaurantReview>> {
-        return cacheManager.isCacheActual(RestaurantReviewEntityForDB.TABLE_NAME + id)
+        return cacheManager.isCacheActual(formatReviewsCacheKey(id))
             .flatMap { cacheActual ->
-                if (cacheActual) {
-                    restaurantReviewsDao.getCachedRestaurantsReviews(id)
-                        .map { list -> list.map { it.toDomain() } }
-                } else {
-                    retrofitService.getRestaurantsReviewsList(id).asSingle()
-                        .map { list -> list.map { it.toDomain() } }
-                        .doOnSuccess { list -> cacheManager.updateRestaurantReviewsCache(id, list) }
-                }
+                if (cacheActual) getRestaurantReviewsFromCache(id)
+                else getRestaurantReviewsFromServer(id)
             }
     }
 
@@ -84,5 +71,48 @@ class RestaurantRepositoryImpl @Inject constructor(
         reviewApi: RestaurantReviewEntityForApi
     ): Completable {
         return retrofitService.saveRestaurantReview(restaurantId, reviewApi).asCompletable()
+    }
+
+    // Для ресторанов
+    private fun getRestaurantsFromServer(): Single<List<Restaurant>> {
+        return retrofitService.getRestaurantsList().asSingle()
+            .map { list -> list.map { it.toDomain() } }
+            .doOnSuccess { list -> updateRestaurantsCache(list) }
+    }
+
+    private fun getRestaurantsFromCache(): Single<List<Restaurant>> {
+        return restaurantsDao.getCachedRestaurants()
+            .map { list -> list.map { it.toDomain() } }
+    }
+
+    private fun updateRestaurantsCache(restaurants: List<Restaurant>) {
+        restaurantsDao.cachedRestaurants(restaurants.map { it.toDb() })
+        cacheManager.updateCacheStatus(RestaurantEntityForDB.TABLE_NAME, DateTime.now().millis)
+    }
+
+    // Для отзывов о ресторане
+    private fun getRestaurantReviewsFromServer(restaurantId: String): Single<List<RestaurantReview>> {
+        return retrofitService.getRestaurantsReviewsList(restaurantId).asSingle()
+            .map { list -> list.map { it.toDomain() } }
+            .doOnSuccess { list -> updateRestaurantReviewsCache(restaurantId, list) }
+    }
+
+    private fun getRestaurantReviewsFromCache(restaurantId: String): Single<List<RestaurantReview>> {
+        return restaurantReviewsDao.getCachedRestaurantsReviews(restaurantId)
+            .map { list -> list.map { it.toDomain() } }
+    }
+
+    private fun formatReviewsCacheKey(restaurantId: String) =
+        RestaurantReviewEntityForDB.TABLE_NAME + restaurantId
+
+    private fun updateRestaurantReviewsCache(
+        restaurantId: String,
+        restaurantReviews: List<RestaurantReview>
+    ) {
+        restaurantReviewsDao.cachedRestaurantsReviews(restaurantReviews.map { it.toDb() })
+        cacheManager.updateCacheStatus(
+            RestaurantReviewEntityForDB.TABLE_NAME + restaurantId,
+            DateTime.now().millis
+        )
     }
 }

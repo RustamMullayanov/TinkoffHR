@@ -12,11 +12,7 @@ import org.joda.time.DateTime
 import org.joda.time.LocalDateTime
 import javax.inject.Inject
 
-class CacheManager @Inject constructor(
-    private val restaurantReviewsDao: RestaurantReviewsDao,
-    private val restaurantsDao: RestaurantsDao,
-    private val cachesStatusDao: CachesStatusDao
-) {
+class CacheManager @Inject constructor(private val cachesStatusDao: CachesStatusDao) {
 
     fun isCacheActual(tableName: String): Single<Boolean> {
         return cachesStatusDao.getCacheStatusByTableName(tableName)
@@ -27,23 +23,7 @@ class CacheManager @Inject constructor(
             .onErrorReturnItem(false)
     }
 
-    fun updateRestaurantsCache(restaurants: List<Restaurant>) {
-        restaurantsDao.cachedRestaurants(restaurants.map { it.toDb() })
-        updateCacheStatus(RestaurantEntityForDB.TABLE_NAME, DateTime.now().millis)
-    }
-
-    fun updateRestaurantReviewsCache(
-        restaurantId: String,
-        restaurantReviews: List<RestaurantReview>
-    ) {
-        restaurantReviewsDao.cachedRestaurantsReviews(restaurantReviews.map { it.toDb() })
-        updateCacheStatus(
-            RestaurantReviewEntityForDB.TABLE_NAME + restaurantId,
-            DateTime.now().millis
-        )
-    }
-
-    private fun updateCacheStatus(tableName: String, date: Long) {
+    fun updateCacheStatus(tableName: String, date: Long) {
         cachesStatusDao.saveCacheStatus(CacheStatusEntity(tableName, date))
     }
 }
