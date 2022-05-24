@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
@@ -52,13 +53,11 @@ class OrdersFragment : MvpAppCompatFragment(R.layout.fragment_orders), OrdersVie
                 layoutManager =
                     LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = productFilterAdapter
-                ordersPresenter.getProductFilters()
             }
 
             recProducts.apply {
                 layoutManager = GridLayoutManager(this.context, 2)
                 adapter = productAdapter
-                ordersPresenter.getProducts()
             }
         }
     }
@@ -111,11 +110,11 @@ class OrdersFragment : MvpAppCompatFragment(R.layout.fragment_orders), OrdersVie
     }
 
     override fun showError(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     override fun showSuccess(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
 }
