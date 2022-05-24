@@ -15,7 +15,7 @@ object BasketDelegateProvider {
         bind {
             with(binding) {
                 name.text = item.name
-                information.text = "Очень жирное, 1 л."
+                information.text = item.types.joinToString()
                 close.setOnClickListener {
                     itemClickListener.invoke(item)
                 }

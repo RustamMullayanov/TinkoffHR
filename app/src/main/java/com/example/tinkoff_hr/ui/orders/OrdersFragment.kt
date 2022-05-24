@@ -77,6 +77,7 @@ class OrdersFragment : MvpAppCompatFragment(R.layout.fragment_orders), OrdersVie
                 return true
             }
             R.id.menu_basket -> {
+                basketMenu.setIcon(R.drawable.ic_shopping_cart)
                 startActivity(Intent(context, BasketActivity::class.java))
 
                 return true

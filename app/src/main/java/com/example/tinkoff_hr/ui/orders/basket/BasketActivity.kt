@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.BoringLayout
 import android.view.MenuItem
 import android.view.View
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.R
@@ -11,8 +12,12 @@ import com.example.tinkoff_hr.databinding.ActivityBasketBinding
 import com.example.tinkoff_hr.presentation.WorkerProfilePresenter
 import com.example.tinkoff_hr.presentation.orders.basket.BasketPresenter
 import com.example.tinkoff_hr.ui.orders.ProductItem
+import com.example.tinkoff_hr.ui.tribute.TributeFragment
 import com.example.tinkoff_hr.ui.workers.WorkerAdapter
 import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
+import com.example.tinkoff_hr.utils.ui.Dp
+import com.example.tinkoff_hr.utils.ui.PaddingItemDecoration
+import com.example.tinkoff_hr.utils.ui.dpToPx
 import com.example.tinkoff_hr.views.orders.BasketView
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
@@ -34,9 +39,15 @@ class BasketActivity : MvpAppCompatActivity(), BasketView {
     private lateinit var basketAdapter: BasketAdapter
 
     var products: List<ProductItem> = listOf(
-        ProductItem("", "Milk1", listOf()),
-        ProductItem("", "Milk2", listOf()),
-        ProductItem("", "Milk3", listOf())
+        ProductItem("", "Milk1", listOf("напиток","молочка")),
+        ProductItem("", "Milk2", listOf("напиток")),
+        ProductItem("", "Milk3", listOf()),
+        ProductItem("", "Milk4", listOf()),
+        ProductItem("", "Milk5", listOf()),
+        ProductItem("", "Milk6", listOf()),
+        ProductItem("", "Milk7", listOf()),
+        ProductItem("", "Milk8", listOf()),
+        ProductItem("", "Milk9", listOf()),
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +64,14 @@ class BasketActivity : MvpAppCompatActivity(), BasketView {
             recProducts.apply {
                 layoutManager = LinearLayoutManager(this.context)
                 adapter = basketAdapter
+                addItemDecoration(
+                    PaddingItemDecoration(
+                        bottom = this@BasketActivity.applicationContext
+                            .dpToPx(EDUCATION_LIST_BOTTOM_PADDING),
+                        filter = { holder ->
+                            holder.absoluteAdapterPosition == basketAdapter.itemCount - 1
+                        })
+                )
                 basketAdapter.setNewItems(products)
                 updateUI(basketAdapter.noItems())
             }
@@ -92,19 +111,24 @@ class BasketActivity : MvpAppCompatActivity(), BasketView {
 
     }
 
-    fun updateUI(noItems: Boolean){
+    fun updateUI(noItems: Boolean) {
         with(binding) {
             if (noItems) {
                 textNoOrder.visibility = View.VISIBLE
                 textConfirm.visibility = View.GONE
                 recProducts.visibility = View.GONE
                 buttonConfirm.visibility = View.GONE
-            }else{
+            } else {
                 textNoOrder.visibility = View.GONE
                 textConfirm.visibility = View.VISIBLE
                 recProducts.visibility = View.VISIBLE
                 buttonConfirm.visibility = View.VISIBLE
             }
         }
+    }
+
+    private companion object {
+        @Dp
+        const val EDUCATION_LIST_BOTTOM_PADDING = 16F
     }
 }
