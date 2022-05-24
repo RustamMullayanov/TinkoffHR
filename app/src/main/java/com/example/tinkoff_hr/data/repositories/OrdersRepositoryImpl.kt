@@ -1,24 +1,19 @@
 package com.example.tinkoff_hr.data.repositories
 
+import com.example.tinkoff_hr.data.api.RetrofitServiceProducts
+import com.example.tinkoff_hr.data.dto.toDomain
 import com.example.tinkoff_hr.domain.entities.orders.Product
 import com.example.tinkoff_hr.domain.entities.orders.ProductFilter
 import com.example.tinkoff_hr.domain.repositories_interface.OrdersRepository
 import io.reactivex.Single
 import javax.inject.Inject
 
-class OrdersRepositoryImpl @Inject constructor() : OrdersRepository {
+class OrdersRepositoryImpl @Inject constructor(
+    private val retrofitServiceProducts: RetrofitServiceProducts
+) : OrdersRepository {
 
     //хардкод
-    private val products: List<Product> = listOf(
-        Product("1", "Пепси", listOf("Напиток")),
-        Product("2", "Творог", listOf("Молочка")),
-        Product("1", "Пепси", listOf("Напиток")),
-        Product("2", "Творог", listOf("Молочка")),
-        Product("1", "Пепси", listOf("Напиток")),
-        Product("2", "Творог", listOf("Молочка")),
-        Product("1", "Пепси", listOf("Напиток")),
-        Product("2", "Творог", listOf("Молочка")),
-    )
+    private var products: List<Product> = emptyList()
 
 
     private val filters: List<ProductFilter> = listOf(
@@ -31,11 +26,13 @@ class OrdersRepositoryImpl @Inject constructor() : OrdersRepository {
     )
 
     override fun getProductsInfo(): Single<List<Product>> {
-
-        return Single.just(products)
+        return retrofitServiceProducts.getProductsList().asSingle()
+            .map { list -> list.map { it.toDomain() } }
+            .doOnSuccess { list -> products = list }
     }
 
     override fun getProductFiltersInfo(): Single<List<ProductFilter>> {
+        // val test: List<ProductFilter> = listOf(products.map { product -> product.types })
         return Single.just(filters)
     }
 }

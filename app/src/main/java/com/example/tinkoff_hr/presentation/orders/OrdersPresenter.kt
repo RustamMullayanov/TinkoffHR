@@ -22,20 +22,21 @@ class OrdersPresenter @Inject constructor(
     private val activeFilters: MutableList<String> = mutableListOf()
 
     fun getProducts() {
-         getProductsInfo()
-             .map { list -> DataItemFactory().createProductItems(list) }
-             .subscribeOn(Schedulers.io())
-             .observeOn(AndroidSchedulers.mainThread())
-             .subscribe({ products ->
-                 this.products = products
-                 viewState.showProductsInfo(products)
-             }, { error ->
-                 viewState.showError("Данные недоступны, повторите попытку позже")
-                 Timber.e(error)
-             }).disposeOnFinish()
+        getProductsInfo()
+            .map { list -> DataItemFactory().createProductItems(list) }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ products ->
+                this.products = products
+                viewState.showProductsInfo(products)
+            }, { error ->
+                viewState.showError("Данные недоступны, повторите попытку позже")
+                Timber.e(error)
+            }).disposeOnFinish()
     }
 
-    fun getProductFilters() {getProductFiltersInfo()
+    fun getProductFilters() {
+        getProductFiltersInfo()
             .map { list -> DataItemFactory().createProductFilterItems(list) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
