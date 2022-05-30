@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.widget.RadioButton
 import android.widget.Toast
 import com.example.tinkoff_hr.App
+import com.example.tinkoff_hr.data.UserTokenStorage
 import com.example.tinkoff_hr.databinding.ActivityProfileSettingsBinding
 import com.example.tinkoff_hr.databinding.ProfileDialogBinding
 import com.example.tinkoff_hr.di.DaggerAppComponent
@@ -29,7 +30,7 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
 
     private val profilePresenter by moxyPresenter { presenterProvider.get() }
 
-
+    private val tokenStorage: UserTokenStorage = UserTokenStorage(applicationContext)
     private val binding: ActivityProfileSettingsBinding by lazy {
         ActivityProfileSettingsBinding.inflate(layoutInflater)
     }
@@ -53,6 +54,8 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
             val clip = ClipData.newPlainText("Copied Text", binding.fieldMail.text.toString())
             clipboard.setPrimaryClip(clip)
         }
+
+        val test = tokenStorage.getUserToken()
 
         // Сохранение данных пользователя
         val buttonSave = binding.buttonSave

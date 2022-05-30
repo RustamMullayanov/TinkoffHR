@@ -44,7 +44,7 @@ class ProfilePresenter @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                {viewState.showSuccess("Данные успешно сохранены")},
+                { viewState.showSuccess("Данные успешно сохранены") },
                 { error ->
                     viewState.showError("Не удалось обновить данные, повторите попытку позже")
                     Timber.e(error)
@@ -52,7 +52,7 @@ class ProfilePresenter @Inject constructor(
             .disposeOnFinish()
     }
 
-    private fun saveUserCache(user: Worker){
+    private fun saveUserCache(user: Worker) {
         saveUserCacheUseCase(user)
     }
 }

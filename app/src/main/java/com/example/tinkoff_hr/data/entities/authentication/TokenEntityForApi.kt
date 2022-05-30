@@ -9,5 +9,5 @@ class TokenEntityForApi(
     val token: String,
 
     @SerialName("is_registered")
-    val isRegistered: Boolean
+    val isRegistered: Boolean,
 )

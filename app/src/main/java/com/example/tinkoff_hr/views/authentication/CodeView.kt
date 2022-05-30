@@ -9,4 +9,5 @@ interface CodeView: BaseView {
     fun startCodeTimer()
     fun openContentActivity()
     fun openProfileSettingsActivity()
+    fun saveUserToken(token: String)
 }

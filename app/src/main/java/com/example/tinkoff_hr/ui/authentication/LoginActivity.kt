@@ -19,6 +19,7 @@ class LoginActivity: MvpAppCompatActivity(R.layout.activity_login), LoginView {
     lateinit var presenterProvider: Provider<LoginPresenter>
 
     private val loginPresenter by moxyPresenter { presenterProvider.get() }
+    private lateinit var userEmail: String
 
     private val binging: ActivityLoginBinding by lazy {
         ActivityLoginBinding.inflate(layoutInflater)
@@ -31,14 +32,14 @@ class LoginActivity: MvpAppCompatActivity(R.layout.activity_login), LoginView {
 
         with(binging){
             buttonLogin.setOnClickListener{
-                loginPresenter.checkEmail(editMail.text.toString())
-                openCodeActivity()
+                userEmail = editMail.text.toString()
+                loginPresenter.checkEmail(userEmail)
             }
         }
     }
 
     override fun openCodeActivity() {
-        startActivity(Intent(this, CodeActivity::class.java))
+        startActivity(CodeActivity.createIntent(this, userEmail))
         finish()
     }
 
