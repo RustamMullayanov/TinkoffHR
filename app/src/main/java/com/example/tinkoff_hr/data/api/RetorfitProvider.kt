@@ -22,27 +22,27 @@ class RetrofitProvider @Inject constructor() {
         .build()
 
     @ExperimentalSerializationApi
-    val retrofitServiceWorkers: RetrofitServiceWorkers = Retrofit.Builder()
-        .baseUrl(BuildConfig.API_BASE_URL)
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .addCallAdapterFactory(EnvelopeCallAdapterFactory())
-        .addConverterFactory(Json {
-            ignoreUnknownKeys = true
-        }.asConverterFactory("application/json".toMediaType()))
-        .client(httpClient)
-        .build()
-        .create(RetrofitServiceWorkers::class.java)
+    val retrofitServiceWorkers: RetrofitServiceWorkers =
+        customRetrofitBuilder(RetrofitServiceWorkers::class.java)
 
     @ExperimentalSerializationApi
-    val retrofitServiceRestaurants: RetrofitServiceRestaurants = Retrofit.Builder()
-        .baseUrl(BuildConfig.API_BASE_URL)
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .addCallAdapterFactory(EnvelopeCallAdapterFactory())
-        .addConverterFactory(Json {
-            ignoreUnknownKeys = true
-        }.asConverterFactory("application/json".toMediaType()))
-        .client(httpClient)
-        .build()
-        .create( RetrofitServiceRestaurants::class.java)
+    val retrofitServiceRestaurants: RetrofitServiceRestaurants =
+        customRetrofitBuilder(RetrofitServiceRestaurants::class.java)
 
+    @ExperimentalSerializationApi
+    val retrofitServiceAuthentication: RetrofitServiceAuthentication =
+        customRetrofitBuilder(RetrofitServiceAuthentication::class.java)
+
+    private fun <T> customRetrofitBuilder(retrofitClass: Class<T>): T {
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.API_BASE_URL)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(EnvelopeCallAdapterFactory())
+            .addConverterFactory(Json {
+                ignoreUnknownKeys = true
+            }.asConverterFactory("application/json".toMediaType()))
+            .client(httpClient)
+            .build()
+            .create(retrofitClass)
+    }
 }

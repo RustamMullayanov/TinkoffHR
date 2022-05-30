@@ -1,9 +1,12 @@
 package com.example.tinkoff_hr.ui.authentication
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.example.tinkoff_hr.App
+import com.example.tinkoff_hr.ContentActivity
 import com.example.tinkoff_hr.R
+import com.example.tinkoff_hr.actionbar.ProfileSettingsActivity
 import com.example.tinkoff_hr.databinding.ActivityCodeBinding
 import com.example.tinkoff_hr.presentation.authentication.CodePresenter
 import com.example.tinkoff_hr.views.authentication.CodeView
@@ -35,12 +38,24 @@ class CodeActivity : MvpAppCompatActivity(R.layout.activity_code), CodeView {
 
             buttonCheckCode.setOnClickListener {
                 codePresenter.sendCode()
+                openProfileSettingsActivity()
             }
         }
     }
 
     override fun startCodeTimer() {
         TODO("Not yet implemented")
+    }
+
+    override fun openContentActivity() {
+        startActivity(Intent(this, ContentActivity::class.java))
+        finish()
+    }
+
+    override fun openProfileSettingsActivity() {
+        startActivity(Intent(this, ContentActivity::class.java))
+        startActivity(Intent(this, ProfileSettingsActivity::class.java ))
+        finish()
     }
 
     override fun showError(message: String) {

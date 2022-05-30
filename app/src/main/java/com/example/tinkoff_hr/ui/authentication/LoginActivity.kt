@@ -1,5 +1,6 @@
 package com.example.tinkoff_hr.ui.authentication
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.example.tinkoff_hr.App
@@ -31,12 +32,14 @@ class LoginActivity: MvpAppCompatActivity(R.layout.activity_login), LoginView {
         with(binging){
             buttonLogin.setOnClickListener{
                 loginPresenter.checkEmail(editMail.text.toString())
+                openCodeActivity()
             }
         }
     }
 
-    override fun openCodeFragment() {
-        TODO("Not yet implemented")
+    override fun openCodeActivity() {
+        startActivity(Intent(this, CodeActivity::class.java))
+        finish()
     }
 
     override fun showError(message: String) {
