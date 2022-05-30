@@ -11,9 +11,9 @@ fun RestaurantReview.toDb(): RestaurantReviewEntityForDB =
         restaurantId = this.restaurantId,
         rating = this.rating,
         text = this.text,
-        workerName = this.workerName,
-        workerSurname = this.workerSurname,
-        workerPatronymic = this.workerPatronymic
+        workerName = this.workerName!!,
+        workerSurname = this.workerSurname!!,
+        workerPatronymic = this.workerPatronymic!!
     )
 
 fun RestaurantReviewEntityForDB.toDomain(): RestaurantReview =

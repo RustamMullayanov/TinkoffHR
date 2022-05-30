@@ -5,14 +5,14 @@ import com.example.tinkoff_hr.di.AppComponent
 import com.example.tinkoff_hr.di.DaggerAppComponent
 import timber.log.Timber
 
-class App: Application() {
+class App : Application() {
     companion object {
         lateinit var appComponent: AppComponent
     }
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.builder().build()
+        appComponent = DaggerAppComponent.factory().create(applicationContext)
         initLogger()
     }
 

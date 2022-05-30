@@ -3,6 +3,7 @@ package com.example.tinkoff_hr.domain.repositories_interface
 import com.example.tinkoff_hr.data.entities.restaurant.RestaurantReviewEntityForApi
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
+import io.reactivex.Completable
 import io.reactivex.Single
 
 interface RestaurantRepository {
@@ -15,5 +16,5 @@ interface RestaurantRepository {
     fun saveRestaurantReview(
         restaurantId: String,
         reviewApi: RestaurantReviewEntityForApi
-    ): Single<RestaurantReview>
+    ): Completable
 }

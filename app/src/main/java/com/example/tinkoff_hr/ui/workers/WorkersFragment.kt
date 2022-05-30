@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentWorkersBinding
+import com.example.tinkoff_hr.di.DaggerAppComponent
+import com.example.tinkoff_hr.domain.entities.worker.Worker
 import com.example.tinkoff_hr.presentation.WorkersPresenter
 import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 import com.example.tinkoff_hr.views.WorkersView
@@ -27,7 +29,8 @@ class WorkersFragment : MvpAppCompatFragment(R.layout.fragment_workers), Workers
     private lateinit var binding: FragmentWorkersBinding
     private lateinit var workerAdapter: WorkerAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+
+    override fun onCreate(savedInstanceState: Bundle?){
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
     }

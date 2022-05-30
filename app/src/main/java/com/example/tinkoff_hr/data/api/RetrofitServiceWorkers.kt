@@ -3,10 +3,7 @@ package com.example.tinkoff_hr.data.api
 import com.example.api.common.api.base.EnvelopeCall
 import com.example.tinkoff_hr.data.entities.UpdatedWorkerInfoForApi
 import com.example.tinkoff_hr.data.entities.WorkerEntityForApi
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.PUT
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface RetrofitServiceWorkers {
 

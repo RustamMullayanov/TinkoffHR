@@ -1,17 +1,29 @@
 package com.example.tinkoff_hr.data.repositories
 
+import com.example.tinkoff_hr.data.CacheManager
 import com.example.tinkoff_hr.data.api.RetrofitServiceRestaurants
-import com.example.tinkoff_hr.data.api.RetrofitServiceWorkers
+import com.example.tinkoff_hr.data.dao.CachesStatusDao
+import com.example.tinkoff_hr.data.dao.RestaurantReviewsDao
+import com.example.tinkoff_hr.data.dao.RestaurantsDao
+import com.example.tinkoff_hr.data.dto.toDb
 import com.example.tinkoff_hr.data.dto.toDomain
+import com.example.tinkoff_hr.data.entities.restaurant.CacheStatusEntity
+import com.example.tinkoff_hr.data.entities.restaurant.RestaurantEntityForDB
 import com.example.tinkoff_hr.data.entities.restaurant.RestaurantReviewEntityForApi
+import com.example.tinkoff_hr.data.entities.restaurant.RestaurantReviewEntityForDB
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.domain.repositories_interface.RestaurantRepository
+import io.reactivex.Completable
 import io.reactivex.Single
+import org.joda.time.DateTime
 import javax.inject.Inject
 
 class RestaurantRepositoryImpl @Inject constructor(
-    private val retrofitService: RetrofitServiceRestaurants
+    private val retrofitService: RetrofitServiceRestaurants,
+    private val restaurantReviewsDao: RestaurantReviewsDao,
+    private val restaurantsDao: RestaurantsDao,
+    private val cacheManager: CacheManager
 ) : RestaurantRepository {
     private val restaurants: List<Restaurant> = listOf(
         Restaurant(
@@ -34,25 +46,73 @@ class RestaurantRepositoryImpl @Inject constructor(
     )
 
     override fun getRestaurantInfoById(id: String): Single<Restaurant> {
-        return retrofitService.getRestaurantById(id).asSingle()
+        return restaurantsDao.getCachedRestaurantById(id)
             .map { restaurant -> restaurant.toDomain() }
     }
 
     override fun getRestaurantsInfo(): Single<List<Restaurant>> {
-        return retrofitService.getRestaurantsList().asSingle()
-            .map { list -> list.map { it.toDomain() } }
+        return cacheManager.isCacheActual(RestaurantEntityForDB.TABLE_NAME)
+            .flatMap { cacheActual ->
+                if (cacheActual) getRestaurantsFromCache()
+                else getRestaurantsFromServer()
+            }
     }
 
     override fun getReviewsInfoByRestaurantId(id: String): Single<List<RestaurantReview>> {
-        return retrofitService.getRestaurantsReviewsList(id).asSingle()
-            .map { list -> list.map { it.toDomain() } }
+        return cacheManager.isCacheActual(formatReviewsCacheKey(id))
+            .flatMap { cacheActual ->
+                if (cacheActual) getRestaurantReviewsFromCache(id)
+                else getRestaurantReviewsFromServer(id)
+            }
     }
 
     override fun saveRestaurantReview(
         restaurantId: String,
         reviewApi: RestaurantReviewEntityForApi
-    ): Single<RestaurantReview> {
-        return retrofitService.saveRestaurantReview(restaurantId, reviewApi).asSingle()
-            .map { review -> review.toDomain() }
+    ): Completable {
+        return retrofitService.saveRestaurantReview(restaurantId, reviewApi).asCompletable()
+    }
+
+    // Для ресторанов
+    private fun getRestaurantsFromServer(): Single<List<Restaurant>> {
+        return retrofitService.getRestaurantsList().asSingle()
+            .map { list -> list.map { it.toDomain() } }
+            .doOnSuccess { list -> updateRestaurantsCache(list) }
+    }
+
+    private fun getRestaurantsFromCache(): Single<List<Restaurant>> {
+        return restaurantsDao.getCachedRestaurants()
+            .map { list -> list.map { it.toDomain() } }
+    }
+
+    private fun updateRestaurantsCache(restaurants: List<Restaurant>) {
+        restaurantsDao.cachedRestaurants(restaurants.map { it.toDb() })
+        cacheManager.updateCacheStatus(RestaurantEntityForDB.TABLE_NAME, DateTime.now().millis)
+    }
+
+    // Для отзывов о ресторане
+    private fun getRestaurantReviewsFromServer(restaurantId: String): Single<List<RestaurantReview>> {
+        return retrofitService.getRestaurantsReviewsList(restaurantId).asSingle()
+            .map { list -> list.map { it.toDomain() } }
+            .doOnSuccess { list -> updateRestaurantReviewsCache(restaurantId, list) }
+    }
+
+    private fun getRestaurantReviewsFromCache(restaurantId: String): Single<List<RestaurantReview>> {
+        return restaurantReviewsDao.getCachedRestaurantsReviews(restaurantId)
+            .map { list -> list.map { it.toDomain() } }
+    }
+
+    private fun formatReviewsCacheKey(restaurantId: String) =
+        RestaurantReviewEntityForDB.TABLE_NAME + restaurantId
+
+    private fun updateRestaurantReviewsCache(
+        restaurantId: String,
+        restaurantReviews: List<RestaurantReview>
+    ) {
+        restaurantReviewsDao.cachedRestaurantsReviews(restaurantReviews.map { it.toDb() })
+        cacheManager.updateCacheStatus(
+            RestaurantReviewEntityForDB.TABLE_NAME + restaurantId,
+            DateTime.now().millis
+        )
     }
 }

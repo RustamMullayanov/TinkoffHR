@@ -9,8 +9,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
+import com.example.tinkoff_hr.data.UserCacheManager
 import com.example.tinkoff_hr.databinding.ActivityEateryInformationBinding
 import com.example.tinkoff_hr.databinding.DialogEateryBinding
+import com.example.tinkoff_hr.di.DaggerAppComponent
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.presentation.restaurant.EateryInfoPresenter
@@ -75,7 +77,7 @@ class EateryInformationActivity : MvpAppCompatActivity(), EateryInfoView {
                     restaurantId,
                     RestaurantReview(
                         "",
-                        "8827aa5d-80ca-4435-9d62-f8b57d4f5f64",
+                        UserCacheManager.getUserId(),
                         5.0,
                         restaurantId,
                         dialogBinding.fieldReview.text.toString()
