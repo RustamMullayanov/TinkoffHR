@@ -59,7 +59,7 @@ class CodeActivity : MvpAppCompatActivity(R.layout.activity_code), CodeView {
             countDownTimer.visibility = View.VISIBLE
             object : CountDownTimer(60000, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
-                    countDownTimer.text = "Осталось: ${millisUntilFinished / 1000}"
+                    countDownTimer.text = "Осталось: ${millisUntilFinished / 1000} с"
                 }
 
                 override fun onFinish() {
