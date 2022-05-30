@@ -6,5 +6,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 class TokenEntityForApi(
     @SerialName("token")
-    val token: String
+    val token: String,
+
+    @SerialName("is_registered")
+    val isRegistered: Boolean
 )

@@ -1,8 +1,10 @@
 package com.example.tinkoff_hr.di.module
 
+import com.example.tinkoff_hr.data.repositories.AuthenticationRepositoryImpl
 import com.example.tinkoff_hr.data.repositories.OrdersRepositoryImpl
 import com.example.tinkoff_hr.data.repositories.RestaurantRepositoryImpl
 import com.example.tinkoff_hr.data.repositories.WorkerRepositoryImpl
+import com.example.tinkoff_hr.domain.repositories_interface.AuthenticationRepository
 import com.example.tinkoff_hr.domain.repositories_interface.OrdersRepository
 import com.example.tinkoff_hr.domain.repositories_interface.RestaurantRepository
 import com.example.tinkoff_hr.domain.repositories_interface.WorkerRepository
@@ -23,4 +25,8 @@ abstract class RepositoryModule {
     @Binds
     abstract fun provideOrdersRepository(ordersRepositoryImpl: OrdersRepositoryImpl):
             OrdersRepository
+
+    @Binds
+    abstract fun provideAuthenticationRepository(authenticationRepositoryImpl: AuthenticationRepositoryImpl):
+            AuthenticationRepository
 }

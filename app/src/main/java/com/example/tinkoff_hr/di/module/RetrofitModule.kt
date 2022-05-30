@@ -26,7 +26,7 @@ class RetrofitModule {
 
     @ExperimentalSerializationApi
     @Provides
-    fun provideRetrofitServiceAuthentication(retrofitProvider: RetrofitProvider): RetrofitServiceAuthentication{
+    fun provideRetrofitServiceAuthentication(retrofitProvider: RetrofitProvider): RetrofitServiceAuthentication {
         return retrofitProvider.retrofitServiceAuthentication
     }
 }
