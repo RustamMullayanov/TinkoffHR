@@ -7,6 +7,8 @@ import com.example.tinkoff_hr.di.module.RetrofitModule
 import com.example.tinkoff_hr.ui.orders.OrdersFragment
 import com.example.tinkoff_hr.di.module.RoomModule
 import com.example.tinkoff_hr.ui.orders.basket.BasketActivity
+import com.example.tinkoff_hr.ui.authentication.CodeFragment
+import com.example.tinkoff_hr.ui.authentication.LoginFragment
 import com.example.tinkoff_hr.ui.where_eat.WhereEatFragment
 import com.example.tinkoff_hr.ui.where_eat.eatery_information.EateryInformationActivity
 import com.example.tinkoff_hr.ui.workers.WorkersFragment
@@ -20,12 +22,16 @@ import javax.inject.Singleton
 interface AppComponent {
     //Activities
     fun inject(activity: ProfileSettingsActivity)
-    fun inject(fragment: WorkersFragment)
     fun inject(activity: WorkerProfileActivity)
-    fun inject(fragment: WhereEatFragment)
     fun inject(activity: EateryInformationActivity)
-    fun inject(fragment: OrdersFragment)
     fun inject(activity: BasketActivity)
+
+    //Fragments
+    fun inject(fragment: WhereEatFragment)
+    fun inject(fragment: WorkersFragment)
+    fun inject(fragment: OrdersFragment)
+    fun inject(fragment: LoginFragment)
+    fun inject(fragment: CodeFragment)
 
     @Component.Factory
     interface Factory {
