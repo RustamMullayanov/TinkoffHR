@@ -1,5 +1,6 @@
 package com.example.tinkoff_hr.ui.orders
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
@@ -8,6 +9,8 @@ import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.FragmentOrdersBinding
 import com.example.tinkoff_hr.presentation.orders.OrdersPresenter
+import com.example.tinkoff_hr.ui.orders.basket.BasketActivity
+import com.example.tinkoff_hr.ui.workers.worker_profile.WorkerProfileActivity
 import com.example.tinkoff_hr.views.orders.OrdersView
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
@@ -57,7 +60,7 @@ class OrdersFragment : MvpAppCompatFragment(R.layout.fragment_orders), OrdersVie
     private val clickListenerProduct = object : ProductAdapter.ClickListener {
 
         override fun onProductClicked(productId: String) {
-
+            startActivity(Intent(context, BasketActivity::class.java))
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.tinkoff_hr.ui.orders
 
+import android.content.res.ColorStateList
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.ItemProductBinding
 import com.example.tinkoff_hr.ui.tribute.item.BaseListItem
@@ -14,6 +15,10 @@ object ProductDelegateProvider {
         bind {
             with(binding) {
                 productName.text = item.name
+            }
+
+            itemView.setOnClickListener {
+                itemClickListener.invoke("")
             }
 
         }
