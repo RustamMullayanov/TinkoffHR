@@ -1,5 +1,7 @@
 package com.example.tinkoff_hr.ui.orders
 
+import android.content.res.ColorStateList
+import android.view.View
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.databinding.ItemProductBinding
 import com.example.tinkoff_hr.ui.tribute.item.BaseListItem
@@ -14,8 +16,12 @@ object ProductDelegateProvider {
         bind {
             with(binding) {
                 productName.text = item.name
+                btnOrder.setOnClickListener {
+                    itemClickListener.invoke("")
+                    btnOrder.isEnabled = false
+                    btnOrder.setTextColor(getColor(R.color.back_grey))
+                }
             }
-
         }
     }
 }

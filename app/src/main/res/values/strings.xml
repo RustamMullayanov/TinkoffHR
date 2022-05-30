@@ -72,4 +72,8 @@
     <string name="text_meetup_info_left">1. Обсуждение с HR;\n\n2. Подача доклада на конференцию/митап</string>
     <string name="text_meetup_info_right">1. Не менее, чем за 2 месяца сообщить Елене Калетиной или Хромову Олег, а также тимлиду, какие темы тебе интересны и чем это будет полезно для проекта.\n\n2. Совместное решение о полной или частичной оплате конференции.</string>
     <string name="to_order">Заказать</string>
+    <string name="text_confirm_products">Подтвердите выбранные позиции</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="text_no_order">В данный момент у Вас нет заказанных товаров</string>
+    <string name="basket">Корзина</string>
 </resources>

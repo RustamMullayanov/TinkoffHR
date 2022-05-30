@@ -24,7 +24,7 @@ object ProductFilterDelegateProvider {
                     isSelected = false
                 } else {
                     binding.productFilterCard.backgroundTintList =
-                        ColorStateList.valueOf(getColor(R.color.pale_yellow))
+                        ColorStateList.valueOf(getColor(R.color.very_dark_violet))
                     isSelected = true
                 }
                 itemClickListener.invoke(item.typeProduct, isSelected)

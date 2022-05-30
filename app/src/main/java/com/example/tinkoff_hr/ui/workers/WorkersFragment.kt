@@ -1,12 +1,17 @@
 package com.example.tinkoff_hr.ui.workers
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.R
+import com.example.tinkoff_hr.actionbar.SettingsActivity
 import com.example.tinkoff_hr.databinding.FragmentWorkersBinding
 import com.example.tinkoff_hr.di.DaggerAppComponent
 import com.example.tinkoff_hr.domain.entities.worker.Worker
@@ -38,6 +43,7 @@ class WorkersFragment : MvpAppCompatFragment(R.layout.fragment_workers), Workers
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentWorkersBinding.bind(view)
+        setHasOptionsMenu(true)
 
         workerAdapter = WorkerAdapter(clickListener)
 
@@ -77,5 +83,20 @@ class WorkersFragment : MvpAppCompatFragment(R.layout.fragment_workers), Workers
             startActivity(WorkerProfileActivity.createIntent(requireContext(), workerId))
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.action_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_settings -> {
+                startActivity(Intent(context, SettingsActivity::class.java))
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

@@ -4,11 +4,15 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tinkoff_hr.R
+import com.example.tinkoff_hr.actionbar.SettingsActivity
 import com.example.tinkoff_hr.databinding.FragmentTributeBinding
 import com.example.tinkoff_hr.ui.tribute.data.Education
 import com.example.tinkoff_hr.ui.tribute.data.EducationLarge
@@ -27,6 +31,7 @@ class TributeFragment : Fragment(R.layout.fragment_tribute) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentTributeBinding.bind(view)
+        setHasOptionsMenu(true)
         val adapter = MyListAdapter(clickListener)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
@@ -102,7 +107,22 @@ class TributeFragment : Fragment(R.layout.fragment_tribute) {
         }
 
     }
-    
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.action_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_settings -> {
+                startActivity(Intent(context, SettingsActivity::class.java))
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     private companion object {
         @Dp
         const val EDUCATION_LIST_BOTTOM_PADDING = 16F
