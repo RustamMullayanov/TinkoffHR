@@ -33,7 +33,7 @@
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
         android:background="@color/white"
-        android:text="@string/count_down_timer_stub"
+        android:visibility="invisible"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/button_send_code"
         app:layout_constraintEnd_toEndOf="parent"

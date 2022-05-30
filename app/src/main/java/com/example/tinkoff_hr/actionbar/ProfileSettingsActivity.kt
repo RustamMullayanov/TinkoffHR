@@ -23,14 +23,14 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 
-class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
+class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView {
 
     @Inject
     lateinit var presenterProvider: Provider<ProfilePresenter>
 
     private val profilePresenter by moxyPresenter { presenterProvider.get() }
 
-    private val tokenStorage: UserTokenStorage = UserTokenStorage(applicationContext)
+    private lateinit var tokenStorage: UserTokenStorage
     private val binding: ActivityProfileSettingsBinding by lazy {
         ActivityProfileSettingsBinding.inflate(layoutInflater)
     }
@@ -55,6 +55,7 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView{
             clipboard.setPrimaryClip(clip)
         }
 
+        tokenStorage = UserTokenStorage(applicationContext)
         val test = tokenStorage.getUserToken()
 
         // Сохранение данных пользователя

@@ -1,6 +1,5 @@
 package com.example.tinkoff_hr.ui.authentication
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.example.tinkoff_hr.App

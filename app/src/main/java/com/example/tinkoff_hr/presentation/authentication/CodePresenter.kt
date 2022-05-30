@@ -20,7 +20,10 @@ class CodePresenter @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { viewState.showSuccess("Код отравлен письмом на указанную вами почту") },
+                {
+                    viewState.showSuccess("Код отравлен письмом на указанную вами почту")
+                    viewState.startCodeTimer()
+                },
                 { error ->
                     viewState.showError("Ошибка сервера")
                     Timber.e(error)

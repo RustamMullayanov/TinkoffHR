@@ -3,6 +3,9 @@ package com.example.tinkoff_hr.ui.authentication
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.ContentActivity
@@ -12,6 +15,7 @@ import com.example.tinkoff_hr.data.UserTokenStorage
 import com.example.tinkoff_hr.databinding.ActivityCodeBinding
 import com.example.tinkoff_hr.presentation.authentication.CodePresenter
 import com.example.tinkoff_hr.views.authentication.CodeView
+import kotlinx.serialization.descriptors.StructureKind
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 import javax.inject.Inject
@@ -28,7 +32,7 @@ class CodeActivity : MvpAppCompatActivity(R.layout.activity_code), CodeView {
         ActivityCodeBinding.inflate(layoutInflater)
     }
 
-    private val tokenStorage: UserTokenStorage = UserTokenStorage(applicationContext)
+    private lateinit var tokenStorage: UserTokenStorage
     private val userEmail: String by lazy { intent.getStringExtra(EXTRA_USER_EMAIL)!! }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,10 +49,26 @@ class CodeActivity : MvpAppCompatActivity(R.layout.activity_code), CodeView {
                 codePresenter.checkCode(userEmail, codeField.text.toString().toInt())
             }
         }
+
+        tokenStorage = UserTokenStorage(applicationContext)
     }
 
     override fun startCodeTimer() {
-        TODO("Not yet implemented")
+        with(binging) {
+            buttonSendCode.isEnabled = false
+            countDownTimer.visibility = View.VISIBLE
+            object : CountDownTimer(60000, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    countDownTimer.text = "Осталось: ${millisUntilFinished / 1000}"
+                }
+
+                override fun onFinish() {
+                    countDownTimer.text = "Можете запросить код еще раз"
+                    buttonSendCode.isEnabled = true
+                }
+            }.start()
+        }
+
     }
 
     override fun openContentActivity() {
