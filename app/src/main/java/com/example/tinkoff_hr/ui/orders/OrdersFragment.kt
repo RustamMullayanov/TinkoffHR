@@ -77,7 +77,7 @@ class OrdersFragment : MvpAppCompatFragment(R.layout.fragment_orders), OrdersVie
                 return true
             }
             R.id.menu_basket -> {
-                basketMenu.setIcon(R.drawable.ic_shopping_cart)
+                basketMenu.setIcon(R.drawable.ic_shopping_cart2)
                 startActivity(Intent(context, BasketActivity::class.java))
 
                 return true
@@ -89,7 +89,7 @@ class OrdersFragment : MvpAppCompatFragment(R.layout.fragment_orders), OrdersVie
     private val clickListenerProduct = object : ProductAdapter.ClickListener {
 
         override fun onProductClicked(productId: String) {
-            basketMenu.setIcon(R.drawable.ic_shopping_cart_point)
+            basketMenu.setIcon(R.drawable.ic_shopping_cart_point2)
         }
     }
 

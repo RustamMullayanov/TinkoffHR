@@ -113,17 +113,10 @@ class BasketActivity : MvpAppCompatActivity(), BasketView {
 
     fun updateUI(noItems: Boolean) {
         with(binding) {
-            if (noItems) {
-                textNoOrder.visibility = View.VISIBLE
-                textConfirm.visibility = View.GONE
-                recProducts.visibility = View.GONE
-                buttonConfirm.visibility = View.GONE
-            } else {
-                textNoOrder.visibility = View.GONE
-                textConfirm.visibility = View.VISIBLE
-                recProducts.visibility = View.VISIBLE
-                buttonConfirm.visibility = View.VISIBLE
-            }
+            textNoOrder.visibility = if (noItems) View.VISIBLE else View.INVISIBLE
+            textConfirm.visibility = if (noItems.not()) View.VISIBLE else View.INVISIBLE
+            recProducts.visibility = if (noItems.not()) View.VISIBLE else View.INVISIBLE
+            buttonConfirm.visibility = if (noItems.not()) View.VISIBLE else View.INVISIBLE
         }
     }
 
