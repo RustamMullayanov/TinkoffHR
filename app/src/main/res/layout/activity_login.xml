@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_stars"
-    tools:context=".ui.authentication.LoginFragment">
+    tools:context=".ui.authentication.LoginActivity">
 
     <TextView
         android:id="@+id/text_hello"

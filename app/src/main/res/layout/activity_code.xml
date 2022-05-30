@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_stars"
-    tools:context=".ui.authentication.CodeFragment">
+    tools:context=".ui.authentication.CodeActivity">
 
     <EditText
         android:id="@+id/code_field"

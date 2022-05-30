@@ -3,10 +3,7 @@ package com.example.tinkoff_hr.data.api
 import com.example.api.common.api.base.EnvelopeCall
 import com.example.tinkoff_hr.data.entities.restaurant.RestaurantEntityForApi
 import com.example.tinkoff_hr.data.entities.restaurant.RestaurantReviewEntityForApi
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface RetrofitServiceRestaurants {
     // Requests for Restaurants and RestaurantsReviews
