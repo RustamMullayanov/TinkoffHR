@@ -33,6 +33,7 @@ class CodeActivity : MvpAppCompatActivity(R.layout.activity_code), CodeView {
     }
 
     private lateinit var tokenStorage: UserTokenStorage
+    private lateinit var timer: CountDownTimer
     private val userEmail: String by lazy { intent.getStringExtra(EXTRA_USER_EMAIL)!! }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,11 +54,16 @@ class CodeActivity : MvpAppCompatActivity(R.layout.activity_code), CodeView {
         tokenStorage = UserTokenStorage(applicationContext)
     }
 
+    override fun onDestroy() {
+        timer.cancel()
+        super.onDestroy()
+    }
+
     override fun startCodeTimer() {
         with(binging) {
             buttonSendCode.isEnabled = false
             countDownTimer.visibility = View.VISIBLE
-            object : CountDownTimer(60000, 1000) {
+            timer = object : CountDownTimer(60000, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
                     countDownTimer.text = "Осталось: ${millisUntilFinished / 1000} с"
                 }

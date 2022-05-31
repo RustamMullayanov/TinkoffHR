@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Widget.App.RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton" >
+
+    <style name="Widget.App.RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
         <item name="buttonTint">#B190F4</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.dark_violet" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/dark_violet</item>
     </style>
 </resources>

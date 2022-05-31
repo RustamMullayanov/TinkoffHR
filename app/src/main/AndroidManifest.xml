@@ -42,14 +42,17 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".ui.authentication.LoginActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar.dark_violet">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.authentication.CodeActivity" />
+        <activity
+            android:name=".ui.authentication.CodeActivity"
+            android:theme="@style/AppTheme.NoActionBar.dark_violet" />
     </application>
 
 </manifest>

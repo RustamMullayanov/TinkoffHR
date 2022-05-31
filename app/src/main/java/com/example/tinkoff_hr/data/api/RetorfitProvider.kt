@@ -2,6 +2,7 @@ package com.example.tinkoff_hr.data.api
 
 import com.example.api.common.api.base.EnvelopeCallAdapterFactory
 import com.example.tinkoff_hr.BuildConfig
+import com.example.tinkoff_hr.data.TokenHeaderInterceptor
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
@@ -15,11 +16,15 @@ import javax.inject.Inject
 /**
  * A provider class for retrieving instances of api services
  */
-class RetrofitProvider @Inject constructor() {
+class RetrofitProvider @Inject constructor(){
 
     private val httpClient = OkHttpClient.Builder()
         .addInterceptor(HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) })
         .build()
+
+    /*private val httpClientWithToken = OkHttpClient.Builder()
+        .addInterceptor(tokenHeaderInterceptor.apply {  })
+        .build()*/
 
     @ExperimentalSerializationApi
     val retrofitServiceWorkers: RetrofitServiceWorkers =

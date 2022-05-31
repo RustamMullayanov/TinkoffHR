@@ -11,19 +11,19 @@ import retrofit2.http.POST
 
 interface RetrofitServiceAuthentication {
 
-    @POST("/auth/detect-user")
+    @POST("/api/auth/detect-user")
     fun checkUserEmail(@Body email: EmailEntityForApi): EnvelopeCall<Unit>
 
-    @POST("/auth/send-code")
+    @POST("/api/auth/send-code")
     fun sendCodeToEmail(@Body email: EmailEntityForApi): EnvelopeCall<Unit>
 
-    @POST("/auth/verify")
+    @POST("/api/auth/verify")
     fun verifyUser(
         @Header("Auth-Type") authType: String = "Mobile",
         @Body verifyUser: VerifyUserEntityForApi
     ): EnvelopeCall<TokenEntityForApi>
 
-    @POST("/auth/register")
+    @POST("/api/auth/register")
     fun userRegistration(
         @Header("Token") token: String,
         @Body updatedWorkerInfo: UpdatedWorkerInfo
