@@ -61,7 +61,7 @@ class TributeFragment : Fragment(R.layout.fragment_tribute) {
             Education(getString(R.string.ios), R.drawable.ios, getString(R.string.src_tinkoff_ios)),
             Education(getString(R.string.ios), R.drawable.ios, getString(R.string.src_tinkoff_ios))
         )
-        //educations = ArrayList<Education>()
+
 
         val largeMeetUpLarge =
             MeetUpLarge(getString(R.string.meetup), getString(R.string.meetupBigInfo))
@@ -75,9 +75,7 @@ class TributeFragment : Fragment(R.layout.fragment_tribute) {
                 TitleItem("Образовательные программы"),
                 EducationItem(largeEdu, educations),
                 TitleItem("Встречи"),
-                MeetUpItem(largeMeetUpLarge, smallMeetup),
-                TitleItem("Встречи"),
-                MeetUpItem(null, smallMeetup),
+                MeetUpItem(largeMeetUpLarge, smallMeetup)
             )
         )
     }

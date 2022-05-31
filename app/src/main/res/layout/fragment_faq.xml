@@ -128,7 +128,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:cursorVisible="false"
-
                 android:focusable="false"
                 android:text="Командировки" />
 
@@ -165,66 +164,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_education"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            app:boxBackgroundColor="@color/white"
-            app:boxCornerRadiusBottomEnd="14dp"
-            app:boxCornerRadiusBottomStart="14dp"
-            app:boxCornerRadiusTopEnd="14dp"
-            app:boxCornerRadiusTopStart="14dp"
-            app:endIconDrawable="@drawable/ic_baseline_arrow_right_24"
-            app:endIconMode="custom"
-            app:endIconTint="@color/main_purple"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_sale">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/button_education"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:cursorVisible="false"
-                android:focusable="false"
-                android:text="Образование Tinkoff.ru" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_meetup"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            app:boxBackgroundColor="@color/white"
-            app:boxCornerRadiusBottomEnd="14dp"
-            app:boxCornerRadiusBottomStart="14dp"
-            app:boxCornerRadiusTopEnd="14dp"
-            app:boxCornerRadiusTopStart="14dp"
-            app:endIconDrawable="@drawable/ic_baseline_arrow_right_24"
-            app:endIconMode="custom"
-            app:endIconTint="@color/main_purple"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_education">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/button_meetup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:cursorVisible="false"
-                android:focusable="false"
-                android:text="Meetup`s и конференции" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_contacts"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -241,7 +180,7 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_meetup">
+            app:layout_constraintTop_toBottomOf="@id/text_sale">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
