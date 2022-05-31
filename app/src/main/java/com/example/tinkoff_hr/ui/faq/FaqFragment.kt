@@ -7,8 +7,6 @@ import androidx.fragment.app.Fragment
 import com.example.tinkoff_hr.R
 import com.example.tinkoff_hr.actionbar.SettingsActivity
 import com.example.tinkoff_hr.databinding.FragmentFaqBinding
-import com.example.tinkoff_hr.ui.faq.MeetUp.MeetUpActivity
-import com.example.tinkoff_hr.ui.faq.education.EducationActivity
 import com.example.tinkoff_hr.ui.faq.business_trip.BusinessTripActivity
 import com.example.tinkoff_hr.ui.faq.parking.ParkingActivity
 import com.example.tinkoff_hr.ui.faq.sale.SaleActivity
@@ -35,16 +33,6 @@ class FaqFragment : Fragment(R.layout.fragment_faq) {
 
             buttonBusinessTrips.setOnClickListener {
                 val intent = Intent(this@FaqFragment.context, BusinessTripActivity::class.java)
-                startActivity(intent)
-            }
-
-            buttonMeetup.setOnClickListener {
-                val intent = Intent(this@FaqFragment.context, MeetUpActivity::class.java)
-                startActivity(intent)
-            }
-
-            buttonEducation.setOnClickListener {
-                val intent = Intent(this@FaqFragment.context, EducationActivity::class.java)
                 startActivity(intent)
             }
         }
