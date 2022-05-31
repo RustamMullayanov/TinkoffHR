@@ -1,12 +1,13 @@
-package com.example.tinkoff_hr.views
+package com.example.tinkoff_hr.views.authentication
 
 import com.example.tinkoff_hr.base.BaseView
-import com.example.tinkoff_hr.domain.entities.worker.Worker
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
 @StateStrategyType(value = AddToEndSingleStrategy::class)
-interface ProfileView : BaseView {
-    fun showWorkerInfo(worker: Worker)
+interface CodeView: BaseView {
+    fun startCodeTimer()
     fun openContentActivity()
+    fun openProfileSettingsActivity()
+    fun saveUserToken(token: String)
 }

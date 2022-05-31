@@ -9,7 +9,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class UpdateWorkerByIdUseCase @Inject constructor(private val workerRepository: WorkerRepository) {
-    operator fun invoke(worker: UpdatedWorkerInfo): Completable {
-        return workerRepository.updateWorkerInfo(worker.id, worker.toApi());
+    operator fun invoke(id: String, worker: UpdatedWorkerInfo): Completable {
+        return workerRepository.updateWorkerInfo(id, worker.toApi());
     }
 }

@@ -14,13 +14,14 @@ import com.example.tinkoff_hr.data.entities.restaurant.RestaurantReviewEntityFor
 import com.example.tinkoff_hr.domain.entities.restaurant.Restaurant
 import com.example.tinkoff_hr.domain.entities.restaurant.RestaurantReview
 import com.example.tinkoff_hr.domain.repositories_interface.RestaurantRepository
+import dagger.Lazy
 import io.reactivex.Completable
 import io.reactivex.Single
 import org.joda.time.DateTime
 import javax.inject.Inject
 
 class RestaurantRepositoryImpl @Inject constructor(
-    private val retrofitService: RetrofitServiceRestaurants,
+    private val retrofitService: Lazy<RetrofitServiceRestaurants>,
     private val restaurantReviewsDao: RestaurantReviewsDao,
     private val restaurantsDao: RestaurantsDao,
     private val cacheManager: CacheManager
@@ -70,12 +71,12 @@ class RestaurantRepositoryImpl @Inject constructor(
         restaurantId: String,
         reviewApi: RestaurantReviewEntityForApi
     ): Completable {
-        return retrofitService.saveRestaurantReview(restaurantId, reviewApi).asCompletable()
+        return retrofitService.get().saveRestaurantReview(restaurantId, reviewApi).asCompletable()
     }
 
     // Для ресторанов
     private fun getRestaurantsFromServer(): Single<List<Restaurant>> {
-        return retrofitService.getRestaurantsList().asSingle()
+        return retrofitService.get().getRestaurantsList().asSingle()
             .map { list -> list.map { it.toDomain() } }
             .doOnSuccess { list -> updateRestaurantsCache(list) }
     }
@@ -92,7 +93,7 @@ class RestaurantRepositoryImpl @Inject constructor(
 
     // Для отзывов о ресторане
     private fun getRestaurantReviewsFromServer(restaurantId: String): Single<List<RestaurantReview>> {
-        return retrofitService.getRestaurantsReviewsList(restaurantId).asSingle()
+        return retrofitService.get().getRestaurantsReviewsList(restaurantId).asSingle()
             .map { list -> list.map { it.toDomain() } }
             .doOnSuccess { list -> updateRestaurantReviewsCache(restaurantId, list) }
     }

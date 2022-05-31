@@ -76,4 +76,10 @@
     <string name="confirm">Подтвердить</string>
     <string name="text_no_order">В данный момент у Вас нет заказанных товаров</string>
     <string name="basket">Корзина</string>
+    <string name="code_field_stub">Введите код</string>
+    <string name="count_down_timer_stub">Осталось:</string>
+    <string name="send_code_stub">Отправить код</string>
+    <string name="check_code_stub">Проверить код</string>
+    <string name="button_save_stub">Сохранить</string>
+    <string name="button_register_stub">Зарегистрироваться</string>
 </resources>

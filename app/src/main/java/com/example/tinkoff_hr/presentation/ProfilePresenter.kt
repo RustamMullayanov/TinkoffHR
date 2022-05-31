@@ -5,8 +5,10 @@ import com.example.tinkoff_hr.data.UserCacheManager
 import com.example.tinkoff_hr.domain.entities.worker.UpdatedWorkerInfo
 import com.example.tinkoff_hr.domain.entities.worker.Worker
 import com.example.tinkoff_hr.domain.usecases.GetWorkerInfoByIdUseCase
+import com.example.tinkoff_hr.domain.usecases.GetWorkerInfoByTokenUseCase
 import com.example.tinkoff_hr.domain.usecases.SaveUserCacheUseCase
 import com.example.tinkoff_hr.domain.usecases.UpdateWorkerByIdUseCase
+import com.example.tinkoff_hr.domain.usecases.authentication.UserRegisteringUseCase
 import com.example.tinkoff_hr.views.ProfileView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -16,18 +18,14 @@ import javax.inject.Inject
 
 @InjectViewState
 class ProfilePresenter @Inject constructor(
-    private val getWorkerInfoById: GetWorkerInfoByIdUseCase,
+    private val getWorkerInfoByToken: GetWorkerInfoByTokenUseCase,
     private val updateWorkerById: UpdateWorkerByIdUseCase,
-    private val saveUserCacheUseCase: SaveUserCacheUseCase
+    private val saveUserCacheUseCase: SaveUserCacheUseCase,
+    private val userRegisteringUseCase: UserRegisteringUseCase
 ) : BasePresenter<ProfileView>() {
 
-    override fun onFirstViewAttach() {
-        //харкодный worker_id
-        onAppearing("8827aa5d-80ca-4435-9d62-f8b57d4f5f64")
-    }
-
-    private fun onAppearing(id: String) {
-        getWorkerInfoById(id)
+    fun onAppearing(token: String) {
+        getWorkerInfoByToken(token)
             .doOnSuccess { worker -> saveUserCache(worker) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -39,12 +37,12 @@ class ProfilePresenter @Inject constructor(
             }).disposeOnFinish()
     }
 
-    fun onSaveWorkerClicked(worker: UpdatedWorkerInfo) {
-        updateWorkerById(worker)
+    fun onSaveWorkerClicked(id: String, worker: UpdatedWorkerInfo) {
+        updateWorkerById(id, worker)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                {viewState.showSuccess("Данные успешно сохранены")},
+                { viewState.showSuccess("Данные успешно сохранены") },
                 { error ->
                     viewState.showError("Не удалось обновить данные, повторите попытку позже")
                     Timber.e(error)
@@ -52,7 +50,23 @@ class ProfilePresenter @Inject constructor(
             .disposeOnFinish()
     }
 
-    private fun saveUserCache(user: Worker){
+    fun onUserRegisterClicked(token: String, worker: UpdatedWorkerInfo) {
+        userRegisteringUseCase(token, worker)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    viewState.showSuccess("Регистрация прошла успешно")
+                    viewState.openContentActivity()
+                },
+                { error ->
+                    viewState.showError("Не удалось зарегистрироваться, повторите попытку позже")
+                    Timber.e(error)
+                })
+            .disposeOnFinish()
+    }
+
+    private fun saveUserCache(user: Worker) {
         saveUserCacheUseCase(user)
     }
 }

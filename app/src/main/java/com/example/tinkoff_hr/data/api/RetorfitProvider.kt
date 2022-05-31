@@ -15,34 +15,41 @@ import javax.inject.Inject
 /**
  * A provider class for retrieving instances of api services
  */
-class RetrofitProvider @Inject constructor() {
+class RetrofitProvider @Inject constructor(tokenHeaderInterceptor: TokenHeaderInterceptor) {
 
     private val httpClient = OkHttpClient.Builder()
         .addInterceptor(HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) })
         .build()
 
-    @ExperimentalSerializationApi
-    val retrofitServiceWorkers: RetrofitServiceWorkers = Retrofit.Builder()
-        .baseUrl(BuildConfig.API_BASE_URL)
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .addCallAdapterFactory(EnvelopeCallAdapterFactory())
-        .addConverterFactory(Json {
-            ignoreUnknownKeys = true
-        }.asConverterFactory("application/json".toMediaType()))
-        .client(httpClient)
-        .build()
-        .create(RetrofitServiceWorkers::class.java)
+    private val httpClientWithToken by lazy {
+        OkHttpClient.Builder()
+            .addInterceptor(tokenHeaderInterceptor)
+            .addInterceptor(HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) })
+            .build()
+    }
 
     @ExperimentalSerializationApi
-    val retrofitServiceRestaurants: RetrofitServiceRestaurants = Retrofit.Builder()
-        .baseUrl(BuildConfig.API_BASE_URL)
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .addCallAdapterFactory(EnvelopeCallAdapterFactory())
-        .addConverterFactory(Json {
-            ignoreUnknownKeys = true
-        }.asConverterFactory("application/json".toMediaType()))
-        .client(httpClient)
-        .build()
-        .create( RetrofitServiceRestaurants::class.java)
+    val retrofitServiceWorkers: RetrofitServiceWorkers =
+        customRetrofitBuilder(RetrofitServiceWorkers::class.java, httpClientWithToken)
 
+    @ExperimentalSerializationApi
+    val retrofitServiceRestaurants: RetrofitServiceRestaurants =
+        customRetrofitBuilder(RetrofitServiceRestaurants::class.java, httpClientWithToken)
+
+    @ExperimentalSerializationApi
+    val retrofitServiceAuthentication: RetrofitServiceAuthentication =
+        customRetrofitBuilder(RetrofitServiceAuthentication::class.java, httpClient)
+
+    private fun <T> customRetrofitBuilder(retrofitClass: Class<T>, httpClient: OkHttpClient): T {
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.API_BASE_URL)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(EnvelopeCallAdapterFactory())
+            .addConverterFactory(Json {
+                ignoreUnknownKeys = true
+            }.asConverterFactory("application/json".toMediaType()))
+            .client(httpClient)
+            .build()
+            .create(retrofitClass)
+    }
 }
