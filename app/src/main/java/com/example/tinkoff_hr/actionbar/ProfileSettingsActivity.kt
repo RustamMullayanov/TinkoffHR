@@ -3,19 +3,22 @@ package com.example.tinkoff_hr.actionbar
 import android.app.AlertDialog
 import android.content.ClipData
 import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.RadioButton
 import android.widget.Toast
 import com.example.tinkoff_hr.App
+import com.example.tinkoff_hr.ContentActivity
 import com.example.tinkoff_hr.data.UserTokenStorage
 import com.example.tinkoff_hr.databinding.ActivityProfileSettingsBinding
 import com.example.tinkoff_hr.databinding.ProfileDialogBinding
-import com.example.tinkoff_hr.di.DaggerAppComponent
 import com.example.tinkoff_hr.domain.entities.worker.UpdatedWorkerInfo
 import com.example.tinkoff_hr.domain.entities.worker.Worker
 import com.example.tinkoff_hr.domain.entities.worker.WorkerStatus
 import com.example.tinkoff_hr.presentation.ProfilePresenter
+import com.example.tinkoff_hr.ui.authentication.CodeActivity
 import com.example.tinkoff_hr.views.ProfileView
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
@@ -36,6 +39,12 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView {
     }
 
     private var selectedId = 0
+    private val isRegistered: Boolean by lazy {
+        intent.getBooleanExtra(
+            EXTRA_FLAG_REGISTERED,
+            false
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
@@ -56,24 +65,31 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView {
         }
 
         tokenStorage = UserTokenStorage(applicationContext)
-        val test = tokenStorage.getUserToken()
 
         // Сохранение данных пользователя
         val buttonSave = binding.buttonSave
         buttonSave.setOnClickListener {
-            val fullName = binding.fieldFullName.text.toString().split(" ")
             val worker = UpdatedWorkerInfo(
-                "8827aa5d-80ca-4435-9d62-f8b57d4f5f64",
                 binding.fieldAbout.text.toString(),
                 binding.fieldFunction.text.toString(),
                 binding.fieldProject.text.toString(),
-                WorkerStatus.ACTIVE,
-                "ff6bc504-b3de-4248-abe4-e75443104f03",
-                "09ebeab5-4509-498a-829e-91a9e97c78c5",
-                "32ecdd74-2c12-4a22-b436-8179c1d64cb9"
+                WorkerStatus.ACTIVE
             )
             profilePresenter.onSaveWorkerClicked(worker)
         }
+
+        val buttonRegister = binding.buttonRegister
+        buttonRegister.setOnClickListener {
+            val worker = UpdatedWorkerInfo(
+                binding.fieldAbout.text.toString(),
+                binding.fieldFunction.text.toString(),
+                binding.fieldProject.text.toString(),
+                WorkerStatus.ACTIVE
+            )
+            profilePresenter.onUserRegisterClicked(tokenStorage.getUserToken(), worker)
+        }
+
+        profilePresenter.onAppearing(tokenStorage.getUserToken())
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -124,11 +140,27 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView {
         }
     }
 
+    override fun openContentActivity() {
+        startActivity(Intent(this, ContentActivity::class.java))
+        finish()
+    }
+
     override fun showError(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun showSuccess(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    companion object {
+
+        private const val EXTRA_FLAG_REGISTERED = "extra_flag_registered"
+
+        fun createIntent(context: Context, isRegistered: Boolean): Intent {
+            return Intent(context, ProfileSettingsActivity::class.java).apply {
+                putExtra(EXTRA_FLAG_REGISTERED, isRegistered)
+            }
+        }
     }
 }

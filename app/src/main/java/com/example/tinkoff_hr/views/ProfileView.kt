@@ -6,6 +6,7 @@ import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
 @StateStrategyType(value = AddToEndSingleStrategy::class)
-interface ProfileView: BaseView {
+interface ProfileView : BaseView {
     fun showWorkerInfo(worker: Worker)
+    fun openContentActivity()
 }

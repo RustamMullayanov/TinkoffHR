@@ -83,8 +83,7 @@ class CodeActivity : MvpAppCompatActivity(R.layout.activity_code), CodeView {
     }
 
     override fun openProfileSettingsActivity() {
-        startActivity(Intent(this, ContentActivity::class.java))
-        startActivity(Intent(this, ProfileSettingsActivity::class.java))
+        startActivity(ProfileSettingsActivity.createIntent(this, false))
         finish()
     }
 

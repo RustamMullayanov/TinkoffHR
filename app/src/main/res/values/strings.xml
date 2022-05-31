@@ -80,4 +80,6 @@
     <string name="count_down_timer_stub">Осталось:</string>
     <string name="send_code_stub">Отправить код</string>
     <string name="check_code_stub">Проверить код</string>
+    <string name="button_save_stub">Сохранить</string>
+    <string name="button_register_stub">Зарегистрироваться</string>
 </resources>

@@ -1,10 +1,12 @@
 package com.example.tinkoff_hr.data.repositories
 
 import com.example.tinkoff_hr.data.api.RetrofitServiceAuthentication
+import com.example.tinkoff_hr.data.dto.toApi
 import com.example.tinkoff_hr.data.dto.toDomain
 import com.example.tinkoff_hr.data.entities.authentication.EmailEntityForApi
 import com.example.tinkoff_hr.data.entities.authentication.VerifyUserEntityForApi
 import com.example.tinkoff_hr.domain.entities.Token
+import com.example.tinkoff_hr.domain.entities.worker.UpdatedWorkerInfo
 import com.example.tinkoff_hr.domain.repositories_interface.AuthenticationRepository
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -27,5 +29,12 @@ class AuthenticationRepositoryImpl @Inject constructor(
             "Mobile",
             VerifyUserEntityForApi(email, code)
         ).asSingle().map { it.toDomain() }
+    }
+
+    override fun userRegistering(token: String, worker: UpdatedWorkerInfo): Completable {
+        return authentication.userRegistration(
+            "Bearer $token",
+            worker.toApi()
+        ).asCompletable()
     }
 }

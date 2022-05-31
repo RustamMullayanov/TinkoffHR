@@ -11,9 +11,15 @@ interface RetrofitServiceWorkers {
     @GET("/api/employees")
     fun getWorkersList(): EnvelopeCall<List<WorkerEntityForApi>>
 
-    @GET("/api/employees/{id}")
+    @GET("/api/employees/get-by-id/{id}")
     fun getWorkerById(@Path("id") id: String): EnvelopeCall<WorkerEntityForApi>
 
+    @GET("/api/employees/get-by-token/{token}")
+    fun getWorkerByToken(@Path("token") token: String): EnvelopeCall<WorkerEntityForApi>
+
     @PUT("/api/employees/{id}")
-    fun updateWorkerById(@Path("id") id: String, @Body worker: UpdatedWorkerInfoForApi) : EnvelopeCall<Unit>
+    fun updateWorkerById(
+        @Path("id") id: String,
+        @Body worker: UpdatedWorkerInfoForApi
+    ): EnvelopeCall<Unit>
 }

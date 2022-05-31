@@ -1,10 +1,10 @@
 package com.example.tinkoff_hr.data.api
 
 import com.example.api.common.api.base.EnvelopeCall
+import com.example.tinkoff_hr.data.entities.UpdatedWorkerInfoForApi
 import com.example.tinkoff_hr.data.entities.authentication.EmailEntityForApi
 import com.example.tinkoff_hr.data.entities.authentication.TokenEntityForApi
 import com.example.tinkoff_hr.data.entities.authentication.VerifyUserEntityForApi
-import com.example.tinkoff_hr.domain.entities.worker.UpdatedWorkerInfo
 import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.POST
@@ -25,7 +25,7 @@ interface RetrofitServiceAuthentication {
 
     @POST("/api/auth/register")
     fun userRegistration(
-        @Header("Token") token: String,
-        @Body updatedWorkerInfo: UpdatedWorkerInfo
+        @Header("Authorization") token: String,
+        @Body updatedWorkerInfo: UpdatedWorkerInfoForApi
     ): EnvelopeCall<Unit>
 }

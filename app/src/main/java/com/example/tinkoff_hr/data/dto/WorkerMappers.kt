@@ -62,8 +62,5 @@ fun UpdatedWorkerInfo.toApi(): UpdatedWorkerInfoForApi =
         about = this.about,
         function = this.function,
         project = this.project,
-        status = WorkerStatus.fromBoolean(this.status),
-        table = this.table,
-        state_id = this.state_id,
-        permission_id = this.permission_id
+        status = WorkerStatus.fromBoolean(this.status)
     )

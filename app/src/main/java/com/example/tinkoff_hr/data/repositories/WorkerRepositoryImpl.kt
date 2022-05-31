@@ -10,9 +10,10 @@ import com.example.tinkoff_hr.domain.repositories_interface.WorkerRepository
 import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject
+import dagger.Lazy
 
 class WorkerRepositoryImpl @Inject constructor(
-    private val retrofitService: RetrofitServiceWorkers,
+    private val retrofitService: Lazy<RetrofitServiceWorkers>,
 ) : WorkerRepository {
     private val workers: List<Worker> = listOf(
         Worker(
@@ -48,16 +49,17 @@ class WorkerRepositoryImpl @Inject constructor(
     )
 
     override fun getWorkerInfoById(id: String): Single<Worker> {
-        return retrofitService.getWorkerById(id).asSingle()
+        return retrofitService.get().getWorkerById(id).asSingle()
             .map { worker -> worker.toDomain() }
     }
 
-    override fun getWorkerInfoByEmail(email: String): Single<Worker> {
-        TODO("Not yet implemented")
+    override fun getWorkerInfoByToken(token: String): Single<Worker> {
+        return retrofitService.get().getWorkerByToken(token).asSingle()
+            .map { worker -> worker.toDomain() }
     }
 
     override fun getWorkersInfo(): Single<List<Worker>> {
-        return retrofitService.getWorkersList().asSingle()
+        return retrofitService.get().getWorkersList().asSingle()
             .map { list -> list.map { it.toDomain() } }
     }
 
@@ -68,7 +70,7 @@ class WorkerRepositoryImpl @Inject constructor(
     }
 
     override fun updateWorkerInfo(id: String, worker: UpdatedWorkerInfoForApi): Completable {
-        return retrofitService.updateWorkerById(id, worker).asCompletable()
+        return retrofitService.get().updateWorkerById(id, worker).asCompletable()
     }
 
     override fun saveUserCache(user: Worker) {

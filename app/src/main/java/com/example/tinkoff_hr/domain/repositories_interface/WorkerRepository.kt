@@ -8,7 +8,7 @@ import io.reactivex.Single
 interface WorkerRepository {
     fun getWorkerInfoById(id: String): Single<Worker>
 
-    fun getWorkerInfoByEmail(email: String): Single<Worker>
+    fun getWorkerInfoByToken(token: String): Single<Worker>
 
     fun getWorkersInfo(): Single<List<Worker>>
 

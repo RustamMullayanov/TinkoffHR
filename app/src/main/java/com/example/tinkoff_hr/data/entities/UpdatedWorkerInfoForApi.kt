@@ -16,13 +16,4 @@ class UpdatedWorkerInfoForApi(
 
     @SerialName("status")
     val status: Boolean = true,
-
-    @SerialName("table_id")
-    val table: String,
-
-    @SerialName("state_id")
-    val state_id: String,
-
-    @SerialName("permission_id")
-    val permission_id: String
 )
