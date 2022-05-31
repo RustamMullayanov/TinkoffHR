@@ -13,7 +13,4 @@ class UpdatedWorkerInfoForApi(
 
     @SerialName("project")
     val project: String,
-
-    @SerialName("status")
-    val status: Boolean = true,
 )

@@ -62,5 +62,4 @@ fun UpdatedWorkerInfo.toApi(): UpdatedWorkerInfoForApi =
         about = this.about,
         function = this.function,
         project = this.project,
-        status = WorkerStatus.fromBoolean(this.status)
     )

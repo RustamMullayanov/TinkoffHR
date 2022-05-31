@@ -37,8 +37,8 @@ class ProfilePresenter @Inject constructor(
             }).disposeOnFinish()
     }
 
-    fun onSaveWorkerClicked(worker: UpdatedWorkerInfo) {
-        updateWorkerById(worker)
+    fun onSaveWorkerClicked(id: String, worker: UpdatedWorkerInfo) {
+        updateWorkerById(id, worker)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

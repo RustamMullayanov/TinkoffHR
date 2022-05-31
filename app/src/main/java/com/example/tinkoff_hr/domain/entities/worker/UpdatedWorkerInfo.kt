@@ -8,5 +8,4 @@ data class UpdatedWorkerInfo(
     val about: String,
     val function: String,
     val project: String,
-    val status: WorkerStatus = WorkerStatus.ACTIVE,
 ) : Parcelable

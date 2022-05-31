@@ -7,10 +7,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.RadioButton
 import android.widget.Toast
 import com.example.tinkoff_hr.App
 import com.example.tinkoff_hr.ContentActivity
+import com.example.tinkoff_hr.data.UserCacheManager
 import com.example.tinkoff_hr.data.UserTokenStorage
 import com.example.tinkoff_hr.databinding.ActivityProfileSettingsBinding
 import com.example.tinkoff_hr.databinding.ProfileDialogBinding
@@ -42,7 +44,7 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView {
     private val isRegistered: Boolean by lazy {
         intent.getBooleanExtra(
             EXTRA_FLAG_REGISTERED,
-            false
+            true
         )
     }
 
@@ -66,30 +68,31 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView {
 
         tokenStorage = UserTokenStorage(applicationContext)
 
-        // Сохранение данных пользователя
+        // Кнопка сохранения данных пользователя
         val buttonSave = binding.buttonSave
         buttonSave.setOnClickListener {
-            val worker = UpdatedWorkerInfo(
-                binding.fieldAbout.text.toString(),
-                binding.fieldFunction.text.toString(),
-                binding.fieldProject.text.toString(),
-                WorkerStatus.ACTIVE
+            profilePresenter.onSaveWorkerClicked(
+                UserCacheManager.getUserId(),
+                getUpdateWorkerInfo()
             )
-            profilePresenter.onSaveWorkerClicked(worker)
         }
 
+        // Кнопка регистрации пользователя
         val buttonRegister = binding.buttonRegister
         buttonRegister.setOnClickListener {
-            val worker = UpdatedWorkerInfo(
-                binding.fieldAbout.text.toString(),
-                binding.fieldFunction.text.toString(),
-                binding.fieldProject.text.toString(),
-                WorkerStatus.ACTIVE
+            profilePresenter.onUserRegisterClicked(
+                tokenStorage.getUserToken(),
+                getUpdateWorkerInfo()
             )
-            profilePresenter.onUserRegisterClicked(tokenStorage.getUserToken(), worker)
         }
 
         profilePresenter.onAppearing(tokenStorage.getUserToken())
+
+        if (!isRegistered) {
+            buttonSave.visibility = View.INVISIBLE
+            buttonRegister.visibility = View.VISIBLE
+            supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -98,6 +101,16 @@ class ProfileSettingsActivity : MvpAppCompatActivity(), ProfileView {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun getUpdateWorkerInfo(): UpdatedWorkerInfo {
+        with(binding) {
+            return UpdatedWorkerInfo(
+                fieldAbout.text.toString(),
+                fieldFunction.text.toString(),
+                fieldProject.text.toString()
+            )
+        }
     }
 
     private fun createDialog() {
