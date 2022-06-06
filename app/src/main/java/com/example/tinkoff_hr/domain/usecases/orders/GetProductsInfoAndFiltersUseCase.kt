@@ -12,7 +12,7 @@ class GetProductsInfoAndFiltersUseCase @Inject constructor(private val ordersRep
         return ordersRepository.getProductsInfo()
             .map { products ->
                 val filters = getUniqueFilters(products)
-                Pair(products, filters)
+                products to filters
             }
     }
 

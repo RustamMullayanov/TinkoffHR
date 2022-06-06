@@ -14,7 +14,7 @@ class OrdersPresenter @Inject constructor(
     private val getProductsInfoAndFilters: GetProductsInfoAndFiltersUseCase
 ) : BasePresenter<OrdersView>() {
 
-    private var products: List<ProductItem>? = null
+    private var products: List<ProductItem> = emptyList()
     private val activeFilters: MutableList<String> = mutableListOf()
 
     override fun onFirstViewAttach() {
@@ -50,8 +50,8 @@ class OrdersPresenter @Inject constructor(
     }
 
     fun getProductsByFilter() {
-        if (activeFilters.isEmpty()) viewState.showProductsInfo(products!!)
-        else viewState.showProductsInfo(products!!.filter { product ->
+        if (activeFilters.isEmpty()) viewState.showProductsInfo(products)
+        else viewState.showProductsInfo(products.filter { product ->
             product.types.any { type ->
                 activeFilters.contains(
                     type
