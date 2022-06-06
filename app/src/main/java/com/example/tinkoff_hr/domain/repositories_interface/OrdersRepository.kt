@@ -8,6 +8,4 @@ import io.reactivex.Single
 interface OrdersRepository {
 
     fun getProductsInfo(): Single<List<Product>>
-
-    fun getProductFiltersInfo(): Single<List<ProductFilter>>
 }
